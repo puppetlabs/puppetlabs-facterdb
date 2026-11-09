@@ -9,6 +9,8 @@ class Puppetlabs::FacterDB::Bin
   end
 
   def run
-    puts JSON.pretty_generate(Puppetlabs::FacterDB.get_facts(@args[0]))
+    facts = Puppetlabs::FacterDB.get_facts(@args[0])
+    # Older json versions pretty-print an empty array as "[\n\n]"
+    puts facts.empty? ? '[]' : JSON.pretty_generate(facts)
   end
 end
