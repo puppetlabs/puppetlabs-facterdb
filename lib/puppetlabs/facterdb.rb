@@ -44,7 +44,9 @@ module Puppetlabs::FacterDB
 
     # Inject source file information
     json_injection = "\"_facterdb_filename\": #{File.basename(f).to_json}, "
-    json_injection += "\"_facterdb_path\": #{File.expand_path(f).to_json}, "
+    json_injection += "\"_facterdb_path\": #{File.expand_path(f).to_json}"
+    # A trailing comma is only valid if the object has other keys
+    json_injection += ', ' unless content[(first_brace + 1)..].match?(%r{\A\s*\}})
     content.insert(first_brace + 1, json_injection)
   end
   private_class_method :read_json_file

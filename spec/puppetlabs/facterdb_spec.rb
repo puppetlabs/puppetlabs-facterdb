@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
+require 'tmpdir'
 
 RSpec.describe Puppetlabs::FacterDB do
   let(:older_dir) { File.join(fixtures_dir, '4.10') }
@@ -216,6 +217,25 @@ RSpec.describe Puppetlabs::FacterDB do
 
     it 'injects the source file path' do
       expect(described_class.get_facts({ 'os.family' => 'windows' }).first[:_facterdb_path]).to eq(File.join(older_dir, 'windows-2022-x86_64.facts'))
+    end
+
+    context 'with an empty fact set' do
+      let(:empty_dir) { Dir.mktmpdir }
+
+      before(:each) do
+        File.write(File.join(empty_dir, 'empty.facts'), '{}')
+        ENV['PUPPETLABS_FACTERDB_SEARCH_EXTERNAL_DIR'] = empty_dir
+      end
+
+      after(:each) { FileUtils.remove_entry(empty_dir) }
+
+      it 'still produces a database JGrep can query' do
+        expect(described_class.get_facts.size).to eq(1)
+      end
+
+      it 'injects only the source keys' do
+        expect(described_class.get_facts.first.keys).to eq([:_facterdb_filename, :_facterdb_path])
+      end
     end
   end
 
