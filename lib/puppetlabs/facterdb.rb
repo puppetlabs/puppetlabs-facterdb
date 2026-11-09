@@ -9,13 +9,30 @@ class Puppetlabs::FacterDB::Errors::InvalidFilter < RuntimeError; end
 
 module Puppetlabs::FacterDB
   # @return [String] returns a giant incomprehensible string of concatenated json data
+  # @note The result is memoized and rebuilt when the set of fact files or the inject source setting changes
   def self.database
-    @database ||= "[#{facterdb_fact_files.map { |f| read_json_file(f) }.join(',')}]\n"
+    database_for(database_key)
   end
+
+  # @return [Array] the inputs the memoized database depends on
+  def self.database_key
+    [facterdb_fact_files, inject_source?]
+  end
+  private_class_method :database_key
+
+  def self.database_for(key)
+    return @database if @database && key == @database_key
+
+    @database_key = key
+    @database = "[#{key.first.map { |f| read_json_file(f) }.join(',')}]\n"
+  end
+  private_class_method :database_for
 
   # @note Call this method at the end of test suite, for example via after(:suite), to reclaim back the memory required to hold json data and filter cache
   def self.cleanup
     @database = nil
+    @database_key = nil
+    Thread.current[:puppetlabs_facterdb_last_database_key_seen] = nil
     Thread.current[:puppetlabs_facterdb_last_filter_seen] = nil
     Thread.current[:puppetlabs_facterdb_last_symbolize_keys_seen] = nil
     Thread.current[:puppetlabs_facterdb_last_facts_seen] = nil
@@ -114,26 +131,29 @@ module Puppetlabs::FacterDB
   #   Whether to symbolize the keys. Note this is only on the top level and not
   #   on nested values.
   def self.get_facts(filter = nil, cache = true, symbolize_keys: true) # rubocop:disable Style/OptionalBooleanParameter
-    return Thread.current[:puppetlabs_facterdb_last_facts_seen] if cache && cached?(filter, symbolize_keys)
+    key = database_key
+    return Thread.current[:puppetlabs_facterdb_last_facts_seen] if cache && cached?(filter, symbolize_keys, key)
 
-    result = JGrep.jgrep(database, generate_filter_str(filter))
+    result = JGrep.jgrep(database_for(key), generate_filter_str(filter))
     result = result.map { |hash| hash.transform_keys(&:to_sym) } if symbolize_keys
-    store_cache(filter, symbolize_keys, result) if cache
+    store_cache(filter, symbolize_keys, key, result) if cache
     result
   end
 
-  # @return [Boolean] true if the last result seen was for this filter and key type
-  def self.cached?(filter, symbolize_keys)
+  # @return [Boolean] true if the last result seen was for this filter, key type and database
+  def self.cached?(filter, symbolize_keys, key)
     return false unless filter
 
     filter == Thread.current[:puppetlabs_facterdb_last_filter_seen] &&
-      symbolize_keys == Thread.current[:puppetlabs_facterdb_last_symbolize_keys_seen]
+      symbolize_keys == Thread.current[:puppetlabs_facterdb_last_symbolize_keys_seen] &&
+      key == Thread.current[:puppetlabs_facterdb_last_database_key_seen]
   end
   private_class_method :cached?
 
-  def self.store_cache(filter, symbolize_keys, result)
+  def self.store_cache(filter, symbolize_keys, key, result)
     Thread.current[:puppetlabs_facterdb_last_filter_seen] = filter
     Thread.current[:puppetlabs_facterdb_last_symbolize_keys_seen] = symbolize_keys
+    Thread.current[:puppetlabs_facterdb_last_database_key_seen] = key
     Thread.current[:puppetlabs_facterdb_last_facts_seen] = result
   end
   private_class_method :store_cache

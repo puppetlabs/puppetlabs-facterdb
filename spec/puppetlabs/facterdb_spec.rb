@@ -82,6 +82,23 @@ RSpec.describe Puppetlabs::FacterDB do
         expect(described_class.get_facts(filter).first.keys).to all(be_a(Symbol))
       end
 
+      it 'rebuilds the database when the search dir changes without a cleanup' do
+        described_class.get_facts(nil)
+        ENV['PUPPETLABS_FACTERDB_SEARCH_EXTERNAL_DIR'] = newer_dir
+        expect(described_class.get_facts(nil).size).to eq(3)
+      end
+
+      it 'does not serve a cached result after the search dir changes' do
+        filter = { 'os.family' => 'windows' }
+        described_class.get_facts(filter)
+        ENV['PUPPETLABS_FACTERDB_SEARCH_EXTERNAL_DIR'] = newer_dir
+        expect(described_class.get_facts(filter)).to eq([])
+      end
+
+      it 'keeps the same database object while the inputs are unchanged' do
+        expect(described_class.database).to equal(described_class.database)
+      end
+
       it 'stores the cache under puppetlabs_facterdb thread keys' do
         described_class.get_facts({ 'os.family' => 'Debian' })
         expect(Thread.current[:puppetlabs_facterdb_last_filter_seen]).to eq({ 'os.family' => 'Debian' })
