@@ -45,7 +45,7 @@ jobs:
       - name: Run specs
         run: bundle exec rake spec
       - name: Build gem
-        run: gem build --strict --verbose perforce-facterdb.gemspec
+        run: gem build --strict --verbose puppetlabs-facterdb.gemspec
 
   dual-install:
     runs-on: ubuntu-latest

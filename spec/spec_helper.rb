@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'rspec'
-require 'perforce/facterdb'
+require 'puppetlabs/facterdb'
 
 module FixtureHelpers
   def fixtures_dir
@@ -15,16 +15,16 @@ RSpec.configure do |config|
   config.include FixtureHelpers
 
   config.around(:each) do |example|
-    keys = ENV.keys.grep(%r{\A(PERFORCE_)?FACTERDB_})
+    keys = ENV.keys.grep(%r{\A(PUPPETLABS_)?FACTERDB_})
     saved = ENV.to_h.slice(*keys)
     keys.each { |k| ENV.delete(k) }
-    Perforce::FacterDB.cleanup
+    Puppetlabs::FacterDB.cleanup
     begin
       example.run
     ensure
-      ENV.keys.grep(%r{\A(PERFORCE_)?FACTERDB_}).each { |k| ENV.delete(k) }
+      ENV.keys.grep(%r{\A(PUPPETLABS_)?FACTERDB_}).each { |k| ENV.delete(k) }
       saved.each { |k, v| ENV[k] = v }
-      Perforce::FacterDB.cleanup
+      Puppetlabs::FacterDB.cleanup
     end
   end
 end

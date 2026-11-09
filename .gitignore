@@ -6,3 +6,4 @@ spec/dual_install/Gemfile.lock
 vendor/
 .vendor/
 coverage/
+.planning/

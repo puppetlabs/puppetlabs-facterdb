@@ -3,12 +3,12 @@
 require 'json'
 require_relative '../facterdb'
 
-class Perforce::FacterDB::Bin
+class Puppetlabs::FacterDB::Bin
   def initialize(args)
     @args = args
   end
 
   def run
-    puts JSON.pretty_generate(Perforce::FacterDB.get_facts(@args[0]))
+    puts JSON.pretty_generate(Puppetlabs::FacterDB.get_facts(@args[0]))
   end
 end

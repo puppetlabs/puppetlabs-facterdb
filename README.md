@@ -1,11 +1,11 @@
-# perforce-facterdb
+# puppetlabs-facterdb
 
 A database of OS facts, stored and looked up under the real Facter version that produced them. It coexists with upstream `facterdb`: nothing is shared between the two gems.
 
 ## Installation
 
 ```ruby
-gem 'perforce-facterdb'
+gem 'puppetlabs-facterdb'
 ```
 
 Requires Ruby >= 3.1.
@@ -13,16 +13,16 @@ Requires Ruby >= 3.1.
 ## Usage
 
 ```ruby
-require 'perforce/facterdb'
+require 'puppetlabs/facterdb'
 
 # Hash: keys are ANDed
-Perforce::FacterDB.get_facts({ 'os.family' => 'Debian', facterversion: '/^4\.11/' })
+Puppetlabs::FacterDB.get_facts({ 'os.family' => 'Debian', facterversion: '/^4\.11/' })
 
 # Array of Hashes: each Hash is ORed
-Perforce::FacterDB.get_facts([{ 'os.name' => 'Debian' }, { 'os.name' => 'Ubuntu' }])
+Puppetlabs::FacterDB.get_facts([{ 'os.name' => 'Debian' }, { 'os.name' => 'Ubuntu' }])
 
 # String: passed straight to jgrep
-Perforce::FacterDB.get_facts('os.family=RedHat and facterversion=/^4\.11/')
+Puppetlabs::FacterDB.get_facts('os.family=RedHat and facterversion=/^4\.11/')
 ```
 
 `get_facts(filter = nil, cache = true, symbolize_keys: true)` returns an Array of Hashes. `facterversion` accepts a regex; nested facts use dotted paths such as `os.family`.
@@ -30,7 +30,7 @@ Perforce::FacterDB.get_facts('os.family=RedHat and facterversion=/^4\.11/')
 ## CLI
 
 ```shell
-perforce-facterdb 'os.family=Debian'
+puppetlabs-facterdb 'os.family=Debian'
 ```
 
 Prints a pretty-printed JSON array of the matching facts. When nothing matches it prints `[]` and exits 0.
@@ -39,9 +39,9 @@ Prints a pretty-printed JSON array of the matching facts. When nothing matches i
 
 | Variable | Effect |
 |----------|--------|
-| `PERFORCE_FACTERDB_SEARCH_EXTERNAL_DIR` | Path-separator delimited list of extra directories searched for `*.facts` files. Nonexistent directories are silently ignored. Extra files take precedence over bundled ones. |
-| `PERFORCE_FACTERDB_SKIP_DEFAULTDB` | If set to any value (including empty), the facts bundled with the gem are skipped. |
-| `PERFORCE_FACTERDB_INJECT_SOURCE` | If set, `_facterdb_filename` and `_facterdb_path` are injected into each fact set. |
+| `PUPPETLABS_FACTERDB_SEARCH_EXTERNAL_DIR` | Path-separator delimited list of extra directories searched for `*.facts` files. Nonexistent directories are silently ignored. Extra files take precedence over bundled ones. |
+| `PUPPETLABS_FACTERDB_SKIP_DEFAULTDB` | If set to any value (including empty), the facts bundled with the gem are skipped. |
+| `PUPPETLABS_FACTERDB_INJECT_SOURCE` | If set, `_facterdb_filename` and `_facterdb_path` are injected into each fact set. |
 
 The upstream `FACTERDB_*` environment variables have no effect on this gem.
 
@@ -58,7 +58,7 @@ facts/<facter major.minor>/<os>-<release>-<arch>.facts
 
 ## Using alongside facterdb
 
-`perforce-facterdb` shares no require path, constant, executable, environment variable or cache key with `facterdb`, so both can be installed together. Existing consumers such as `rspec-puppet-facts` keep using `facterdb` until they are switched over; see [docs/decisions/0001-consumer-loading.md](docs/decisions/0001-consumer-loading.md).
+`puppetlabs-facterdb` shares no require path, constant, executable, environment variable or cache key with `facterdb`, so both can be installed together. Existing consumers such as `rspec-puppet-facts` keep using `facterdb` until they are switched over; see [docs/decisions/0001-consumer-loading.md](docs/decisions/0001-consumer-loading.md).
 
 ## Development
 

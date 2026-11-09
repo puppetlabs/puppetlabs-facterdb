@@ -4,10 +4,10 @@ require 'jgrep'
 require 'json'
 require_relative 'facterdb/version'
 
-module Perforce::FacterDB::Errors; end
-class Perforce::FacterDB::Errors::InvalidFilter < RuntimeError; end
+module Puppetlabs::FacterDB::Errors; end
+class Puppetlabs::FacterDB::Errors::InvalidFilter < RuntimeError; end
 
-module Perforce::FacterDB
+module Puppetlabs::FacterDB
   # @return [String] returns a giant incomprehensible string of concatenated json data
   def self.database
     @database ||= "[#{facterdb_fact_files.map { |f| read_json_file(f) }.join(',')}]\n"
@@ -16,21 +16,21 @@ module Perforce::FacterDB
   # @note Call this method at the end of test suite, for example via after(:suite), to reclaim back the memory required to hold json data and filter cache
   def self.cleanup
     @database = nil
-    Thread.current[:perforce_facterdb_last_filter_seen] = nil
-    Thread.current[:perforce_facterdb_last_facts_seen] = nil
+    Thread.current[:puppetlabs_facterdb_last_filter_seen] = nil
+    Thread.current[:puppetlabs_facterdb_last_facts_seen] = nil
   end
 
   # @return [Boolean] returns true if we should use the default facterdb database, false otherwise
-  # @note If the user passes anything to the PERFORCE_FACTERDB_SKIP_DEFAULTDB environment variable we assume
+  # @note If the user passes anything to the PUPPETLABS_FACTERDB_SKIP_DEFAULTDB environment variable we assume
   # they want to skip the default db
   def self.use_defaultdb?
-    ENV['PERFORCE_FACTERDB_SKIP_DEFAULTDB'].nil?
+    ENV['PUPPETLABS_FACTERDB_SKIP_DEFAULTDB'].nil?
   end
 
   # @return [Boolean] returns true if we should inject the source file name and file path into the json factsets.
   # The default is false.
   def self.inject_source?
-    !ENV['PERFORCE_FACTERDB_INJECT_SOURCE'].nil?
+    !ENV['PUPPETLABS_FACTERDB_INJECT_SOURCE'].nil?
   end
 
   def self.read_json_file(f) # rubocop:disable Naming/MethodParameterName
@@ -59,7 +59,7 @@ module Perforce::FacterDB
   # @return [Array[String]] list of all files found in the user supplied facterdb facts path
   # @param fact_paths [String] a path-separator delimited list of paths to search for fact files
   # @note nonexistent directories are skipped silently
-  def self.external_fact_files(fact_paths = ENV.fetch('PERFORCE_FACTERDB_SEARCH_EXTERNAL_DIR', nil))
+  def self.external_fact_files(fact_paths = ENV.fetch('PUPPETLABS_FACTERDB_SEARCH_EXTERNAL_DIR', nil))
     fact_paths ||= ''
     return [] if fact_paths.empty?
 
@@ -111,14 +111,14 @@ module Perforce::FacterDB
   #   Whether to symbolize the keys. Note this is only on the top level and not
   #   on nested values.
   def self.get_facts(filter = nil, cache = true, symbolize_keys: true) # rubocop:disable Metrics/CyclomaticComplexity, Style/OptionalBooleanParameter
-    return Thread.current[:perforce_facterdb_last_facts_seen] if cache && filter && filter == Thread.current[:perforce_facterdb_last_filter_seen]
+    return Thread.current[:puppetlabs_facterdb_last_facts_seen] if cache && filter && filter == Thread.current[:puppetlabs_facterdb_last_filter_seen]
 
     filter_str = generate_filter_str(filter)
     result = JGrep.jgrep(database, filter_str)
     result = result.map { |hash| hash.transform_keys(&:to_sym) } if symbolize_keys
     if cache
-      Thread.current[:perforce_facterdb_last_filter_seen] = filter
-      Thread.current[:perforce_facterdb_last_facts_seen] = result
+      Thread.current[:puppetlabs_facterdb_last_filter_seen] = filter
+      Thread.current[:puppetlabs_facterdb_last_facts_seen] = result
     end
     result
   end

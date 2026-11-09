@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe Perforce::FacterDB do
+RSpec.describe Puppetlabs::FacterDB do
   let(:older_dir) { File.join(fixtures_dir, '4.10') }
   let(:newer_dir) { File.join(fixtures_dir, '4.11') }
   let(:both_dirs) { [older_dir, newer_dir].join(File::PATH_SEPARATOR) }
@@ -13,8 +13,8 @@ RSpec.describe Perforce::FacterDB do
 
   context 'with fixture directories and the default database skipped' do
     before(:each) do
-      ENV['PERFORCE_FACTERDB_SKIP_DEFAULTDB'] = '1'
-      ENV['PERFORCE_FACTERDB_SEARCH_EXTERNAL_DIR'] = both_dirs
+      ENV['PUPPETLABS_FACTERDB_SKIP_DEFAULTDB'] = '1'
+      ENV['PUPPETLABS_FACTERDB_SEARCH_EXTERNAL_DIR'] = both_dirs
     end
 
     describe '.get_facts' do
@@ -69,9 +69,9 @@ RSpec.describe Perforce::FacterDB do
         expect(described_class.get_facts(filter)).to equal(described_class.get_facts(filter))
       end
 
-      it 'stores the cache under perforce_facterdb thread keys' do
+      it 'stores the cache under puppetlabs_facterdb thread keys' do
         described_class.get_facts({ 'os.family' => 'Debian' })
-        expect(Thread.current[:perforce_facterdb_last_filter_seen]).to eq({ 'os.family' => 'Debian' })
+        expect(Thread.current[:puppetlabs_facterdb_last_filter_seen]).to eq({ 'os.family' => 'Debian' })
       end
 
       it 'never writes the upstream facterdb thread keys' do
@@ -82,7 +82,7 @@ RSpec.describe Perforce::FacterDB do
       it 'clears the thread cache on cleanup' do
         described_class.get_facts({ 'os.family' => 'Debian' })
         described_class.cleanup
-        expect(Thread.current[:perforce_facterdb_last_facts_seen]).to be_nil
+        expect(Thread.current[:puppetlabs_facterdb_last_facts_seen]).to be_nil
       end
     end
 
@@ -126,17 +126,17 @@ RSpec.describe Perforce::FacterDB do
   end
 
   describe '.use_defaultdb?' do
-    it 'is true when PERFORCE_FACTERDB_SKIP_DEFAULTDB is unset' do
+    it 'is true when PUPPETLABS_FACTERDB_SKIP_DEFAULTDB is unset' do
       expect(described_class.use_defaultdb?).to be(true)
     end
 
-    it 'is false when PERFORCE_FACTERDB_SKIP_DEFAULTDB is set' do
-      ENV['PERFORCE_FACTERDB_SKIP_DEFAULTDB'] = '1'
+    it 'is false when PUPPETLABS_FACTERDB_SKIP_DEFAULTDB is set' do
+      ENV['PUPPETLABS_FACTERDB_SKIP_DEFAULTDB'] = '1'
       expect(described_class.use_defaultdb?).to be(false)
     end
 
-    it 'is false when PERFORCE_FACTERDB_SKIP_DEFAULTDB is set to an empty string' do
-      ENV['PERFORCE_FACTERDB_SKIP_DEFAULTDB'] = ''
+    it 'is false when PUPPETLABS_FACTERDB_SKIP_DEFAULTDB is set to an empty string' do
+      ENV['PUPPETLABS_FACTERDB_SKIP_DEFAULTDB'] = ''
       expect(described_class.use_defaultdb?).to be(false)
     end
   end
@@ -146,8 +146,8 @@ RSpec.describe Perforce::FacterDB do
       expect(described_class.inject_source?).to be(false)
     end
 
-    it 'is true when PERFORCE_FACTERDB_INJECT_SOURCE is set' do
-      ENV['PERFORCE_FACTERDB_INJECT_SOURCE'] = '1'
+    it 'is true when PUPPETLABS_FACTERDB_INJECT_SOURCE is set' do
+      ENV['PUPPETLABS_FACTERDB_INJECT_SOURCE'] = '1'
       expect(described_class.inject_source?).to be(true)
     end
   end
@@ -173,7 +173,7 @@ RSpec.describe Perforce::FacterDB do
   end
 
   context 'with the default database skipped and no external directory' do
-    before(:each) { ENV['PERFORCE_FACTERDB_SKIP_DEFAULTDB'] = '1' }
+    before(:each) { ENV['PUPPETLABS_FACTERDB_SKIP_DEFAULTDB'] = '1' }
 
     it 'returns an empty result without raising' do
       expect(described_class.get_facts({ 'os.family' => 'Debian' })).to eq([])
@@ -186,16 +186,16 @@ RSpec.describe Perforce::FacterDB do
     end
 
     it 'returns nothing when the default database is skipped' do
-      ENV['PERFORCE_FACTERDB_SKIP_DEFAULTDB'] = '1'
+      ENV['PUPPETLABS_FACTERDB_SKIP_DEFAULTDB'] = '1'
       expect(described_class.default_fact_files).to eq([])
     end
   end
 
-  context 'with PERFORCE_FACTERDB_INJECT_SOURCE set' do
+  context 'with PUPPETLABS_FACTERDB_INJECT_SOURCE set' do
     before(:each) do
-      ENV['PERFORCE_FACTERDB_SKIP_DEFAULTDB'] = '1'
-      ENV['PERFORCE_FACTERDB_SEARCH_EXTERNAL_DIR'] = older_dir
-      ENV['PERFORCE_FACTERDB_INJECT_SOURCE'] = '1'
+      ENV['PUPPETLABS_FACTERDB_SKIP_DEFAULTDB'] = '1'
+      ENV['PUPPETLABS_FACTERDB_SEARCH_EXTERNAL_DIR'] = older_dir
+      ENV['PUPPETLABS_FACTERDB_INJECT_SOURCE'] = '1'
     end
 
     it 'injects the source file name' do
@@ -225,7 +225,7 @@ RSpec.describe Perforce::FacterDB do
     end
 
     it 'raises InvalidFilter for anything else' do
-      expect { described_class.generate_filter_str(1) }.to raise_error(Perforce::FacterDB::Errors::InvalidFilter, %r{received Integer})
+      expect { described_class.generate_filter_str(1) }.to raise_error(Puppetlabs::FacterDB::Errors::InvalidFilter, %r{received Integer})
     end
   end
 
@@ -245,7 +245,7 @@ RSpec.describe Perforce::FacterDB do
     end
 
     it 'exposes the version constant' do
-      expect(Perforce::FacterDB::Version::STRING).to eq('0.1.0')
+      expect(Puppetlabs::FacterDB::Version::STRING).to eq('0.1.0')
     end
   end
 end

@@ -3,9 +3,9 @@
 require 'spec_helper'
 require 'open3'
 require 'rbconfig'
-require 'perforce/facterdb/bin'
+require 'puppetlabs/facterdb/bin'
 
-RSpec.describe Perforce::FacterDB::Bin do
+RSpec.describe Puppetlabs::FacterDB::Bin do
   let(:both_dirs) { ['4.10', '4.11'].map { |v| File.join(fixtures_dir, v) }.join(File::PATH_SEPARATOR) }
   let(:repo_root) { File.expand_path('../../..', __dir__) }
 
@@ -24,16 +24,16 @@ RSpec.describe Perforce::FacterDB::Bin do
 
   def run_subprocess(filter)
     env = {
-      'PERFORCE_FACTERDB_SKIP_DEFAULTDB' => '1',
-      'PERFORCE_FACTERDB_SEARCH_EXTERNAL_DIR' => both_dirs,
+      'PUPPETLABS_FACTERDB_SKIP_DEFAULTDB' => '1',
+      'PUPPETLABS_FACTERDB_SEARCH_EXTERNAL_DIR' => both_dirs,
     }
-    Open3.capture3(env, RbConfig.ruby, '-Ilib', 'exe/perforce-facterdb', filter, chdir: repo_root)
+    Open3.capture3(env, RbConfig.ruby, '-Ilib', 'exe/puppetlabs-facterdb', filter, chdir: repo_root)
   end
 
   context 'with fixture directories and the default database skipped' do
     before(:each) do
-      ENV['PERFORCE_FACTERDB_SKIP_DEFAULTDB'] = '1'
-      ENV['PERFORCE_FACTERDB_SEARCH_EXTERNAL_DIR'] = both_dirs
+      ENV['PUPPETLABS_FACTERDB_SKIP_DEFAULTDB'] = '1'
+      ENV['PUPPETLABS_FACTERDB_SEARCH_EXTERNAL_DIR'] = both_dirs
     end
 
     describe '#run' do
@@ -55,7 +55,7 @@ RSpec.describe Perforce::FacterDB::Bin do
     end
   end
 
-  describe 'exe/perforce-facterdb' do
+  describe 'exe/puppetlabs-facterdb' do
     it 'exits 0 and prints one matching fact' do
       stdout, _stderr, status = run_subprocess('os.family=RedHat and facterversion=/^4\.11/')
       expect([status.exitstatus, JSON.parse(stdout).size]).to eq([0, 1])
