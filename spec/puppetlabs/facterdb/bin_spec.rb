@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
+require 'json'
 require 'open3'
 require 'rbconfig'
+require 'stringio'
 require 'puppetlabs/facterdb/bin'
 
 RSpec.describe Puppetlabs::FacterDB::Bin do

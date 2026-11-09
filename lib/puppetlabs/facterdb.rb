@@ -7,7 +7,7 @@ require_relative 'facterdb/version'
 module Puppetlabs::FacterDB::Errors; end
 class Puppetlabs::FacterDB::Errors::InvalidFilter < RuntimeError; end
 
-module Puppetlabs::FacterDB
+module Puppetlabs::FacterDB # rubocop:disable Metrics/ModuleLength
   # @return [String] returns a giant incomprehensible string of concatenated json data
   # @note The result is memoized and rebuilt when the set of fact files or the inject source setting changes
   def self.database
@@ -83,15 +83,19 @@ module Puppetlabs::FacterDB
     fact_paths ||= ''
     return [] if fact_paths.empty?
 
-    paths = fact_paths.split(File::PATH_SEPARATOR).filter_map do |fact_path|
+    # base: keeps glob metacharacters in the directory name from being treated as a pattern
+    fact_dirs(fact_paths).flat_map { |dir| Dir.glob('**/*.facts', base: dir).map { |file| File.join(dir, file) } }
+  end
+
+  # @return [Array[String]] the existing directories in a path-separator delimited list
+  def self.fact_dirs(fact_paths)
+    fact_paths.split(File::PATH_SEPARATOR).filter_map do |fact_path|
       fact_path = fact_path.gsub(File::ALT_SEPARATOR, File::SEPARATOR) if File::ALT_SEPARATOR
       fact_path = fact_path.strip
-      next unless File.directory?(fact_path)
-
-      File.join(fact_path, '**', '*.facts')
+      fact_path if File.directory?(fact_path)
     end
-    Dir.glob(paths)
   end
+  private_class_method :fact_dirs
 
   # @return [Array[String]] list of all files found in the default facterdb facts path and user supplied path
   # @note external fact files supplied by the user will take precedence over default fact files found in this gem
@@ -104,6 +108,8 @@ module Puppetlabs::FacterDB
   def self.generate_filter_str(filter = nil) # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
     case filter
     when ::Array
+      raise Errors::InvalidFilter, 'filter Array elements must all be Hashes' unless filter.all?(::Hash)
+
       "(#{filter.map { |f| f.map { |k, v| "#{k}=#{v}" }.join(' and ') }.join(') or (')})"
     when ::Hash
       filter.map { |k, v| "#{k}=#{v}" }.join(' and ')

@@ -150,6 +150,22 @@ RSpec.describe Puppetlabs::FacterDB do
       expect(described_class.external_fact_files('/no/such/dir')).to eq([])
     end
 
+    context 'with glob metacharacters in the directory name' do
+      let(:root) { Dir.mktmpdir }
+      let(:dir) { File.join(root, 'facts[old]{x}') }
+
+      before(:each) do
+        FileUtils.mkdir_p(dir)
+        File.write(File.join(dir, 'a.facts'), '{}')
+      end
+
+      after(:each) { FileUtils.remove_entry(root) }
+
+      it 'still finds the fact files' do
+        expect(described_class.external_fact_files(dir)).to eq([File.join(dir, 'a.facts')])
+      end
+    end
+
     it 'still finds files in valid directories next to a nonexistent one' do
       expect(described_class.external_fact_files(['/no/such/dir', newer_dir].join(File::PATH_SEPARATOR)).size).to eq(3)
     end
@@ -273,6 +289,10 @@ RSpec.describe Puppetlabs::FacterDB do
       expect(described_class.generate_filter_str(nil)).to eq('')
     end
 
+    it 'raises InvalidFilter for an Array containing non-Hash elements' do
+      expect { described_class.generate_filter_str([{ 'a' => 1 }, 'b=2']) }.to raise_error(Puppetlabs::FacterDB::Errors::InvalidFilter, %r{must all be Hashes})
+    end
+
     it 'raises InvalidFilter for anything else' do
       expect { described_class.generate_filter_str(1) }.to raise_error(Puppetlabs::FacterDB::Errors::InvalidFilter, %r{received Integer})
     end
@@ -285,6 +305,10 @@ RSpec.describe Puppetlabs::FacterDB do
 
     it 'is false for an invalid filter' do
       expect(described_class.valid_filters?('and')).to be(false)
+    end
+
+    it 'is false for an Array containing non-Hash elements' do
+      expect(described_class.valid_filters?([1, 2])).to be(false)
     end
   end
 
