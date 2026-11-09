@@ -1,0 +1,63 @@
+# Derived from the pdk-templates 'strict' rubocop profile.
+plugins:
+- rubocop-performance
+- rubocop-hash_inspect
+- rubocop-rspec
+AllCops:
+  NewCops: enable
+  DisplayCopNames: true
+  TargetRubyVersion: 3.1
+  Include:
+  - "**/*.rb"
+  - exe/*
+  - "*.gemspec"
+  Exclude:
+  - bin/*
+  - ".vendor/**/*"
+  - "**/Gemfile"
+  - "**/Rakefile"
+  - pkg/**/*
+  - spec/fixtures/**/*
+  - vendor/**/*
+Layout/LineLength:
+  Max: 200
+Layout/EndOfLine:
+  EnforcedStyle: lf
+RSpec/HookArgument:
+  EnforcedStyle: each
+Style/BlockDelimiters:
+  EnforcedStyle: braces_for_chaining
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+Style/Documentation:
+  Enabled: false
+Style/EmptyElse:
+  EnforcedStyle: empty
+Style/FormatString:
+  EnforcedStyle: percent
+Style/FormatStringToken:
+  EnforcedStyle: template
+Style/Lambda:
+  EnforcedStyle: literal
+Style/RegexpLiteral:
+  EnforcedStyle: percent_r
+Style/TernaryParentheses:
+  EnforcedStyle: require_parentheses_when_complex
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+Style/SymbolArray:
+  EnforcedStyle: brackets
+Style/WordArray:
+  EnforcedStyle: brackets
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
+RSpec/MessageSpies:
+  EnforcedStyle: receive
+RSpec/ContextWording:
+  Prefixes:
+  - when
+  - with
+  - without
+  - 'on'

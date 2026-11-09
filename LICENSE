@@ -1,0 +1,437 @@
+PUPPET® CORE SOFTWARE LICENSE AGREEMENT
+
+PLEASE READ THIS PUPPET® CORE SOFTWARE LICENSE AGREEMENT (“AGREEMENT”)
+CAREFULLY BEFORE ACCESSING, DOWNLOADING, OR OTHERWISE USING THE
+APPLICABLE SOFTWARE PRODUCT (THE “SOFTWARE”) LICENSED BY PERFORCE
+SOFTWARE, INC., A DELAWARE CORPORATION (“PERFORCE”). BY ACCEPTING THIS
+AGREEMENT, COMPLETING THE REGISTRATION PROCESS, AND/OR INSTALLING OR
+USING THE SOFTWARE, YOU AGREE ON BEHALF OF YOURSELF AND YOUR COMPANY (IF
+APPLICABLE) TO THE TERMS BELOW. IF YOU DO NOT AGREE WITH THESE TERMS, OR
+DO NOT HAVE THE AUTHORITY TO BIND YOUR COMPANY, YOU ARE NOT PERMITTED TO
+INSTALL, REGISTER FOR, OR USE THE SOFTWARE. BY CLICKING THE “I ACCEPT”
+BUTTON, OR BY DOWNLOADING OR OTHERWISE USING THE SOFTWARE, YOU ACCEPT
+THIS AGREEMENT AND ACKNOWLEDGE THAT YOU HAVE READ, UNDERSTAND, AND AGREE
+TO BE BOUND BY ITS TERMS. IF YOU ARE AN INDIVIDUAL ACTING ON BEHALF OF A
+COMPANY, YOU REPRESENT AND WARRANT THAT YOU HAVE THE AUTHORITY TO ENTER
+INTO THIS AGREEMENT ON BEHALF OF YOUR COMPANY. IF YOU DO NOT HAVE SUCH
+AUTHORITY, YOU ARE SOLELY RESPONSIBLE FOR YOUR USE OF THE SOFTWARE. FOR
+PURPOSES OF THIS AGREEMENT, ANY REFERENCE TO “CUSTOMER” OR “YOU” AND
+“YOUR” REFER TO THE INDIVIDUAL OR COMPANY THAT IS THE CUSTOMER.
+
+1.  DEFINED TERMS. For purposes hereof, the terms provided below, when
+    used anywhere in the Agreement with initial capital letters, will
+    have the respective meanings as set forth below:
+
+  1.1.  “Affiliate” means any natural person, partnership, corporation,
+        association, limited liability company, joint stock company,
+        trust, joint venture, unincorporated organization, estate, labor
+        union, or a government entity that, directly or indirectly,
+        controls, is controlled by, or is under common control with
+        another party. For purposes of this definition, “control” means
+        the possession, directly or indirectly, of the power to direct
+        or cause the direction of the management and policies of a party
+        whether through the ownership of voting securities, by contract,
+        or otherwise.
+
+  1.2.  “Confidential Information” means, with respect to a party,
+        including its Affiliates, information that pertains to such
+        party’s (or its Affiliates’) business, including technical,
+        marketing, financial, employee, planning, product roadmaps,
+        performance results, pricing, prototype products and services,
+        inventions, trade secrets, and other confidential or proprietary
+        information.
+
+ 1.3.  “Node” means a Virtual Node, Physical Node, or other instance of
+        the Software.
+
+ 1.4.  “Order” means a duly authorized quotation issued by Perforce to
+        Customer that specifies the Software to be licensed and may
+        include other terms and conditions governing such Software (such
+        as the fees and the term of the license) and a purchase order,
+        if applicable, issued by Customer to Puppet in response to and
+        reflecting the information contained in the quotation (with no
+        additional or different terms, unless such additional or
+        different terms are expressly accepted by Puppet in writing).
+
+ 1.5.  “Physical Node” means a physical system that contains or
+        executes all, or a portion of, the Software, which includes,
+        without limitation, a server, laptop, blade, workstation, or
+        other physical computing system, as applicable.
+
+ 1.6.  “Managed Nodes” are Nodes that are deployed by the Customer (or
+        are deployed by an authorized third party at the direction of
+        Customer and who is under contract with the Customer), and its
+        Affiliates, and managed under the Customer’s and its Affiliates’
+        Puppet® instance. For purposes of clarity, Managed Nodes
+        include, without limitation: (i) any Node deployed using any
+        version of the Puppet® Software, which includes, without
+        limitation, Open Source Puppet®, Puppet® Core, Puppet®
+        Enterprise, and Puppet® Enterprise Advanced Software; and (ii)
+        any Node deployed by the Customer and its Affiliates under a
+        Development License.
+
+1.7.  "Virtual Node” means an instance of the Software executed, in
+        whole or in part, on a virtual machine or in a container.
+
+2.  GRANT OF LICENSE; RESTRICTIONS.
+
+2.1.  License Grant. Subject to Customer’s compliance with the
+        Agreement, and in consideration of Customer’s payment of the
+        applicable license fees, Perforce grants to Customer a limited,
+        non-sub licensable, non-exclusive, non-transferable, fully-paid,
+        time-based license to: (a) install the Software ordered by
+        Customer as set forth in the applicable Order in accordance with
+        the documentation for the Software for Customer’s own direct
+        internal business purposes, and subject to any limitation on use
+        specified in the Agreement; (b) use the Software and apply the
+        license configuration to the number of the Puppet® Core Managed
+        Nodes that Customer has paid the applicable subscription license
+        fees; (c) access and use the documentation for the Software
+        solely in conjunction with and in support of Customer’s licensed
+        use of the Software; and (d) make the number of exact copies of
+        the Software as required for archival and back-up purposes, and
+        a reasonable number of copies of the documentation for the
+        Software to support the licensed use of the Software, provided
+        that each copy of the Software and the documentation for the
+        Software retains all copyright and other proprietary notices
+        included in the original copy provided by Perforce to the
+        Customer. Perforce, and Perforce’s Affiliates (which, for
+        purposes of clarity, expressly includes, Puppet, Inc., a
+        Delaware corporation (“Puppet”), hereby reserve all rights in
+        and to the Software that are not specifically granted by the
+        Agreement.
+
+2.2.  Restrictions. The Software is licensed, not sold. Customer may
+        not use the Software other than for Customer’s internal business
+        purposes, and not for the purposes of any third party nor for
+        any timesharing, rental, Internet, or application service
+        provider, commercial hosting services, or service bureau basis.
+        Customer shall not: (i) reverse engineer or otherwise attempt to
+        discover the source code or human readable data or underlying
+        ideas or algorithms of the Software; (ii) modify, translate, or
+        otherwise made derivative works of the Software; (iii) apply a
+        license configuration to more than one Puppet® Core Managed
+        Node; (iv) apply a license configuration to more Puppet® Core
+        Managed Nodes than those declared to Perforce at the time of the
+        Order and for which the Customer has not paid to Perforce the
+        appropriate subscription license fees; (v) tamper with, or
+        attempt to tamper with, circumvent or disable, or attempt to
+        circumvent or disable, any license or other limiting function
+        delivered with the Software, or otherwise attempt to gain access
+        to functionality or capacity that is not validly licensed by the
+        Customer, or (vi) remove or otherwise alter any proprietary
+        notices or labels from the Software or from the documentation
+        for the Software, or from any portion thereof.
+
+ 2.3.  Intellectual Property Ownership. Puppet, a Perforce Affiliate,
+        is the owner and holder of all of the intellectual property
+        rights in and to the Software and related documentation. Except
+        for the limited rights granted by Perforce to Customer in
+        Section 2.1, Perforce and its Affiliates, including Puppet,
+        retain all right, title, and interest in and to the Software,
+        including all intellectual property rights, registered or
+        unregistered, wherever in the world those rights may exist
+        (collectively, the “Puppet IP Rights”), as well as title to all
+        copies of the Software provided to Customer by Perforce, or
+        copies made by the Customer itself. The Puppet IP Rights include
+        graphics, user and visual interfaces, design, structure,
+        selection, coordination, expression, “look and feel,”
+        arrangement, trademark, logo, and other distinctive brand
+        features of the Software (collectively, the “Puppet Marks”).
+        This Agreement does not permit Customer to distribute any
+        product or service using the Puppet Marks. Puppet and Perforce
+        shall retain title to all copies of the Software provided to
+        Customer, or made by Customer. There are no implied rights or
+        licenses in the Agreement. Under the Agreement, Perforce is the
+        contracting entity for completing the sale of the subscription
+        licenses for the Software. All rights are expressly reserved by
+        Perforce and its Affiliates, including Puppet.
+
+ 2.4.  Open-Source Components. The Software may include components,
+        including, without limitation, programs, applications, tools,
+        utilities, libraries, and other programming code) that are made
+        available from third parties under a free or open source
+        licensing model (the “Open-Source Components”). The Open-Source
+        Components included in the Software are redistributed by
+        Perforce under the terms of the applicable Open Source
+        Components license for such Open Source Component. Your receipt
+        of the Open Source Components will neither enlarge nor curtail
+        your rights or obligations under the license applicable to such
+        Open Source Component. Copies of the licenses for the
+        Open-Source Components that are included with, or used in, the
+        Software, if applicable, can be found in the documentation for
+        the Software.
+
+2.5.  Third Party Software. The Software may include components under
+        license from third parties (the “Third Party Software”). The
+        components and their applicable third-party license terms for
+        the Software, if applicable, can be found in the documentation
+        for the Software. Customer may not distribute any product or
+        service using the Puppet Marks (defined in the Terms), including
+        in connection with any Open Source Components or Third Party
+        Software.
+
+2.6.  Inspection. Customer acknowledges and agrees that it has a
+        commercially reasonable process in place to track Customer’s use
+        of the Software and any license configurations that are deployed
+        on the Puppet® Core Managed Nodes in order to ensure that the
+        appropriate license fees have been paid by Customer for such
+        use. Customer shall exercise proper use of the Software and any
+        license configurations according to the rights granted to the
+        Customer and in accordance with the restrictions set forth in
+        Section 2.2 of the Agreement. Notwithstanding the foregoing,
+        during the term of the Agreement, upon Perforce’s written
+        request, Customer agrees to provide Perforce with a written
+        report signed by Customer’s authorized representative verifying
+        the number of Puppet® Core Managed Nodes being applied or
+        otherwise used by Customer with respect to the Software within
+        five (5) business days of the date of the written request. If
+        Perforce has a good faith reason to believe that Customer has
+        incorrectly reported the number of Puppet® Core Managed Nodes
+        using the Software, Perforce has the right to have its personnel
+        inspect, but no more one (1) time in any twelve (12) month
+        period, Customer’s use of the Software and any license
+        configuration deployed on the Puppet® Core Managed Nodes,
+        following this protocol: (1) identify all unique Software
+        installations; (2) monitor Customer’s personnel’s login to each
+        Software installation; and (3) obtain records of the Puppet®
+        Core Managed Nodes assigned to each license. Any such inspection
+        will take place remotely, if possible, or otherwise in person
+        during normal business hours and upon not less than ten (10)
+        business days’ advance written notice.
+
+2.7.  	Usage Data. Unless Customer chooses to disable and opt-out of
+        this functionality, Perforce may collect and may make use of
+        certain information that is automatically generated by the
+        Software regarding Customer’s use of the Software. Such
+        information that is generated includes, without limitation, the
+        browser and operating system types and versions used, installer
+        commands, web interface clicks, mouse gestures, data relating to
+        the submission of online forms (but not the content of the
+        forms), IP addresses, and page views, URLs visited within the
+        Software, error messages and related data about Software errors
+        where Software is hosted by Perforce or its provider(s) or
+        Customer or its provider(s) (“Usage Data”) and Customer consents
+        to such collection and use per this section. Perforce may use
+        and share the Usage Data with third parties to help Perforce
+        improve the user experience and the Software. The Usage Data
+        collected and used by Perforce is de-identified so that it does
+        not reveal the name, role, contact details, or other real-world
+        identifiers of Customer and of Customer's users.
+
+2.8.  Affiliates. Notwithstanding anything to the contrary herein, the
+        rights granted to Customer hereunder may be exercised by any of
+        its Affiliates, provided that Customer shall remain responsible
+        at all times for such Affiliates’ adherence to all applicable
+        terms and conditions of this Agreement and shall be primarily
+        liable for any breach of this Agreement by such Affiliate.
+
+3.  FEES; PAYMENT.
+
+ 3.1.  Fees. Customer will not be charged a subscription license fee
+        for the Software so long as the aggregate number of Managed
+        Nodes does not exceed twenty-five (25). Each Managed Node in
+        excess of twenty-five (25) requires the purchase of one
+        subscription license for the applicable Software. In addition,
+        if applicable, Customer will pay all other fees for professional
+        services, if applicable, all as set forth in the corresponding
+        Order. Unless otherwise stated in the Order, the default
+        subscription term is twelve (12) months. Unless otherwise stated
+        in the Order, the subscription term will automatically renew for
+        subsequent twelve (12) month terms unless either party elects to
+        not renew the subscription licenses upon providing thirty (30)
+        days’ written notice prior to the end of the then-current term.
+
+ 3.2.  Payment. Customer agrees to pay Perforce all fees within
+        thirty (30) days of the invoice date, unless otherwise set forth
+        in an Order. All payments shall be made in currently available
+        funds payable at the address set forth on Perforce’s invoice.
+        All amounts payable shall be in the currency of the United
+        States of America and specifically exclude (and Customer is
+        responsible for) any and all applicable sales, use, and other
+        taxes (other than taxes based on Perforce’s income). Any overdue
+        amounts are subject to a late payment charge of the lower of
+        1.5% per month and the highest interest rate permitted by
+        applicable law. All fees are non-refundable, except as provided
+        in Section 7 of the Agreement. The licenses granted herein are
+        subject to Customer making all payments due and shall
+        automatically terminate if Customer fails to make any payments
+        when due, including installment payments, whether owed directly
+        to Perforce or a reseller.
+
+4.  SUPPORT, MAINTENANCE, AND CHANGES.
+
+  4.1.  Support. The Software does not come with a standard support
+        services package for the Software.
+
+  4.2.  Maintenance. Periodic updates and patches to the Software will
+        be made available to Customer through a Puppet-maintained
+        repository, the location of which will be shared with you
+        through your designated communication channel.
+
+  4.3.  Modules and Customer Changes. Perforce, and the members of the
+        Puppet Forge open source software community, makes available
+        certain other modules (“Modules”) that may be used in connection
+        with the Software, through the Puppet Forge™ web site, which is
+        located at https://forge.puppet.com/ (the “Puppet Forge”).
+        Perforce is not liable to support the Customer’s use or
+        implementation of any Module or package, nor are such Modules or
+        packages covered by the warranty terms of the Agreement.
+        Furthermore, Perforce is not responsible for supporting, and is
+        not liable under the Agreement in any way (including warranty)
+        for, any changes made by Customer to the Software.
+
+5.  WARRANTY; DISCLAIMER; LIMITATION OF LIABILITY.
+
+    5.1.  Warranties. Perforce, on behalf of itself and its Affiliates,
+        represents and warrants that it has sufficient ownership or
+        authority to grant to Customer the licenses granted under the
+        Agreement. Each party represents and warrants that: (a) it has
+        the full power and authority to enter into the Agreement and to
+        carry out its obligations under the Agreement; and (b) it has
+        complied, and will in the future comply, with all applicable
+        laws in connection with the execution, delivery and performance
+        of the Agreement.
+
+    5.2.  Software Warranty. Perforce warrants to the Customer that the
+        Software will perform in all material respects as specified in
+        its accompanying documentation under normal use for a period of
+        thirty (30) calendar days from initial receipt or access.
+        Customer’s exclusive remedy for a breach of this limited
+        warranty is to return any allegedly defective Software and
+        Perforce, at its option, will replace it or refund any unused
+        fees paid for the Software. This warranty applies to Third Party
+        Software only to the extent its failure to operate causes the
+        Software to fail to conform to this warranty.
+
+    5.3.  Disclaimer. EXCEPT AS EXPRESSLY SET FORTH IN THIS SECTION 5,
+        PERFORCE DISCLAIMS ANY AND ALL WARRANTIES AND REPRESENTATIONS
+        WITH RESPECT TO THE SOFTWARE (INCLUDING REPORTS, ANALYSIS OR
+        CONTENT GENERATED BY THE SOFTWARE), SERVICES, AND/OR
+        DELIVERABLES INCLUDING THE WARRANTIES OF FITNESS FOR A
+        PARTICULAR PURPOSE, NON-INFRINGEMENT, TITLE, ACCURACY,
+        MERCHANTABILITY AND THOSE THAT MAY ARISE FROM ANY COURSE OF
+        DEALING OR PERFORMANCE. THE SOFTWARE AND/OR DELIVERABLES EXCLUDE
+        ANY NON-PERFORCE APPLICATIONS OR PLATFORMS AND ANY ACQUISITION
+        OR USE OF THOSE APPLICATIONS OR PLATFORMS IS SOLELY THE
+        RESPONSIBILITY OF CUSTOMER AND THE PROVIDER OF SUCH APPLICATIONS
+        OR PLATFORMS. PERFORCE MAKES NO WARRANTY REGARDING THE
+        INTEROPERABILITY OF THE SOFTWARE WITH (OR ANY CONTENT GENERATED
+        FROM) ANY NON-PERFORCE APPLICATIONS OR PLATFORMS. PERFORCE DOES
+        NOT WARRANT OR SUPPORT NON-PERFORCE APPLICATIONS OR PLATFORMS.
+
+    5.4.  Limitation of Liability. EXCEPT AS STATED BELOW, EACH PARTY’S
+        LIABILITY TO THE OTHER UNDER THE AGREEMENT IS LIMITED AS
+        FOLLOWS: (A) NEITHER SHALL BE LIABLE FOR ANY INDIRECT,
+        INCIDENTAL, PUNITIVE, CONSEQUENTIAL, RELIANCE, OR SPECIAL
+        DAMAGES (INCLUDING ANY DAMAGE TO BUSINESS REPUTATION, LOST
+        PROFITS, LOST DATA OR LOST SAVINGS); AND (B) NEITHER SHALL BE
+        LIABLE TO THE OTHER FOR ANY AMOUNTS IN EXCESS OF THE GREATER OF
+        FIVE HUNDRED DOLLARS ($500) OR THE AMOUNTS PAID BY CUSTOMER TO
+        PERFORCE IN THE TWELVE (12) MONTHS PRIOR TO THE EVENT GIVING
+        RISE TO LIABILITY. THE LIMIT STATED IN (B) WILL NOT APPLY TO ANY
+        UNPAID FEES OR EXPENSES OWED BY CUSTOMER TO PERFORCE OR THE
+        UNLICENSED USE OF THE SOFTWARE, AND NEITHER LIMIT APPLIES TO ANY
+        VIOLATION OF A PARTY’S INTELLECTUAL PROPERTY RIGHTS OR BREACHES
+        OF SECTION 7 (CONFIDENTIALITY). THESE LIMITS APPLY REGARDLESS OF
+        THE FORM OF CLAIM (CONTRACT, TORT OR OTHERWISE) AND EVEN IF THIS
+        SECTION 5.4 IS FOUND TO HAVE FAILED OF ITS ESSENTIAL PURPOSE.
+        SOME JURISDICTIONS MAY NOT ALLOW THE EXCLUSION OR LIMITATION OF
+        INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR OTHER DAMAGES, SO THE
+        ABOVE LIMITATIONS OR EXCLUSIONS MAY NOT APPLY. IN SUCH EVENT,
+        LIABILITY WILL BE LIMITED TO THE GREATEST EXTENT PERMITTED BY
+        APPLICABLE LAW.
+
+6.  CONFIDENTIALITY. Each party to the Agreement agrees to keep
+    confidential and to use only for purposes of performing its
+    obligations under the Agreement, any Confidential Information of the
+    other party disclosed pursuant to the Agreement that is marked as
+    confidential, is identified at the time of disclosure as
+    confidential, or that would reasonably be considered confidential or
+    proprietary in nature. The obligation of confidentiality shall not
+    apply to information that is publicly available through authorized
+    disclosure, or information that is required to be disclosed by law,
+    government order, or request to be disclosed (provided that the
+    receiving party shall give reasonable advance written notice to the
+    other party prior to such disclosure and an opportunity, at the
+    objecting party’s expense, to take legal steps to resist or narrow
+    such request). Customer acknowledges and agrees that the Software,
+    any documentation for the Software, and any Usage Data shall be
+    deemed as Perforce’s Confidential Information. Each party's
+    obligations of nondisclosure with regard to Confidential Information
+    are effective as of the date such Confidential Information is first
+    disclosed to the receiving party and will expire five (5) years
+    thereafter; provided, however, with respect to any Confidential
+    Information that constitutes a trade secret (as determined under
+    applicable laws), such obligations of nondisclosure will survive the
+    termination or expiration of the Agreement for as long as such
+    Confidential Information remains subject to trade secret protection
+    under applicable laws.
+
+7.  TERM AND TERMINATION.
+
+ 7.1.  The Agreement will commence on the Effective Date and continue
+        until terminated as set forth herein.
+
+ 7.2.  Either party may terminate the Agreement in the event that the
+        other party breaches the terms, conditions, and/or obligations
+        under the Agreement. Intent to terminate will be made by a
+        written notice setting forth the details of the breach.
+        Termination will become effective fifteen (15) days from the
+        date that the written notification of intent to terminate was
+        given unless the breaching party has corrected the breach prior
+        to the end of such fifteen (15) day period. Either party will
+        have the right to terminate the Agreement effective immediately,
+        by written notice to the other party, if: (a) a petition of
+        bankruptcy is granted against the other party; or (b) the other
+        party makes an assignment for the benefit of creditors; or (c) a
+        petition of bankruptcy is filed by or against the other party
+        and if such petition is not dismissed by the bankruptcy court
+        within sixty (60) days after its filing.
+
+7.3	Upon termination of the Agreement for any reason the following terms
+	shall apply: (a) all rights granted under the Agreement will immediately
+	terminate and Customer must immediately stop all use of the Software;
+	(b) Customer must return to Perforce or destroy all copies of the
+	Software provided to or made by or on behalf of Customer, and will,
+	within ten (10) days after the effective date of termination, provide
+	Perforce with written certification that all such copies have been
+	returned or destroyed; and (c) all provisions of the Agreement that
+	expressly, by implication, or necessity, contemplates performance or
+	observance subsequent to the termination of the Agreement will survive
+	termination or expiration of the Agreement and will continue in full
+	force and effect, including any outstanding payment obligations. Any
+	termination shall be without prejudice to the rights and remedies of
+	either party that may have accrued prior to such termination. For the
+	avoidance of doubt, and except in the case of breach of the Agreement by
+	Perforce, Customer shall not be entitled to a refund of any prepaid fees
+	upon termination of the Agreement, and Perforce will not release
+	Customer from its obligations to pay Perforce all fees that have accrued
+	under the Agreement prior to its termination.
+
+8.  GENERAL. The laws of the State of Delaware, U.S.A., govern the
+    Agreement (without regard to Delaware conflict of laws rules and
+    excluding the United Nations Convention on Contracts for the
+    International Sale of Goods and the Uniform Computer Information
+    Transactions Act). Any dispute, claim or controversy arising out of,
+    connected with, or relating to this Agreement or any will be
+    submitted to the sole and exclusive jurisdiction of a competent
+    state or federal court located in the State of Delaware, and the
+    parties irrevocably waive any objection to such exclusive
+    jurisdiction. Customer agrees that any breach of Section 2 or other
+    infringement or misappropriation of the Puppet IP Rights will result
+    in immediate and irreparable damage to Perforce for which there is
+    no adequate remedy at law. Customer and Perforce may only amend or
+    modify the Agreement, or waive any right under the Agreement, in a
+    writing that is signed by both parties and that expressly references
+    the Agreement. No waiver of any breach of any provision of the
+    Agreement shall constitute a waiver of any prior, concurrent or
+    subsequent breach of the same or any other provisions. The
+    Agreement, and any Orders entered into in connection herewith,
+    constitute the entire agreement between the parties with respect to
+    the Software and supersedes all prior and contemporaneous agreements
+    or communications. No terms or conditions, including any pre-printed
+    or boilerplate terms and conditions, stated in any Customer purchase
+    order, or in any other Customer documentation, will be incorporated
+    into or form any part of this Agreement, and all such terms or
+    conditions will be null and void and of no force and effect.
