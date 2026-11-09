@@ -69,6 +69,18 @@ RSpec.describe Puppetlabs::FacterDB do
         expect(described_class.get_facts(filter)).to equal(described_class.get_facts(filter))
       end
 
+      it 'does not serve a symbolized cached result when symbolize_keys: false is requested' do
+        filter = { 'os.family' => 'windows' }
+        described_class.get_facts(filter)
+        expect(described_class.get_facts(filter, symbolize_keys: false).first.keys).to all(be_a(String))
+      end
+
+      it 'does not serve a string-keyed cached result when symbolize_keys is the default' do
+        filter = { 'os.family' => 'windows' }
+        described_class.get_facts(filter, symbolize_keys: false)
+        expect(described_class.get_facts(filter).first.keys).to all(be_a(Symbol))
+      end
+
       it 'stores the cache under puppetlabs_facterdb thread keys' do
         described_class.get_facts({ 'os.family' => 'Debian' })
         expect(Thread.current[:puppetlabs_facterdb_last_filter_seen]).to eq({ 'os.family' => 'Debian' })

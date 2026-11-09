@@ -17,6 +17,7 @@ module Puppetlabs::FacterDB
   def self.cleanup
     @database = nil
     Thread.current[:puppetlabs_facterdb_last_filter_seen] = nil
+    Thread.current[:puppetlabs_facterdb_last_symbolize_keys_seen] = nil
     Thread.current[:puppetlabs_facterdb_last_facts_seen] = nil
   end
 
@@ -110,16 +111,28 @@ module Puppetlabs::FacterDB
   # @param symbolize_keys [Boolean]
   #   Whether to symbolize the keys. Note this is only on the top level and not
   #   on nested values.
-  def self.get_facts(filter = nil, cache = true, symbolize_keys: true) # rubocop:disable Metrics/CyclomaticComplexity, Style/OptionalBooleanParameter
-    return Thread.current[:puppetlabs_facterdb_last_facts_seen] if cache && filter && filter == Thread.current[:puppetlabs_facterdb_last_filter_seen]
+  def self.get_facts(filter = nil, cache = true, symbolize_keys: true) # rubocop:disable Style/OptionalBooleanParameter
+    return Thread.current[:puppetlabs_facterdb_last_facts_seen] if cache && cached?(filter, symbolize_keys)
 
-    filter_str = generate_filter_str(filter)
-    result = JGrep.jgrep(database, filter_str)
+    result = JGrep.jgrep(database, generate_filter_str(filter))
     result = result.map { |hash| hash.transform_keys(&:to_sym) } if symbolize_keys
-    if cache
-      Thread.current[:puppetlabs_facterdb_last_filter_seen] = filter
-      Thread.current[:puppetlabs_facterdb_last_facts_seen] = result
-    end
+    store_cache(filter, symbolize_keys, result) if cache
     result
   end
+
+  # @return [Boolean] true if the last result seen was for this filter and key type
+  def self.cached?(filter, symbolize_keys)
+    return false unless filter
+
+    filter == Thread.current[:puppetlabs_facterdb_last_filter_seen] &&
+      symbolize_keys == Thread.current[:puppetlabs_facterdb_last_symbolize_keys_seen]
+  end
+  private_class_method :cached?
+
+  def self.store_cache(filter, symbolize_keys, result)
+    Thread.current[:puppetlabs_facterdb_last_filter_seen] = filter
+    Thread.current[:puppetlabs_facterdb_last_symbolize_keys_seen] = symbolize_keys
+    Thread.current[:puppetlabs_facterdb_last_facts_seen] = result
+  end
+  private_class_method :store_cache
 end
