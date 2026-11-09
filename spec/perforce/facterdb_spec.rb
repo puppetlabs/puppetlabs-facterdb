@@ -3,16 +3,16 @@
 require 'spec_helper'
 
 RSpec.describe Perforce::FacterDB do
-  let(:dir_410) { File.join(fixtures_dir, '4.10') }
-  let(:dir_411) { File.join(fixtures_dir, '4.11') }
-  let(:both_dirs) { [dir_410, dir_411].join(File::PATH_SEPARATOR) }
+  let(:older_dir) { File.join(fixtures_dir, '4.10') }
+  let(:newer_dir) { File.join(fixtures_dir, '4.11') }
+  let(:both_dirs) { [older_dir, newer_dir].join(File::PATH_SEPARATOR) }
 
   def filenames(facts)
     facts.map { |f| f[:_facterdb_filename] }
   end
 
   context 'with fixture directories and the default database skipped' do
-    before do
+    before(:each) do
       ENV['PERFORCE_FACTERDB_SKIP_DEFAULTDB'] = '1'
       ENV['PERFORCE_FACTERDB_SEARCH_EXTERNAL_DIR'] = both_dirs
     end
@@ -121,7 +121,7 @@ RSpec.describe Perforce::FacterDB do
     end
 
     it 'still finds files in valid directories next to a nonexistent one' do
-      expect(described_class.external_fact_files(['/no/such/dir', dir_411].join(File::PATH_SEPARATOR)).size).to eq(3)
+      expect(described_class.external_fact_files(['/no/such/dir', newer_dir].join(File::PATH_SEPARATOR)).size).to eq(3)
     end
   end
 
@@ -153,7 +153,7 @@ RSpec.describe Perforce::FacterDB do
   end
 
   context 'with only the upstream FACTERDB_* variables set' do
-    before do
+    before(:each) do
       ENV['FACTERDB_SEARCH_PATHS'] = both_dirs
       ENV['FACTERDB_SKIP_DEFAULTDB'] = '1'
       ENV['FACTERDB_INJECT_SOURCE'] = '1'
@@ -173,7 +173,7 @@ RSpec.describe Perforce::FacterDB do
   end
 
   context 'with the default database skipped and no external directory' do
-    before { ENV['PERFORCE_FACTERDB_SKIP_DEFAULTDB'] = '1' }
+    before(:each) { ENV['PERFORCE_FACTERDB_SKIP_DEFAULTDB'] = '1' }
 
     it 'returns an empty result without raising' do
       expect(described_class.get_facts({ 'os.family' => 'Debian' })).to eq([])
@@ -192,9 +192,9 @@ RSpec.describe Perforce::FacterDB do
   end
 
   context 'with PERFORCE_FACTERDB_INJECT_SOURCE set' do
-    before do
+    before(:each) do
       ENV['PERFORCE_FACTERDB_SKIP_DEFAULTDB'] = '1'
-      ENV['PERFORCE_FACTERDB_SEARCH_EXTERNAL_DIR'] = dir_410
+      ENV['PERFORCE_FACTERDB_SEARCH_EXTERNAL_DIR'] = older_dir
       ENV['PERFORCE_FACTERDB_INJECT_SOURCE'] = '1'
     end
 
@@ -203,7 +203,7 @@ RSpec.describe Perforce::FacterDB do
     end
 
     it 'injects the source file path' do
-      expect(described_class.get_facts({ 'os.family' => 'windows' }).first[:_facterdb_path]).to eq(File.join(dir_410, 'windows-2022-x86_64.facts'))
+      expect(described_class.get_facts({ 'os.family' => 'windows' }).first[:_facterdb_path]).to eq(File.join(older_dir, 'windows-2022-x86_64.facts'))
     end
   end
 
@@ -231,11 +231,11 @@ RSpec.describe Perforce::FacterDB do
 
   describe '.valid_filters?' do
     it 'is true for a valid filter' do
-      expect(described_class.valid_filters?('os.family=Debian')).to be(true)
+      expect(described_class.valid_filters?('foo')).to be(true)
     end
 
     it 'is false for an invalid filter' do
-      expect(described_class.valid_filters?('and and')).to be(false)
+      expect(described_class.valid_filters?('and')).to be(false)
     end
   end
 

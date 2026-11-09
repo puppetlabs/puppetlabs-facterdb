@@ -61,3 +61,6 @@ RSpec/ContextWording:
   - with
   - without
   - 'on'
+RSpec/SpecFilePathFormat:
+  CustomTransform:
+    FacterDB: facterdb
