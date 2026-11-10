@@ -1,0 +1,162 @@
+{
+  "aio_agent_version": "8.4.0",
+  "dmi": {
+    "manufacturer": "innotek GmbH",
+    "product": {
+      "name": "VirtualBox",
+      "serial_number": "0",
+      "uuid": "00000000-0000-0000-0000-000000000000"
+    }
+  },
+  "env_windows_installdir": "C:\\Program Files\\Puppet Labs\\Puppet",
+  "facterversion": "4.5.2",
+  "fips_enabled": false,
+  "hypervisors": {
+    "virtualbox": {
+      "revision": "161095",
+      "version": "7.0.14"
+    }
+  },
+  "identity": {
+    "privileged": true,
+    "user": "FOO\\vagrant"
+  },
+  "is_virtual": true,
+  "kernel": "windows",
+  "kernelmajversion": "10.0",
+  "kernelrelease": "10.0.17763",
+  "kernelversion": "10.0.17763",
+  "memory": {
+    "system": {
+      "available": "943.78 MiB",
+      "available_bytes": 989622272,
+      "capacity": "53.55%",
+      "total": "1.98 GiB",
+      "total_bytes": 2130382848,
+      "used": "1.06 GiB",
+      "used_bytes": 1140760576
+    }
+  },
+  "networking": {
+    "dhcp": "10.0.2.2",
+    "domain": "example.com",
+    "fqdn": "foo.example.com",
+    "hostname": "foo",
+    "interfaces": {
+      "Ethernet": {
+        "bindings": [
+          {
+            "address": "10.0.2.15",
+            "netmask": "255.255.255.0",
+            "network": "10.0.2.0"
+          }
+        ],
+        "bindings6": [
+          {
+            "address": "fe80::c2c9:fe72:6f76:9134",
+            "netmask": "ffff:ffff:ffff:ffff::",
+            "network": "fe80::",
+            "scope6": "link"
+          }
+        ],
+        "dhcp": "10.0.2.2",
+        "ip": "10.0.2.15",
+        "ip6": "fe80::c2c9:fe72:6f76:9134",
+        "mac": "08:00:27:E5:87:1C",
+        "mtu": 1500,
+        "netmask": "255.255.255.0",
+        "netmask6": "ffff:ffff:ffff:ffff::",
+        "network": "10.0.2.0",
+        "network6": "fe80::",
+        "scope6": "link"
+      }
+    },
+    "ip": "10.0.2.15",
+    "ip6": "fe80::c2c9:fe72:6f76:9134",
+    "mac": "08:00:27:E5:87:1C",
+    "mtu": 1500,
+    "netmask": "255.255.255.0",
+    "netmask6": "ffff:ffff:ffff:ffff::",
+    "network": "10.0.2.0",
+    "network6": "fe80::",
+    "primary": "Ethernet",
+    "scope6": "link"
+  },
+  "os": {
+    "architecture": "x64",
+    "family": "windows",
+    "hardware": "x86_64",
+    "name": "windows",
+    "release": {
+      "full": "2019",
+      "major": "2019"
+    },
+    "windows": {
+      "edition_id": "ServerStandardEval",
+      "installation_type": "Server Core",
+      "product_name": "Windows Server 2019 Standard Evaluation",
+      "release_id": "1809",
+      "system32": "C:\\Windows\\system32"
+    }
+  },
+  "path": "C:\\Program Files\\Puppet Labs\\Puppet\\puppet\\bin;C:\\Program Files\\Puppet Labs\\Puppet\\bin;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\OpenSSH-Win64;C:\\Users\\vagrant\\AppData\\Local\\Microsoft\\WindowsApps",
+  "processors": {
+    "cores": 2,
+    "count": 2,
+    "isa": "x64",
+    "models": [
+      "Intel(R) Xeon(R) CPU E5-2667 v3 @ 3.20GHz"
+    ],
+    "physicalcount": 1,
+    "threads": 1
+  },
+  "puppetversion": "8.4.0",
+  "ruby": {
+    "platform": "x64-mingw32",
+    "sitedir": "C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/site_ruby/3.2.0",
+    "version": "3.2.2"
+  },
+  "scope6_Ethernet": "link",
+  "ssh": {
+    "dsa": {
+      "fingerprints": {
+        "sha1": "SSHFP 2 1 0000000000000000000000000000000000000000",
+        "sha256": "SSHFP 2 2 0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "key": "AAAAscrubbed",
+      "type": "ssh-dss"
+    },
+    "ecdsa": {
+      "fingerprints": {
+        "sha1": "SSHFP 3 1 0000000000000000000000000000000000000000",
+        "sha256": "SSHFP 3 2 0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "key": "AAAAscrubbed",
+      "type": "ecdsa-sha2-nistp256"
+    },
+    "ed25519": {
+      "fingerprints": {
+        "sha1": "SSHFP 4 1 0000000000000000000000000000000000000000",
+        "sha256": "SSHFP 4 2 0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "key": "AAAAscrubbed",
+      "type": "ssh-ed25519"
+    },
+    "rsa": {
+      "fingerprints": {
+        "sha1": "SSHFP 1 1 0000000000000000000000000000000000000000",
+        "sha256": "SSHFP 1 2 0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "key": "AAAAscrubbed",
+      "type": "ssh-rsa"
+    }
+  },
+  "system_uptime": {
+    "days": 0,
+    "hours": 0,
+    "seconds": 0,
+    "uptime": "0:00 hours"
+  },
+  "timezone": "Coordinated Universal Time",
+  "virtual": "virtualbox"
+}

@@ -1,0 +1,125 @@
+{
+  "aio_agent_version": "7.18.0",
+  "dmi": {
+    "manufacturer": "American Megatrends Inc.",
+    "product": {
+      "name": "Virtual Machine",
+      "serial_number": "0",
+      "uuid": "00000000-0000-0000-0000-000000000000"
+    }
+  },
+  "env_windows_installdir": "C:\\Program Files\\Puppet Labs\\Puppet",
+  "facterversion": "4.2.11",
+  "fips_enabled": false,
+  "hypervisors": {
+    "hyperv": {}
+  },
+  "identity": {
+    "privileged": true,
+    "user": "foo\\windows"
+  },
+  "is_virtual": true,
+  "kernel": "windows",
+  "kernelmajversion": "10.0",
+  "kernelrelease": "10.0.20348",
+  "kernelversion": "10.0.20348",
+  "memory": {
+    "system": {
+      "available": "13.84 GiB",
+      "available_bytes": 14865944576,
+      "capacity": "13.47%",
+      "total": "16.00 GiB",
+      "total_bytes": 17179398144,
+      "used": "2.15 GiB",
+      "used_bytes": 2313453568
+    }
+  },
+  "networking": {
+    "dhcp": "168.63.129.16",
+    "domain": "example.com",
+    "fqdn": "foo.example.com",
+    "hostname": "foo",
+    "interfaces": {
+      "Ethernet": {
+        "bindings": [
+          {
+            "address": "10.138.1.5",
+            "netmask": "255.255.255.0",
+            "network": "10.138.1.0"
+          }
+        ],
+        "bindings6": [
+          {
+            "address": "fe80::a86c:fe40:b6b2:1e4",
+            "netmask": "ffff:ffff:ffff:ffff::",
+            "network": "fe80::",
+            "scope6": "link"
+          }
+        ],
+        "dhcp": "168.63.129.16",
+        "ip": "10.138.1.5",
+        "ip6": "fe80::a86c:fe40:b6b2:1e4",
+        "mac": "60:45:BD:C1:54:79",
+        "mtu": 1500,
+        "netmask": "255.255.255.0",
+        "netmask6": "ffff:ffff:ffff:ffff::",
+        "network": "10.138.1.0",
+        "network6": "fe80::",
+        "scope6": "link"
+      }
+    },
+    "ip": "10.138.1.5",
+    "ip6": "fe80::a86c:fe40:b6b2:1e4",
+    "mac": "60:45:BD:C1:54:79",
+    "mtu": 1500,
+    "netmask": "255.255.255.0",
+    "netmask6": "ffff:ffff:ffff:ffff::",
+    "network": "10.138.1.0",
+    "network6": "fe80::",
+    "primary": "Ethernet",
+    "scope6": "link"
+  },
+  "os": {
+    "architecture": "x64",
+    "family": "windows",
+    "hardware": "x86_64",
+    "name": "windows",
+    "release": {
+      "full": "2022",
+      "major": "2022"
+    },
+    "windows": {
+      "display_version": "21H2",
+      "edition_id": "ServerDatacenter",
+      "installation_type": "Server",
+      "product_name": "Windows Server 2022 Datacenter",
+      "release_id": "21H2",
+      "system32": "C:\\Windows\\system32"
+    }
+  },
+  "path": "C:\\Program Files\\Puppet Labs\\Puppet\\puppet\\bin;C:\\Program Files\\Puppet Labs\\Puppet\\bin;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\dotnet\\;C:\\Program Files\\Puppet Labs\\Puppet\\bin;C:\\Users\\windows\\AppData\\Local\\Microsoft\\WindowsApps",
+  "processors": {
+    "cores": 2,
+    "count": 4,
+    "isa": "x64",
+    "models": [
+      "Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz"
+    ],
+    "physicalcount": 1,
+    "threads": 2
+  },
+  "ruby": {
+    "platform": "x64-mingw32",
+    "sitedir": "C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/site_ruby/2.7.0",
+    "version": "2.7.6"
+  },
+  "scope6_Ethernet": "link",
+  "system_uptime": {
+    "days": 0,
+    "hours": 0,
+    "seconds": 0,
+    "uptime": "0:00 hours"
+  },
+  "timezone": "Coordinated Universal Time",
+  "virtual": "hyperv"
+}

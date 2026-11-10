@@ -1,0 +1,2241 @@
+{
+  "counts": {
+    "kept": 0,
+    "renamed": 3,
+    "seeded": 368,
+    "skipped": 0,
+    "superseded": 0
+  },
+  "facter_range": "4.0-4.11",
+  "files": [
+    {
+      "facterversion": "4.0.52",
+      "path": "4.0/almalinux-8-x86_64.facts",
+      "sha256": "908e105cb2a26f59ecbe482f1314fbd5b04364352e8e86c0f3eeb4b5e82ba7b7",
+      "source_path": "facts/4.0/almalinux-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.0.52",
+      "path": "4.0/almalinux-9-x86_64.facts",
+      "sha256": "9f235aefebf61e7122f97059fb3526a3432b1293942471bdbf9e438915a0d175",
+      "source_path": "facts/4.0/almalinux-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.0.52",
+      "path": "4.0/debian-11-x86_64.facts",
+      "sha256": "74429c32be7da1227c374d2a004b2834bc9228c64b71071f0f914d235e4e23dc",
+      "source_path": "facts/4.0/debian-11-x86_64.facts"
+    },
+    {
+      "facterversion": "4.0.52",
+      "path": "4.0/freebsd-11-x86_64.facts",
+      "sha256": "06d37d7af2d3601cd87db9c24b39d021dc10fce72097d809edcbd036e99f5df6",
+      "source_path": "facts/4.0/freebsd-11-x86_64.facts"
+    },
+    {
+      "facterversion": "4.0.52",
+      "path": "4.0/freebsd-12-x86_64.facts",
+      "sha256": "06b7b353d0c65415699409639ebd83a5b195407e42987064b768a36c229a54e8",
+      "source_path": "facts/4.0/freebsd-12-x86_64.facts"
+    },
+    {
+      "facterversion": "4.0.52",
+      "path": "4.0/freebsd-13-x86_64.facts",
+      "sha256": "2d75b8fd4044c0286d4c03ed5c11c8b98ffec53095e1d071fa4a3f8bdc98c518",
+      "source_path": "facts/4.0/freebsd-13-x86_64.facts"
+    },
+    {
+      "facterversion": "4.0.52",
+      "path": "4.0/opensuse-15-x86_64.facts",
+      "sha256": "fa3b4cd0db20c7baead0f621466812fd1bec15eeca5d5608ecad85663964bacf",
+      "source_path": "facts/4.0/opensuse-15-x86_64.facts"
+    },
+    {
+      "facterversion": "4.0.52",
+      "path": "4.0/oraclelinux-7-x86_64.facts",
+      "sha256": "a2a31f894fab72a2bdc26a63b52290d5e98fc74a9011be21834b65c2f9502d67",
+      "source_path": "facts/4.0/oraclelinux-7-x86_64.facts"
+    },
+    {
+      "facterversion": "4.0.52",
+      "path": "4.0/redhat-8-x86_64.facts",
+      "sha256": "3ee0ec58c74e3a592d23a2fc5374641efccb700e4f7de5351b94ea5718850baa",
+      "source_path": "facts/4.0/redhat-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.0.52",
+      "path": "4.0/rocky-8-x86_64.facts",
+      "sha256": "8d3049d2713d70293c7e29ebd63414bd1b17550a1de64491a7e6bcc056ddc8dc",
+      "source_path": "facts/4.0/rocky-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.0.52",
+      "path": "4.0/rocky-9-x86_64.facts",
+      "sha256": "6eb420bf84ab5b35aeb00e453d9df88c7db3613320632878ff3f6760bce6b35a",
+      "source_path": "facts/4.0/rocky-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.0.52",
+      "path": "4.0/scientific-7-x86_64.facts",
+      "sha256": "8f503444292762e23f005c35915b0e9c70a955fb35db4f2f34f057ab37a73610",
+      "source_path": "facts/4.0/scientific-7-x86_64.facts"
+    },
+    {
+      "facterversion": "4.0.52",
+      "path": "4.0/solaris-11-sun4v.facts",
+      "sha256": "70c6fab1edf34f83b0b5ae1aea48782dc37cc4e740b2861b2ad84b02bafc1c93",
+      "source_path": "facts/4.0/solaris-11-sun4v.facts"
+    },
+    {
+      "facterversion": "4.0.52",
+      "path": "4.0/ubuntu-18.04-x86_64.facts",
+      "sha256": "ec759a1c9a7cbdf4bccd984428cfefdf73444d555d7855266421f78f3f98e731",
+      "source_path": "facts/4.0/ubuntu-18.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.0.52",
+      "path": "4.0/ubuntu-20.04-x86_64.facts",
+      "sha256": "d59da3a1fcc145a31e774c21335bba85d7dbd3549e3d3ceac78cccdfebe2b717",
+      "source_path": "facts/4.0/ubuntu-20.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.0.52",
+      "path": "4.0/ubuntu-21.04-x86_64.facts",
+      "sha256": "2895faf82b69b2a507b2d185ceff51214df237a56ab33a9720c60a9cbd116476",
+      "source_path": "facts/4.0/ubuntu-21.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.0.52",
+      "path": "4.0/ubuntu-21.10-x86_64.facts",
+      "sha256": "08fed09d74eaf122a7a7b925ffe5ff6d6eecef0df9f02a88d61b50d1a2878a54",
+      "source_path": "facts/4.0/ubuntu-21.10-x86_64.facts"
+    },
+    {
+      "facterversion": "4.1.1",
+      "path": "4.1/almalinux-8-x86_64.facts",
+      "sha256": "396235bcf91cb4998ec18a68b8f9dcb263b6cd4045ab0d102fec556f05c68821",
+      "source_path": "facts/4.1/almalinux-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.1.1",
+      "path": "4.1/almalinux-9-x86_64.facts",
+      "sha256": "9a13fe9dc7ddc2f0976d6eaf7e61c4e953628dc44f4d100bb5385ca0d7d061b1",
+      "source_path": "facts/4.1/almalinux-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.1.1",
+      "path": "4.1/debian-11-x86_64.facts",
+      "sha256": "a1849c3c61c141bfc3fd0c8549386974c031fdc9520f914be064531acb56965b",
+      "source_path": "facts/4.1/debian-11-x86_64.facts"
+    },
+    {
+      "facterversion": "4.1.1",
+      "path": "4.1/freebsd-11-x86_64.facts",
+      "sha256": "f9b966ff3c6b5ab55871944bc932b8faa068cbab765687af02568d3efe70d0af",
+      "source_path": "facts/4.1/freebsd-11-x86_64.facts"
+    },
+    {
+      "facterversion": "4.1.1",
+      "path": "4.1/freebsd-12-x86_64.facts",
+      "sha256": "39c268cb4aba61d2c984e33caadb83f0b94e467b7df31e304bf82ebd5a62ac8f",
+      "source_path": "facts/4.1/freebsd-12-x86_64.facts"
+    },
+    {
+      "facterversion": "4.1.1",
+      "path": "4.1/freebsd-13-x86_64.facts",
+      "sha256": "5d908c22387a791a33020cac6204cdc2220f47879811ee57e57f532710e62fa6",
+      "source_path": "facts/4.1/freebsd-13-x86_64.facts"
+    },
+    {
+      "facterversion": "4.1.1",
+      "path": "4.1/opensuse-15-x86_64.facts",
+      "sha256": "299bb129eb1ae9684120fee38538779cb48f85fb22cb1191659e810af71e3194",
+      "source_path": "facts/4.1/opensuse-15-x86_64.facts"
+    },
+    {
+      "facterversion": "4.1.1",
+      "path": "4.1/redhat-8-x86_64.facts",
+      "sha256": "beeb576156c3d2a1aa9eae7f81d77ed82f99389cfaa9e3146512f61c7b2a9286",
+      "source_path": "facts/4.1/redhat-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.1.1",
+      "path": "4.1/rocky-8-x86_64.facts",
+      "sha256": "022a0f43d88450e3eecc80629ea4b0573c3ef83774b59193a0a66cdc44dd1857",
+      "source_path": "facts/4.1/rocky-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.1.1",
+      "path": "4.1/rocky-9-x86_64.facts",
+      "sha256": "6e026605804dc658f35db3a07cf84b855fcd037e7a16414288b84dce24761bc0",
+      "source_path": "facts/4.1/rocky-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.1.1",
+      "path": "4.1/ubuntu-18.04-x86_64.facts",
+      "sha256": "c17bfd6012620675f80f2c6d340b147375bdfa38a58a99c011139f507fca9ff1",
+      "source_path": "facts/4.1/ubuntu-18.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.1.1",
+      "path": "4.1/ubuntu-20.04-x86_64.facts",
+      "sha256": "15a7d3c8e6f08d852ea6d4786ce8ef6890e3d95ed6ddc610c4d3116a755daa8b",
+      "source_path": "facts/4.1/ubuntu-20.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.1.1",
+      "path": "4.1/ubuntu-21.04-x86_64.facts",
+      "sha256": "05cc3f50aa26e730b08fee54c59577f9febf3c408a5cdc7d6d9b277eced2b834",
+      "source_path": "facts/4.1/ubuntu-21.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.1.1",
+      "path": "4.1/ubuntu-21.10-x86_64.facts",
+      "sha256": "bc190d960c4e8b971dda45c599e2b8f7ef1c489bb8ba74b0165a09c56831b87c",
+      "source_path": "facts/4.1/ubuntu-21.10-x86_64.facts"
+    },
+    {
+      "facterversion": "4.10.0",
+      "path": "4.10/almalinux-8-x86_64.facts",
+      "sha256": "4e786244b007d97d90d4fefac30ae8565f8279f907ce3fb4c7eadb1770f1c9f9",
+      "source_path": "facts/4.10/almalinux-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.10.0",
+      "path": "4.10/almalinux-9-x86_64.facts",
+      "sha256": "4b19b70fdbc67cc1cb7e437778f283e805abec57a57c46724c5f2bcaf3a282f1",
+      "source_path": "facts/4.10/almalinux-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.10.0",
+      "path": "4.10/amazon-2-x86_64.facts",
+      "sha256": "aa5b898da340dde6a491eacf5ad1798d54abe98d0635f22c80bf53756b4b9906",
+      "source_path": "facts/4.10/amazon-2-x86_64.facts"
+    },
+    {
+      "facterversion": "4.10.0",
+      "path": "4.10/centos-10-x86_64.facts",
+      "sha256": "e0b998a9f512764a6f9308e10255dbe0b8a96eb2ceebaa273c28a59932d2a68e",
+      "source_path": "facts/4.10/centos-10-x86_64.facts"
+    },
+    {
+      "facterversion": "4.10.0",
+      "path": "4.10/centos-9-x86_64.facts",
+      "sha256": "2d915b064a3e5a3bb56fd95df22faaa1b955c20c94962969bf087e1b447c602d",
+      "source_path": "facts/4.10/centos-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.10.0",
+      "path": "4.10/debian-11-x86_64.facts",
+      "sha256": "c8164f9797045dbc06acf23209cb56072ca70e526139c8bd90845394953c0e71",
+      "source_path": "facts/4.10/debian-11-x86_64.facts"
+    },
+    {
+      "facterversion": "4.10.0",
+      "path": "4.10/debian-12-x86_64.facts",
+      "sha256": "94890721842db28695d934d894577531e03dc9c69f007c1b4a6b7b64e0c2f644",
+      "source_path": "facts/4.10/debian-12-x86_64.facts"
+    },
+    {
+      "facterversion": "4.10.0",
+      "path": "4.10/fedora-40-x86_64.facts",
+      "sha256": "209b27b01e8577241d4eb1ba3109874e2da456e52f0b380dbeeeeb9bfa90109f",
+      "source_path": "facts/4.10/fedora-40-x86_64.facts"
+    },
+    {
+      "facterversion": "4.10.0",
+      "path": "4.10/fedora-41-x86_64.facts",
+      "sha256": "a6ba58ee806b277d04db0b36c56350662c5e65a50434d59413708a9b68a0f404",
+      "source_path": "facts/4.10/fedora-41-x86_64.facts"
+    },
+    {
+      "facterversion": "4.10.0",
+      "path": "4.10/freebsd-13-x86_64.facts",
+      "sha256": "02687450d7c483a7d26ecf9743aea51fa97cfe6b4696353cea189f74fa93f433",
+      "source_path": "facts/4.10/freebsd-13-x86_64.facts"
+    },
+    {
+      "facterversion": "4.10.0",
+      "path": "4.10/freebsd-14-x86_64.facts",
+      "sha256": "6c3b2eddf10858e5d5a0b2159cab66c75e31e76e86639b5999e8c99f3a65c516",
+      "source_path": "facts/4.10/freebsd-14-x86_64.facts"
+    },
+    {
+      "facterversion": "4.10.0",
+      "path": "4.10/opensuse-15-x86_64.facts",
+      "sha256": "7834f4becb095248d3245ae9fd3f234ee7414551478244aab6594952a6d7f105",
+      "source_path": "facts/4.10/opensuse-15-x86_64.facts"
+    },
+    {
+      "facterversion": "4.10.0",
+      "path": "4.10/oraclelinux-8-x86_64.facts",
+      "sha256": "a894d8851ba1edcb469deae38e82c00da31fab4d5cf16975c751ef6c8b90234f",
+      "source_path": "facts/4.10/oraclelinux-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.10.0",
+      "path": "4.10/oraclelinux-9-x86_64.facts",
+      "sha256": "ce68ff7414aebd5f9d5fa16f1a13fd021b2e4af8c7112a33cebc6e76e931e352",
+      "source_path": "facts/4.10/oraclelinux-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.10.0",
+      "path": "4.10/redhat-8-x86_64.facts",
+      "sha256": "f8c591d5cf4c3c93e0e82e382ae0092cc63502025502479e2904de2cb869381d",
+      "source_path": "facts/4.10/redhat-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.10.0",
+      "path": "4.10/redhat-9-x86_64.facts",
+      "sha256": "5615e5ac2b99844787c697740f49e6e840eee5df1483cf7e46333daf038767dd",
+      "source_path": "facts/4.10/redhat-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.10.0",
+      "path": "4.10/rocky-8-x86_64.facts",
+      "sha256": "ee97c721e87345c6571b83718b2f5dc2ff077eb11025c7047fdd7de8d49602bc",
+      "source_path": "facts/4.10/rocky-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.10.0",
+      "path": "4.10/rocky-9-x86_64.facts",
+      "sha256": "a88ce34476bf7ab9f3ec08537dd949c346a1e8342a574137155f726b27d9d36c",
+      "source_path": "facts/4.10/rocky-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.10.0",
+      "path": "4.10/ubuntu-20.04-x86_64.facts",
+      "sha256": "2749cef1c80390159269b60596d37ee95a3164e4192621824840dbe26bef5d7f",
+      "source_path": "facts/4.10/ubuntu-20.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.10.0",
+      "path": "4.10/ubuntu-22.04-aarch64.facts",
+      "sha256": "a112679cfa2ff9eb2fbdff5f6f77e64bea7c41f9e6070d4cbc3b3e5e3d44793f",
+      "source_path": "facts/4.10/ubuntu-22.04-aarch64.facts"
+    },
+    {
+      "facterversion": "4.10.0",
+      "path": "4.10/ubuntu-22.04-x86_64.facts",
+      "sha256": "f2a544ead65676686986f1b47f80a1a29e88474b7a2e73a30cfd7bfa76cee89d",
+      "source_path": "facts/4.10/ubuntu-22.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.10.0",
+      "path": "4.10/ubuntu-24.04-aarch64.facts",
+      "sha256": "5aa7a219421c56a5303fec46a15aeab4ee66050d62c20b0e071a836c7700f233",
+      "source_path": "facts/4.10/ubuntu-24.04-aarch64.facts"
+    },
+    {
+      "facterversion": "4.10.0",
+      "path": "4.10/ubuntu-24.04-x86_64.facts",
+      "sha256": "2d68513f2dcda9194380fbab2e27562228a6ea5fbf087d916841aed4ec609831",
+      "source_path": "facts/4.10/ubuntu-24.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.10.0",
+      "path": "4.10/windows-10-x86_64.facts",
+      "sha256": "d43c2d2db7d5c607d37f911a7791e22aa97d71be3aa6e302e92e25cfd51cb979",
+      "source_path": "facts/4.10/windows-10-x86_64.facts"
+    },
+    {
+      "facterversion": "4.10.0",
+      "path": "4.10/windows-11-x86_64.facts",
+      "sha256": "586589633789e53756f3790ea372fa5172c6bf1716e0bfc17391d2e104cc5f8c",
+      "source_path": "facts/4.10/windows-11-x86_64.facts"
+    },
+    {
+      "facterversion": "4.10.0",
+      "path": "4.10/windows-2022-x86_64.facts",
+      "sha256": "08e35862c04344db27423162d459c3b09bb35e3ea47792c6d83d4077f8a190c4",
+      "source_path": "facts/4.10/windows-2022-x86_64.facts"
+    },
+    {
+      "facterversion": "4.11.0",
+      "path": "4.11/almalinux-8-x86_64.facts",
+      "sha256": "09771065f633d170885071a84789296ee50e12dd989de3d06fdfec1b6554a8e2",
+      "source_path": "facts/4.11/almalinux-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.11.0",
+      "path": "4.11/almalinux-9-x86_64.facts",
+      "sha256": "95f4cf959baebc9f6edd4dcda121fc0f29f366739f0d5e15cf05c53bc616fa9a",
+      "source_path": "facts/4.11/almalinux-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.11.0",
+      "path": "4.11/amazon-2-x86_64.facts",
+      "sha256": "c89c4373411332b633c89b60ab7b681ec24c2e63da0c226a7a87bc9c4487462b",
+      "source_path": "facts/4.11/amazon-2-x86_64.facts"
+    },
+    {
+      "facterversion": "4.11.0",
+      "path": "4.11/centos-10-x86_64.facts",
+      "sha256": "c47d9fbf22863a7873da0c9bb41a18fdfcc3565f1dfc54689c8ae8b1cfd317e3",
+      "source_path": "facts/4.11/centos-10-x86_64.facts"
+    },
+    {
+      "facterversion": "4.11.0",
+      "path": "4.11/centos-9-x86_64.facts",
+      "sha256": "da122fc7fd9ddc327c708eb4c49d851bdc3f5b4a218a7259bc1a06bd2b0057ea",
+      "source_path": "facts/4.11/centos-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.11.0",
+      "path": "4.11/debian-11-x86_64.facts",
+      "sha256": "a7279c6b3e8307265cd055ea66ebf31b0ea1d6e67dce1684a36a3e84e57a8340",
+      "source_path": "facts/4.11/debian-11-x86_64.facts"
+    },
+    {
+      "facterversion": "4.11.0",
+      "path": "4.11/debian-12-x86_64.facts",
+      "sha256": "cfc511d30c2f225c581a9b224e612fb55b1938591e866c5507cd0aecc582b69e",
+      "source_path": "facts/4.11/debian-12-x86_64.facts"
+    },
+    {
+      "facterversion": "4.11.0",
+      "path": "4.11/fedora-40-x86_64.facts",
+      "sha256": "97a874039efff77ac6e88d6cf2d91a55c493b5441f1ae7170e2d6b97f36e5ff9",
+      "source_path": "facts/4.11/fedora-40-x86_64.facts"
+    },
+    {
+      "facterversion": "4.11.0",
+      "path": "4.11/fedora-41-x86_64.facts",
+      "sha256": "1aae877d0e3e2c0d9ab0714e888b4d203a2bbd13fe8dbd94ffad0e2384ab1043",
+      "source_path": "facts/4.11/fedora-41-x86_64.facts"
+    },
+    {
+      "facterversion": "4.11.0",
+      "path": "4.11/oraclelinux-8-x86_64.facts",
+      "sha256": "7723c06f3ec6e84a8d18ef8be91e6d784d923704a06e821ebe76b3e97eab413e",
+      "source_path": "facts/4.11/oraclelinux-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.11.0",
+      "path": "4.11/oraclelinux-9-x86_64.facts",
+      "sha256": "01a689a8e100530d5467e62522491f4c36b4045f0f9d470bc9c0d52c1ad7ca81",
+      "source_path": "facts/4.11/oraclelinux-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.11.0",
+      "path": "4.11/redhat-8-x86_64.facts",
+      "sha256": "daa42c367eb2066ae840b84d3d23c5beff776ef733bf5b61da095feca966cb44",
+      "source_path": "facts/4.11/redhat-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.11.0",
+      "path": "4.11/redhat-9-x86_64.facts",
+      "sha256": "6914f900af88a6188f007602685db6b1001a2ee861fdfb69a824e0d9fc0e4c80",
+      "source_path": "facts/4.11/redhat-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.11.0",
+      "path": "4.11/rocky-8-x86_64.facts",
+      "sha256": "cbedb25d4d45246a10638564746fd243f56b06d0ab84beab09c30f07c367671f",
+      "source_path": "facts/4.11/rocky-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.11.0",
+      "path": "4.11/rocky-9-x86_64.facts",
+      "sha256": "04cc6c68601f40179ac8877f371198e3e4db11d407bf11a0eabf527e5f00463b",
+      "source_path": "facts/4.11/rocky-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.11.0",
+      "path": "4.11/ubuntu-20.04-x86_64.facts",
+      "sha256": "4456c5e9608e070adbe83ab15a46a52c46ea25cd76e92927aef56826b56d2226",
+      "source_path": "facts/4.11/ubuntu-20.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.11.0",
+      "path": "4.11/ubuntu-22.04-aarch64.facts",
+      "sha256": "8253c33cd13c5510f09bf38ed219c9aad0a8181870559e864aa6b14f42a3c74f",
+      "source_path": "facts/4.11/ubuntu-22.04-aarch64.facts"
+    },
+    {
+      "facterversion": "4.11.0",
+      "path": "4.11/ubuntu-22.04-x86_64.facts",
+      "sha256": "09b15aa93c8fd7b76ad81704e04fb54aa8d6099a25ffe99da6d4a00133c20aa7",
+      "source_path": "facts/4.11/ubuntu-22.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.11.0",
+      "path": "4.11/ubuntu-24.04-aarch64.facts",
+      "sha256": "62397d7a344ac9644e84bcc1d182916c32b074373de25767dd07f3346c8e3e45",
+      "source_path": "facts/4.11/ubuntu-24.04-aarch64.facts"
+    },
+    {
+      "facterversion": "4.11.0",
+      "path": "4.11/ubuntu-24.04-x86_64.facts",
+      "sha256": "73395fecd02a598b1626e327bcdc9aa9ff888e96279a1ebd1e8020c0dfe46ad5",
+      "source_path": "facts/4.11/ubuntu-24.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.14",
+      "path": "4.2/almalinux-8-x86_64.facts",
+      "sha256": "13f46125264ad59e9dc220869aefff0562a9aef845be466fd58290025161e6f9",
+      "source_path": "facts/4.2/almalinux-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.14",
+      "path": "4.2/almalinux-9-x86_64.facts",
+      "sha256": "59f786760f95a115cc5bc2952afa3e3d53ab10ece8ac7a7a018f4867ed1cbd70",
+      "source_path": "facts/4.2/almalinux-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.14",
+      "path": "4.2/amazon-2-x86_64.facts",
+      "sha256": "5e6a845dc19fc1a0da54235919ee96d39443048681e205537700be44f03f4da0",
+      "source_path": "facts/4.2/amazon-2-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.10",
+      "path": "4.2/amazon-2022-x86_64.facts",
+      "sha256": "10cffac7426ea7e824018f5ca762ec4f33cbb266810cf0daa7b6c989a17ae6c6",
+      "source_path": "facts/4.2/amazon-2022-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.14",
+      "path": "4.2/archlinux-x86_64.facts",
+      "sha256": "5d6bd3b035b25c68694b09e2d9528e267ccd4f4aa5a02365d440a3d1912738b7",
+      "source_path": "facts/4.2/archlinux-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.14",
+      "path": "4.2/centos-10-x86_64.facts",
+      "sha256": "e0cf4ca7863df0fe69c9d0a32f3d49f3f8199be9e1425b95ab9b29dd5f68619e",
+      "source_path": "facts/4.2/centos-10-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.14",
+      "path": "4.2/centos-9-x86_64.facts",
+      "sha256": "f23c4a54748afec6148a4d33d03ad825aa0ead62d8cbb636cb02b73125f831af",
+      "source_path": "facts/4.2/centos-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.2",
+      "path": "4.2/darwin-20-x86_64.facts",
+      "sha256": "2dd82be0e2b19a00fcdc716d714e04902b87e9fce698200b4edc1e79393b6260",
+      "source_path": "facts/4.2/darwin-20-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.14",
+      "path": "4.2/debian-11-x86_64.facts",
+      "sha256": "343cf03b0409d3e3118982e42d1d7f6cb99a5d47f84646c17940f5435a3a8b38",
+      "source_path": "facts/4.2/debian-11-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.14",
+      "path": "4.2/debian-12-i386.facts",
+      "sha256": "d5a6c19c79462429aeb220fa4655a7158430481fe37526f98f8a5ff865c9f8ea",
+      "source_path": "facts/4.2/debian-12-i386.facts"
+    },
+    {
+      "facterversion": "4.2.14",
+      "path": "4.2/debian-12-x86_64.facts",
+      "sha256": "cd3849c2cf13176d2f58cc258e1b5c64abe0a13e5d904d112244c1ce55461087",
+      "source_path": "facts/4.2/debian-12-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.14",
+      "path": "4.2/fedora-36-x86_64.facts",
+      "sha256": "6479e15f87303715ceed4afebccee29734328983b17b406c12e8ff8ef6d24239",
+      "source_path": "facts/4.2/fedora-36-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.14",
+      "path": "4.2/fedora-37-x86_64.facts",
+      "sha256": "8a10364683e8a4fc9dc57a737d69dc1903d094520b37b72023e10d26076ce319",
+      "source_path": "facts/4.2/fedora-37-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.14",
+      "path": "4.2/fedora-38-x86_64.facts",
+      "sha256": "a4bffaf0607f4638a1f4dd14f39f47b6b9eda451f8d4ec91e096aabad6ce7335",
+      "source_path": "facts/4.2/fedora-38-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.14",
+      "path": "4.2/fedora-39-x86_64.facts",
+      "sha256": "3df3604dd54f231d2b9d49d5391417e198ba173ac4fb84bb746800594ee11382",
+      "source_path": "facts/4.2/fedora-39-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.14",
+      "path": "4.2/fedora-40-x86_64.facts",
+      "sha256": "480e9acd42fa3c3435837b42bb88a49cf594162ea719c15dc5689a2221241929",
+      "source_path": "facts/4.2/fedora-40-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.14",
+      "path": "4.2/fedora-41-x86_64.facts",
+      "sha256": "6c8c7890947d6fd2ca0b975feea730b9dbcf3a5d891fdb0a8792b2e2e00420a5",
+      "source_path": "facts/4.2/fedora-41-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.1",
+      "path": "4.2/freebsd-11-x86_64.facts",
+      "sha256": "4c0100c4319ff572d309e820679fc21e9ffd4dd127346e5aef3fdccfd7a9108f",
+      "source_path": "facts/4.2/freebsd-11-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.4",
+      "path": "4.2/freebsd-12-x86_64.facts",
+      "sha256": "6b4efbdf3728079e2faac834e890e9509a76136bce7313628e8656bd92a66c84",
+      "source_path": "facts/4.2/freebsd-12-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.5",
+      "path": "4.2/freebsd-13-x86_64.facts",
+      "sha256": "f327842727bba16de2df6590cc0dec60fa108feeb3fd04b353722f1d7d624ca6",
+      "source_path": "facts/4.2/freebsd-13-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.14",
+      "path": "4.2/freebsd-14-x86_64.facts",
+      "sha256": "0ed0845c9f24534ea5c8a871ae19b911d7b6dacbb0a89a0aa4fa1554e6e930ec",
+      "source_path": "facts/4.2/freebsd-14-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.14",
+      "path": "4.2/gentoo-2-x86_64.facts",
+      "sha256": "5fbb3cacc689d5bd262cc3542b7d3cc509c7757ac9489acf856c45ba5fb27aba",
+      "source_path": "facts/4.2/gentoo-2-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.7",
+      "path": "4.2/opensuse-15-x86_64.facts",
+      "sha256": "01031fd44fea4721d2b2239ddd5b8e05b8ffbd869e078a54107f313335e36dd7",
+      "source_path": "facts/4.2/opensuse-15-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.2",
+      "path": "4.2/oraclelinux-7-x86_64.facts",
+      "sha256": "dc31d9eb83ede026460e6b01e402bf06228652bd9bc7e03344602ad21acb0dd4",
+      "source_path": "facts/4.2/oraclelinux-7-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.2",
+      "path": "4.2/oraclelinux-8-x86_64.facts",
+      "sha256": "d80259510f3be871c776105165d6fb9673db257b678df941d926e08e50570ebf",
+      "source_path": "facts/4.2/oraclelinux-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.2",
+      "path": "4.2/oraclelinux-9-x86_64.facts",
+      "sha256": "295191364703fdfaef7ef17c1926eda6cde43c8ec3dd5cfddb14508c7b33fb18",
+      "source_path": "facts/4.2/oraclelinux-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.5",
+      "path": "4.2/popos-21.10-x86_64.facts",
+      "sha256": "cafc6c6cc4e7f093cd64676019998ecca3b07a9fbaf72d8baf42c669e9e7d062",
+      "source_path": "facts/4.2/popos-21.10-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.14",
+      "path": "4.2/redhat-8-x86_64.facts",
+      "sha256": "6b89f10a048031c6aa0775973428b6dd6997a6aca85aef9a3d90cb45321edf8c",
+      "source_path": "facts/4.2/redhat-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.14",
+      "path": "4.2/redhat-9-x86_64.facts",
+      "sha256": "4e68fe113af69524d131397667226a7fa1e01143cf32af30e663612670cea86a",
+      "source_path": "facts/4.2/redhat-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.5",
+      "path": "4.2/rocky-8-x86_64.facts",
+      "sha256": "2aa9dc7c250d9eed77c825a1acc74c5e2c141c2592043cd8eddf5a6a67bf56e0",
+      "source_path": "facts/4.2/rocky-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.14",
+      "path": "4.2/rocky-9-x86_64.facts",
+      "sha256": "c856dbde24337f9da12b5061f417d7420994147853c3debef6aca1d2deb9b9e3",
+      "source_path": "facts/4.2/rocky-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.2",
+      "path": "4.2/scientific-7-x86_64.facts",
+      "sha256": "e17122746222a32922560c80ce9af4ee8b363a51ee341218296acad18892f755",
+      "source_path": "facts/4.2/scientific-7-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.14",
+      "path": "4.2/sles-12-x86_64.facts",
+      "sha256": "e032bc8eeefc0190e751d0559013dd31a41aec25d57fbb68e662bb7fcaa5f329",
+      "source_path": "facts/4.2/sles-12-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.7",
+      "path": "4.2/sles-15-x86_64.facts",
+      "sha256": "9935d661688ac0f2af9e15fc7eb000df28fb84d5e0f10b80feac64f13a101673",
+      "source_path": "facts/4.2/sles-15-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.5",
+      "path": "4.2/ubuntu-18.04-x86_64.facts",
+      "sha256": "ab3d53da3d4d27c4ec078badef4a6020370faa0649f1609da2a4f82654144286",
+      "source_path": "facts/4.2/ubuntu-18.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.5",
+      "path": "4.2/ubuntu-20.04-x86_64.facts",
+      "sha256": "ff9564454ae452bb186db1194c8d31040a9159f73c3937ec8a990c2abd0f4c6b",
+      "source_path": "facts/4.2/ubuntu-20.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.5",
+      "path": "4.2/ubuntu-21.04-x86_64.facts",
+      "sha256": "56f5f9f9c0cea0e061ef1832d0f4ad08c8473f4733d28227adb678a14e67b6ab",
+      "source_path": "facts/4.2/ubuntu-21.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.5",
+      "path": "4.2/ubuntu-21.10-x86_64.facts",
+      "sha256": "ddb4877842b5af373c628368175c73462c99f5439c4ffa1caac73d0622a63b4b",
+      "source_path": "facts/4.2/ubuntu-21.10-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.14",
+      "path": "4.2/ubuntu-22.04-aarch64.facts",
+      "sha256": "8a91839e14c521c7829398409e4e97370326bddb76c5e0cb3409120d6cda2bb0",
+      "source_path": "facts/4.2/ubuntu-22.04-aarch64.facts"
+    },
+    {
+      "facterversion": "4.2.14",
+      "path": "4.2/ubuntu-22.04-x86_64.facts",
+      "sha256": "c1de58762e03e1f3a6cfbff02f92d03a291a8da080ba6daed128281d5cbd5f84",
+      "source_path": "facts/4.2/ubuntu-22.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.14",
+      "path": "4.2/ubuntu-22.10-x86_64.facts",
+      "sha256": "ad4c802e0f55490c68b7326f9342908c3dfcd5e5cc02b82d991370cab4f2ffbc",
+      "source_path": "facts/4.2/ubuntu-22.10-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.14",
+      "path": "4.2/ubuntu-24.04-aarch64.facts",
+      "sha256": "5bcdf948ad775071343cee4dc2287240dccae547388dc3aa918b9d5385450242",
+      "source_path": "facts/4.2/ubuntu-24.04-aarch64.facts"
+    },
+    {
+      "facterversion": "4.2.14",
+      "path": "4.2/ubuntu-24.04-x86_64.facts",
+      "sha256": "9fa2d7c02e76f95f9ef49aa640c46331027f3c0551deeb212de0d25a354e720d",
+      "source_path": "facts/4.2/ubuntu-24.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.11",
+      "path": "4.2/windows-10-x86_64.facts",
+      "sha256": "cc881dbbf70dc513a27e4232c452a78e0389595756cf6e5b3857e233be07fccf",
+      "source_path": "facts/4.2/windows-10-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.11",
+      "path": "4.2/windows-11-x86_64.facts",
+      "sha256": "d4c5e33afd3df30a88e6ecdc84ef8f24e0cb63368a9c64341b3e7f78a1045aa4",
+      "source_path": "facts/4.2/windows-11-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.11",
+      "path": "4.2/windows-2012r2-x86_64.facts",
+      "sha256": "1698e5fa03fd3d5bc0fd4b3a82802ffbca1b47df120326059cc55e5c500948dc",
+      "source_path": "facts/4.2/windows-2012 r2-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.11",
+      "path": "4.2/windows-2012-x86_64.facts",
+      "sha256": "c3043d22fd452148d3ff028bfb56ba2243775f1bab272d9af04106dee81e8dd0",
+      "source_path": "facts/4.2/windows-2012-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.11",
+      "path": "4.2/windows-2016-core-x86_64.facts",
+      "sha256": "0088d95623e4d5f33499d7714fbccb9193efaf7368385e7362e9340725ba7388",
+      "source_path": "facts/4.2/windows-2016-core-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.11",
+      "path": "4.2/windows-2016-x86_64.facts",
+      "sha256": "00ad9c0143f7733faecf89fcd4c5bee73676f8cd01198949f8edfcd7dfec1e7f",
+      "source_path": "facts/4.2/windows-2016-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.11",
+      "path": "4.2/windows-2019-core-x86_64.facts",
+      "sha256": "88fab1f06e4a25733e2fc1c309112219e5708c0af1c4a36f274047db30f98557",
+      "source_path": "facts/4.2/windows-2019-core-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.11",
+      "path": "4.2/windows-2019-x86_64.facts",
+      "sha256": "a505434c710e30da156b615d98dde21c68fbb7dd3b586085728b12668e26be3b",
+      "source_path": "facts/4.2/windows-2019-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.11",
+      "path": "4.2/windows-2022-core-x86_64.facts",
+      "sha256": "ec351eca12ba0c1dcf6680bf1e532f2f77db87823421b7feb2b8f6c00603b237",
+      "source_path": "facts/4.2/windows-2022-core-x86_64.facts"
+    },
+    {
+      "facterversion": "4.2.11",
+      "path": "4.2/windows-2022-x86_64.facts",
+      "sha256": "51cc49faf21099191c9ce5b4a8d716559da3caebf93bfa205d94a452b5c1e3c7",
+      "source_path": "facts/4.2/windows-2022-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/almalinux-8-x86_64.facts",
+      "sha256": "66e7b5e42e529ce2d6f704d3abd9aeaf629992cff34eb79be2d30f4d3d94a66d",
+      "source_path": "facts/4.3/almalinux-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/almalinux-9-x86_64.facts",
+      "sha256": "c31df0e8634aa8814edfe6a0126c45a44ab57c6a1df70a741354e42086cc38d8",
+      "source_path": "facts/4.3/almalinux-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/amazon-2-x86_64.facts",
+      "sha256": "dd713435ab6779defc6655b970d431d921cc611253cd90587e69571f5f8b58ac",
+      "source_path": "facts/4.3/amazon-2-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/archlinux-x86_64.facts",
+      "sha256": "37f48429073f19e6b48bfa4e309b0cc5f40cb88aa0cc4796745ba4cd287aaf70",
+      "source_path": "facts/4.3/archlinux-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/centos-10-x86_64.facts",
+      "sha256": "abe2cd65707ba715e5ad6ebd9f616ff2588afad6e93fde615da4546ef2516631",
+      "source_path": "facts/4.3/centos-10-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/centos-9-x86_64.facts",
+      "sha256": "cc77e5c369bf55fc4124c06f5b662392b8398b4e8571dd310b5ee0c3847233ec",
+      "source_path": "facts/4.3/centos-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/debian-11-x86_64.facts",
+      "sha256": "66013b16c7d16f7fd6532e9af4e608d8fd41060437cd9e7bea5647356dc77bb7",
+      "source_path": "facts/4.3/debian-11-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/debian-12-i386.facts",
+      "sha256": "32a472855c8c3d7fbcbdf0301dab366011e1c76c3af943409ebffe1805529d92",
+      "source_path": "facts/4.3/debian-12-i386.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/debian-12-x86_64.facts",
+      "sha256": "6e6cd3426fd8393daa4b17c803fb9dad136af437f1577d1cd80d518a701ce3fa",
+      "source_path": "facts/4.3/debian-12-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/fedora-36-x86_64.facts",
+      "sha256": "62cf7d9cf99b39c1e1b44fbbf399b747b88e73a77987dc1f59442d74fcb1a43e",
+      "source_path": "facts/4.3/fedora-36-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/fedora-37-x86_64.facts",
+      "sha256": "1f49ea3113bc994d4330d680149676b3bd9d323e335f711c04dd1c2600cdb9a2",
+      "source_path": "facts/4.3/fedora-37-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/fedora-38-x86_64.facts",
+      "sha256": "6dca41eac037702a98c4bd240d65830b5e1b3e59761763ed3b4ea24ba5774540",
+      "source_path": "facts/4.3/fedora-38-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/fedora-39-x86_64.facts",
+      "sha256": "263e47a421456d6ee4bf823b7840453e5f75b92c52f0a7b5c13b804ef4fcc73c",
+      "source_path": "facts/4.3/fedora-39-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/fedora-40-x86_64.facts",
+      "sha256": "5b41e3b97f94f367f66df2532c28a4bcdaa5a89ee87701cf8cd856edab7da035",
+      "source_path": "facts/4.3/fedora-40-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/fedora-41-x86_64.facts",
+      "sha256": "cb91b9872149a53b3559cd79c3eeea2bfc48781eb6603c6674c6b78aae69ff44",
+      "source_path": "facts/4.3/fedora-41-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/freebsd-13-x86_64.facts",
+      "sha256": "bba8e6440ee654ecc151450012595874ce625d9ff3d77932542e321e1a432129",
+      "source_path": "facts/4.3/freebsd-13-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/freebsd-14-x86_64.facts",
+      "sha256": "c6c9965230caded4322804f01ebd3ec2b4e8c015c1e4e0e368f7fd939d64d7c5",
+      "source_path": "facts/4.3/freebsd-14-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/gentoo-2-x86_64.facts",
+      "sha256": "cfc50d0f2482df8e4ad8e3fecfcc3822a5247c38faa928153cdbdda91763e62c",
+      "source_path": "facts/4.3/gentoo-2-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/opensuse-15-x86_64.facts",
+      "sha256": "7701707d51194f426257dc50ece773b9c5a3ed002e4164f16d4949092f80f613",
+      "source_path": "facts/4.3/opensuse-15-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/oraclelinux-8-x86_64.facts",
+      "sha256": "b16c2e978adfa3cd2810929846eb7036a0351c5f36a6e801437c7f3d0bf159d6",
+      "source_path": "facts/4.3/oraclelinux-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/oraclelinux-9-x86_64.facts",
+      "sha256": "bfc1e74d6fe0c5d169f8448c3ec66a38bdc65599cae387b40c8531b25086cf43",
+      "source_path": "facts/4.3/oraclelinux-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/redhat-8-x86_64.facts",
+      "sha256": "c2ce06600d08d1711cff0495282a4871b29a56e0f84734313085eb99c86a7d23",
+      "source_path": "facts/4.3/redhat-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/redhat-9-x86_64.facts",
+      "sha256": "ea11b41c34d643c6e44a8afb80a86b90fd608ba089d2c33424143b2f3aaae1ef",
+      "source_path": "facts/4.3/redhat-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/rocky-8-x86_64.facts",
+      "sha256": "57c448aac9308d25e5973638ff56ae770675e12cce57f27e9b0e63984a2d77e1",
+      "source_path": "facts/4.3/rocky-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/rocky-9-x86_64.facts",
+      "sha256": "eb3c2d288293270ab18b69016ee6eb683ea9c504a5924597dc85eccbffa7bb27",
+      "source_path": "facts/4.3/rocky-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/sles-12-x86_64.facts",
+      "sha256": "4d284ecd7490c5c2b291e75bfeded775c8c94bbc52f7b2ab6615822771ef4d4b",
+      "source_path": "facts/4.3/sles-12-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/ubuntu-18.04-x86_64.facts",
+      "sha256": "23d03526996d526df749b5ae75d774a28d0369cac8c6404407c7d1424183fa7a",
+      "source_path": "facts/4.3/ubuntu-18.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/ubuntu-20.04-x86_64.facts",
+      "sha256": "2d8bb0d6f537acc8fcef0cd9e22123b2cd266884641d63417a5f1541a0fd8499",
+      "source_path": "facts/4.3/ubuntu-20.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/ubuntu-22.04-aarch64.facts",
+      "sha256": "fc56de001b25c07d4349eea54e1829b42d2a59d5587fc202eeb8a5956f2516f4",
+      "source_path": "facts/4.3/ubuntu-22.04-aarch64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/ubuntu-22.04-x86_64.facts",
+      "sha256": "83f8d451717db7467ad7a55b470f1ddf8a136085482000ffb876fbc2d989cf0c",
+      "source_path": "facts/4.3/ubuntu-22.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/ubuntu-24.04-aarch64.facts",
+      "sha256": "9e31012d26d4d018add5d53c2fb68bd9447486490c41526ab7b6782f0308e68a",
+      "source_path": "facts/4.3/ubuntu-24.04-aarch64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/ubuntu-24.04-x86_64.facts",
+      "sha256": "d60c84d8701bbe945e704156dcc89930809b4de3cce0f2e150fc5bd5978672c8",
+      "source_path": "facts/4.3/ubuntu-24.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/windows-10-x86_64.facts",
+      "sha256": "19de99043606f0d51012df7f99cd91ba8e0924a00d7dcf96c851d98f75872602",
+      "source_path": "facts/4.3/windows-10-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/windows-11-x86_64.facts",
+      "sha256": "3b2706a8c43069055a6424da7012b9e3b02f6cb01cb31699c8e7fe9ada66acc5",
+      "source_path": "facts/4.3/windows-11-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/windows-2012r2-x86_64.facts",
+      "sha256": "01f42345b42024ff62db76a64d067e89c1c6de535cb61b221aaaf40021789271",
+      "source_path": "facts/4.3/windows-2012 r2-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/windows-2012-x86_64.facts",
+      "sha256": "81e9eed51e30b3cffa3e06b127f1f370447317713c0ca5d7f4417937c5415f68",
+      "source_path": "facts/4.3/windows-2012-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/windows-2016-core-x86_64.facts",
+      "sha256": "b53c0a2c736fc59d8a5e3eb0c5caf50a6c98bba75efccb310c0046320662a2b2",
+      "source_path": "facts/4.3/windows-2016-core-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/windows-2016-x86_64.facts",
+      "sha256": "55c23477310840b376391e148570dcde8e5b8e49aa4dc8cafc41ba95b693ff63",
+      "source_path": "facts/4.3/windows-2016-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/windows-2019-core-x86_64.facts",
+      "sha256": "11a9c85715f1d750f657ec47ef7beb4c61a4337255510c47ae49196a02b71595",
+      "source_path": "facts/4.3/windows-2019-core-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/windows-2019-x86_64.facts",
+      "sha256": "038da669c69a815a109e14a5d7dd2716ec26fd8c385b045d85b15e62719f0519",
+      "source_path": "facts/4.3/windows-2019-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/windows-2022-core-x86_64.facts",
+      "sha256": "3080b280c036b9c12986a8c403234f2950842914dfba626e201c94c21da765a3",
+      "source_path": "facts/4.3/windows-2022-core-x86_64.facts"
+    },
+    {
+      "facterversion": "4.3.1",
+      "path": "4.3/windows-2022-x86_64.facts",
+      "sha256": "31ed4c32cca24492d14747bc6c1a10096d6b9b02d951d00893fe1aaf11e41af1",
+      "source_path": "facts/4.3/windows-2022-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.2",
+      "path": "4.4/almalinux-8-x86_64.facts",
+      "sha256": "3fd40260b1d83e7dfb9438b67e74f55692bbc1f1b10b6cb15358942673908e07",
+      "source_path": "facts/4.4/almalinux-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.2",
+      "path": "4.4/almalinux-9-x86_64.facts",
+      "sha256": "a4251221248f04167105434293be5ea781f9607656b1ce1455d095f43ce9d9a8",
+      "source_path": "facts/4.4/almalinux-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.3",
+      "path": "4.4/amazon-2-x86_64.facts",
+      "sha256": "4bec3878d184ed1bdbe690225b59a7207d06b12a2b9c90899b28f4271bc504cb",
+      "source_path": "facts/4.4/amazon-2-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.3",
+      "path": "4.4/archlinux-x86_64.facts",
+      "sha256": "6b2f43bd2c139d879a172fa5daddc9027f632a1ceffc571349ac6e059255b050",
+      "source_path": "facts/4.4/archlinux-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.3",
+      "path": "4.4/centos-10-x86_64.facts",
+      "sha256": "70073648a4e82cbc1a3d77d1c215e5b9c4e2f405b2b5853d136e390dc394c738",
+      "source_path": "facts/4.4/centos-10-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.2",
+      "path": "4.4/centos-9-x86_64.facts",
+      "sha256": "91efa1f3d590017fb4774b8b2bcf860f11fc27755ff47b907a30175c264ce5fe",
+      "source_path": "facts/4.4/centos-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.2",
+      "path": "4.4/debian-11-x86_64.facts",
+      "sha256": "4c2788157f5ac681a21b0efa9577533adb076d662ca678673552749f0ed4da25",
+      "source_path": "facts/4.4/debian-11-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.1",
+      "path": "4.4/debian-12-i386.facts",
+      "sha256": "aea64ca5fc1fd269b3471d554dae71f2db2c86495953fe38aa844530795d379c",
+      "source_path": "facts/4.4/debian-12-i386.facts"
+    },
+    {
+      "facterversion": "4.4.1",
+      "path": "4.4/debian-12-x86_64.facts",
+      "sha256": "5173489be3404d1cd926ffa43c8da0e0094d6c932b93c4c4970e7200ebc5e751",
+      "source_path": "facts/4.4/debian-12-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.3",
+      "path": "4.4/fedora-36-x86_64.facts",
+      "sha256": "595c351a0b1ab7409b39261f9ff46e8c74fea57dffd1c0e7747f98435a53e007",
+      "source_path": "facts/4.4/fedora-36-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.3",
+      "path": "4.4/fedora-37-x86_64.facts",
+      "sha256": "314ff8c9b376bfa197cd32ed158875c7120396296a58c1842eeb6c3f03b54fc0",
+      "source_path": "facts/4.4/fedora-37-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.3",
+      "path": "4.4/fedora-38-x86_64.facts",
+      "sha256": "c68e38ef4acdc5a9540ceb2fe73b2f99e8eca056559132634e86b6b2e7f6fc38",
+      "source_path": "facts/4.4/fedora-38-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.3",
+      "path": "4.4/fedora-39-x86_64.facts",
+      "sha256": "461247cc784b541d162bb61cb994088cbd8d562dcb4ff0033ae2ab2cc898cc00",
+      "source_path": "facts/4.4/fedora-39-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.3",
+      "path": "4.4/fedora-40-x86_64.facts",
+      "sha256": "25c46ebda49ebd742b5ee2c1ae83ce96926d82eb85c4b5d8b36bcc4fe2608c8a",
+      "source_path": "facts/4.4/fedora-40-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.3",
+      "path": "4.4/fedora-41-x86_64.facts",
+      "sha256": "ee2746ed54f5e7b3e741877669c17599462f87f883c9317b067d24a42c7b9cac",
+      "source_path": "facts/4.4/fedora-41-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.3",
+      "path": "4.4/freebsd-13-x86_64.facts",
+      "sha256": "74330b33e97cfd0a776d76716cd06899dfead8dbfc7aa539b8e22b02e9552187",
+      "source_path": "facts/4.4/freebsd-13-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.3",
+      "path": "4.4/freebsd-14-x86_64.facts",
+      "sha256": "7b80e234129140afefe8542e1ace5ca82f4b2116762cf0cbccb722572c87e9b2",
+      "source_path": "facts/4.4/freebsd-14-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.3",
+      "path": "4.4/gentoo-2-x86_64.facts",
+      "sha256": "1050b1e4b18d4607879f4013635bc2d66496403678e23cb1bf41a4466bf4cdd5",
+      "source_path": "facts/4.4/gentoo-2-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.0",
+      "path": "4.4/opensuse-15-x86_64.facts",
+      "sha256": "8be63f00880bd7810a7d6332cc3236c7e1ee6ff7959e97d5b5e0af2fa62cadbf",
+      "source_path": "facts/4.4/opensuse-15-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.2",
+      "path": "4.4/oraclelinux-8-x86_64.facts",
+      "sha256": "99121d2bed1eb64988f863a8d048e1deb5bcd136e6bb92ca5628e9b76ccf2c94",
+      "source_path": "facts/4.4/oraclelinux-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.2",
+      "path": "4.4/oraclelinux-9-x86_64.facts",
+      "sha256": "bb23bb710bfcbdce595f24b086e38d024e24fc1c78997a45da2837080573e447",
+      "source_path": "facts/4.4/oraclelinux-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.2",
+      "path": "4.4/redhat-8-x86_64.facts",
+      "sha256": "b62a465c649fddea9822999845556a61eee6d6b0bfcfa912367c95dccb78fc5f",
+      "source_path": "facts/4.4/redhat-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.2",
+      "path": "4.4/redhat-9-x86_64.facts",
+      "sha256": "04656feba9cf2a9715fcbc51aa5b23186631694e9bb7b0f0f4d051c720daaf23",
+      "source_path": "facts/4.4/redhat-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.0",
+      "path": "4.4/rocky-8-x86_64.facts",
+      "sha256": "824eedfc04a335ea0ba7019e5afb1e750c164ebfe2c7ded484eb7a8ca36e98aa",
+      "source_path": "facts/4.4/rocky-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.2",
+      "path": "4.4/rocky-9-x86_64.facts",
+      "sha256": "239cabe3545b1ec166e874b650f644d27d4259302e1c962aeaa9312e36678860",
+      "source_path": "facts/4.4/rocky-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.0",
+      "path": "4.4/sles-12-x86_64.facts",
+      "sha256": "7c0acf40d91866ab08a7321b650f56ac06d7d8a812e50d0903289db269d95830",
+      "source_path": "facts/4.4/sles-12-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.0",
+      "path": "4.4/ubuntu-18.04-x86_64.facts",
+      "sha256": "2edeff87268eb954d9f51aea87d57308e7662d7363420af2c6c138a8984c5642",
+      "source_path": "facts/4.4/ubuntu-18.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.0",
+      "path": "4.4/ubuntu-20.04-x86_64.facts",
+      "sha256": "8d37022f5cb2e8bed0fdb7772c883884e10115bb40ca4cd385c0a5eb717d1781",
+      "source_path": "facts/4.4/ubuntu-20.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.3",
+      "path": "4.4/ubuntu-22.04-aarch64.facts",
+      "sha256": "656d0d84b3dd31734156f9f7ecf9d32bff9961e3e65f443aa3e81d9a06c44fc2",
+      "source_path": "facts/4.4/ubuntu-22.04-aarch64.facts"
+    },
+    {
+      "facterversion": "4.4.2",
+      "path": "4.4/ubuntu-22.04-x86_64.facts",
+      "sha256": "9af08a5e615f9c5ff8649669aa3c9fbacd3798966f43262c0785690994dd4559",
+      "source_path": "facts/4.4/ubuntu-22.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.3",
+      "path": "4.4/ubuntu-24.04-aarch64.facts",
+      "sha256": "ec31a020a02ef4386c201dbb99701ca0cbceffc249e6128dc91d8aaa80d673a0",
+      "source_path": "facts/4.4/ubuntu-24.04-aarch64.facts"
+    },
+    {
+      "facterversion": "4.4.3",
+      "path": "4.4/ubuntu-24.04-x86_64.facts",
+      "sha256": "7cd4afbe8a11d31adfef60a64adc20442c801c48c6fe142f5d199aa02c8a6654",
+      "source_path": "facts/4.4/ubuntu-24.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.0",
+      "path": "4.4/windows-10-x86_64.facts",
+      "sha256": "d5a1f7cdc57fd59fed083db604d8836632d02d5b1c4dbc4bbb570980a8aab305",
+      "source_path": "facts/4.4/windows-10-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.0",
+      "path": "4.4/windows-11-x86_64.facts",
+      "sha256": "990d9b32a0ba07a3497e6b2c8c5daad24285d50386fd2535101f8371d7a832cc",
+      "source_path": "facts/4.4/windows-11-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.0",
+      "path": "4.4/windows-2012r2-x86_64.facts",
+      "sha256": "77a31fcb991c7c9414e03db844ee434a9d2de8018241e48245d9355bc6cb419a",
+      "source_path": "facts/4.4/windows-2012 r2-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.0",
+      "path": "4.4/windows-2012-x86_64.facts",
+      "sha256": "0c4c006dea38687611a6834b4df568c9c99c51472843ae2a5712c3bf9f9b0233",
+      "source_path": "facts/4.4/windows-2012-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.0",
+      "path": "4.4/windows-2016-core-x86_64.facts",
+      "sha256": "342dd2206a61fc82ac6b83ef94fa18a9cb9872d50a9beb46793590dece73a62c",
+      "source_path": "facts/4.4/windows-2016-core-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.0",
+      "path": "4.4/windows-2016-x86_64.facts",
+      "sha256": "f48a8e4a2b03fb61ff59488f61748839b4757348a82b797672e06586908d8ee0",
+      "source_path": "facts/4.4/windows-2016-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.0",
+      "path": "4.4/windows-2019-core-x86_64.facts",
+      "sha256": "4d7a8c54458992bef824c07fb73f33a9835f80909be9aea03787fec149f79e89",
+      "source_path": "facts/4.4/windows-2019-core-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.0",
+      "path": "4.4/windows-2019-x86_64.facts",
+      "sha256": "72841e639130ce78b30518074db88068b2d73232269ddf8831fd66a980ee791d",
+      "source_path": "facts/4.4/windows-2019-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.0",
+      "path": "4.4/windows-2022-core-x86_64.facts",
+      "sha256": "7813601605c47ebdb3de80bfb7bfe1d8780551743338b0d0263738de1af57059",
+      "source_path": "facts/4.4/windows-2022-core-x86_64.facts"
+    },
+    {
+      "facterversion": "4.4.0",
+      "path": "4.4/windows-2022-x86_64.facts",
+      "sha256": "9d70113ddad0b78a316553a49ec2e0e11fb4c3eada21934b7aa74b58c66daae4",
+      "source_path": "facts/4.4/windows-2022-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.2",
+      "path": "4.5/almalinux-8-x86_64.facts",
+      "sha256": "7c5046c85cceffcac602f5d312783898bac747cd2a5338ab4f95aec4db8ec4fa",
+      "source_path": "facts/4.5/almalinux-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.2",
+      "path": "4.5/almalinux-9-x86_64.facts",
+      "sha256": "853ca2269f929521e6fcb53e6ee7ad2b061c116da1a8773e63aa5c9af36787d8",
+      "source_path": "facts/4.5/almalinux-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.0",
+      "path": "4.5/amazon-2-x86_64.facts",
+      "sha256": "94b1aa3ee2690b22251ec398cec0f9fc38da95cf895ed55f16980fe0f8a5e6d4",
+      "source_path": "facts/4.5/amazon-2-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.2",
+      "path": "4.5/archlinux-x86_64.facts",
+      "sha256": "1e9ed98d032f82f9ad32e2aab429aed4e54158f03f576a32d30e34bdc901ce36",
+      "source_path": "facts/4.5/archlinux-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.2",
+      "path": "4.5/centos-10-x86_64.facts",
+      "sha256": "855800bcd6d715b6d2a366677f384a730ab6127c0f3a14716370303e41469d6f",
+      "source_path": "facts/4.5/centos-10-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.2",
+      "path": "4.5/centos-9-x86_64.facts",
+      "sha256": "abb8a069d00e96b8972744478755d101ac849ffceeb0380051e96de94cf71bab",
+      "source_path": "facts/4.5/centos-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.2",
+      "path": "4.5/debian-11-x86_64.facts",
+      "sha256": "81cbf55de64ca33f72cd0dc690b60f47408a19addc43beafcbdb8e6245af6ffb",
+      "source_path": "facts/4.5/debian-11-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.2",
+      "path": "4.5/debian-12-x86_64.facts",
+      "sha256": "052fe85798b26f696eebc16c3e7b7cd3f16e1cf65b464e7cfb6745e041ae2815",
+      "source_path": "facts/4.5/debian-12-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.2",
+      "path": "4.5/fedora-36-x86_64.facts",
+      "sha256": "282f11eca7cfe911aee09f3dc5759483062f33d10ec301776f412941fa49c142",
+      "source_path": "facts/4.5/fedora-36-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.2",
+      "path": "4.5/fedora-37-x86_64.facts",
+      "sha256": "79d632677bb0d9432d2214952a841012b9fcef4aeb8b0a81ec2601d720a47010",
+      "source_path": "facts/4.5/fedora-37-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.2",
+      "path": "4.5/fedora-38-x86_64.facts",
+      "sha256": "d67c2f2a13f5a7368a72a96d6bc0e0721cbec9ac794f1b84f750a1043908c6cc",
+      "source_path": "facts/4.5/fedora-38-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.2",
+      "path": "4.5/fedora-39-x86_64.facts",
+      "sha256": "c19bc40c654c4daeac1bbd6a37377afd002041e9b4ca0e4b37207170b7d8069f",
+      "source_path": "facts/4.5/fedora-39-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.2",
+      "path": "4.5/fedora-40-x86_64.facts",
+      "sha256": "3499f63e292170db0211ea187900c62a46085299bc5858e908fc784bda0245f7",
+      "source_path": "facts/4.5/fedora-40-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.2",
+      "path": "4.5/fedora-41-x86_64.facts",
+      "sha256": "a51bfe7542c871f155e6f37555e278f3449d821f2caa66e589533167837371eb",
+      "source_path": "facts/4.5/fedora-41-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.0",
+      "path": "4.5/freebsd-12-x86_64.facts",
+      "sha256": "8aa2e0b317d92d513b7ca671ef2a922eca0b0e69e22f69f44f1c9306e7f8a739",
+      "source_path": "facts/4.5/freebsd-12-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.1",
+      "path": "4.5/freebsd-13-x86_64.facts",
+      "sha256": "692793cc0d6eee41e0ae8d753f4d9621516030f63484cded4eb078a011f69fd2",
+      "source_path": "facts/4.5/freebsd-13-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.2",
+      "path": "4.5/freebsd-14-x86_64.facts",
+      "sha256": "33b5df191034cd21e0927736051ba4fe72950bf426740ab09cfc424735cea2cd",
+      "source_path": "facts/4.5/freebsd-14-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.2",
+      "path": "4.5/gentoo-2-x86_64.facts",
+      "sha256": "6dd06c4d2ae96adc7e269e128158efc352526a7a18fbf807533fb3838a091daf",
+      "source_path": "facts/4.5/gentoo-2-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.0",
+      "path": "4.5/opensuse-15-x86_64.facts",
+      "sha256": "f93d33f66822dfb5fa3c82c22bc2d56581e18d5a5be59f67321203b99d20eafa",
+      "source_path": "facts/4.5/opensuse-15-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.2",
+      "path": "4.5/oraclelinux-8-x86_64.facts",
+      "sha256": "507d6dd3e167bbd66df62a8fb5f404d7629799d280bb5800cb05457dd4824719",
+      "source_path": "facts/4.5/oraclelinux-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.2",
+      "path": "4.5/oraclelinux-9-x86_64.facts",
+      "sha256": "a559be848e543771c80c0786e082a10de29a25666600b61581351b4ffd81d9fe",
+      "source_path": "facts/4.5/oraclelinux-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.2",
+      "path": "4.5/redhat-8-x86_64.facts",
+      "sha256": "f8def9ad472ab0cce6e87c7ef1bf138008e984318a2d461690ad889c976b75f2",
+      "source_path": "facts/4.5/redhat-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.2",
+      "path": "4.5/redhat-9-x86_64.facts",
+      "sha256": "7f66f64877123baba8428dc6c80d1eeefd6ae2f699fa40c719836f39f22ac798",
+      "source_path": "facts/4.5/redhat-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.0",
+      "path": "4.5/rocky-8-x86_64.facts",
+      "sha256": "04da9cbd3170387cab90cccda8925e57e1b51f29604b596e7fb9a1780ce220a3",
+      "source_path": "facts/4.5/rocky-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.2",
+      "path": "4.5/rocky-9-x86_64.facts",
+      "sha256": "755620e4f50829018e288234f9aff6d4a6512635d034792a81764ff8c23dcf3a",
+      "source_path": "facts/4.5/rocky-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.0",
+      "path": "4.5/ubuntu-18.04-x86_64.facts",
+      "sha256": "ed28584b3252d0c216023da3ac8c798c6f0924f114a3369eabcf9cbe6412b43b",
+      "source_path": "facts/4.5/ubuntu-18.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.0",
+      "path": "4.5/ubuntu-20.04-x86_64.facts",
+      "sha256": "5990716727425360e2322c38d543bcc070c9f78d2500fd40e15e483102d3cf18",
+      "source_path": "facts/4.5/ubuntu-20.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.2",
+      "path": "4.5/ubuntu-22.04-aarch64.facts",
+      "sha256": "5a4c38c97e02375291f0313f15baa0708136ffe78ee47fe2609026c43f47fb74",
+      "source_path": "facts/4.5/ubuntu-22.04-aarch64.facts"
+    },
+    {
+      "facterversion": "4.5.2",
+      "path": "4.5/ubuntu-22.04-x86_64.facts",
+      "sha256": "9538c911c63912285fdd652012af27edec581de3a6677b2f0ca9a7c09b072294",
+      "source_path": "facts/4.5/ubuntu-22.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.2",
+      "path": "4.5/ubuntu-24.04-aarch64.facts",
+      "sha256": "88066d73b684e8349f3361aeab8149cbfbe8a65f0cff62059127c01de7c27a2d",
+      "source_path": "facts/4.5/ubuntu-24.04-aarch64.facts"
+    },
+    {
+      "facterversion": "4.5.2",
+      "path": "4.5/ubuntu-24.04-x86_64.facts",
+      "sha256": "89b571c14748420c8cca35b143b7ae06cd6256a12531bc746c60ead23e7c7971",
+      "source_path": "facts/4.5/ubuntu-24.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.2",
+      "path": "4.5/windows-10-x86_64.facts",
+      "sha256": "b34ab8a9d4e45f629d3568c927658688bf6fc55fad87c20faef949a405c46da6",
+      "source_path": "facts/4.5/windows-10-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.2",
+      "path": "4.5/windows-11-x86_64.facts",
+      "sha256": "44b74d15f73af2bbc7d4830deb2914f7abef984f63e85297ff408531622e2622",
+      "source_path": "facts/4.5/windows-11-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.2",
+      "path": "4.5/windows-2019-x86_64.facts",
+      "sha256": "6f548de0a3562fcfb9c237bc9a5c990466db027957ea7c5b28d22addf3868670",
+      "source_path": "facts/4.5/windows-2019-x86_64.facts"
+    },
+    {
+      "facterversion": "4.5.2",
+      "path": "4.5/windows-2022-x86_64.facts",
+      "sha256": "d4cba032d1e20ec51af09d2170b59d1fde43a5fd555f8ccfd15110060b0fee87",
+      "source_path": "facts/4.5/windows-2022-x86_64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/almalinux-8-x86_64.facts",
+      "sha256": "c109ce631f372b9a0b66667218034dcc6f953d486c65d9e73e43d37012ece841",
+      "source_path": "facts/4.6/almalinux-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/almalinux-9-x86_64.facts",
+      "sha256": "2acc6508f509128db71107fe473cfac55ef036c438553da80d4fa1d03eaefed1",
+      "source_path": "facts/4.6/almalinux-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/amazon-2-x86_64.facts",
+      "sha256": "c90ee6ff1c265db5478ad39bf8f6f4e1d69b648c1f11b95e0cf6c72eaa1d25de",
+      "source_path": "facts/4.6/amazon-2-x86_64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/archlinux-x86_64.facts",
+      "sha256": "8e115ae6c159098ca63619c70409f8da79cd491e518494a13c022217665ad505",
+      "source_path": "facts/4.6/archlinux-x86_64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/centos-10-x86_64.facts",
+      "sha256": "49b58a00379c5b7b1a77660c4d3f6f47405b74d9a4f4e11b1a09206d10cfea62",
+      "source_path": "facts/4.6/centos-10-x86_64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/centos-9-x86_64.facts",
+      "sha256": "656276bcbd770efb4f21917575effbc31112ebb52dda345c86f83ef50181a33d",
+      "source_path": "facts/4.6/centos-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/debian-11-x86_64.facts",
+      "sha256": "a89ab6058a7093bfd5d03e21f17d650d678c0bc93d18c120e32a5b8d64a17db3",
+      "source_path": "facts/4.6/debian-11-x86_64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/debian-12-x86_64.facts",
+      "sha256": "85176774206ffcb93586dc14609d7de54b37466b5c2950c3bfe4c704d8e0cd0c",
+      "source_path": "facts/4.6/debian-12-x86_64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/fedora-36-x86_64.facts",
+      "sha256": "9b4ddd29d0f3d3edb43f520b468b5c01f1799b382a5c813eb26200c9b5dd7640",
+      "source_path": "facts/4.6/fedora-36-x86_64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/fedora-37-x86_64.facts",
+      "sha256": "0063951706c2d93501a87a4c2b1d2b176a02b75246fcfabff8d57e21f4e26253",
+      "source_path": "facts/4.6/fedora-37-x86_64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/fedora-38-x86_64.facts",
+      "sha256": "519e876a41cba5df644d2ba4dc0b44f63be3d4c205b4220236d5169c303f7077",
+      "source_path": "facts/4.6/fedora-38-x86_64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/fedora-39-x86_64.facts",
+      "sha256": "4fb2d858e32190e531061f52ee72294384459c9d2121c7fb5628cc4772c9ca52",
+      "source_path": "facts/4.6/fedora-39-x86_64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/fedora-40-x86_64.facts",
+      "sha256": "fa5a1ff11afd103602ba4d8b969e49200e003c3ef27de8c959fc9dce66e9c89a",
+      "source_path": "facts/4.6/fedora-40-x86_64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/fedora-41-x86_64.facts",
+      "sha256": "5425213a33871095b807233f7f36f7de040a1ce25ba3ae7d174248e2d1e315e4",
+      "source_path": "facts/4.6/fedora-41-x86_64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/freebsd-13-x86_64.facts",
+      "sha256": "82581d74dff6e63cab9380ef001967795bafef1731007ddba2043c9714041e07",
+      "source_path": "facts/4.6/freebsd-13-x86_64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/freebsd-14-x86_64.facts",
+      "sha256": "4fbc7056411cce5443bf489fcb73e4935be0fb301cf437839c73bfcd6cc57bc0",
+      "source_path": "facts/4.6/freebsd-14-x86_64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/gentoo-2-x86_64.facts",
+      "sha256": "31f7a2eb8f0094d533e46c123ad3049e20370e307bf71a0b10789ee67ef20809",
+      "source_path": "facts/4.6/gentoo-2-x86_64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/opensuse-15-x86_64.facts",
+      "sha256": "628708c6f5c6d3de37cff1283be77412e0ee7afd3863b1fabfde921cf0c007e4",
+      "source_path": "facts/4.6/opensuse-15-x86_64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/oraclelinux-8-x86_64.facts",
+      "sha256": "d99aba877848a3e7325c9147418cb7d596247018bc83d95f5522d04237ad0007",
+      "source_path": "facts/4.6/oraclelinux-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/oraclelinux-9-x86_64.facts",
+      "sha256": "4404738024fae9b02435164766125234b330da0ce9212c663720346cc34d24a3",
+      "source_path": "facts/4.6/oraclelinux-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/redhat-8-x86_64.facts",
+      "sha256": "9d4db255c16e146bc738eb0bd0c854bb3915a02ee7a7ff69fedd993f074ed366",
+      "source_path": "facts/4.6/redhat-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/redhat-9-x86_64.facts",
+      "sha256": "5eb32f02118d4769cf72916ca43f7d0787a46dc5e5f583bf014ea0406d45802b",
+      "source_path": "facts/4.6/redhat-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/rocky-8-x86_64.facts",
+      "sha256": "4e7f9d9aa91f45d549ec3139c6c2b7e30ee9b98a1932dad74f23f180974ff248",
+      "source_path": "facts/4.6/rocky-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/rocky-9-x86_64.facts",
+      "sha256": "bf801e1b9a9945d5fefa110ab177676408263e1d5f0917c33e11cb0660f81380",
+      "source_path": "facts/4.6/rocky-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/ubuntu-20.04-x86_64.facts",
+      "sha256": "af2ed35385530f1c95e56dda72c3af02f7ba66c89e4a1484fc09f25214e2df7e",
+      "source_path": "facts/4.6/ubuntu-20.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/ubuntu-22.04-aarch64.facts",
+      "sha256": "8c398e2e1f29de8266d635326c8db54dff13afac5fb05f9cffaede204fef6e4f",
+      "source_path": "facts/4.6/ubuntu-22.04-aarch64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/ubuntu-22.04-x86_64.facts",
+      "sha256": "c2a7d30db407209397225e3ed3f0ee7414abb6a7d301f558b4deec57b311040f",
+      "source_path": "facts/4.6/ubuntu-22.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/ubuntu-24.04-aarch64.facts",
+      "sha256": "75eefe58035bd60ecf4418b358795ba817894a42df11684d72e2e65fedc520c0",
+      "source_path": "facts/4.6/ubuntu-24.04-aarch64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/ubuntu-24.04-x86_64.facts",
+      "sha256": "15995ee905c22db141116357a866d73d6218406a28f52e70a987c8e300338dfe",
+      "source_path": "facts/4.6/ubuntu-24.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/windows-10-x86_64.facts",
+      "sha256": "08dd98c0e7e99c754f360648b39585af2d26b7b763246fd50f3679b4e9ccc9cc",
+      "source_path": "facts/4.6/windows-10-x86_64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/windows-11-x86_64.facts",
+      "sha256": "5f4bb3f34911b61c210db0867eb27e2e4b5102becfd77e7d6142c7d66fd924ef",
+      "source_path": "facts/4.6/windows-11-x86_64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/windows-2019-x86_64.facts",
+      "sha256": "bb52190464fa663cd87960d5a8efe73d325992b25f4b332549e8a2d49c62298a",
+      "source_path": "facts/4.6/windows-2019-x86_64.facts"
+    },
+    {
+      "facterversion": "4.6.1",
+      "path": "4.6/windows-2022-x86_64.facts",
+      "sha256": "0da9faaab906d1a84192ab4cda8b63892a3a05f01adf6eaead51591182dadb9f",
+      "source_path": "facts/4.6/windows-2022-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.0",
+      "path": "4.7/almalinux-8-x86_64.facts",
+      "sha256": "86e5f116cb9a44e3d370fa20619c6cfba5274801d3906a7a9291808445dd4c4a",
+      "source_path": "facts/4.7/almalinux-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.0",
+      "path": "4.7/almalinux-9-x86_64.facts",
+      "sha256": "d622a4fdefc4605461b9cf14db3b45748e20543965b4bca092c9ed73fdc3face",
+      "source_path": "facts/4.7/almalinux-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.1",
+      "path": "4.7/amazon-2-x86_64.facts",
+      "sha256": "5dd617d2d42066fdc1f85fabb8e7477fc728b21d30f8211841338b2d2c5a2140",
+      "source_path": "facts/4.7/amazon-2-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.0",
+      "path": "4.7/archlinux-x86_64.facts",
+      "sha256": "6cdd1d22021e848a3f663aa5884e70d8affaa2c961204f779cc8e053dda728b1",
+      "source_path": "facts/4.7/archlinux-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.1",
+      "path": "4.7/centos-10-x86_64.facts",
+      "sha256": "bb10fed57a29f5d7a5b429c62b73a4d9c3e062e1ab9edf170c2e55a9258dacdc",
+      "source_path": "facts/4.7/centos-10-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.0",
+      "path": "4.7/centos-9-x86_64.facts",
+      "sha256": "ada5d6015d3955015223abd331621d843f19d050046b1e3735f37c48bee1b34a",
+      "source_path": "facts/4.7/centos-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.0",
+      "path": "4.7/debian-11-x86_64.facts",
+      "sha256": "94d7f202619eabfe3ea2cc075e3519c6c9f5d7b333549673e5acd5deee1215ef",
+      "source_path": "facts/4.7/debian-11-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.0",
+      "path": "4.7/debian-12-x86_64.facts",
+      "sha256": "494b6034be6062557ac25800c5c29d8eab0be5c4b47e96e50878822f4558e400",
+      "source_path": "facts/4.7/debian-12-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.0",
+      "path": "4.7/fedora-36-x86_64.facts",
+      "sha256": "4c8457a5977f950efb228883bb93186ead4d7a2202a236b3368dc804ee5dc7c3",
+      "source_path": "facts/4.7/fedora-36-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.0",
+      "path": "4.7/fedora-37-x86_64.facts",
+      "sha256": "e1ad1ff9df5ee4b7de0e134f6419c38f109f96e669707fe1255be45bce9f7a56",
+      "source_path": "facts/4.7/fedora-37-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.0",
+      "path": "4.7/fedora-38-x86_64.facts",
+      "sha256": "e47f8554483cfa6271ee85e8e36c8dfd1744543bc0366187f3fbf26516440853",
+      "source_path": "facts/4.7/fedora-38-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.0",
+      "path": "4.7/fedora-39-x86_64.facts",
+      "sha256": "cad60ae7d95f6cb556f27e0cc0c4e5ba078220393cd9a0d0d42a983e997bc3f2",
+      "source_path": "facts/4.7/fedora-39-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.1",
+      "path": "4.7/fedora-40-x86_64.facts",
+      "sha256": "568b3869ef7ac3a618a5982dc4d87420720a37fbcee964db967b153a8b91cd6b",
+      "source_path": "facts/4.7/fedora-40-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.1",
+      "path": "4.7/fedora-41-x86_64.facts",
+      "sha256": "5ccaa0f139fc0179feba434b16370cecf0bf2094ff17a06324b22d3d322728ea",
+      "source_path": "facts/4.7/fedora-41-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.1",
+      "path": "4.7/freebsd-13-x86_64.facts",
+      "sha256": "2d3a7510d4a4c7ae78c0a78440a79acde7121cd578077adf05aa7cc577627d33",
+      "source_path": "facts/4.7/freebsd-13-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.1",
+      "path": "4.7/freebsd-14-x86_64.facts",
+      "sha256": "012c8dd8f9cc8d4fc49054fccdda90c7079595c2dcf64f8e5cb944c93622d891",
+      "source_path": "facts/4.7/freebsd-14-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.0",
+      "path": "4.7/gentoo-2-x86_64.facts",
+      "sha256": "47daf803d404b20c798eab67d84101060ec1f727997d339794bf470d4751b5ea",
+      "source_path": "facts/4.7/gentoo-2-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.0",
+      "path": "4.7/openbsd-7-x86_64.facts",
+      "sha256": "085b4384bff6e4285f99bb0d1acdcd2422f4e96529f5a865b1364e6258ec0716",
+      "source_path": "facts/4.7/openbsd-7-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.0",
+      "path": "4.7/opensuse-15-x86_64.facts",
+      "sha256": "fab1a5d971c6d3187f4d76ba4bf171e39cc1bf9e19999735c5bbab9e3896588a",
+      "source_path": "facts/4.7/opensuse-15-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.0",
+      "path": "4.7/oraclelinux-8-x86_64.facts",
+      "sha256": "199dd159f6109f790ad28b22b816de6a04c8b1c195456f697742c95a8a466258",
+      "source_path": "facts/4.7/oraclelinux-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.0",
+      "path": "4.7/oraclelinux-9-x86_64.facts",
+      "sha256": "1e5180d278cbcd381669f09c92cb43199c23a0a8b45999d7e64da51de73868db",
+      "source_path": "facts/4.7/oraclelinux-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.0",
+      "path": "4.7/redhat-8-x86_64.facts",
+      "sha256": "f44595aa364fda34c2477f32203c977dd971ff3021f162d9b7e24508029ca784",
+      "source_path": "facts/4.7/redhat-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.0",
+      "path": "4.7/redhat-9-x86_64.facts",
+      "sha256": "554ba63cded6735b35f0c7ab07822cf1469ad0220af48870aa8d98acdadb5377",
+      "source_path": "facts/4.7/redhat-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.0",
+      "path": "4.7/rocky-8-x86_64.facts",
+      "sha256": "fa830cc11e2c6034909969d0de486dfa7a6792d57814b00fd014c79ed18903b7",
+      "source_path": "facts/4.7/rocky-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.0",
+      "path": "4.7/rocky-9-x86_64.facts",
+      "sha256": "6c9c3809afbe4af4270320adb2c65e89b0aa93a1483abc6d9cdec0c59b2e576e",
+      "source_path": "facts/4.7/rocky-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.0",
+      "path": "4.7/ubuntu-20.04-x86_64.facts",
+      "sha256": "f9b9be7bb6aa19b9c5820f1d4966ab733e4d6e1cfe09efac9b9e161459f1d4db",
+      "source_path": "facts/4.7/ubuntu-20.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.1",
+      "path": "4.7/ubuntu-22.04-aarch64.facts",
+      "sha256": "b6e72fb511b3b132bfed8443757075faa5b717297d17d2c568344605cec17326",
+      "source_path": "facts/4.7/ubuntu-22.04-aarch64.facts"
+    },
+    {
+      "facterversion": "4.7.0",
+      "path": "4.7/ubuntu-22.04-x86_64.facts",
+      "sha256": "229b21fd7c59e735cc129f2e5c233b2d71bf9cb338ff4834c72270b3df7da112",
+      "source_path": "facts/4.7/ubuntu-22.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.1",
+      "path": "4.7/ubuntu-24.04-aarch64.facts",
+      "sha256": "7e351a659b5b466563dc05afb563a11fd7ff17811ade19cddf7498662424e390",
+      "source_path": "facts/4.7/ubuntu-24.04-aarch64.facts"
+    },
+    {
+      "facterversion": "4.7.1",
+      "path": "4.7/ubuntu-24.04-x86_64.facts",
+      "sha256": "31ac0b5431224453c303b61d5dc70804af37a3d8f3d5753132d54faa1f7ed522",
+      "source_path": "facts/4.7/ubuntu-24.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.0",
+      "path": "4.7/windows-10-x86_64.facts",
+      "sha256": "5a2c370e1e01120059393ab862e22462b3e75728ba58bff5f5a339bf3247237f",
+      "source_path": "facts/4.7/windows-10-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.0",
+      "path": "4.7/windows-11-x86_64.facts",
+      "sha256": "866d1c8f284e2b87ab10b7f2bda3863cf28260b8b95cd9dfb59ba37186613cdf",
+      "source_path": "facts/4.7/windows-11-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.0",
+      "path": "4.7/windows-2019-x86_64.facts",
+      "sha256": "bd7ae5f0045b68b3126a9c583120bbfabe00a81cf88716f8a1468204d3dd8baa",
+      "source_path": "facts/4.7/windows-2019-x86_64.facts"
+    },
+    {
+      "facterversion": "4.7.0",
+      "path": "4.7/windows-2022-x86_64.facts",
+      "sha256": "af16889bedbe193ca8ff2c404db4ad0426bed8588a06e81a7189d349be6af79f",
+      "source_path": "facts/4.7/windows-2022-x86_64.facts"
+    },
+    {
+      "facterversion": "4.8.0",
+      "path": "4.8/almalinux-8-x86_64.facts",
+      "sha256": "21de6bc232f6c98fbef6a11a4bee2c76c89ad13c0f65ee790a4126060f8c3cfe",
+      "source_path": "facts/4.8/almalinux-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.8.0",
+      "path": "4.8/almalinux-9-x86_64.facts",
+      "sha256": "4f93724a9295a5125dc465d43edbda62515015daf2b1428598935df8eb39eb0e",
+      "source_path": "facts/4.8/almalinux-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.8.0",
+      "path": "4.8/amazon-2-x86_64.facts",
+      "sha256": "9263fdf2be0eb95d302fbe61e3f051efbef436ed800a2010b0a9d95093290863",
+      "source_path": "facts/4.8/amazon-2-x86_64.facts"
+    },
+    {
+      "facterversion": "4.8.0",
+      "path": "4.8/centos-10-x86_64.facts",
+      "sha256": "c7ce2c782db3c74c1ea3bf9a797d6b9bda45413ed5f24ad7572dc98cc9cd0d22",
+      "source_path": "facts/4.8/centos-10-x86_64.facts"
+    },
+    {
+      "facterversion": "4.8.0",
+      "path": "4.8/centos-9-x86_64.facts",
+      "sha256": "de257d2874b9a71442191e39ba4f124649260d34107182ce36bd8fc415a9c4c7",
+      "source_path": "facts/4.8/centos-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.8.0",
+      "path": "4.8/debian-11-x86_64.facts",
+      "sha256": "0f5f4ca61816d6bb99983f35f438e96cfbefa2ee1fcea321bd7b11b24910b600",
+      "source_path": "facts/4.8/debian-11-x86_64.facts"
+    },
+    {
+      "facterversion": "4.8.0",
+      "path": "4.8/debian-12-x86_64.facts",
+      "sha256": "ca52b38a1ad24e55e08af2acd17d288981dae47308fb81a96cd4c15f5626fdcb",
+      "source_path": "facts/4.8/debian-12-x86_64.facts"
+    },
+    {
+      "facterversion": "4.8.0",
+      "path": "4.8/fedora-40-x86_64.facts",
+      "sha256": "815f462f29cd084bfe985e4464243be7a97414f09c39de1cd70819b455a2a80c",
+      "source_path": "facts/4.8/fedora-40-x86_64.facts"
+    },
+    {
+      "facterversion": "4.8.0",
+      "path": "4.8/fedora-41-x86_64.facts",
+      "sha256": "f13eb9338fdf5a71829311edef5dab6ebe6ff78278fef56381d9d2e6bd381074",
+      "source_path": "facts/4.8/fedora-41-x86_64.facts"
+    },
+    {
+      "facterversion": "4.8.0",
+      "path": "4.8/freebsd-13-x86_64.facts",
+      "sha256": "d3e0976605147a291bddf52fe4ce4de8fa59f7c46a1fe15da206a552f770c944",
+      "source_path": "facts/4.8/freebsd-13-x86_64.facts"
+    },
+    {
+      "facterversion": "4.8.0",
+      "path": "4.8/freebsd-14-x86_64.facts",
+      "sha256": "217ecca4458b6560b13a1e3144ff2ebaec78d9c57a5f3a1b9e695ef0c6345d8e",
+      "source_path": "facts/4.8/freebsd-14-x86_64.facts"
+    },
+    {
+      "facterversion": "4.8.0",
+      "path": "4.8/opensuse-15-x86_64.facts",
+      "sha256": "1f1e1ecfd533f03160236ee3e284e9d1e0142a16f0afe70bb1498d1a351c69a6",
+      "source_path": "facts/4.8/opensuse-15-x86_64.facts"
+    },
+    {
+      "facterversion": "4.8.0",
+      "path": "4.8/oraclelinux-8-x86_64.facts",
+      "sha256": "d81c76d02ada90db8f21ba538dca5b115b64a13fb35f1d1f8fd31506c8698606",
+      "source_path": "facts/4.8/oraclelinux-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.8.0",
+      "path": "4.8/oraclelinux-9-x86_64.facts",
+      "sha256": "294bd0e315e11ed03ef52476c19c679675edcfee76c5f55ae23ccdbdb3e422ed",
+      "source_path": "facts/4.8/oraclelinux-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.8.0",
+      "path": "4.8/redhat-8-x86_64.facts",
+      "sha256": "79d0904ccd175ec137072a8023d83cf4d670fb34f93c1487ce9d4b3ae78f5ca1",
+      "source_path": "facts/4.8/redhat-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.8.0",
+      "path": "4.8/redhat-9-x86_64.facts",
+      "sha256": "76aa1405c3309910a25ec7921b0f264787b55da6dd8ce4c823ba3ab1ebea6611",
+      "source_path": "facts/4.8/redhat-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.8.0",
+      "path": "4.8/rocky-8-x86_64.facts",
+      "sha256": "50115e5a9e4022c4b694e0ae0cac7841df8cc3cdc8527a937866502c942e59bd",
+      "source_path": "facts/4.8/rocky-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.8.0",
+      "path": "4.8/rocky-9-x86_64.facts",
+      "sha256": "827975834c2a6d98841e044dee68be1a5a746358413f41a7e129fb6619252112",
+      "source_path": "facts/4.8/rocky-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.8.0",
+      "path": "4.8/ubuntu-20.04-x86_64.facts",
+      "sha256": "b5c14896c10beda3b3d6f6ba7d6061bf962cb6a8f6cc2c32ac448b404c8db6e2",
+      "source_path": "facts/4.8/ubuntu-20.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.8.0",
+      "path": "4.8/ubuntu-22.04-aarch64.facts",
+      "sha256": "807059f28e8b6d3019ad02b2185ee1429e7ba9612d2ac5cc9ab1ac1e71a0c944",
+      "source_path": "facts/4.8/ubuntu-22.04-aarch64.facts"
+    },
+    {
+      "facterversion": "4.8.0",
+      "path": "4.8/ubuntu-22.04-x86_64.facts",
+      "sha256": "f0e6cb3b49a9c7867d1c354040c2e9dafc1452c94695bd0977962da13c1acc71",
+      "source_path": "facts/4.8/ubuntu-22.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.8.0",
+      "path": "4.8/ubuntu-24.04-aarch64.facts",
+      "sha256": "dce732b206d6ae6437a0796d77044d8dfe908b96364fc383c37d4b3d184f9271",
+      "source_path": "facts/4.8/ubuntu-24.04-aarch64.facts"
+    },
+    {
+      "facterversion": "4.8.0",
+      "path": "4.8/ubuntu-24.04-x86_64.facts",
+      "sha256": "a9fda45d765221ad9af503e9b082b83afebd791ef188d977c81e6641b92d84cb",
+      "source_path": "facts/4.8/ubuntu-24.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.8.0",
+      "path": "4.8/windows-10-x86_64.facts",
+      "sha256": "e829e838c28557fc62027099be092fd04d964501178a6172e956e7ae211f2038",
+      "source_path": "facts/4.8/windows-10-x86_64.facts"
+    },
+    {
+      "facterversion": "4.8.0",
+      "path": "4.8/windows-11-x86_64.facts",
+      "sha256": "798d0c07bd62480fb4e93117b5352c296474faf9cd686248d96f866c7f5497b6",
+      "source_path": "facts/4.8/windows-11-x86_64.facts"
+    },
+    {
+      "facterversion": "4.8.0",
+      "path": "4.8/windows-2022-x86_64.facts",
+      "sha256": "4e323aeb03e563abbd3e7a9941a5e3f46174710a7d661dcd57fab4adb7449a0d",
+      "source_path": "facts/4.8/windows-2022-x86_64.facts"
+    },
+    {
+      "facterversion": "4.9.0",
+      "path": "4.9/almalinux-8-x86_64.facts",
+      "sha256": "a29b80244b4b837b3dcfee2ada3f5deb962b673899c5a5bf66b9ee55717c719c",
+      "source_path": "facts/4.9/almalinux-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.9.0",
+      "path": "4.9/almalinux-9-x86_64.facts",
+      "sha256": "94c90aa9106cc305d0d9e467fa68de9b5a52d1d3194b4aef67f9120fea92412b",
+      "source_path": "facts/4.9/almalinux-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.9.0",
+      "path": "4.9/amazon-2-x86_64.facts",
+      "sha256": "d316b9cccb8fc69d2fdac07aaa473a7ce6e58450be0238e6ac8844230aa3fc98",
+      "source_path": "facts/4.9/amazon-2-x86_64.facts"
+    },
+    {
+      "facterversion": "4.9.0",
+      "path": "4.9/centos-10-x86_64.facts",
+      "sha256": "bf5affa7361ef39d3dfb00a41137d830ad57cb10cc0687e0b075b8370d77f018",
+      "source_path": "facts/4.9/centos-10-x86_64.facts"
+    },
+    {
+      "facterversion": "4.9.0",
+      "path": "4.9/centos-9-x86_64.facts",
+      "sha256": "e4cc60ea77487cb1c068b5ae1f32ffa22cd546963015b7e955686026f274852f",
+      "source_path": "facts/4.9/centos-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.9.0",
+      "path": "4.9/debian-11-x86_64.facts",
+      "sha256": "64b7f0907307bf31ed713718072cf7b127c9df2332ade5246a385093ab296527",
+      "source_path": "facts/4.9/debian-11-x86_64.facts"
+    },
+    {
+      "facterversion": "4.9.0",
+      "path": "4.9/debian-12-x86_64.facts",
+      "sha256": "494cfd42cb976d5485abe7865d38000bf1b626bbcd06ed7175f1557934ee4028",
+      "source_path": "facts/4.9/debian-12-x86_64.facts"
+    },
+    {
+      "facterversion": "4.9.0",
+      "path": "4.9/fedora-40-x86_64.facts",
+      "sha256": "9552fb72c5160dd01748b49359d7946f50fb1050975736edfda9432b0b713160",
+      "source_path": "facts/4.9/fedora-40-x86_64.facts"
+    },
+    {
+      "facterversion": "4.9.0",
+      "path": "4.9/fedora-41-x86_64.facts",
+      "sha256": "9aef852025babb7267c14ce23d45414a539260be71ace4a46404a2903bd01512",
+      "source_path": "facts/4.9/fedora-41-x86_64.facts"
+    },
+    {
+      "facterversion": "4.9.0",
+      "path": "4.9/freebsd-13-x86_64.facts",
+      "sha256": "f1e9c7b020b2da3bb2471983ef7d5d1fefe1352d593bf7da8a4e58111f2a1194",
+      "source_path": "facts/4.9/freebsd-13-x86_64.facts"
+    },
+    {
+      "facterversion": "4.9.0",
+      "path": "4.9/freebsd-14-x86_64.facts",
+      "sha256": "eb2a092ef564cdcaa13330f0fae76b32aeae404529a95884d6e57c94446354c8",
+      "source_path": "facts/4.9/freebsd-14-x86_64.facts"
+    },
+    {
+      "facterversion": "4.9.0",
+      "path": "4.9/opensuse-15-x86_64.facts",
+      "sha256": "de0c946338d1295f3c873da91c9dd6b8ab4094ea0938c018c94401a0c25becfa",
+      "source_path": "facts/4.9/opensuse-15-x86_64.facts"
+    },
+    {
+      "facterversion": "4.9.0",
+      "path": "4.9/oraclelinux-8-x86_64.facts",
+      "sha256": "19ae8304acc63eef827d0c4011eb6a4eafe7698169c118818eeaa1b67bdca4ca",
+      "source_path": "facts/4.9/oraclelinux-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.9.0",
+      "path": "4.9/oraclelinux-9-x86_64.facts",
+      "sha256": "dc1ad1439d03d163e134c9c828840678f979a207372865e503c071097254b18d",
+      "source_path": "facts/4.9/oraclelinux-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.9.0",
+      "path": "4.9/redhat-8-x86_64.facts",
+      "sha256": "a6cc846d819ff3e54cbf43aaeaf99e19891fe7c484ad0ce724a598df7969cce4",
+      "source_path": "facts/4.9/redhat-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.9.0",
+      "path": "4.9/redhat-9-x86_64.facts",
+      "sha256": "b523e725eb7f8c1c72da1a44cd61bc77807386a5f1a1d14bb1167027a6a708b8",
+      "source_path": "facts/4.9/redhat-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.9.0",
+      "path": "4.9/rocky-8-x86_64.facts",
+      "sha256": "5f981c81108a3c5170cf90237665b92c6a21ee7a3e4d9c050e6cc0c1ab690048",
+      "source_path": "facts/4.9/rocky-8-x86_64.facts"
+    },
+    {
+      "facterversion": "4.9.0",
+      "path": "4.9/rocky-9-x86_64.facts",
+      "sha256": "83b1eadc37a2674c325246e1ccc3f641c31adfcfc95ebedef7b9514cd3a96695",
+      "source_path": "facts/4.9/rocky-9-x86_64.facts"
+    },
+    {
+      "facterversion": "4.9.0",
+      "path": "4.9/ubuntu-20.04-x86_64.facts",
+      "sha256": "20907e1498f746900a9b61e7c8aae420807bceffef11aa7f61fcd23f79d9f94c",
+      "source_path": "facts/4.9/ubuntu-20.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.9.0",
+      "path": "4.9/ubuntu-22.04-aarch64.facts",
+      "sha256": "55bba3c4d7e424d2f93e195e887b8e4cbd8008a9db3cd31dd450a16c550c022f",
+      "source_path": "facts/4.9/ubuntu-22.04-aarch64.facts"
+    },
+    {
+      "facterversion": "4.9.0",
+      "path": "4.9/ubuntu-22.04-x86_64.facts",
+      "sha256": "70ae7a8e3568396bd998887cab96581d7a88fd7ea0b41beb07390b51719c1e5f",
+      "source_path": "facts/4.9/ubuntu-22.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.9.0",
+      "path": "4.9/ubuntu-24.04-aarch64.facts",
+      "sha256": "28cd16c5951b2b46d90116517ac9529441756f863c992347fce6c38e43c9acf6",
+      "source_path": "facts/4.9/ubuntu-24.04-aarch64.facts"
+    },
+    {
+      "facterversion": "4.9.0",
+      "path": "4.9/ubuntu-24.04-x86_64.facts",
+      "sha256": "822742710081b72019006195fbda0ac9e6889bae49bbe37f81fccf377651ff2e",
+      "source_path": "facts/4.9/ubuntu-24.04-x86_64.facts"
+    },
+    {
+      "facterversion": "4.9.0",
+      "path": "4.9/windows-10-x86_64.facts",
+      "sha256": "b96e344badfa13c291cccd134d8af2752c2675e82b8a32f961c4d36eb632b55c",
+      "source_path": "facts/4.9/windows-10-x86_64.facts"
+    },
+    {
+      "facterversion": "4.9.0",
+      "path": "4.9/windows-11-x86_64.facts",
+      "sha256": "243810c0cb893f91f5600f0638d5f056ba0770677472d92056b801063ef0d69f",
+      "source_path": "facts/4.9/windows-11-x86_64.facts"
+    },
+    {
+      "facterversion": "4.9.0",
+      "path": "4.9/windows-2022-x86_64.facts",
+      "sha256": "b2e129d034dd24bdf5922b10fc70a01c01666f046dc24b1d023ebc29aef312f7",
+      "source_path": "facts/4.9/windows-2022-x86_64.facts"
+    }
+  ],
+  "kept": [],
+  "renamed": [
+    {
+      "source_path": "facts/4.2/windows-2012 r2-x86_64.facts",
+      "target": "windows-2012r2-x86_64.facts"
+    },
+    {
+      "source_path": "facts/4.3/windows-2012 r2-x86_64.facts",
+      "target": "windows-2012r2-x86_64.facts"
+    },
+    {
+      "source_path": "facts/4.4/windows-2012 r2-x86_64.facts",
+      "target": "windows-2012r2-x86_64.facts"
+    }
+  ],
+  "seeded_on": "2026-11-10",
+  "skipped": [],
+  "source_commit": "883a32c168d14b512322e0f949ead07a7ebcb857",
+  "source_dirty": false,
+  "source_repo": "https://github.com/puppetlabs/facterdb-private.git",
+  "superseded": []
+}
