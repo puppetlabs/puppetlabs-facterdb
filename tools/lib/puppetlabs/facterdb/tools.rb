@@ -11,3 +11,4 @@ end
 require_relative 'tools/config'
 require_relative 'tools/scrubber'
 require_relative 'tools/normaliser'
+require_relative 'tools/validator'
