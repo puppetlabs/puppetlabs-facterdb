@@ -22,6 +22,19 @@ class Puppetlabs::FacterDB::Tools::Config
     load_seed(self.class.fetch(facts, 'seed', facts_path), facts_path)
   end
 
+  def seed_skip_reason(match)
+    major = match[1].to_i
+    return "OpenFact-numbered facterversion #{match[0]} (5.x+)" if major > @seed_major
+    return "pre-4.x facterversion #{match[0]}" if major < @seed_major
+    return nil if (@seed_min_minor..@seed_max_minor).cover?(match[2].to_i)
+
+    "facterversion #{match[0]} outside seed range #{seed_range}"
+  end
+
+  def seed_range
+    "#{@seed_major}.#{@seed_min_minor}-#{@seed_major}.#{@seed_max_minor}"
+  end
+
   private
 
   def load_seed(seed, path)
