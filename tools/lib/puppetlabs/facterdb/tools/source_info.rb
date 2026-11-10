@@ -12,7 +12,10 @@ class Puppetlabs::FacterDB::Tools::SourceInfo
     commit = git('rev-parse', 'HEAD')
     raise ArgumentError, "source is not a git checkout: #{File.basename(@source)}" unless commit
 
-    { 'repo' => remote_url, 'commit' => commit, 'dirty' => !git('status', '--porcelain').to_s.empty? }
+    status = git('status', '--porcelain')
+    raise ArgumentError, "could not read git status of source: #{File.basename(@source)}" unless status
+
+    { 'repo' => remote_url, 'commit' => commit, 'dirty' => !status.empty? }
   end
 
   private
