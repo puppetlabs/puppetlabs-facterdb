@@ -47,6 +47,24 @@ jobs:
       - name: Build gem
         run: gem build --strict --verbose puppetlabs-facterdb.gemspec
 
+  facts:
+    runs-on: ubuntu-latest
+    env:
+      BUNDLE_WITHOUT: rubocop
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby: ['3.2', '4.0']
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Ruby ${{ matrix.ruby }}
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - name: Validate fact files
+        run: bundle exec rake facts:validate
+
   dual-install:
     runs-on: ubuntu-latest
     env:
@@ -68,10 +86,10 @@ jobs:
 
   tests:
     if: always()
-    needs: [rubocop, spec, dual-install]
+    needs: [rubocop, spec, facts, dual-install]
     runs-on: ubuntu-latest
     steps:
       - name: Check results
         run: |
-          [ "${{ needs.rubocop.result }}" = "success" ] && [ "${{ needs.spec.result }}" = "success" ] && [ "${{ needs.dual-install.result }}" = "success" ]
+          [ "${{ needs.rubocop.result }}" = "success" ] && [ "${{ needs.spec.result }}" = "success" ] && [ "${{ needs.facts.result }}" = "success" ] && [ "${{ needs.dual-install.result }}" = "success" ]
       - run: echo Test suite completed

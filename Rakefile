@@ -11,4 +11,6 @@ rescue LoadError
   # rubocop group not installed
 end
 
+import 'tools/tasks/facts.rake'
+
 task default: [:spec]

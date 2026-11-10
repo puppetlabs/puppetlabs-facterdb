@@ -69,6 +69,17 @@ bundle exec rake rubocop
 BUNDLE_GEMFILE=spec/dual_install/Gemfile bundle exec rspec spec/dual_install
 ```
 
+Fact store tooling:
+
+```shell
+bundle exec rake facts:validate                                # validate every fact file (CI runs this)
+bundle exec rake facts:normalise                               # scrub and normalise fact files in place
+CHECK=1 bundle exec rake facts:normalise                       # report files that would change, exit non-zero
+bundle exec rake 'facts:seed[/path/to/facterdb-private]'       # import Facter 4.0-4.11 facts from a facterdb-private checkout
+```
+
+The scrub policy lives in `config/scrub.yml` and the filename and seed rules in `config/facts.yml`. The tooling under `tools/` is not shipped in the gem.
+
 ## Licence and attribution
 
 Apache-2.0. Derived from [voxpupuli/facterdb](https://github.com/voxpupuli/facterdb) (Apache-2.0). Spec fixtures are copied from facterdb.
