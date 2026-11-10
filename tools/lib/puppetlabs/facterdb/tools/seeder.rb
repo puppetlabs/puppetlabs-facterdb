@@ -110,7 +110,8 @@ class Puppetlabs::FacterDB::Tools::Seeder
   def existing_version(path)
     return nil unless File.file?(path)
 
-    version = JSON.parse(File.binread(path))['facterversion']
+    data = JSON.parse(File.binread(path))
+    version = data['facterversion'] if data.is_a?(Hash)
     VERSION.match?(version.to_s) ? Gem::Version.new(version) : nil
   rescue JSON::ParserError
     nil

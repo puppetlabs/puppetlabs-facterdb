@@ -212,6 +212,12 @@ RSpec.describe Puppetlabs::FacterDB::Tools::Seeder do
       expect(report.kept.size).to eq(1)
     end
 
+    it 'overwrites an existing file that is not a JSON object', :aggregate_failures do
+      put(File.join('4.2', 'debian-12-x86_64.facts'), '[1, 2]', root: dest)
+      expect { run_seed }.not_to raise_error
+      expect(JSON.parse(File.read(File.join(dest, '4.2/debian-12-x86_64.facts')))['facterversion']).to eq('4.2.10')
+    end
+
     it 'overwrites a lower-patch existing file' do
       put(File.join('4.2', 'debian-12-x86_64.facts'), normaliser.render('facterversion' => '4.2.2'), root: dest)
       run_seed
