@@ -1,0 +1,6 @@
+source 'https://rubygems.org'
+
+gemspec path: '../../..'
+
+gem 'facterdb', ENV.fetch('DUAL_INSTALL_FACTERDB_VERSION', '>= 3.0')
+gem 'rspec', '~> 3.13'

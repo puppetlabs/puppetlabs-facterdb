@@ -1,0 +1,536 @@
+{
+  "aio_agent_version": "7.4.1.59",
+  "augeas": {
+    "version": "1.12.0"
+  },
+  "context": "",
+  "current_environment": "production",
+  "dmi": {
+    "manufacturer": "Oracle Corporation",
+    "product": {
+      "name": "SPARC T7-1"
+    }
+  },
+  "facterversion": "4.0.52",
+  "filesystems": "autofs,ctfs,dcfs,dev,devfs,fdfs,fifofs,hsfs,lofs,mntfs,namefs,nfs,objfs,pcfs,procfs,sharefs,smbfs,sockfs,specfs,tmpfs,udfs,ufs,zvsfs",
+  "function": "",
+  "group": "sol",
+  "haszfs": true,
+  "hypervisors": {
+    "ldom": {
+      "chassis_serial": "0",
+      "control_domain": "foo",
+      "domain_name": "foo",
+      "domain_uuid": "00000000-0000-0000-0000-000000000000",
+      "role_control": "false",
+      "role_io": "false",
+      "role_root": "false",
+      "role_service": "false"
+    },
+    "zone": {
+      "brand": "solaris",
+      "id": "0",
+      "ip_type": "shared",
+      "name": "global",
+      "uuid": ""
+    }
+  },
+  "identity": {
+    "gid": 0,
+    "group": "root",
+    "privileged": true,
+    "uid": 0,
+    "user": "root"
+  },
+  "is_valid_hostname": false,
+  "is_virtual": true,
+  "java_major_version": "8",
+  "java_patch_level": "60",
+  "java_version": "1.8.0_60",
+  "kernel": "SunOS",
+  "kernelmajversion": "11",
+  "kernelrelease": "5.11",
+  "kernelversion": "11.3",
+  "ldom": {
+    "domainchassis": "0",
+    "domaincontrol": "foo",
+    "domainname": "foo",
+    "domainrole": {
+      "control": "false",
+      "impl": "LDoms",
+      "io": "false",
+      "root": "false",
+      "service": "false"
+    },
+    "domainuuid": "00000000-0000-0000-0000-000000000000"
+  },
+  "ldom_domain_name": "foo",
+  "ldom_domainname": "foo",
+  "load_averages": {
+    "15m": 0.0,
+    "1m": 0.0,
+    "5m": 0.0
+  },
+  "mco_confdir": "/etc/mcollective/etc",
+  "memory": {
+    "swap": {
+      "available": "2.00 GiB",
+      "available_bytes": 2147475456,
+      "capacity": "0%",
+      "total": "2.00 GiB",
+      "total_bytes": 2147475456,
+      "used": "0 bytes",
+      "used_bytes": 0
+    },
+    "system": {
+      "available": "5.48 GiB",
+      "available_bytes": 5888065536,
+      "capacity": "29.73%",
+      "total": "7.80 GiB",
+      "total_bytes": 8378753024,
+      "used": "2.32 GiB",
+      "used_bytes": 2490687488
+    }
+  },
+  "mongodb_is_master": "not_installed",
+  "mountpoints": {
+    "/": {
+      "available": "2.66 GiB",
+      "available_bytes": 2859748864,
+      "capacity": "54.05%",
+      "device": "rpool/ROOT/solaris",
+      "filesystem": "zfs",
+      "options": [
+        "dev=4bd0002"
+      ],
+      "size": "5.80 GiB",
+      "size_bytes": 6223792640,
+      "used": "3.13 GiB",
+      "used_bytes": 3364043776
+    },
+    "/dev": {
+      "available": "0 bytes",
+      "available_bytes": 0,
+      "capacity": "100%",
+      "device": "/dev",
+      "filesystem": "dev",
+      "options": [
+        "dev=8f80000"
+      ],
+      "size": "0 bytes",
+      "size_bytes": 0,
+      "used": "0 bytes",
+      "used_bytes": 0
+    },
+    "/dev/fd": {
+      "available": "0 bytes",
+      "available_bytes": 0,
+      "capacity": "100%",
+      "device": "fd",
+      "filesystem": "fd",
+      "options": [
+        "rw",
+        "dev=91c0001"
+      ],
+      "size": "0 bytes",
+      "size_bytes": 0,
+      "used": "0 bytes",
+      "used_bytes": 0
+    },
+    "/devices": {
+      "available": "0 bytes",
+      "available_bytes": 0,
+      "capacity": "100%",
+      "device": "/devices",
+      "filesystem": "devfs",
+      "options": [
+        "dev=8f00000"
+      ],
+      "size": "0 bytes",
+      "size_bytes": 0,
+      "used": "0 bytes",
+      "used_bytes": 0
+    },
+    "/etc/dfs/sharetab": {
+      "available": "0 bytes",
+      "available_bytes": 0,
+      "capacity": "100%",
+      "device": "sharefs",
+      "filesystem": "sharefs",
+      "options": [
+        "dev=90c0001"
+      ],
+      "size": "0 bytes",
+      "size_bytes": 0,
+      "used": "0 bytes",
+      "used_bytes": 0
+    },
+    "/etc/mnttab": {
+      "available": "0 bytes",
+      "available_bytes": 0,
+      "capacity": "100%",
+      "device": "mnttab",
+      "filesystem": "mntfs",
+      "options": [
+        "dev=9000001"
+      ],
+      "size": "0 bytes",
+      "size_bytes": 0,
+      "used": "0 bytes",
+      "used_bytes": 0
+    },
+    "/export": {
+      "available": "2.66 GiB",
+      "available_bytes": 2859748864,
+      "capacity": "0.00%",
+      "device": "rpool/export",
+      "filesystem": "zfs",
+      "options": [
+        "rw",
+        "devices",
+        "setuid",
+        "nonbmand",
+        "exec",
+        "rstchown",
+        "xattr",
+        "atime",
+        "dev=4bd0006"
+      ],
+      "size": "2.66 GiB",
+      "size_bytes": 2859781632,
+      "used": "32.00 KiB",
+      "used_bytes": 32768
+    },
+    "/export/home": {
+      "available": "2.66 GiB",
+      "available_bytes": 2859748864,
+      "capacity": "0.00%",
+      "device": "rpool/export/home",
+      "filesystem": "zfs",
+      "options": [
+        "rw",
+        "devices",
+        "setuid",
+        "nonbmand",
+        "exec",
+        "rstchown",
+        "xattr",
+        "atime",
+        "dev=4bd0007"
+      ],
+      "size": "2.66 GiB",
+      "size_bytes": 2859780608,
+      "used": "31.00 KiB",
+      "used_bytes": 31744
+    },
+    "/rpool": {
+      "available": "2.66 GiB",
+      "available_bytes": 2859748864,
+      "capacity": "0.00%",
+      "device": "rpool",
+      "filesystem": "zfs",
+      "options": [
+        "rw",
+        "devices",
+        "setuid",
+        "nonbmand",
+        "exec",
+        "rstchown",
+        "xattr",
+        "atime",
+        "dev=4bd0008"
+      ],
+      "size": "2.66 GiB",
+      "size_bytes": 2859828224,
+      "used": "77.50 KiB",
+      "used_bytes": 79360
+    },
+    "/system/volatile": {
+      "available": "7.38 GiB",
+      "available_bytes": 7922974720,
+      "capacity": "0.03%",
+      "device": "swap",
+      "filesystem": "tmpfs",
+      "options": [
+        "xattr",
+        "dev=9040001"
+      ],
+      "size": "7.38 GiB",
+      "size_bytes": 7925727232,
+      "used": "2.63 MiB",
+      "used_bytes": 2752512
+    },
+    "/tmp": {
+      "available": "7.38 GiB",
+      "available_bytes": 7922974720,
+      "capacity": "0.03%",
+      "device": "swap",
+      "filesystem": "tmpfs",
+      "options": [
+        "xattr",
+        "dev=9040002"
+      ],
+      "size": "7.38 GiB",
+      "size_bytes": 7925227520,
+      "used": "2.15 MiB",
+      "used_bytes": 2252800
+    },
+    "/var": {
+      "available": "2.66 GiB",
+      "available_bytes": 2859748864,
+      "capacity": "22.43%",
+      "device": "rpool/ROOT/solaris/var",
+      "filesystem": "zfs",
+      "options": [
+        "rw",
+        "devices",
+        "setuid",
+        "nonbmand",
+        "exec",
+        "rstchown",
+        "xattr",
+        "atime",
+        "dev=4bd0004"
+      ],
+      "size": "3.43 GiB",
+      "size_bytes": 3686600192,
+      "used": "788.55 MiB",
+      "used_bytes": 826851328
+    },
+    "/var/share": {
+      "available": "2.66 GiB",
+      "available_bytes": 2859748864,
+      "capacity": "0.09%",
+      "device": "rpool/VARSHARE",
+      "filesystem": "zfs",
+      "options": [
+        "rw",
+        "devices",
+        "setuid",
+        "nonbmand",
+        "exec",
+        "rstchown",
+        "xattr",
+        "atime",
+        "dev=4bd0005"
+      ],
+      "size": "2.67 GiB",
+      "size_bytes": 2862319616,
+      "used": "2.45 MiB",
+      "used_bytes": 2570752
+    },
+    "/var/share/pkg": {
+      "available": "2.66 GiB",
+      "available_bytes": 2859748864,
+      "capacity": "0.00%",
+      "device": "rpool/VARSHARE/pkg",
+      "filesystem": "zfs",
+      "options": [
+        "rw",
+        "devices",
+        "setuid",
+        "nonbmand",
+        "exec",
+        "rstchown",
+        "xattr",
+        "atime",
+        "dev=4bd000a"
+      ],
+      "size": "2.66 GiB",
+      "size_bytes": 2859781632,
+      "used": "32.00 KiB",
+      "used_bytes": 32768
+    },
+    "/var/share/pkg/repositories": {
+      "available": "2.66 GiB",
+      "available_bytes": 2859748864,
+      "capacity": "0.00%",
+      "device": "rpool/VARSHARE/pkg/repositories",
+      "filesystem": "zfs",
+      "options": [
+        "rw",
+        "devices",
+        "setuid",
+        "nonbmand",
+        "exec",
+        "rstchown",
+        "xattr",
+        "atime",
+        "dev=4bd000b"
+      ],
+      "size": "2.66 GiB",
+      "size_bytes": 2859780608,
+      "used": "31.00 KiB",
+      "used_bytes": 31744
+    }
+  },
+  "networking": {
+    "dhcp": "10.32.22.10",
+    "domain": "example.com",
+    "fqdn": "foo.example.com",
+    "hostname": "foo",
+    "interfaces": {
+      "lo0": {
+        "bindings": [
+          {
+            "address": "127.0.0.1",
+            "netmask": "255.0.0.0",
+            "network": "127.0.0.0"
+          }
+        ],
+        "bindings6": [
+          {
+            "address": "::",
+            "netmask": "ffff:ffff:ffff:ffff:ffff:ffff::",
+            "network": "::",
+            "scope6": "global"
+          }
+        ],
+        "ip": "127.0.0.1",
+        "ip6": "::",
+        "mtu": 8232,
+        "netmask": "255.0.0.0",
+        "netmask6": "ffff:ffff:ffff:ffff:ffff:ffff::",
+        "network": "127.0.0.0",
+        "network6": "::",
+        "scope6": "global"
+      },
+      "net0": {
+        "bindings": [
+          {
+            "address": "10.32.115.206",
+            "netmask": "255.255.240.0",
+            "network": "10.32.112.0"
+          }
+        ],
+        "bindings6": [
+          {
+            "address": "0:0:fe80::214:4fff",
+            "netmask": "ffc0::",
+            "network": "::",
+            "scope6": "global"
+          }
+        ],
+        "dhcp": "10.32.22.10",
+        "ip": "10.32.115.206",
+        "ip6": "0:0:fe80::214:4fff",
+        "mac": "00:14:4f:fa:c4:15",
+        "mtu": 1500,
+        "netmask": "255.255.240.0",
+        "netmask6": "ffc0::",
+        "network": "10.32.112.0",
+        "network6": "::",
+        "scope6": "global"
+      }
+    },
+    "ip": "10.32.115.206",
+    "ip6": "0:0:fe80::214:4fff",
+    "mac": "00:14:4f:fa:c4:15",
+    "mtu": 1500,
+    "netmask": "255.255.240.0",
+    "netmask6": "ffc0::",
+    "network": "10.32.112.0",
+    "network6": "::",
+    "primary": "net0"
+  },
+  "number_string": "",
+  "os": {
+    "architecture": "sun4v",
+    "family": "Solaris",
+    "hardware": "sun4v",
+    "name": "Solaris",
+    "release": {
+      "full": "11.3",
+      "major": "11",
+      "minor": "3"
+    }
+  },
+  "os_maj_version": "11",
+  "path": "$PATH:PATH:/opt/puppetlabs/bin:/usr/sbin:/usr/bin:/sbin",
+  "pip_version": "6.0.8",
+  "platform_symlink_writable": true,
+  "platform_tag": "solaris-11-sparc",
+  "primary_iface": "eth0",
+  "primary_ip": "10.32.115.206",
+  "processors": {
+    "count": 8,
+    "isa": "sparc",
+    "models": [
+      "SPARC-M7",
+      "SPARC-M7",
+      "SPARC-M7",
+      "SPARC-M7",
+      "SPARC-M7",
+      "SPARC-M7",
+      "SPARC-M7",
+      "SPARC-M7"
+    ],
+    "physicalcount": 1,
+    "speed": "4.13 GHz"
+  },
+  "puppet_cert_paths": {
+    "ca_path": "/etc/puppetlabs/puppet/ssl/certs/ca.pem",
+    "cert_dir": "/etc/puppetlabs/puppet/ssl/certs",
+    "client_cert_path": "/etc/puppetlabs/puppet/ssl/certs/.pem",
+    "client_key_path": "/etc/puppetlabs/puppet/ssl/private_keys/.pem",
+    "confdir": "/etc/puppetlabs/puppet",
+    "ssldir": "/etc/puppetlabs/puppet/ssl"
+  },
+  "puppet_files_dir_present": false,
+  "puppetserver_installed": false,
+  "puppetversion": "7.5.0",
+  "python2_release": "2.7",
+  "python_release": "2.7",
+  "ruby": {
+    "platform": "sparc-solaris2.11",
+    "sitedir": "/opt/puppetlabs/puppet/lib/ruby/site_ruby/2.7.0",
+    "version": "2.7.2"
+  },
+  "solaris_zones": {
+    "current": "global",
+    "zones": {
+      "global": {
+        "brand": "solaris",
+        "id": "0",
+        "ip_type": "shared",
+        "path": "/",
+        "status": "running"
+      }
+    }
+  },
+  "ssh": {
+    "dsa": {
+      "fingerprints": {
+        "sha1": "SSHFP 2 1 0000000000000000000000000000000000000000",
+        "sha256": "SSHFP 2 2 0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "key": "AAAAscrubbed",
+      "type": "ssh-dss"
+    },
+    "rsa": {
+      "fingerprints": {
+        "sha1": "SSHFP 1 1 0000000000000000000000000000000000000000",
+        "sha256": "SSHFP 1 2 0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "key": "AAAAscrubbed",
+      "type": "ssh-rsa"
+    }
+  },
+  "staging_http_get": "curl",
+  "system_uptime": {
+    "days": 0,
+    "hours": 0,
+    "seconds": 0,
+    "uptime": "0:00 hours"
+  },
+  "timezone": "PST",
+  "vcsrepo_svn_ver": "",
+  "virtual": "LDoms",
+  "whereami": "opdx",
+  "windows_java_temp": "\\tmp",
+  "zfs_featurenumbers": "1,2,3,4,5,6",
+  "zfs_version": "6",
+  "zpool_featureflags": "",
+  "zpool_featurenumbers": "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37",
+  "zpool_version": "37"
+}

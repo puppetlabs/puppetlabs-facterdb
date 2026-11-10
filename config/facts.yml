@@ -1,0 +1,3 @@
+# Rolling distros that omit the release token: <os>-<arch>.facts
+rolling_distros:
+  - archlinux

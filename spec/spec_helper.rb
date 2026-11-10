@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+$LOAD_PATH.unshift(File.expand_path('../tools/lib', __dir__))
+
 require 'rspec'
 require 'puppetlabs/facterdb'
 

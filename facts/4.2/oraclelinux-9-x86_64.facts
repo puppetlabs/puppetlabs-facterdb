@@ -1,0 +1,291 @@
+{
+  "augeas": {
+    "version": "1.12.0"
+  },
+  "disks": {
+    "sr0": {
+      "model": "QEMU DVD-ROM",
+      "size": "364.00 KiB",
+      "size_bytes": 372736,
+      "type": "hdd",
+      "vendor": "QEMU"
+    },
+    "vda": {
+      "size": "93.13 GiB",
+      "size_bytes": 100000000000,
+      "type": "hdd",
+      "vendor": "0x1af4"
+    },
+    "vdb": {
+      "size": "4.66 GiB",
+      "size_bytes": 5000000512,
+      "type": "hdd",
+      "vendor": "0x1af4"
+    }
+  },
+  "dmi": {
+    "bios": {
+      "release_date": "04/01/2014",
+      "vendor": "SeaBIOS",
+      "version": "1.14.0-2.fc34"
+    },
+    "chassis": {
+      "type": "Other"
+    },
+    "manufacturer": "QEMU",
+    "product": {
+      "name": "Standard PC (i440FX + PIIX, 1996)"
+    }
+  },
+  "facterversion": "4.2.2",
+  "filesystems": "iso9660,xfs",
+  "fips_enabled": false,
+  "gem_version": "~> 4.2.0",
+  "identity": {
+    "gid": 1000,
+    "group": "stack",
+    "privileged": false,
+    "uid": 1000,
+    "user": "stack"
+  },
+  "is_virtual": false,
+  "kernel": "Linux",
+  "kernelmajversion": "5.13",
+  "kernelrelease": "5.13.0-0.rc2.19.el9.x86_64",
+  "kernelversion": "5.13.0",
+  "load_averages": {
+    "15m": 0.0,
+    "1m": 0.0,
+    "5m": 0.0
+  },
+  "memory": {
+    "swap": {
+      "available": "1.00 GiB",
+      "available_bytes": 1073737728,
+      "capacity": "0.00%",
+      "total": "1.00 GiB",
+      "total_bytes": 1073737728,
+      "used": "0 bytes",
+      "used_bytes": 0
+    },
+    "system": {
+      "available": "15.05 GiB",
+      "available_bytes": 16163000320,
+      "capacity": "3.67%",
+      "total": "15.63 GiB",
+      "total_bytes": 16778706944,
+      "used": "587.18 MiB",
+      "used_bytes": 615706624
+    }
+  },
+  "networking": {
+    "domain": "example.com",
+    "fqdn": "foo.example.com",
+    "hostname": "foo",
+    "interfaces": {
+      "ens3": {
+        "bindings": [
+          {
+            "address": "10.109.1.2",
+            "netmask": "255.255.255.0",
+            "network": "10.109.1.0"
+          }
+        ],
+        "bindings6": [
+          {
+            "address": "fe80::5054:ff:fe0a:d226",
+            "flags": [
+              "permanent"
+            ],
+            "netmask": "ffff:ffff:ffff:ffff::",
+            "network": "fe80::",
+            "scope6": "link"
+          }
+        ],
+        "ip": "10.109.1.2",
+        "ip6": "fe80::5054:ff:fe0a:d226",
+        "mac": "52:54:00:0a:d2:26",
+        "mtu": 1500,
+        "netmask": "255.255.255.0",
+        "netmask6": "ffff:ffff:ffff:ffff::",
+        "network": "10.109.1.0",
+        "network6": "fe80::",
+        "scope6": "link"
+      },
+      "ens4": {
+        "bindings": [
+          {
+            "address": "192.168.24.3",
+            "netmask": "255.255.255.0",
+            "network": "192.168.24.0"
+          }
+        ],
+        "bindings6": [
+          {
+            "address": "fe80::e30f:7713:f64d:c054",
+            "flags": [
+              "permanent"
+            ],
+            "netmask": "ffff:ffff:ffff:ffff::",
+            "network": "fe80::",
+            "scope6": "link"
+          }
+        ],
+        "ip": "192.168.24.3",
+        "ip6": "fe80::e30f:7713:f64d:c054",
+        "mac": "52:54:00:6a:d9:ff",
+        "mtu": 1500,
+        "netmask": "255.255.255.0",
+        "netmask6": "ffff:ffff:ffff:ffff::",
+        "network": "192.168.24.0",
+        "network6": "fe80::",
+        "scope6": "link"
+      },
+      "lo": {
+        "bindings": [
+          {
+            "address": "127.0.0.1",
+            "netmask": "255.0.0.0",
+            "network": "127.0.0.0"
+          }
+        ],
+        "bindings6": [
+          {
+            "address": "::1",
+            "flags": [
+              "permanent"
+            ],
+            "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+            "network": "::1",
+            "scope6": "host"
+          }
+        ],
+        "ip": "127.0.0.1",
+        "ip6": "::1",
+        "mtu": 65536,
+        "netmask": "255.0.0.0",
+        "netmask6": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "network": "127.0.0.0",
+        "network6": "::1",
+        "scope6": "host"
+      }
+    },
+    "ip": "10.109.1.2",
+    "ip6": "fe80::5054:ff:fe0a:d226",
+    "mac": "52:54:00:0a:d2:26",
+    "mtu": 1500,
+    "netmask": "255.255.255.0",
+    "netmask6": "ffff:ffff:ffff:ffff::",
+    "network": "10.109.1.0",
+    "network6": "fe80::",
+    "primary": "ens3",
+    "scope6": "link"
+  },
+  "os": {
+    "architecture": "x86_64",
+    "distro": {
+      "description": "OracleLinux Stream release 9",
+      "id": "OracleLinuxStream",
+      "release": {
+        "full": "9",
+        "major": "9"
+      }
+    },
+    "family": "RedHat",
+    "hardware": "x86_64",
+    "name": "OracleLinux",
+    "release": {
+      "full": "9",
+      "major": "9"
+    },
+    "selinux": {
+      "config_mode": "enforcing",
+      "config_policy": "targeted",
+      "current_mode": "enforcing",
+      "enabled": true,
+      "enforced": true,
+      "policy_version": "33"
+    }
+  },
+  "partitions": {
+    "/dev/vda1": {
+      "size": "1.00 MiB",
+      "size_bytes": 1048576
+    },
+    "/dev/vda2": {
+      "filesystem": "xfs",
+      "partuuid": "00000000-0000-0000-0000-000000000000",
+      "size": "1.00 GiB",
+      "size_bytes": 1073741824,
+      "uuid": "00000000-0000-0000-0000-000000000000"
+    },
+    "/dev/vda3": {
+      "filesystem": "swap",
+      "partuuid": "00000000-0000-0000-0000-000000000000",
+      "size": "1.00 GiB",
+      "size_bytes": 1073741824,
+      "uuid": "00000000-0000-0000-0000-000000000000"
+    },
+    "/dev/vda4": {
+      "filesystem": "xfs",
+      "partuuid": "00000000-0000-0000-0000-000000000000",
+      "size": "91.13 GiB",
+      "size_bytes": 97850402304,
+      "uuid": "00000000-0000-0000-0000-000000000000"
+    }
+  },
+  "path": "/home/stack/facterdb/facts/vendor/bundler/ruby/3.0.0/bin:/opt/puppetlabs/puppet/bin:/opt/puppetlabs/bin:/home/stack/.local/bin:/home/stack/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin",
+  "processors": {
+    "cores": 1,
+    "count": 4,
+    "isa": "x86_64",
+    "models": [
+      "AMD Opteron(tm) Processor 6376",
+      "AMD Opteron(tm) Processor 6376",
+      "AMD Opteron(tm) Processor 6376",
+      "AMD Opteron(tm) Processor 6376"
+    ],
+    "physicalcount": 4,
+    "speed": "2.30 GHz",
+    "threads": 1
+  },
+  "ruby": {
+    "platform": "x86_64-linux",
+    "sitedir": "/usr/local/share/ruby/site_ruby",
+    "version": "3.0.1"
+  },
+  "ssh": {
+    "ecdsa": {
+      "fingerprints": {
+        "sha1": "SSHFP 3 1 0000000000000000000000000000000000000000",
+        "sha256": "SSHFP 3 2 0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "key": "AAAAscrubbed",
+      "type": "ecdsa-sha2-nistp256"
+    },
+    "ed25519": {
+      "fingerprints": {
+        "sha1": "SSHFP 4 1 0000000000000000000000000000000000000000",
+        "sha256": "SSHFP 4 2 0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "key": "AAAAscrubbed",
+      "type": "ssh-ed25519"
+    },
+    "rsa": {
+      "fingerprints": {
+        "sha1": "SSHFP 1 1 0000000000000000000000000000000000000000",
+        "sha256": "SSHFP 1 2 0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "key": "AAAAscrubbed",
+      "type": "ssh-rsa"
+    }
+  },
+  "system_uptime": {
+    "days": 0,
+    "hours": 0,
+    "seconds": 0,
+    "uptime": "0:00 hours"
+  },
+  "timezone": "EDT",
+  "virtual": "physical"
+}

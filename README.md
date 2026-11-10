@@ -54,7 +54,8 @@ facts/<facter major.minor>/<os>-<release>-<arch>.facts
 - Each file holds one full `facter -j` JSON object.
 - The latest patch release for each major.minor overwrites the previous one; the exact patch is in the inner `facterversion` fact.
 - The directory is organisational only. Filters match the inner facts, not the directory name.
-- The bundled `facts/` directory is empty until data is seeded.
+- The bundled data covers Facter 4.0-4.11, seeded from facterdb-private (source commit in [facts/seed-manifest.json](facts/seed-manifest.json)). Facter 4.12+ arrives from Puppet Core gathers.
+- Filenames must not contain spaces. A `-core` release suffix is allowed, and rolling distros listed in `config/facts.yml` use `<os>-<arch>`.
 
 ## Using alongside facterdb
 
@@ -66,9 +67,21 @@ facts/<facter major.minor>/<os>-<release>-<arch>.facts
 bundle install
 bundle exec rake spec
 bundle exec rake rubocop
-BUNDLE_GEMFILE=spec/dual_install/Gemfile bundle exec rspec spec/dual_install
+BUNDLE_GEMFILE=spec/integration/dual_install/Gemfile bundle exec rspec spec/integration/dual_install
 ```
+
+Fact store tooling:
+
+```shell
+bundle exec rake facts:validate                                # validate every fact file (CI runs this)
+bundle exec rake facts:normalise                               # scrub and normalise fact files in place
+CHECK=1 bundle exec rake facts:normalise                       # report files that would change, exit non-zero
+```
+
+The scrub policy lives in `config/scrub.yml` and the filename rules in `config/facts.yml`. The tooling under `tools/` is not shipped in the gem.
 
 ## Licence and attribution
 
-Apache-2.0. Derived from [voxpupuli/facterdb](https://github.com/voxpupuli/facterdb) (Apache-2.0). Spec fixtures are copied from facterdb.
+Apache-2.0. Derived from [voxpupuli/facterdb](https://github.com/voxpupuli/facterdb) (Apache-2.0). Spec fixtures are copied from facterdb. Seeded data comes from Puppet's facterdb-private fork of voxpupuli/facterdb.
+
+See [NOTICE](NOTICE) for attribution and [facts/seed-manifest.json](facts/seed-manifest.json) for the seed source.

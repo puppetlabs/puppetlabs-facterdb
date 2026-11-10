@@ -1,0 +1,591 @@
+{
+  "aio_agent_version": "7.4.1.59",
+  "augeas": {
+    "version": "1.12.0"
+  },
+  "context": "",
+  "current_environment": "production",
+  "disks": {
+    "sda": {
+      "model": "Virtual disk",
+      "size": "70.00 GiB",
+      "size_bytes": 75161927680,
+      "type": "hdd",
+      "vendor": "VMware"
+    },
+    "sr0": {
+      "model": "VMware IDE CDR10",
+      "size": "1.00 GiB",
+      "size_bytes": 1073741312,
+      "type": "hdd",
+      "vendor": "NECVMWar"
+    }
+  },
+  "dmi": {
+    "bios": {
+      "release_date": "12/12/2018",
+      "vendor": "Phoenix Technologies LTD",
+      "version": "6.00"
+    },
+    "board": {
+      "manufacturer": "Intel Corporation",
+      "product": "440BX Desktop Reference Platform",
+      "serial_number": "0"
+    },
+    "chassis": {
+      "asset_tag": "No Asset Tag",
+      "type": "Other"
+    },
+    "manufacturer": "VMware, Inc.",
+    "product": {
+      "name": "VMware Virtual Platform",
+      "serial_number": "0",
+      "uuid": "00000000-0000-0000-0000-000000000000"
+    }
+  },
+  "facterversion": "4.0.52",
+  "filesystems": "xfs",
+  "fips_enabled": false,
+  "function": "",
+  "haszfs": false,
+  "hypervisors": {
+    "ldom": {
+      "domain_name": "foo"
+    },
+    "vmware": {
+      "version": "ESXi 6.7"
+    }
+  },
+  "identity": {
+    "gid": 0,
+    "group": "root",
+    "privileged": true,
+    "uid": 0,
+    "user": "root"
+  },
+  "ip6tables_version": "1.4.21",
+  "iptables_version": "1.4.21",
+  "is_valid_hostname": false,
+  "is_virtual": true,
+  "jenkins_plugins": "",
+  "kernel": "Linux",
+  "kernelmajversion": "3.10",
+  "kernelrelease": "3.10.0-862.3.2.el7.x86_64",
+  "kernelversion": "3.10.0",
+  "load_averages": {
+    "15m": 0.0,
+    "1m": 0.0,
+    "5m": 0.0
+  },
+  "lvm_pv_0": "/dev/sda2",
+  "lvm_pvs": 1,
+  "lvm_support": true,
+  "lvm_vg_0": "centos",
+  "lvm_vg_centos_pvs": "/dev/sda2",
+  "lvm_vgs": 1,
+  "mco_confdir": "/etc/mcollective/etc",
+  "meltdown": {
+    "CVE-2017-5715": {
+      "CVE": "2017-5715",
+      "description": "SPECTRE VARIANT 2",
+      "info": {
+        "hardware": "IBRS+IBPB or retpoline+IBPB+RSB filling, is needed to mitigate the vulnerability"
+      },
+      "vulnerable": true
+    },
+    "CVE-2017-5753": {
+      "CVE": "2017-5753",
+      "description": "SPECTRE VARIANT 1",
+      "info": {
+        "hardware": "Mitigation: Load fences"
+      },
+      "vulnerable": false
+    },
+    "CVE-2017-5754": {
+      "CVE": "2017-5754",
+      "description": "MELTDOWN",
+      "info": {
+        "hardware": "Mitigation: PTI"
+      },
+      "vulnerable": false
+    },
+    "CVE-2018-12126": {
+      "CVE": "2018-12126",
+      "description": "MSBDS",
+      "info": {
+        "hardware": "Your microcode supports mitigation, but your kernel doesn't, upgrade it to mitigate the vulnerability"
+      },
+      "vulnerable": true
+    },
+    "CVE-2018-12127": {
+      "CVE": "2018-12127",
+      "description": "MLPDS",
+      "info": {
+        "hardware": "Your microcode supports mitigation, but your kernel doesn't, upgrade it to mitigate the vulnerability"
+      },
+      "vulnerable": true
+    },
+    "CVE-2018-12130": {
+      "CVE": "2018-12130",
+      "description": "MFBDS",
+      "info": {
+        "hardware": "Your microcode supports mitigation, but your kernel doesn't, upgrade it to mitigate the vulnerability"
+      },
+      "vulnerable": true
+    },
+    "CVE-2018-3615": {
+      "CVE": "2018-3615",
+      "description": "L1TF SGX",
+      "info": {
+        "hardware": "your CPU vendor reported your CPU model as not vulnerable"
+      },
+      "vulnerable": false
+    },
+    "CVE-2018-3620": {
+      "CVE": "2018-3620",
+      "description": "L1TF OS",
+      "info": {
+        "hardware": "Your kernel doesn't support PTE inversion, update it"
+      },
+      "vulnerable": true
+    },
+    "CVE-2018-3639": {
+      "CVE": "2018-3639",
+      "description": "VARIANT 4",
+      "info": {
+        "hardware": "Mitigation: Speculative Store Bypass disabled via prctl"
+      },
+      "vulnerable": false
+    },
+    "CVE-2018-3640": {
+      "CVE": "2018-3640",
+      "description": "VARIANT 3A",
+      "info": {
+        "hardware": "your CPU microcode mitigates the vulnerability"
+      },
+      "vulnerable": false
+    },
+    "CVE-2018-3646": {
+      "CVE": "2018-3646",
+      "description": "L1TF VMM",
+      "info": {
+        "hardware": "this system is not running a hypervisor"
+      },
+      "vulnerable": false
+    },
+    "CVE-2019-11091": {
+      "CVE": "2019-11091",
+      "description": "MDSUM",
+      "info": {
+        "hardware": "Your microcode supports mitigation, but your kernel doesn't, upgrade it to mitigate the vulnerability"
+      },
+      "vulnerable": true
+    }
+  },
+  "memory": {
+    "swap": {
+      "available": "1.00 GiB",
+      "available_bytes": 1073737728,
+      "capacity": "0.00%",
+      "total": "1.00 GiB",
+      "total_bytes": 1073737728,
+      "used": "0 bytes",
+      "used_bytes": 0
+    },
+    "system": {
+      "available": "7.16 GiB",
+      "available_bytes": 7689355264,
+      "capacity": "6.25%",
+      "total": "7.64 GiB",
+      "total_bytes": 8202276864,
+      "used": "489.16 MiB",
+      "used_bytes": 512921600
+    }
+  },
+  "mongodb_is_master": "not_installed",
+  "mountpoints": {
+    "/": {
+      "available": "66.95 GiB",
+      "available_bytes": 71886938112,
+      "capacity": "2.26%",
+      "device": "/dev/mapper/centos-root",
+      "filesystem": "xfs",
+      "options": [
+        "rw",
+        "relatime",
+        "attr2",
+        "inode64",
+        "noquota"
+      ],
+      "size": "68.50 GiB",
+      "size_bytes": 73549217792,
+      "used": "1.55 GiB",
+      "used_bytes": 1662279680
+    },
+    "/boot": {
+      "available": "329.75 MiB",
+      "available_bytes": 345763840,
+      "capacity": "33.61%",
+      "device": "/dev/sda1",
+      "filesystem": "xfs",
+      "options": [
+        "rw",
+        "relatime",
+        "attr2",
+        "inode64",
+        "noquota"
+      ],
+      "size": "496.67 MiB",
+      "size_bytes": 520794112,
+      "used": "166.92 MiB",
+      "used_bytes": 175030272
+    },
+    "/dev": {
+      "available": "3.81 GiB",
+      "available_bytes": 4088729600,
+      "capacity": "0%",
+      "device": "devtmpfs",
+      "filesystem": "devtmpfs",
+      "options": [
+        "rw",
+        "nosuid",
+        "size=3992900k",
+        "nr_inodes=998225",
+        "mode=755"
+      ],
+      "size": "3.81 GiB",
+      "size_bytes": 4088729600,
+      "used": "0 bytes",
+      "used_bytes": 0
+    },
+    "/dev/hugepages": {
+      "available": "0 bytes",
+      "available_bytes": 0,
+      "capacity": "100%",
+      "device": "hugetlbfs",
+      "filesystem": "hugetlbfs",
+      "options": [
+        "rw",
+        "relatime"
+      ],
+      "size": "0 bytes",
+      "size_bytes": 0,
+      "used": "0 bytes",
+      "used_bytes": 0
+    },
+    "/dev/mqueue": {
+      "available": "0 bytes",
+      "available_bytes": 0,
+      "capacity": "100%",
+      "device": "mqueue",
+      "filesystem": "mqueue",
+      "options": [
+        "rw",
+        "relatime"
+      ],
+      "size": "0 bytes",
+      "size_bytes": 0,
+      "used": "0 bytes",
+      "used_bytes": 0
+    },
+    "/dev/pts": {
+      "available": "0 bytes",
+      "available_bytes": 0,
+      "capacity": "100%",
+      "device": "devpts",
+      "filesystem": "devpts",
+      "options": [
+        "rw",
+        "nosuid",
+        "noexec",
+        "relatime",
+        "gid=5",
+        "mode=620",
+        "ptmxmode=000"
+      ],
+      "size": "0 bytes",
+      "size_bytes": 0,
+      "used": "0 bytes",
+      "used_bytes": 0
+    },
+    "/dev/shm": {
+      "available": "3.82 GiB",
+      "available_bytes": 4101136384,
+      "capacity": "0%",
+      "device": "tmpfs",
+      "filesystem": "tmpfs",
+      "options": [
+        "rw",
+        "nosuid",
+        "nodev"
+      ],
+      "size": "3.82 GiB",
+      "size_bytes": 4101136384,
+      "used": "0 bytes",
+      "used_bytes": 0
+    },
+    "/run": {
+      "available": "3.81 GiB",
+      "available_bytes": 4092194816,
+      "capacity": "0.22%",
+      "device": "tmpfs",
+      "filesystem": "tmpfs",
+      "options": [
+        "rw",
+        "nosuid",
+        "nodev",
+        "mode=755"
+      ],
+      "size": "3.82 GiB",
+      "size_bytes": 4101136384,
+      "used": "8.53 MiB",
+      "used_bytes": 8941568
+    },
+    "/run/user/0": {
+      "available": "782.23 MiB",
+      "available_bytes": 820228096,
+      "capacity": "0%",
+      "device": "tmpfs",
+      "filesystem": "tmpfs",
+      "options": [
+        "rw",
+        "nosuid",
+        "nodev",
+        "relatime",
+        "size=801004k",
+        "mode=700"
+      ],
+      "size": "782.23 MiB",
+      "size_bytes": 820228096,
+      "used": "0 bytes",
+      "used_bytes": 0
+    },
+    "/sys/fs/cgroup": {
+      "available": "3.82 GiB",
+      "available_bytes": 4101136384,
+      "capacity": "0%",
+      "device": "tmpfs",
+      "filesystem": "tmpfs",
+      "options": [
+        "ro",
+        "nosuid",
+        "nodev",
+        "noexec",
+        "mode=755"
+      ],
+      "size": "3.82 GiB",
+      "size_bytes": 4101136384,
+      "used": "0 bytes",
+      "used_bytes": 0
+    },
+    "/var/lib/nfs/rpc_pipefs": {
+      "available": "0 bytes",
+      "available_bytes": 0,
+      "capacity": "100%",
+      "device": "sunrpc",
+      "filesystem": "rpc_pipefs",
+      "options": [
+        "rw",
+        "relatime"
+      ],
+      "size": "0 bytes",
+      "size_bytes": 0,
+      "used": "0 bytes",
+      "used_bytes": 0
+    }
+  },
+  "networking": {
+    "dhcp": "10.32.22.10",
+    "domain": "example.com",
+    "fqdn": "foo.example.com",
+    "hostname": "foo",
+    "interfaces": {
+      "ens160": {
+        "bindings": [
+          {
+            "address": "10.16.115.28",
+            "netmask": "255.255.240.0",
+            "network": "10.16.112.0"
+          }
+        ],
+        "bindings6": [
+          {
+            "address": "fe80::250:56ff:fe9a:3afb",
+            "netmask": "ffff:ffff:ffff:ffff::",
+            "network": "fe80::",
+            "scope6": "link"
+          }
+        ],
+        "dhcp": "10.32.22.10",
+        "ip": "10.16.115.28",
+        "ip6": "fe80::250:56ff:fe9a:3afb",
+        "mac": "00:50:56:9a:3a:fb",
+        "mtu": 1500,
+        "netmask": "255.255.240.0",
+        "netmask6": "ffff:ffff:ffff:ffff::",
+        "network": "10.16.112.0",
+        "network6": "fe80::",
+        "scope6": "link"
+      },
+      "lo": {
+        "bindings": [
+          {
+            "address": "127.0.0.1",
+            "netmask": "255.0.0.0",
+            "network": "127.0.0.0"
+          }
+        ],
+        "bindings6": [
+          {
+            "address": "::1",
+            "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+            "network": "::1",
+            "scope6": "host"
+          }
+        ],
+        "ip": "127.0.0.1",
+        "ip6": "::1",
+        "mtu": 65536,
+        "netmask": "255.0.0.0",
+        "netmask6": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "network": "127.0.0.0",
+        "network6": "::1",
+        "scope6": "host"
+      }
+    },
+    "ip": "10.16.115.28",
+    "ip6": "fe80::250:56ff:fe9a:3afb",
+    "mac": "00:50:56:9a:3a:fb",
+    "mtu": 1500,
+    "netmask": "255.255.240.0",
+    "netmask6": "ffff:ffff:ffff:ffff::",
+    "network": "10.16.112.0",
+    "network6": "fe80::",
+    "primary": "ens160",
+    "scope6": "link"
+  },
+  "number_string": "",
+  "os": {
+    "architecture": "x86_64",
+    "distro": {
+      "codename": "Core",
+      "description": "OracleLinux Linux release 7.2.1511 (Core)",
+      "id": "OracleLinux",
+      "release": {
+        "full": "7.2.1511",
+        "major": "7",
+        "minor": "2"
+      }
+    },
+    "family": "RedHat",
+    "hardware": "x86_64",
+    "name": "OracleLinux",
+    "release": {
+      "full": "7.2.1511",
+      "major": "7",
+      "minor": "2"
+    },
+    "selinux": {
+      "enabled": false
+    }
+  },
+  "os_maj_version": "7",
+  "partitions": {
+    "/dev/mapper/centos-root": {
+      "filesystem": "xfs",
+      "mount": "/",
+      "size": "68.51 GiB",
+      "size_bytes": 73559703552,
+      "uuid": "00000000-0000-0000-0000-000000000000"
+    },
+    "/dev/mapper/centos-swap": {
+      "filesystem": "swap",
+      "size": "1.00 GiB",
+      "size_bytes": 1073741824,
+      "uuid": "00000000-0000-0000-0000-000000000000"
+    },
+    "/dev/sda1": {
+      "filesystem": "xfs",
+      "mount": "/boot",
+      "size": "500.00 MiB",
+      "size_bytes": 524288000,
+      "uuid": "00000000-0000-0000-0000-000000000000"
+    },
+    "/dev/sda2": {
+      "filesystem": "LVM2_member",
+      "size": "69.51 GiB",
+      "size_bytes": 74636574208,
+      "uuid": "00000000-0000-0000-0000-000000000000"
+    }
+  },
+  "path": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/opt/puppetlabs/bin:/sbin",
+  "platform_symlink_writable": true,
+  "platform_tag": "el-7-x86_64",
+  "pper_installed": false,
+  "primary_iface": "eth0",
+  "primary_ip": "10.16.115.28",
+  "processors": {
+    "count": 2,
+    "isa": "x86_64",
+    "models": [
+      "Intel(R) Xeon(R) CPU E5-2697 v4 @ 2.30GHz",
+      "Intel(R) Xeon(R) CPU E5-2697 v4 @ 2.30GHz"
+    ],
+    "physicalcount": 2,
+    "speed": "2.29 GHz"
+  },
+  "puppet_cert_paths": {
+    "ca_path": "/etc/puppetlabs/puppet/ssl/certs/ca.pem",
+    "cert_dir": "/etc/puppetlabs/puppet/ssl/certs",
+    "client_cert_path": "/etc/puppetlabs/puppet/ssl/certs/.pem",
+    "client_key_path": "/etc/puppetlabs/puppet/ssl/private_keys/.pem",
+    "confdir": "/etc/puppetlabs/puppet",
+    "ssldir": "/etc/puppetlabs/puppet/ssl"
+  },
+  "puppet_files_dir_present": false,
+  "puppetserver_installed": false,
+  "puppetversion": "7.5.0",
+  "ruby": {
+    "platform": "x86_64-linux",
+    "sitedir": "/opt/puppetlabs/puppet/lib/ruby/site_ruby/2.7.0",
+    "version": "2.7.2"
+  },
+  "ssh": {
+    "ecdsa": {
+      "fingerprints": {
+        "sha1": "SSHFP 3 1 0000000000000000000000000000000000000000",
+        "sha256": "SSHFP 3 2 0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "key": "AAAAscrubbed",
+      "type": "ecdsa-sha2-nistp256"
+    },
+    "ed25519": {
+      "fingerprints": {
+        "sha1": "SSHFP 4 1 0000000000000000000000000000000000000000",
+        "sha256": "SSHFP 4 2 0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "key": "AAAAscrubbed",
+      "type": "ssh-ed25519"
+    },
+    "rsa": {
+      "fingerprints": {
+        "sha1": "SSHFP 1 1 0000000000000000000000000000000000000000",
+        "sha256": "SSHFP 1 2 0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "key": "AAAAscrubbed",
+      "type": "ssh-rsa"
+    }
+  },
+  "staging_http_get": "curl",
+  "system_uptime": {
+    "days": 0,
+    "hours": 0,
+    "seconds": 0,
+    "uptime": "0:00 hours"
+  },
+  "timezone": "UTC",
+  "vcsrepo_svn_ver": "",
+  "virtual": "vmware",
+  "whereami": "pdx",
+  "windows_java_temp": "\\tmp"
+}

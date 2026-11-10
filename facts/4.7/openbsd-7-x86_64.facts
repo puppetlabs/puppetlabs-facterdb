@@ -1,0 +1,324 @@
+{
+  "dmi": {
+    "bios": {
+      "vendor": "OpenBSD"
+    },
+    "manufacturer": "OpenBSD",
+    "product": {
+      "name": "VMM"
+    }
+  },
+  "facterversion": "4.7.0",
+  "identity": {
+    "gid": 0,
+    "group": "wheel",
+    "privileged": true,
+    "uid": 0,
+    "user": "root"
+  },
+  "is_virtual": true,
+  "kernel": "OpenBSD",
+  "kernelmajversion": "7",
+  "kernelrelease": "7.5",
+  "kernelversion": "7.5",
+  "load_averages": {
+    "15m": 0.0,
+    "1m": 0.0,
+    "5m": 0.0
+  },
+  "mountpoints": {
+    "/": {
+      "available": "842.44 MiB",
+      "available_bytes": 883363840,
+      "capacity": "9.54%",
+      "device": "/dev/sd0a",
+      "filesystem": "ffs",
+      "options": [
+        "local"
+      ],
+      "size": "985.76 MiB",
+      "size_bytes": 1033648128,
+      "used": "94.04 MiB",
+      "used_bytes": 98603008
+    },
+    "/home": {
+      "available": "6.83 GiB",
+      "available_bytes": 7329738752,
+      "capacity": "0.02%",
+      "device": "/dev/sd0k",
+      "filesystem": "ffs",
+      "options": [
+        "local",
+        "nodev",
+        "nosuid",
+        "wxallowed"
+      ],
+      "size": "7.19 GiB",
+      "size_bytes": 7717337088,
+      "used": "1.65 MiB",
+      "used_bytes": 1732608
+    },
+    "/tmp": {
+      "available": "1.48 GiB",
+      "available_bytes": 1591691264,
+      "capacity": "0.00%",
+      "device": "/dev/sd0d",
+      "filesystem": "ffs",
+      "options": [
+        "local",
+        "nodev",
+        "nosuid"
+      ],
+      "size": "1.56 GiB",
+      "size_bytes": 1675474944,
+      "used": "10.00 KiB",
+      "used_bytes": 10240
+    },
+    "/usr": {
+      "available": "1.83 GiB",
+      "available_bytes": 1960398848,
+      "capacity": "38.53%",
+      "device": "/dev/sd0f",
+      "filesystem": "ffs",
+      "options": [
+        "local",
+        "nodev"
+      ],
+      "size": "3.23 GiB",
+      "size_bytes": 3471620096,
+      "used": "1.25 GiB",
+      "used_bytes": 1337640960
+    },
+    "/usr/X11R6": {
+      "available": "575.18 MiB",
+      "available_bytes": 603115520,
+      "capacity": "33.01%",
+      "device": "/dev/sd0g",
+      "filesystem": "ffs",
+      "options": [
+        "local",
+        "nodev"
+      ],
+      "size": "927.81 MiB",
+      "size_bytes": 972879872,
+      "used": "306.25 MiB",
+      "used_bytes": 321122304
+    },
+    "/usr/local": {
+      "available": "3.45 GiB",
+      "available_bytes": 3708446720,
+      "capacity": "1.32%",
+      "device": "/dev/sd0h",
+      "filesystem": "ffs",
+      "options": [
+        "local",
+        "nodev",
+        "wxallowed"
+      ],
+      "size": "3.69 GiB",
+      "size_bytes": 3958585344,
+      "used": "49.79 MiB",
+      "used_bytes": 52209664
+    },
+    "/usr/obj": {
+      "available": "5.29 GiB",
+      "available_bytes": 5674782720,
+      "capacity": "0.00%",
+      "device": "/dev/sd0j",
+      "filesystem": "ffs",
+      "options": [
+        "local",
+        "nodev",
+        "nosuid"
+      ],
+      "size": "5.56 GiB",
+      "size_bytes": 5973456896,
+      "used": "2.00 KiB",
+      "used_bytes": 2048
+    },
+    "/usr/src": {
+      "available": "2.18 GiB",
+      "available_bytes": 2339993600,
+      "capacity": "0.00%",
+      "device": "/dev/sd0i",
+      "filesystem": "ffs",
+      "options": [
+        "local",
+        "nodev",
+        "nosuid"
+      ],
+      "size": "2.29 GiB",
+      "size_bytes": 2463152128,
+      "used": "2.00 KiB",
+      "used_bytes": 2048
+    },
+    "/var": {
+      "available": "2.30 GiB",
+      "available_bytes": 2472480768,
+      "capacity": "0.38%",
+      "device": "/dev/sd0e",
+      "filesystem": "ffs",
+      "options": [
+        "local",
+        "nodev",
+        "nosuid"
+      ],
+      "size": "2.43 GiB",
+      "size_bytes": 2612967424,
+      "used": "9.38 MiB",
+      "used_bytes": 9838592
+    }
+  },
+  "networking": {
+    "dhcp": "10.0.0.59",
+    "domain": "example.com",
+    "fqdn": "foo.example.com",
+    "hostname": "foo",
+    "interfaces": {
+      "enc0": {},
+      "lo0": {
+        "bindings": [
+          {
+            "address": "127.0.0.1",
+            "netmask": "255.0.0.0",
+            "network": "127.0.0.0"
+          }
+        ],
+        "bindings6": [
+          {
+            "address": "::1",
+            "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+            "network": "::1",
+            "scope6": "host"
+          },
+          {
+            "address": "fe80::1",
+            "netmask": "ffff:ffff:ffff:ffff::",
+            "network": "fe80::",
+            "scope6": "link"
+          }
+        ],
+        "ip": "127.0.0.1",
+        "ip6": "::1",
+        "mtu": 32768,
+        "netmask": "255.0.0.0",
+        "netmask6": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "network": "127.0.0.0",
+        "network6": "::1",
+        "scope6": "host"
+      },
+      "pflog0": {
+        "mtu": 33136
+      },
+      "vio0": {
+        "bindings": [
+          {
+            "address": "10.0.0.1",
+            "netmask": "255.255.255.0",
+            "network": "10.0.0.0"
+          }
+        ],
+        "bindings6": [
+          {
+            "address": "fe80::a00:66ff:fe66:16a1",
+            "netmask": "ffff:ffff:ffff:ffff::",
+            "network": "fe80::",
+            "scope6": "link"
+          },
+          {
+            "address": "2aa1:1470:5ab6::a00:1",
+            "netmask": "ffff:ffff:ffff:ffff::",
+            "network": "2aa1:1470:5ab6::",
+            "scope6": "global"
+          }
+        ],
+        "ip": "10.0.0.1",
+        "ip6": "2aa1:1470:5ab6::a00:1",
+        "mac": "08:00:66:66:16:a1",
+        "mtu": 1500,
+        "netmask": "255.255.255.0",
+        "netmask6": "ffff:ffff:ffff:ffff::",
+        "network": "10.0.0.0",
+        "network6": "2aa1:1470:5ab6::",
+        "scope6": "global"
+      }
+    },
+    "ip": "10.0.0.1",
+    "ip6": "2aa1:1470:5ab6::a00:1",
+    "mac": "08:00:66:66:16:a1",
+    "mtu": 1500,
+    "netmask": "255.255.255.0",
+    "netmask6": "ffff:ffff:ffff:ffff::",
+    "network": "10.0.0.0",
+    "network6": "2aa1:1470:5ab6::",
+    "primary": "vio0",
+    "scope6": "global"
+  },
+  "os": {
+    "architecture": "amd64",
+    "family": "OpenBSD",
+    "hardware": "amd64",
+    "name": "OpenBSD",
+    "release": {
+      "full": "7.5",
+      "major": "7",
+      "minor": "5"
+    }
+  },
+  "path": "/sbin:/usr/sbin:/bin:/usr/bin:/usr/X11R6/bin:/usr/local/sbin:/usr/local/bin",
+  "processors": {
+    "count": 1,
+    "isa": "amd64",
+    "models": [
+      "Intel(R) Atom(TM) CPU C2750 @ 2.40GHz"
+    ],
+    "speed": "2.40 GHz"
+  },
+  "ruby": {
+    "platform": "x86_64-openbsd",
+    "sitedir": "/usr/local/lib/ruby/site_ruby/3.2",
+    "version": "3.2.4"
+  },
+  "ssh": {
+    "dsa": {
+      "fingerprints": {
+        "sha1": "SSHFP 2 1 0000000000000000000000000000000000000000",
+        "sha256": "SSHFP 2 2 0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "key": "AAAAscrubbed",
+      "type": "ssh-dss"
+    },
+    "ecdsa": {
+      "fingerprints": {
+        "sha1": "SSHFP 3 1 0000000000000000000000000000000000000000",
+        "sha256": "SSHFP 3 2 0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "key": "AAAAscrubbed",
+      "type": "ecdsa-sha2-nistp256"
+    },
+    "ed25519": {
+      "fingerprints": {
+        "sha1": "SSHFP 4 1 0000000000000000000000000000000000000000",
+        "sha256": "SSHFP 4 2 0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "key": "AAAAscrubbed",
+      "type": "ssh-ed25519"
+    },
+    "rsa": {
+      "fingerprints": {
+        "sha1": "SSHFP 1 1 0000000000000000000000000000000000000000",
+        "sha256": "SSHFP 1 2 0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "key": "AAAAscrubbed",
+      "type": "ssh-rsa"
+    }
+  },
+  "system_uptime": {
+    "days": 0,
+    "hours": 0,
+    "seconds": 0,
+    "uptime": "0:00 hours"
+  },
+  "timezone": "CEST",
+  "virtual": "vmm"
+}

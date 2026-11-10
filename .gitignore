@@ -1,5 +1,5 @@
 Gemfile.lock
-spec/dual_install/Gemfile.lock
+spec/integration/dual_install/Gemfile.lock
 /pkg/
 *.gem
 .bundle/
