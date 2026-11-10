@@ -64,3 +64,4 @@ RSpec/ContextWording:
 RSpec/SpecFilePathFormat:
   CustomTransform:
     FacterDB: facterdb
+    Puppetlabs: ''

@@ -1,7 +1,7 @@
 require 'rspec/core/rake_task'
 
 RSpec::Core::RakeTask.new(:spec) do |t|
-  t.exclude_pattern = 'spec/dual_install/**/*_spec.rb'
+  t.exclude_pattern = 'spec/integration/dual_install/**/*_spec.rb'
 end
 
 begin

@@ -67,7 +67,7 @@ facts/<facter major.minor>/<os>-<release>-<arch>.facts
 bundle install
 bundle exec rake spec
 bundle exec rake rubocop
-BUNDLE_GEMFILE=spec/dual_install/Gemfile bundle exec rspec spec/dual_install
+BUNDLE_GEMFILE=spec/integration/dual_install/Gemfile bundle exec rspec spec/integration/dual_install
 ```
 
 Fact store tooling:

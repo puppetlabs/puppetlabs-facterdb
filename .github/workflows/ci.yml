@@ -68,7 +68,7 @@ jobs:
   dual-install:
     runs-on: ubuntu-latest
     env:
-      BUNDLE_GEMFILE: spec/dual_install/Gemfile
+      BUNDLE_GEMFILE: spec/integration/dual_install/Gemfile
       DUAL_INSTALL_FACTERDB_VERSION: ${{ matrix.facterdb }}
     strategy:
       fail-fast: false
@@ -82,7 +82,7 @@ jobs:
           ruby-version: '4.0'
           bundler-cache: true
       - name: Run dual-install spec
-        run: bundle exec rspec spec/dual_install
+        run: bundle exec rspec spec/integration/dual_install
 
   tests:
     if: always()

@@ -7,7 +7,7 @@ require 'rbconfig'
 # Proves upstream facterdb and puppetlabs-facterdb coexist in one bundle.
 # Every assertion runs in a fresh subprocess so state cannot leak between examples.
 RSpec.describe 'facterdb and puppetlabs-facterdb in one bundle' do # rubocop:disable RSpec/DescribeClass
-  let(:root) { File.expand_path('../..', __dir__) }
+  let(:root) { File.expand_path('../../..', __dir__) }
   let(:fixtures) { File.join(root, 'spec', 'fixtures', 'facts') }
   let(:base_env) { ENV.to_h.reject { |k, _| k.start_with?('FACTERDB_', 'PUPPETLABS_FACTERDB_') } }
   let(:env) { {} }
