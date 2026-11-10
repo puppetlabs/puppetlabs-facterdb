@@ -71,15 +71,4 @@ namespace :facts do
 
     puts "#{changed.size} fact file(s) #{verb}"
   end
-
-  desc 'Seed Facter 4.0-4.11 facts from a facterdb-private checkout: rake "facts:seed[/path/to/facterdb-private]"'
-  task :seed, [:source] do |_, args|
-    abort 'usage: rake "facts:seed[/path/to/facterdb-private]"' if args[:source].to_s.empty?
-
-    dest = File.join(Puppetlabs::FacterDB::Tools::REPO_ROOT, 'facts')
-    seeder = Puppetlabs::FacterDB::Tools::Seeder.new(source: args[:source], dest: dest, config: FactsTasks.config, normaliser: FactsTasks.normaliser)
-    puts seeder.run
-    failures = FactsTasks.report_errors(dest)
-    abort "#{failures} fact file error(s) after seeding" if failures.positive?
-  end
 end

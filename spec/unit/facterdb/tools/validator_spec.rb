@@ -53,7 +53,7 @@ RSpec.describe Puppetlabs::FacterDB::Tools::Validator do
     end
 
     it 'ignores non-facts files' do
-      ['.gitkeep', 'PROVENANCE.md', 'seed-manifest.json'].each { |name| put(name, 'not json') }
+      ['.gitkeep', 'seed-manifest.json'].each { |name| put(name, 'not json') }
       expect(validator.validate(root)).to eq([])
     end
 

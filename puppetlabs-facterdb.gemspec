@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.description = 'Contains facts from many Facter versions on many operating systems, stored and looked up under the real Facter version that produced them.'
   s.licenses    = ['Apache-2.0']
 
-  s.files       = Dir['lib/**/*.rb', 'exe/*', 'facts/**/*.facts', 'facts/PROVENANCE.md', 'facts/seed-manifest.json', 'LICENSE', 'NOTICE', 'README.md', 'CHANGELOG.md']
+  s.files       = Dir['lib/**/*.rb', 'exe/*', 'facts/**/*.facts', 'facts/seed-manifest.json', 'LICENSE', 'NOTICE', 'README.md', 'CHANGELOG.md']
   s.bindir      = 'exe'
   s.executables = ['puppetlabs-facterdb']
 
