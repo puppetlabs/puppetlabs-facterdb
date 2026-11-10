@@ -52,6 +52,8 @@ namespace :facts do
   task :validate do
     root = FactsTasks.facts_dir
     count = FactsTasks.validator.files(root).size
+    abort "no fact files found under #{root}" if count.zero?
+
     failures = FactsTasks.report_errors(root)
     abort "#{failures} fact file error(s)" if failures.positive?
 
