@@ -47,6 +47,11 @@ RSpec.describe Puppetlabs::FacterDB::Tools::Validator do
       expect(validator.validate(root)).to eq([])
     end
 
+    it 'accepts a root with a trailing slash' do
+      put_rendered('4.11/debian-12-x86_64.facts')
+      expect(validator.validate("#{root}/")).to eq([])
+    end
+
     it 'ignores non-facts files' do
       ['.gitkeep', 'PROVENANCE.md', 'seed-manifest.json'].each { |name| put(name, 'not json') }
       expect(validator.validate(root)).to eq([])

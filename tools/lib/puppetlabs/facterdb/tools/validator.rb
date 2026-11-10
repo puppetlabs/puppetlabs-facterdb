@@ -22,17 +22,20 @@ class Puppetlabs::FacterDB::Tools::Validator
   end
 
   def files(root)
-    Dir.glob('**/*.facts', base: root).sort.map { |rel| File.join(root, rel) }
+    relative_files(root).map { |rel| File.join(root, rel) }
   end
 
   def validate(root)
-    files(root).flat_map do |path|
-      rel = path.delete_prefix("#{root}/")
-      validate_file(path, rel).map { |message| Error.new(rel, message) }
+    relative_files(root).flat_map do |rel|
+      validate_file(File.join(root, rel), rel).map { |message| Error.new(rel, message) }
     end
   end
 
   private
+
+  def relative_files(root)
+    Dir.glob('**/*.facts', base: root).sort
+  end
 
   def validate_file(path, rel)
     dir = File.dirname(rel)
