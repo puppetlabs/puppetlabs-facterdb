@@ -13,6 +13,11 @@ RSpec.describe Puppetlabs::FacterDB::Tools::Normaliser do
       expect(out).to eq("{\n  \"a\": 0,\n  \"b\": {\n    \"a\": [\n      3,\n      1,\n      2\n    ],\n    \"z\": 1\n  }\n}\n")
     end
 
+    it 'renders empty arrays and hashes compactly on every Ruby' do
+      out = described_class.format('a' => [], 'b' => {}, 'c' => [[]])
+      expect(out).to eq("{\n  \"a\": [],\n  \"b\": {},\n  \"c\": [\n    []\n  ]\n}\n")
+    end
+
     it 'ends with exactly one newline' do
       expect(described_class.format('a' => 1)).to match(%r{[^\n]\n\z})
     end

@@ -9,8 +9,9 @@ class Puppetlabs::FacterDB::Tools::Normaliser
     end
   end
 
+  # json < 2.7 (Ruby 3.2) spreads empty arrays and hashes over several lines; collapse them so output is identical on every Ruby.
   def self.format(obj)
-    "#{JSON.pretty_generate(sort_keys(obj))}\n"
+    "#{JSON.pretty_generate(sort_keys(obj)).gsub(%r{([\[{])\n\s*([\]}])}, '\1\2')}\n"
   end
 
   def initialize(scrubber)
