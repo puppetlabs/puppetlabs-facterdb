@@ -121,6 +121,13 @@ RSpec.describe Puppetlabs::FacterDB::Tools::Seeder do
       expect(dest_snapshot).to eq(before)
     end
 
+    it 'refreshes provenance when only the source commit changed', :aggregate_failures do
+      run_seed
+      git('commit', '-q', '--allow-empty', '-m', 'second')
+      expect(seeder.run.changed).to be(false)
+      expect(File.read(File.join(dest, 'seed-manifest.json'))).to include(git('rev-parse', 'HEAD').strip)
+    end
+
     it 'flags a dirty source checkout' do
       init_repo
       put('untracked.txt', 'x')

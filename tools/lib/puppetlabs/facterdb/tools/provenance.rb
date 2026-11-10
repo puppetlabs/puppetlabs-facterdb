@@ -2,6 +2,7 @@
 
 require 'date'
 require 'fileutils'
+require 'json'
 
 module Puppetlabs::FacterDB::Tools::Provenance
   module_function
@@ -25,6 +26,17 @@ module Puppetlabs::FacterDB::Tools::Provenance
     FileUtils.mkdir_p(dest)
     File.binwrite(File.join(dest, 'seed-manifest.json'), Puppetlabs::FacterDB::Tools::Normaliser.format(manifest))
     File.binwrite(File.join(dest, 'PROVENANCE.md'), markdown(manifest))
+  end
+
+  # True when both provenance files exist and match the manifest, ignoring seeded_on.
+  def current?(dest, manifest)
+    path = File.join(dest, 'seed-manifest.json')
+    return false unless File.file?(path) && File.file?(File.join(dest, 'PROVENANCE.md'))
+
+    existing = JSON.parse(File.binread(path))
+    existing.is_a?(Hash) && existing.except('seeded_on') == JSON.parse(JSON.generate(manifest)).except('seeded_on')
+  rescue JSON::ParserError
+    false
   end
 
   def counts(report)

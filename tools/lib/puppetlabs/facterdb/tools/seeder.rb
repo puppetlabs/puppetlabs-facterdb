@@ -126,9 +126,8 @@ class Puppetlabs::FacterDB::Tools::Seeder
   end
 
   def write_provenance(info)
-    manifest_path = File.join(@dest, 'seed-manifest.json')
-    return unless @report.changed || !File.file?(manifest_path)
-
-    Puppetlabs::FacterDB::Tools::Provenance.write(@dest, Puppetlabs::FacterDB::Tools::Provenance.manifest(@report, info, @config, @today))
+    provenance = Puppetlabs::FacterDB::Tools::Provenance
+    manifest = provenance.manifest(@report, info, @config, @today)
+    provenance.write(@dest, manifest) unless provenance.current?(@dest, manifest)
   end
 end
