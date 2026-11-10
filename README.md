@@ -82,4 +82,6 @@ The scrub policy lives in `config/scrub.yml` and the filename and seed rules in 
 
 ## Licence and attribution
 
-Apache-2.0. Derived from [voxpupuli/facterdb](https://github.com/voxpupuli/facterdb) (Apache-2.0). Spec fixtures are copied from facterdb.
+Apache-2.0. Derived from [voxpupuli/facterdb](https://github.com/voxpupuli/facterdb) (Apache-2.0). Spec fixtures are copied from facterdb. Seeded data comes from Puppet's facterdb-private fork of voxpupuli/facterdb.
+
+See [NOTICE](NOTICE) for attribution and [facts/PROVENANCE.md](facts/PROVENANCE.md) for the seed source.

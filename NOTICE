@@ -1,0 +1,14 @@
+puppetlabs-facterdb
+Copyright Perforce Software, Inc.
+
+This product includes code and fact data derived from facterdb
+(https://github.com/voxpupuli/facterdb), licensed under the Apache License,
+Version 2.0, copyright the voxpupuli/facterdb contributors.
+
+The Facter 4.0-4.11 fact data was imported from Puppet's fork of facterdb,
+facterdb-private (https://github.com/puppetlabs/facterdb-private), with
+scrubbing and normalisation applied. See facts/PROVENANCE.md for the source
+commit.
+
+The library code was ported from facterdb's lib/facterdb.rb, and the spec
+fixtures were copied from facterdb.
