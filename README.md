@@ -54,7 +54,8 @@ facts/<facter major.minor>/<os>-<release>-<arch>.facts
 - Each file holds one full `facter -j` JSON object.
 - The latest patch release for each major.minor overwrites the previous one; the exact patch is in the inner `facterversion` fact.
 - The directory is organisational only. Filters match the inner facts, not the directory name.
-- The bundled `facts/` directory is empty until data is seeded.
+- The bundled data covers Facter 4.0-4.11, seeded from facterdb-private (see [facts/PROVENANCE.md](facts/PROVENANCE.md)). Facter 4.12+ arrives from Puppet Core gathers.
+- Filenames must not contain spaces. A `-core` release suffix is allowed, and rolling distros listed in `config/facts.yml` use `<os>-<arch>`.
 
 ## Using alongside facterdb
 
