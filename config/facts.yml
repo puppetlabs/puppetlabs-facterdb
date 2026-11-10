@@ -1,0 +1,13 @@
+# Rolling distros that omit the release token: <os>-<arch>.facts
+rolling_distros:
+  - archlinux
+
+# Facter versions seeded from facterdb-private (major.min_minor to major.max_minor)
+seed:
+  major: 4
+  min_minor: 0
+  max_minor: 11
+
+# Source basename -> target basename (a space is invalid in fact filenames)
+renames:
+  "windows-2012 r2-x86_64.facts": "windows-2012r2-x86_64.facts"

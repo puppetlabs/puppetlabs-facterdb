@@ -1,0 +1,61 @@
+# Scrub policy for fact files (applied by the normaliser and checked by the validator).
+#
+# `scrub:` maps a dotted fact path to the placeholder it must hold.
+#   - `*` matches every key at one Hash level; Arrays are traversed element-wise.
+#   - Missing paths are no-ops, so OS-specific paths are safe to list.
+#   - Keys containing `.` cannot be addressed; never target below such keys.
+#   - Placeholder YAML types must match the fact type.
+scrub:
+
+  # Identity
+  networking.hostname: "foo"
+  networking.domain: "example.com"
+  networking.fqdn: "foo.example.com"
+
+  # Uptime and load
+  system_uptime.seconds: 0
+  system_uptime.hours: 0
+  system_uptime.days: 0
+  system_uptime.uptime: "0:00 hours"
+  system_profiler.uptime: "0 minutes"
+  load_averages.1m: 0.0
+  load_averages.5m: 0.0
+  load_averages.15m: 0.0
+
+  # SSH host keys and fingerprints
+  ssh.rsa.key: "AAAAscrubbed"
+  ssh.rsa.fingerprints.sha1: "SSHFP 1 1 0000000000000000000000000000000000000000"
+  ssh.rsa.fingerprints.sha256: "SSHFP 1 2 0000000000000000000000000000000000000000000000000000000000000000"
+  ssh.dsa.key: "AAAAscrubbed"
+  ssh.dsa.fingerprints.sha1: "SSHFP 2 1 0000000000000000000000000000000000000000"
+  ssh.dsa.fingerprints.sha256: "SSHFP 2 2 0000000000000000000000000000000000000000000000000000000000000000"
+  ssh.ecdsa.key: "AAAAscrubbed"
+  ssh.ecdsa.fingerprints.sha1: "SSHFP 3 1 0000000000000000000000000000000000000000"
+  ssh.ecdsa.fingerprints.sha256: "SSHFP 3 2 0000000000000000000000000000000000000000000000000000000000000000"
+  ssh.ed25519.key: "AAAAscrubbed"
+  ssh.ed25519.fingerprints.sha1: "SSHFP 4 1 0000000000000000000000000000000000000000"
+  ssh.ed25519.fingerprints.sha256: "SSHFP 4 2 0000000000000000000000000000000000000000000000000000000000000000"
+
+  # Hardware identity
+  dmi.product.uuid: "00000000-0000-0000-0000-000000000000"
+  dmi.product.serial_number: "0"
+  dmi.board.serial_number: "0"
+  dmi.chassis.serial_number: "0"
+  disks.*.serial: "0"
+  disks.*.serial_number: "0"
+  partitions.*.uuid: "00000000-0000-0000-0000-000000000000"
+  partitions.*.partuuid: "00000000-0000-0000-0000-000000000000"
+  system_profiler.hardware_uuid: "00000000-0000-0000-0000-000000000000"
+  system_profiler.serial_number: "0"
+
+  # Solaris, containers
+  hypervisors.ldom.domain_uuid: "00000000-0000-0000-0000-000000000000"
+  ldom.domainuuid: "00000000-0000-0000-0000-000000000000"
+  hypervisors.ldom.chassis_serial: "0"
+  ldom.domainchassis: "0"
+  hypervisors.ldom.control_domain: foo
+  ldom.domaincontrol: foo
+  hypervisors.docker.id: "0000000000000000000000000000000000000000000000000000000000000000"
+
+  # NFS device leaking a username
+  mountpoints./vagrant.device: "10.0.0.1:/vagrant"
