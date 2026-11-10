@@ -62,6 +62,11 @@ RSpec.describe Puppetlabs::FacterDB::Tools::Validator do
       expect(messages).to match([%r{invalid JSON}])
     end
 
+    it 'does not echo file content in the invalid JSON message' do
+      put('4.11/debian-12-x86_64.facts', '{"secret_value": nope')
+      expect(messages.join).not_to include('secret_value')
+    end
+
     it 'rejects a non-object top level' do
       put('4.11/debian-12-x86_64.facts', "[1]\n")
       expect(messages).to include(%r{must be a JSON object})

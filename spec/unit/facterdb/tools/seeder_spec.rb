@@ -146,6 +146,16 @@ RSpec.describe Puppetlabs::FacterDB::Tools::Seeder do
     end
   end
 
+  context 'with an scp-style ssh remote' do
+    it 'keeps host and repository and drops the user' do
+      put_fact('facts/4.10/debian-12-x86_64.facts', '4.10.0')
+      init_repo(remote: 'git@github.com:puppetlabs/facterdb-private.git')
+      seeder.run
+      repo = JSON.parse(File.read(File.join(dest, 'seed-manifest.json')))['source_repo']
+      expect(repo).to eq('github.com:puppetlabs/facterdb-private.git')
+    end
+  end
+
   context 'when keyed by inner facterversion' do
     it 'writes under the inner major.minor directory' do
       put_fact('facts/4.10/debian-12-x86_64.facts', '4.11.0')

@@ -4,6 +4,9 @@ require 'open3'
 require 'uri'
 
 class Puppetlabs::FacterDB::Tools::SourceInfo
+  # Git's SCP-style remote (user@host:owner/repo.git), which URI cannot parse; the user part is dropped.
+  SCP_REMOTE = %r{\A(?:[^@/:]+@)?(?<host>[^/:@]+):(?!//)(?<path>.+)\z}
+
   def initialize(source)
     @source = source
   end
@@ -28,6 +31,9 @@ class Puppetlabs::FacterDB::Tools::SourceInfo
   def remote_url
     url = git('config', '--get', 'remote.origin.url')
     return File.basename(@source) if url.nil? || url.empty?
+
+    scp = SCP_REMOTE.match(url)
+    return "#{scp[:host]}:#{scp[:path]}" if scp
 
     uri = URI.parse(url)
     uri.user = nil

@@ -41,8 +41,8 @@ module FactsTasks
 
     File.binwrite(path, content) unless check_mode?
     :changed
-  rescue JSON::ParserError => e
-    warn "#{path}: invalid JSON: #{e.message}"
+  rescue JSON::ParserError
+    warn "#{path}: invalid JSON (details withheld; may contain fact values)"
     :invalid
   end
 end

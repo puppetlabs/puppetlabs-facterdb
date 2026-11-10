@@ -60,8 +60,8 @@ class Puppetlabs::FacterDB::Tools::Validator
   def parse(path)
     data = JSON.parse(File.binread(path).force_encoding(Encoding::UTF_8))
     data.is_a?(Hash) ? [data, nil] : [nil, 'must be a JSON object']
-  rescue JSON::ParserError => e
-    [nil, "invalid JSON: #{e.message}"]
+  rescue JSON::ParserError
+    [nil, 'invalid JSON (details withheld; may contain fact values)']
   end
 
   def content_errors(data, dir)
