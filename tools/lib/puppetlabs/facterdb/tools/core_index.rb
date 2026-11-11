@@ -11,7 +11,7 @@ class Puppetlabs::FacterDB::Tools::CoreIndex
     tokens = version_tokens(body)
     # Tokens with a dash carry a platform suffix; the compact index has none today
     releases = tokens.grep_v(%r{-}).grep(Puppetlabs::FacterDB::Tools::FacterVersions::VERSION)
-    raise ArgumentError, 'unexpected Core index response' if releases.empty? && !tokens.empty?
+    raise ArgumentError, 'unexpected Core index response' if releases.empty?
 
     releases.uniq.sort_by { |v| Gem::Version.new(v) }
   end

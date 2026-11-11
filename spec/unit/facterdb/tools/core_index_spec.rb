@@ -11,7 +11,7 @@ RSpec.describe Puppetlabs::FacterDB::Tools::CoreIndex, :aggregate_failures do
       expect(described_class.parse(body)).to eq(['4.9.0', '4.10.0', '4.12.0', '4.16.0'])
     end
 
-    ['{"secret":"x"}', "---\ngarbage deps\n"].each do |bad|
+    ['{"secret":"x"}', "---\ngarbage deps\n", "---\n", '---', ''].each do |bad|
       it "rejects #{bad.inspect} without echoing it" do
         expect { described_class.parse(bad) }.to raise_error(ArgumentError, 'unexpected Core index response')
       end
