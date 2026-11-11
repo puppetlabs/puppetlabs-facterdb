@@ -1,0 +1,14 @@
+name: Update Facter versions
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Placeholder
+        run: echo "Placeholder, replaced in a follow-up PR"
