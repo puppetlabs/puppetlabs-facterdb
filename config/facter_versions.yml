@@ -1,0 +1,37 @@
+# Facter version -> Puppet Core puppet-agent version, per agent major.
+#
+# Source of truth is the Facter release notes page (Puppet Core versions):
+# https://help.puppet.com/core/current/Content/PuppetCore/FacterReleaseNotes/release_notes_facter.htm
+# Entries are edited manually or added by the scheduled gather run. The agent
+# version equals the Puppet Core version listed on the page unless the Core
+# packages show otherwise. Where a Facter version ships in several agent
+# majors the newest major is used for gathering.
+
+versions:
+  '4.12.0':
+    '8': '8.12.0'
+  '4.13.0':
+    '8': '8.13.0'
+  '4.14.0':
+    '8': '8.14.0'
+  '4.15.0':
+    '8': '8.15.0'
+  '4.16.0':
+    '8': '8.16.0'
+  '4.17.0':
+    '8': '8.17.0'
+  '4.18.0':
+    '8': '8.18.0'
+  '4.19.0':
+    '8': '8.19.0'
+  '4.20.0':
+    '8': '8.20.0'
+  '4.21.0':
+    '8': '8.21.0'
+    '9': '9.0.0'
+  '4.22.0':
+    '8': '8.22.0'
+    '9': '9.1.0'
+  '4.23.0':
+    '8': '8.22.2'
+    '9': '9.1.3'
