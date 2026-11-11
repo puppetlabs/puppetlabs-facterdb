@@ -1,0 +1,5 @@
+# Facter versions gathered by the automated workflows, mapped to the Puppet Core
+# puppet-agent version they ship with (the newest agent when two exist).
+# Written by `rake versions:update`; hand edits are allowed.
+# Facter 4.0 to 4.11 are seeded and not listed here.
+{}
