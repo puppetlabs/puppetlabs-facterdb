@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 $LOAD_PATH.unshift(File.expand_path('../lib', __dir__))
+require 'open3'
 require 'puppetlabs/facterdb/tools'
 
 module GatherTasks
@@ -47,6 +48,51 @@ module GatherTasks
     File.open(path, 'a') { |file| file.write(text) }
   end
 
+  def map_path
+    ENV.fetch('FACTER_VERSIONS_PATH', 'config/facter_versions.yml')
+  end
+
+  def selected_ids
+    ids = JSON.parse(ENV.fetch('SELECTED_IDS', '[]'))
+    raise ArgumentError, 'SELECTED_IDS must be a JSON array of strings' unless ids.is_a?(Array) && ids.all?(String)
+
+    ids
+  rescue JSON::ParserError
+    raise ArgumentError, 'SELECTED_IDS must be a JSON array of strings'
+  end
+
+  def collect
+    version = ENV.fetch('FACTER_VERSION')
+    store = Tools::Store.new(platforms: platforms, facts_dir: ENV.fetch('FACTS_DIR', 'facts'), version: version)
+    outcomes = store.place(ENV.fetch('ARTIFACTS_DIR'), selected_ids, unfiltered: ENV['UNFILTERED'] == 'true')
+    File.write(ENV.fetch('REPORT_PATH'), JSON.pretty_generate(outcomes.map { |o| o.to_h.compact }))
+    outcomes.each { |o| puts "#{o.id} #{o.outcome} #{o.action}".strip }
+    append(ENV.fetch('GITHUB_OUTPUT'), "failed=#{store.failed?(outcomes)}\n") unless ENV['GITHUB_OUTPUT'].to_s.empty?
+  end
+
+  def run_url
+    server = ENV.fetch('GITHUB_SERVER_URL', 'https://github.com')
+    "#{server}/#{ENV.fetch('GITHUB_REPOSITORY', '')}/actions/runs/#{ENV.fetch('GITHUB_RUN_ID', '')}"
+  end
+
+  def pr_body
+    status, = Open3.capture2('git', 'status', '--porcelain', '--', 'facts')
+    body = Tools::PrBody.render(
+      version: ENV.fetch('FACTER_VERSION'), agent: ENV.fetch('AGENT_VERSION'),
+      outcomes: JSON.parse(File.read(ENV.fetch('REPORT_PATH'))), git_status: status, run_url: run_url
+    )
+    File.write(ENV.fetch('PR_BODY_PATH'), body)
+  end
+
+  def update_map
+    map = Tools::VersionMap.load(map_path)
+    version = ENV.fetch('FACTER_VERSION')
+    agents = (map.include?(version) ? map.agents_for(version) : {}).merge(ENV.fetch('AGENT_MAJOR') => ENV.fetch('AGENT_VERSION'))
+    changed = map.add(version, agents)
+    map.write(map_path) if changed
+    puts(changed ? 'updated' : 'unchanged')
+  end
+
   def publish(result)
     lines = output_lines(result)
     if ENV['GITHUB_OUTPUT'].to_s.empty?
@@ -63,6 +109,27 @@ namespace :gather do
   task :plan do
     GatherTasks.publish(GatherTasks.plan_from_env)
   rescue ArgumentError, GatherTasks::Tools::VersionMap::UnknownVersion, GatherTasks::Tools::GemIndex::Error => e
+    abort e.message
+  end
+
+  desc 'Write the resolved Facter to puppet-agent mapping into config/facter_versions.yml'
+  task :update_map do
+    GatherTasks.update_map
+  rescue ArgumentError => e
+    abort e.message
+  end
+
+  desc 'Place gathered leg artifacts into facts/ and write the outcomes report'
+  task :collect do
+    GatherTasks.collect
+  rescue ArgumentError, KeyError => e
+    abort e.message
+  end
+
+  desc 'Render the facts PR body from the collect report'
+  task :pr_body do
+    GatherTasks.pr_body
+  rescue KeyError, JSON::ParserError, SystemCallError => e
     abort e.message
   end
 end
