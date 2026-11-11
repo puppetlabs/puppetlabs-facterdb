@@ -57,6 +57,26 @@ facts/<facter major.minor>/<os>-<release>-<arch>.facts
 - The bundled data covers Facter 4.0-4.11, seeded from facterdb-private (source commit in [facts/seed-manifest.json](facts/seed-manifest.json)). Facter 4.12+ arrives from Puppet Core gathers.
 - Filenames must not contain spaces. A `-core` release suffix is allowed, and rolling distros listed in `config/facts.yml` use `<os>-<arch>`.
 
+## Gathering facts
+
+The `gather-facts.yml` workflow plans a run, gathers facts on one leg per active entry in `config/platforms.yml`, and opens a single PR per Facter version on `gather/facter-<version>`.
+
+Dispatch manually:
+
+```shell
+gh workflow run gather-facts.yml -f facter_version=4.23.0
+gh workflow run gather-facts.yml -f facter_version=4.23.0 -f platforms=ubuntu-24.04-x86_64,windows-2025-x86_64
+```
+
+- `facter_version` must be `X.Y.Z`, `>= 4.12.0`, and either present in `config/facter_versions.yml` or listed on the Facter release notes page. `platforms` is optional; empty means all.
+- A weekly schedule (Mondays) gathers the oldest Puppet Core release that has no facts yet, and is a no-op when nothing is missing. A needed version-map update is a separate commit in the same PR.
+- The `plan` and `gather` jobs run in the `puppetcore` Environment (restricted to `main`), which holds `PUPPET_FORGE_TOKEN`; the workflow falls back to the org secret `PUPPET_FORGE_TOKEN_PUBLIC`. The `collect` job, which pushes, has no Core secret.
+- The PR is opened with `GITHUB_TOKEN`, which does not trigger CI. A maintainer must close and reopen the PR to run checks.
+- Linux facts are gathered in containers, so `virtual`, `service_provider`, `kernel*` and similar facts differ from the Vagrant-gathered 4.0-4.11 seed.
+- Skipped platforms and the reasons live in `config/platforms.yml`; `rake platforms:check` enforces Puppet Core coverage.
+- Reviewers should check the first generated file per OS for identifying data.
+- Failures notify through GitHub's default workflow-failure emails. GitHub disables scheduled workflows in public repos after 60 days without repository activity.
+
 ## Using alongside facterdb
 
 `puppetlabs-facterdb` shares no require path, constant, executable, environment variable or cache key with `facterdb`, so both can be installed together. Existing consumers such as `rspec-puppet-facts` keep using `facterdb` until they are switched over; see [docs/decisions/0001-consumer-loading.md](docs/decisions/0001-consumer-loading.md).
@@ -76,6 +96,7 @@ Fact store tooling:
 bundle exec rake facts:validate                                # validate every fact file (CI runs this)
 bundle exec rake facts:normalise                               # scrub and normalise fact files in place
 CHECK=1 bundle exec rake facts:normalise                       # report files that would change, exit non-zero
+bundle exec rake platforms:check                               # check config/platforms.yml against Puppet Core coverage
 ```
 
 The scrub policy lives in `config/scrub.yml` and the filename rules in `config/facts.yml`. The tooling under `tools/` is not shipped in the gem.
