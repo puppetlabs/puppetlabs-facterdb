@@ -1,0 +1,11 @@
+[
+  { "number": "4.24.0.rc1", "prerelease": true, "platform": "ruby" },
+  { "number": "4.23.0", "prerelease": false, "platform": "ruby" },
+  { "number": "4.23.0", "prerelease": false, "platform": "java" },
+  { "number": "4.13.0", "prerelease": false, "platform": "ruby" },
+  { "number": "4.12.0", "prerelease": false, "platform": "ruby" },
+  { "number": "4.12.0", "prerelease": false, "platform": "ruby" },
+  { "number": "4.11.0", "prerelease": false, "platform": "ruby" },
+  { "number": "4.12", "prerelease": false, "platform": "ruby" },
+  { "number": "4.12.0.rc1", "prerelease": false, "platform": "ruby" }
+]
