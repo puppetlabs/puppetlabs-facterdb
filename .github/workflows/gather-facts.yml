@@ -1,0 +1,182 @@
+name: Gather facts
+
+on:
+  workflow_dispatch:
+    inputs:
+      facter_version:
+        description: Facter version X.Y.Z (>= 4.12.0)
+        required: true
+        type: string
+      platforms:
+        description: Comma-separated platform ids from config/platforms.yml; empty = all
+        required: false
+        type: string
+  schedule:
+    - cron: '17 6 * * 1'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gather-facts
+  cancel-in-progress: false
+
+jobs:
+  plan:
+    runs-on: ubuntu-24.04
+    environment: puppetcore
+    timeout-minutes: 10
+    env:
+      BUNDLE_WITHOUT: rubocop
+    outputs:
+      version: ${{ steps.plan.outputs.version }}
+      agent_major: ${{ steps.plan.outputs.agent_major }}
+      agent: ${{ steps.plan.outputs.agent }}
+      map_changed: ${{ steps.plan.outputs.map_changed }}
+      matrix: ${{ steps.plan.outputs.matrix }}
+      selected_ids: ${{ steps.plan.outputs.selected_ids }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: ruby/setup-ruby@b3aaceaef7e0ee231b499e7b5f49c03fc1d32199 # v1.338.0
+        with:
+          ruby-version: '4.0'
+          bundler-cache: true
+      - name: Plan
+        id: plan
+        run: bundle exec rake gather:plan
+        env:
+          GITHUB_EVENT_NAME: ${{ github.event_name }}
+          INPUT_FACTER_VERSION: ${{ inputs.facter_version }}
+          INPUT_PLATFORMS: ${{ inputs.platforms }}
+          PUPPET_FORGE_TOKEN: ${{ secrets.PUPPET_FORGE_TOKEN || secrets.PUPPET_FORGE_TOKEN_PUBLIC }}
+          BUNDLE_RUBYGEMS___PUPPETCORE__PUPPET__COM: forge-key:${{ secrets.PUPPET_FORGE_TOKEN || secrets.PUPPET_FORGE_TOKEN_PUBLIC }}
+
+  gather:
+    needs: plan
+    if: needs.plan.outputs.version != ''
+    runs-on: ${{ matrix.runner }}
+    environment: puppetcore
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    env:
+      FACTER_VERSION: ${{ needs.plan.outputs.version }}
+      AGENT_VERSION: ${{ needs.plan.outputs.agent }}
+      AGENT_MAJOR: ${{ needs.plan.outputs.agent_major }}
+      PLATFORM_ID: ${{ matrix.id }}
+      REPO_ID: ${{ matrix.repo_id }}
+      IMAGE: ${{ matrix.image }}
+      OUT_DIR: ${{ runner.temp }}/gather-out
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Gather (Linux container)
+        if: matrix.family == 'linux'
+        shell: bash
+        run: |
+          mkdir -p "$OUT_DIR"
+          docker run --rm -e PUPPET_FORGE_TOKEN -e FACTER_VERSION -e AGENT_VERSION -e AGENT_MAJOR -e PLATFORM_ID -e REPO_ID -e OUT_DIR=/out -v "$GITHUB_WORKSPACE/tools/gather:/gather:ro" -v "$OUT_DIR:/out" "$IMAGE" bash /gather/linux.sh
+        env:
+          PUPPET_FORGE_TOKEN: ${{ secrets.PUPPET_FORGE_TOKEN || secrets.PUPPET_FORGE_TOKEN_PUBLIC }}
+      - name: Gather (macOS)
+        if: matrix.family == 'macos'
+        shell: bash
+        run: bash tools/gather/macos.sh
+        env:
+          PUPPET_FORGE_TOKEN: ${{ secrets.PUPPET_FORGE_TOKEN || secrets.PUPPET_FORGE_TOKEN_PUBLIC }}
+      - name: Gather (Windows)
+        if: matrix.family == 'windows'
+        shell: pwsh
+        run: ./tools/gather/windows.ps1
+        env:
+          PUPPET_FORGE_TOKEN: ${{ secrets.PUPPET_FORGE_TOKEN || secrets.PUPPET_FORGE_TOKEN_PUBLIC }}
+      - name: Record failure
+        if: failure()
+        shell: bash
+        run: |
+          mkdir -p "$OUT_DIR"
+          if [ ! -f "$OUT_DIR/result.json" ]; then
+            printf '{"id":"%s","outcome":"failed","reason":"gather step failed"}\n' "$PLATFORM_ID" > "$OUT_DIR/result.json"
+          fi
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: gather-${{ matrix.id }}
+          path: ${{ runner.temp }}/gather-out
+          if-no-files-found: warn
+          retention-days: 7
+
+  collect:
+    needs: [plan, gather]
+    if: always() && needs.plan.result == 'success' && needs.plan.outputs.version != ''
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      pull-requests: write
+    env:
+      FACTER_VERSION: ${{ needs.plan.outputs.version }}
+      AGENT_MAJOR: ${{ needs.plan.outputs.agent_major }}
+      AGENT_VERSION: ${{ needs.plan.outputs.agent }}
+      MAP_CHANGED: ${{ needs.plan.outputs.map_changed }}
+      SELECTED_IDS: ${{ needs.plan.outputs.selected_ids }}
+      UNFILTERED: ${{ inputs.platforms == '' }}
+      ARTIFACTS_DIR: ${{ runner.temp }}/artifacts
+      REPORT_PATH: ${{ runner.temp }}/gather-report.json
+      PR_BODY_PATH: ${{ runner.temp }}/pr-body.md
+      BUNDLE_WITHOUT: rubocop
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: ruby/setup-ruby@b3aaceaef7e0ee231b499e7b5f49c03fc1d32199 # v1.338.0
+        with:
+          ruby-version: '4.0'
+          bundler-cache: true
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          pattern: gather-*
+          path: ${{ runner.temp }}/artifacts
+          merge-multiple: false
+      - name: Configure git identity
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+      - name: Update version map
+        if: env.MAP_CHANGED == 'true'
+        run: |
+          bundle exec rake gather:update_map
+          git add config/facter_versions.yml
+          if ! git diff --cached --quiet; then
+            git commit -m "(CAT-2963) Map Facter $FACTER_VERSION to puppet-agent $AGENT_VERSION"
+          fi
+      - name: Collect
+        id: collect
+        run: bundle exec rake gather:collect
+      - name: Normalise
+        run: bundle exec rake facts:normalise
+      - name: Validate
+        run: bundle exec rake facts:validate
+      - name: Render PR body
+        run: bundle exec rake gather:pr_body
+      - name: Commit facts
+        run: |
+          git add facts
+          if ! git diff --cached --quiet; then
+            git commit -m "(CAT-2963) Add Facter $FACTER_VERSION facts"
+          fi
+      - uses: peter-evans/create-pull-request@3ffccacd46053766916f087ce41d627c0b8cf2d1 # v8.1.3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gather/facter-${{ needs.plan.outputs.version }}
+          base: main
+          title: (CAT-2963) Add Facter ${{ needs.plan.outputs.version }} facts
+          body-path: ${{ runner.temp }}/pr-body.md
+      - name: Fail on gather errors
+        if: steps.collect.outputs.failed == 'true'
+        run: |
+          echo "One or more gather legs failed; see the PR body"
+          exit 1
