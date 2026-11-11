@@ -2,6 +2,7 @@
 
 require 'json'
 require 'yaml'
+require 'fileutils'
 require_relative '../../../../lib/puppetlabs/facterdb/version'
 
 module Puppetlabs::FacterDB::Tools
@@ -17,3 +18,4 @@ require_relative 'tools/release_notes'
 require_relative 'tools/version_map'
 require_relative 'tools/gem_index'
 require_relative 'tools/gather_plan'
+require_relative 'tools/store'
