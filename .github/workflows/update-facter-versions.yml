@@ -6,9 +6,47 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: update-facter-versions
+  cancel-in-progress: false
+
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      pull-requests: write
+    env:
+      BUNDLE_WITHOUT: rubocop:gather
     steps:
-      - name: Placeholder
-        run: echo "Placeholder, replaced in a follow-up PR"
+      - name: Checkout
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          persist-credentials: false
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@afeafc3d1ab54a631816aba4c914a0081c12ff2f # v1.310.0
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Update Facter version map
+        run: bundle exec rake versions:update
+        env:
+          PUPPET_FORGE_TOKEN: ${{ secrets.PUPPET_FORGE_TOKEN || secrets.PUPPET_FORGE_TOKEN_PUBLIC }}
+
+      - name: Open pull request
+        uses: peter-evans/create-pull-request@3ffccacd46053766916f087ce41d627c0b8cf2d1 # v8.1.3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          add-paths: config/facter_versions.yml
+          commit-message: (maint) Update Facter version map
+          branch: update-facter-versions
+          delete-branch: true
+          title: (maint) Update Facter version map
+          base: ${{ github.ref_name }}
+          body: |
+            Updated `config/facter_versions.yml` from the Puppet Core gem index and the Facter release notes.
+
+            A maintainer merges this by hand. PRs opened with `GITHUB_TOKEN` do not trigger CI; close and reopen the PR to run checks.
