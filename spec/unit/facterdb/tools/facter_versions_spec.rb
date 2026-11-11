@@ -138,6 +138,41 @@ RSpec.describe Puppetlabs::FacterDB::Tools::FacterVersions, :aggregate_failures 
     end
   end
 
+  describe '#update_from' do
+    let(:notes) do
+      instance_double(Puppetlabs::FacterDB::Tools::ReleaseNotes).tap do |n|
+        allow(n).to receive(:agent_for!) do |v|
+          { '4.12.0' => '8.12.0', '4.13.0' => '8.13.0' }.fetch(v) { raise Puppetlabs::FacterDB::Tools::ReleaseNotes::MissingVersion, "missing #{v}" }
+        end
+      end
+    end
+    let(:map) { described_class.new(map_path) }
+
+    it 'adds versions at or above the floor and returns them' do
+      expect(map.update_from(['4.11.0', '4.12.0', '4.13.0'], notes)).to eq(['4.12.0', '4.13.0'])
+      expect(map.entries).to eq('4.12.0' => '8.12.0', '4.13.0' => '8.13.0')
+    end
+
+    it 'leaves mapped versions untouched' do
+      map.add('4.12.0', '8.12.9')
+      expect(map.update_from(['4.12.0', '4.13.0'], notes)).to eq(['4.13.0'])
+      expect(map.agent_for('4.12.0')).to eq('8.12.9')
+    end
+
+    it 'raises naming every missing version and leaves the map unchanged' do
+      expect { map.update_from(['4.12.0', '4.13.0', '4.14.0', '4.15.0'], notes) }
+        .to raise_error(Puppetlabs::FacterDB::Tools::ReleaseNotes::MissingVersion, %r{4\.14\.0, 4\.15\.0})
+      expect(map.entries).to eq({})
+    end
+
+    it 'returns an empty list and renders identically when nothing is new' do
+      map.add('4.12.0', '8.12.0')
+      before = map.render
+      expect(map.update_from(['4.11.0', '4.12.0'], notes)).to eq([])
+      expect(map.render).to eq(before)
+    end
+  end
+
   describe '.collection_for' do
     it 'derives the puppetcore collection from the agent major' do
       expect(described_class.collection_for('9.1.3')).to eq('puppetcore9')

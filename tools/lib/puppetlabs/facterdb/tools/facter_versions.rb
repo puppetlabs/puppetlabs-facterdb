@@ -61,6 +61,26 @@ class Puppetlabs::FacterDB::Tools::FacterVersions
     @map[version] = agent
   end
 
+  def unmapped(index_versions)
+    index_versions.select { |v| Gem::Version.new(v) >= FLOOR && !@map.key?(v) }.sort_by { |v| Gem::Version.new(v) }
+  end
+
+  def update_from(index_versions, notes)
+    new_versions = unmapped(index_versions)
+    agents = new_versions.to_h { |version| [version, agent_or_nil(notes, version)] }
+    missing = agents.select { |_, agent| agent.nil? }.keys
+    raise Puppetlabs::FacterDB::Tools::ReleaseNotes::MissingVersion, "no Puppet Core agent found in the release notes for Facter #{missing.join(', ')}" unless missing.empty?
+
+    agents.each { |version, agent| add(version, agent) }
+    new_versions
+  end
+
+  def agent_or_nil(notes, version)
+    notes.agent_for!(version)
+  rescue Puppetlabs::FacterDB::Tools::ReleaseNotes::MissingVersion
+    nil
+  end
+
   def render
     return "#{HEADER}{}\n" if @map.empty?
 
