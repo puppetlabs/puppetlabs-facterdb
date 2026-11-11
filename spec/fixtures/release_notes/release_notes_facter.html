@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="concept _Skins_SideNav_PuppetCore" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-output-analytics-server="https://perforcesoftware2.api.madcapflare.com/" data-mc-output-analytics-topic-id="1xBCeJNnhjB4cJq28JbZEoyPNyTRdtVTjoqlgVpjN2DaihcP500M1s6yto99VdDvEvxIsNc1DJwTImG3L9N/zOAhrL/W0Kw3z80O8wdGBoazq0sb4OGfd5gqmJhLgJ60Bc3BwZou+HIZWtT72/2s56wMFp+lufe5X5w9iCqL/5OYmXXySSyFSY3cYg9ca/JL" data-mc-has-content-body="True" data-mc-toc-path="[%=System.LinkedTitle%]" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="msapplication-config" content="../../../Skins/Favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="../../../Skins/Favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="../../../Skins/Favicons/favicon-puppet_1.png" />
+        <link rel="icon" sizes="661x661" href="../../../Skins/Favicons/favicon-puppet_1.png" />
+        <link rel="icon" sizes="661x661" href="../../../Skins/Favicons/favicon-puppet_1.png" />
+        <link rel="icon" sizes="661x661" href="../../../Skins/Favicons/favicon-puppet_1.png" /><title>Facter  release notes</title>
+        <!-- Overrides topic title in browser tab -->
+        <!-- The following scrlipt implements the Top button on long pages -->
+        <!-- End Top button script -->
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/foundation.6.2.3.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Resources/Stylesheets/perforce.css" rel="stylesheet" type="text/css" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.expand-all-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.remove-highlight-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.print-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.previous-topic-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.next-topic-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.needs-pie
+{
+	behavior: url('../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link rel="apple-touch-icon" sizes="180x180" href="../../../Skins/Favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="../../../Skins/Favicons/favicon-puppet_1.png" />
+        <link rel="icon" sizes="661x661" href="../../../Skins/Favicons/favicon-puppet_1.png" />
+        <link rel="icon" sizes="661x661" href="../../../Skins/Favicons/favicon-puppet_1.png" />
+        <link rel="icon" sizes="661x661" href="../../../Skins/Favicons/favicon-puppet_1.png" />
+        <script src="../../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.6.2.3_custom.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+        <script>/* <![CDATA[ */		
+			document.title =  document.title +" | Puppet Core | 9.1.3";
+		/* ]]> */</script>
+        <script type="text/javascript" defer="defer" src="../../Resources/Scripts/scroll-button.js">
+        </script>
+        <script type="text/javascript" src="../../../Skins/Default/Scripts/TopicToolbar.js">
+        </script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" role="complementary" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-accordion vertical menu off-canvas-list" data-accordion-menu="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expanded-event="down.zf.accordionMenu up.zf.accordionMenu" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div data-sticky-container="" class="title-bar-container">
+                        <nav class="title-bar tab-bar sticky" aria-label="Main navigation and search" data-sticky="" data-options="marginTop:0" style="width:100%" data-sticky-on="only screen and (max-width: 1279px)" data-mc-ignore="true"><a class="skip-to-content fluid-skip showOnFocus" href="#">Skip To Main Content</a>
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="menu-icon-container relative clearfix">
+                                    <div class="central-account-wrapper">
+                                        <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                            <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                                <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="menu-icon" aria-label="Show Navigation Panel" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="title-bar-layout outer-row">
+                                <div class="logo-wrapper"><a class="logo" href="../puppet_index.htm" alt="Logo"></a>
+                                </div>
+                                <div class="navigation-wrapper nocontent">
+                                    <ul class="navigation clearfix" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="3" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                        <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="central-account-wrapper">
+                                    <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                        <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                            <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-search-wrapper">
+                                    <div class="nav-search row">
+                                        <form class="search" action="#">
+                                            <div class="search-bar search-bar-container needs-pie">
+                                                <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="How can we help you?" />
+                                                <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                    <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                    </div>
+                                                    <div class="search-filter-content" id="sf-content">
+                                                        <ul>
+                                                            <li>
+                                                                <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="search-submit-wrapper" dir="ltr">
+                                                    <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="main-section">
+                        <div class="row outer-row sidenav-layout">
+                            <nav class="sidenav-wrapper">
+                                <div class="sidenav-container">
+                                    <ul class="off-canvas-accordion vertical menu sidenav" data-accordion-menu="" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu accordion-menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="False" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expanded-event="down.zf.accordionMenu up.zf.accordionMenu" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True" data-mc-side-nav-menu="True">
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="body-container">
+                                <div data-mc-content-body="True">
+                                    <!-- Google Tag Manager (noscript) -->
+                                    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJBHZV" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+                                    </noscript>
+                                    <!-- End Google Tag Manager (noscript) -->
+                                    <div id="skin-heading"><span class="mc-variable Puppet.GuideTitle variable">Puppet Core</span> | <span class="mc-variable Puppet.GuideVersion variable">9.1.3</span></div>
+                                    <script type="text/javascript">/*<![CDATA[*/
+			$(document).ready(function(){
+			$("#skin-heading").appendTo("div.logo-wrapper"); 
+			});
+		/*]]>*/</script>
+                                    <div class="buttons popup-container clearfix topicToolbarProxy _Skins_TopicToolbar mc-component nocontent" style="mc-topic-toolbar-items: ExpandAll Print RemoveHighlight NextTopic PreviousTopic Forward Back;">
+                                        <div class="button-group-container-left">
+                                            <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all sections" title="Expand all sections" data-state1-title="Expand all sections">
+                                                <div>
+                                                    <div role="img" class="button-icon-wrapper" aria-label="Expand all">
+                                                        <div class="button-icon"> </div>
+                                                    </div>
+                                                </div>
+                                            </button>
+                                            <button class="button needs-pie remove-highlight-button" title="Remove highlighting">
+                                                <div>
+                                                    <div role="img" class="button-icon-wrapper" aria-label="Remove Highlights">
+                                                        <div class="button-icon"> </div>
+                                                    </div>
+                                                </div>
+                                            </button>
+                                            <button class="button needs-pie print-button" title="Print">
+                                                <div>
+                                                    <div role="img" class="button-icon-wrapper" aria-label="Print">
+                                                        <div class="button-icon"> </div>
+                                                    </div>
+                                                </div>
+                                            </button>
+                                            <button class="button needs-pie previous-topic-button" title="Go to previous topic" disabled="true">
+                                                <div>
+                                                    <div role="img" class="button-icon-wrapper" aria-label="Navigate previous">
+                                                        <div class="button-icon"> </div>
+                                                    </div>
+                                                </div>
+                                            </button>
+                                            <button class="button needs-pie next-topic-button" title="Go to next topic" disabled="true">
+                                                <div>
+                                                    <div role="img" class="button-icon-wrapper" aria-label="Navigate next">
+                                                        <div class="button-icon"> </div>
+                                                    </div>
+                                                </div>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="nocontent">
+                                        <div class="MCBreadcrumbsBox_0 breadcrumbs" role="navigation" aria-label="Breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True">
+                                        </div>
+                                    </div>
+                                    <div class="sidenav-content">
+                                        <p class="LastUpdated">Last published: <span class="mc-variable perforce.LastUpdated variable">November 09, 2026</span></p>
+                                        <div role="main" id="mc-main-content">
+                                            <h1 class="concepttitle" data-mc-autonum="" id="Facterreleasenotes" data-magellan-target="Facterreleasenotes"><span class="autonumber"><span></span></span><span class="mc-variable Puppet.Facter variable">Facter</span> release notes</h1>
+                                            <p class="shortdesc">These are the new features, resolved issues, and
+        deprecations in this version of <span class="mc-variable Puppet.Facter variable">Facter</span>.</p>
+                                            <div>
+                                                <p class="page-toc-intro" data-mc-autonum="On this page"><span class="autonumber"><span>On this page</span></span><b>:</b>
+                                                </p>
+                                                <ul data-magellan="" data-animation-duration="250" data-active-class="selected" data-scroll-container=".body-container" data-scroll-container-on="only screen and (min-width: 1280px)" class="nocontent menu _Skins_MenuProxy mc-component">
+                                                    <li class="tree-node"><a href="#Facterreleasenotes">Facter release notes</a>
+                                                        <ul>
+                                                            <li class="tree-node"><a href="#Facter4230">Facter 4.23.0</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter4220">Facter 4.22.0</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter4210">Facter 4.21.0</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter4200">Facter 4.20.0</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter4190">Facter 4.19.0</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter4180">Facter 4.18.0</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter4170">Facter 4.17.0</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter4160">Facter 4.16.0</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter4150">Facter 4.15.0</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter4140">Facter 4.14. 0</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter4130">Facter 4.13.0</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter4120">Facter 4.12.0</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter4110">Facter  4.11.0</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter4100">Facter  4.10.0</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter490">Facter  4.9.0</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter480">Facter  4.8.0</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter471">Facter  4.7.1</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter470">Facter  4.7.0</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter461">Facter  4.6.1</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter460">Facter  4.6.0</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter452">Facter  4.5.2</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter451">Facter  4.5.1</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter443">Facter  4.4.3</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter442">Facter  4.4.2</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter441">Facter  4.4.1</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter440">Facter  4.4.0</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter431">Facter  4.3.1</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter430">Facter  4.3.0</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter4214">Facter  4.2.14</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter4213">Facter  4.2.13</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter4212">Facter  4.2.12</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter4211">Facter  4.2.11</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter42101">Facter  4.2.10</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter429">Facter  4.2.9</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter428">Facter  4.2.8</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter427">Facter  4.2.7</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter426">Facter  4.2.6</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter425">Facter  4.2.5</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter424">Facter  4.2.4</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter423">Facter  4.2.3</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter422">Facter  4.2.2</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter421">Facter  4.2.1</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter420">Facter  4.2.0</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter411">Facter  4.1.1</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter410">Facter  4.1.0</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter4052">Facter  4.0.52
+        </a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter4051">Facter  4.0.51</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter4050">Facter  4.0.50</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter4049">Facter  4.0.49</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter4048">Facter  4.0.48</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter4047">Facter  4.0.47</a>
+                                                            </li>
+                                                            <li class="tree-node"><a href="#Facter4046">Facter  4.0.46</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <h2 data-mc-autonum="" id="Facter4230" data-magellan-target="Facter4230"><span class="autonumber"><span></span></span><a name="4.23.0"></a><span class="mc-variable Puppet.Facter variable">Facter</span> 4.23.0</h2>
+                                            <p>Released November 2026 with <span class="mc-variable Puppet.PuppetCore variable">Puppet Core</span> 8.22.2 and 9.1.3. This release was necessary to accommodate release improvements. No new features or fixes are introduced.</p>
+                                            <h2 data-mc-autonum="" id="Facter4220" data-magellan-target="Facter4220"><span class="autonumber"><span></span></span><a name="4.22.0"></a><span class="mc-variable Puppet.Facter variable">Facter</span> 4.22.0</h2>
+                                            <p>Released September 2026 with <span class="mc-variable Puppet.PuppetCore variable">Puppet Core</span> 8.22.0 and 9.1.0. This version of <span class="mc-variable Puppet.Facter variable">Facter</span> constrains its JSON dependency.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <p><strong>Updated JSON dependency compatibility.</strong> Facter now constrains its JSON dependency to greater than or equal to 2.0, and less than 4, to avoid JSON compatibility issues. This prevents breakage when newer JSON versions are installed in environments using Bundler or similar dependency tooling. <strong>PA-9273</strong></p>
+                                            <h2 data-mc-autonum="" id="Facter4210" data-magellan-target="Facter4210"><span class="autonumber"><span></span></span><a name="4.21.0"></a><span class="mc-variable Puppet.Facter variable">Facter</span> 4.21.0</h2>
+                                            <p>Released in August 2026 with <span class="mc-variable Puppet.PuppetCore variable">Puppet Core</span> 8.21.0 and 9.0.0. This version of <span class="mc-variable Puppet.Puppet variable">Puppet</span> adds native disk and partition facts on <span class="mc-variable Puppet.Windows variable">Windows</span>.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>New features and enhancements</h3>
+                                            <p><strong><span class="mc-variable Puppet.Facter variable">Facter</span> now reports disk and partition information on <span class="mc-variable Puppet.Windows variable">Windows</span>.</strong> Facter includes two new core facts on <span class="mc-variable Puppet.Windows variable">Windows</span>, <code>disks</code> and <code>partitions</code>, that use <span class="mc-variable Puppet.Windows variable">Windows</span> Management Instrumentation (WMI) to retrieve information about physical disks and their partitions. Disk entries are keyed by drive identifier, for example, <code>physicaldrive0</code>, and partition entries are keyed by drive and partition identifier, for example, <code>physicaldrive0_partition1</code>. Previously, this information required the third-party <span class="mc-variable Puppet.Puppet variable">Puppet</span> <span class="mc-variable Puppet.Forge variable">Forge</span> module <code>dylanratcliffe/windows_disk_facts</code>. <strong>PA-9079</strong></p>
+                                            <h2 data-mc-autonum="" id="Facter4200" data-magellan-target="Facter4200"><span class="autonumber"><span></span></span><a name="4.20.0"></a><span class="mc-variable Puppet.Facter variable">Facter</span> 4.20.0</h2>
+                                            <p>Released in June 2026 with <span class="mc-variable Puppet.PuppetCore variable">Puppet Core</span> 8.20.0. This version of <span class="mc-variable Puppet.Facter variable">Facter</span> improves the portability of the <code>processors.isa</code> fact.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <p>Improved portability of the <code>processors.isa</code> (processor instruction set) fact. Previously, the fact was derived using <code>uname -p</code>, which is not part of the POSIX standard. On newer OS, this returned unexpected results, such as unknown. Now, <span class="mc-variable Puppet.PuppetCore variable">Puppet Core</span> uses <code>uname -m</code>, so that <code>processors.isa</code> is more accurate for newer OS. <strong>PA-8518</strong></p>
+                                            <h2 data-mc-autonum="" id="Facter4190" data-magellan-target="Facter4190"><span class="autonumber"><span></span></span><a name="4.19.0"></a><span class="mc-variable Puppet.Facter variable">Facter</span> 4.19.0</h2>
+                                            <p>Released in May 2026 with <span class="mc-variable Puppet.GuideTitle variable">Puppet Core</span> 8.19.0. This release was necessary to accommodate release improvements. No new features or fixes are introduced.</p>
+                                            <h2 data-mc-autonum="" id="Facter4180" data-magellan-target="Facter4180"><span class="autonumber"><span></span></span><a name="4.18.0"></a><span class="mc-variable Puppet.Facter variable">Facter</span> 4.18.0</h2>
+                                            <p>Released in April 2026 with  <span class="mc-variable Puppet.PuppetCore variable">Puppet Core</span> 8.18.0. This version of <span class="mc-variable Puppet.Facter variable">Facter</span> includes updated dependencies and an error fix for incomplete <code>lscpu</code> output.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>New features and enhancements</h3>
+                                            <p><span class="mc-variable Puppet.Facter variable">Facter</span>'s FFI gem dependency was updated to allow more recent versions of the gem. <strong>FACT-3469</strong></p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <p>Previously, Facter returned errors when <code>lscpu</code> output for threads and cores was incomplete. Facter now returns information when <code>lscpu</code> output for threads and cores is incomplete. <strong>FACT-3513</strong></p>
+                                            <h2 data-mc-autonum="" id="Facter4170" data-magellan-target="Facter4170"><span class="autonumber"><span></span></span><a name="4.17.0"></a><span class="mc-variable Puppet.Facter variable">Facter</span> 4.17.0</h2>
+                                            <p>Released in February 2026 with <span class="mc-variable Puppet.PuppetCore variable">Puppet Core</span> 8.17.0. This release was necessary to prepare for <span class="mc-variable Puppet.Ruby variable">Ruby</span> 4 updates in <span class="mc-variable Puppet.PuppetCore variable">Puppet Core</span>. No new features or fixes are introduced.</p>
+                                            <h2 data-mc-autonum="" id="Facter4160" data-magellan-target="Facter4160"><span class="autonumber"><span></span></span><a name="4.16.0"></a><span class="mc-variable Puppet.Facter variable">Facter</span> 4.16.0</h2>
+                                            <p>Released in November 2025 with <span class="mc-variable Puppet.PuppetCore variable">Puppet Core</span> 8.16.0. The minimum version of <span class="mc-variable Puppet.Ruby variable">Ruby</span> for this version of <span class="mc-variable Puppet.Facter variable">Facter</span> increased.</p>
+                                            <p>Increased minimum version of <span class="mc-variable Puppet.Ruby variable">Ruby</span> required for <span class="mc-variable Puppet.Facter variable">Facter</span>. To help prevent security issues, the minimum required version of <span class="mc-variable Puppet.Facter variable">Facter</span> was increased from 2.5 to 3.1. <strong>FACT-3492</strong></p>
+                                            <h2 data-mc-autonum="" id="Facter4150" data-magellan-target="Facter4150"><span class="autonumber"><span></span></span><a name="4.15.0"></a><span class="mc-variable Puppet.Facter variable">Facter</span> 4.15.0</h2>
+                                            <p>Released in September 2025 with <span class="mc-variable Puppet.PuppetCore variable">Puppet Core</span> 8.15.0. This release of <span class="mc-variable Puppet.Facter variable">Facter</span> was necessary to accommodate our release process. No new features or fixes are introduced.</p>
+                                            <h2 data-mc-autonum="" id="Facter4140" data-magellan-target="Facter4140"><span class="autonumber"><span></span></span><a name="4.14."></a><span class="mc-variable Puppet.Facter variable">Facter</span> 4.14. 0</h2>
+                                            <p>Released in July 2025 and shipped with <span class="mc-variable Puppet.PuppetCore variable">Puppet Core</span> 8.14.0. This version of <span class="mc-variable Puppet.Facter variable">Facter</span> includes a bug fix to help prevent recursive scanning and improved handling of binary (ASCII-8 BIT) strings.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <p><strong><span class="mc-variable Puppet.Ruby variable">Ruby</span> no longer recursively scans <code>lib</code></strong>. Previously, when loading the puppet gem and the current working directory was <code>/</code>, <span class="mc-variable Puppet.Ruby variable">Ruby</span> scanned the <code>lib</code> directory. This was due to a bug in the gemspec generated during the build process. This has been fixed for both the puppet and facter gems. <strong>PA-7583</strong></p>
+                                            <p><strong><span class="mc-variable Puppet.Facter variable">Facter</span> handling of binary (ASCII 8-BIT) strings is improved.</strong> Previously, when fact values had binary data, <span class="mc-variable Puppet.Facter variable">Facter</span> failed. In this version, the <code>LegacyFacter::Util::Normalization.normalize_string</code> was updated to accept fact values with binary (ASCII 8-BIT) without immediately failing. Now, when a fact with ASCII 8-BIT is detected and can be force encoded to UTF-8, a debug message including the fact name is logged. When the fact value cannot be successfully encoded to UTF-8, <span class="mc-variable Puppet.Facter variable">Facter</span> fails with an error including  the fact name and value. <strong>FACT-3497</strong></p>
+                                            <h2 data-mc-autonum="" id="Facter4130" data-magellan-target="Facter4130"><span class="autonumber"><span></span></span><a name="4.13.0"></a><span class="mc-variable Puppet.Facter variable">Facter</span> 4.13.0</h2>
+                                            <p>Released in June 2025 and shipped with <span class="mc-variable Puppet.PuppetCore variable">Puppet Core</span> 8.13.0. Facter now returns networking facts as UTF-8 and the <code>dmi.chassis.type</code> fact now reports SMBIOS values correctly.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <p><strong><span class="mc-variable Puppet.Facter variable">Facter</span> now returns networking facts as UTF-8.</strong> <span class="mc-variable Puppet.Facter variable">Facter</span> previously returned networking facts as binary data, causing <code>puppet apply</code> to submit binary data to <span class="mc-variable Puppet.PuppetDB variable">PuppetDB</span>. <span class="mc-variable Puppet.Puppet variable">Puppet</span> now correctly returns networking facts as UTF-8, and if other facts return a binary value, a warning message is returned. <strong>FACT-3494</strong></p>
+                                            <p><strong>The <code>dmi.chassis.type</code> fact now reports SMBIOS values correctly.</strong> The <code>dmi.chassis.type</code> fact previously only reported some values for SMBIOS, it now reports all values in the SMBIOS specification. The following values were added: <code>IoT Gateway</code>, <code>Embedded PC</code>, <code>Mini PC</code>,  and <code>Stick PC</code>. <strong>FACT-3495</strong></p>
+                                            <h2 data-mc-autonum="" id="Facter4120" data-magellan-target="Facter4120"><span class="autonumber"><span></span></span><a name="4.12.0"></a><span class="mc-variable Puppet.Facter variable">Facter</span> 4.12.0</h2>
+                                            <p>Released in April 2025 and shipped with <span class="mc-variable Puppet.PuppetCore variable">Puppet Core</span> 8.12.0.</p>
+                                            <p><strong><span class="mc-variable Puppet.Windows variable">Windows</span> Server 2025 is now correctly identified.</strong> An issue that prevented <span class="mc-variable Puppet.Facter variable">Facter</span> from correctly identifying the <code>os.release</code> for <span class="mc-variable Puppet.Windows variable">Windows</span> Server 2025 was resolved.</p>
+                                            <h2 data-mc-autonum="" id="Facter4110" data-magellan-target="Facter4110"><span class="autonumber"><span></span></span><a name="4.11.0"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.11.0</h2>
+                                            <p>Released in February 2025 and shipped with <span class="mc-variable Puppet.Puppet variable">Puppet</span> <span class="ph">8.11.0</span>. This release resolves an issue with virtualization on the <span class="mc-variable Puppet.Docker variable">Docker</span> platform and an issue related to cloud providers.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <p><strong>Facts within a <span class="mc-variable Puppet.Docker variable">Docker</span> container are now correctly set.</strong> When running <span class="mc-variable Puppet.Puppet variable">Puppet</span> agent 7.32.1 inside a <span class="mc-variable Puppet.Docker variable">Docker</span> container, the <code>hypervisors</code> and <code>virtual</code> facts were incorrectly set. In addition, the following message was displayed:</p>
+                                            <div class="codeSnippet"><a class="codeSnippetCopyButton" role="button" href="javascript:void(0);">Copy</a>
+                                                <div class="codeSnippetBody" data-mc-continue="False" data-mc-line-number-start="1" data-mc-use-line-numbers="False"><pre><code>Warning: Facter: Container runtime, 'docker', is unsupported, setting to, 'container_other'.</code></pre>
+                                                </div>
+                                            </div>
+                                            <p>The issue was introduced in <span class="mc-variable Puppet.Facter variable">Facter</span> 4.9.0 and is present in <span class="mc-variable Puppet.Facter variable">Facter</span> 4.10.0. The issue is resolved in version 4.11.0 to ensure that <span class="mc-variable Puppet.Facter variable">Facter</span> detects the <span class="mc-variable Puppet.Docker variable">Docker</span> container.</p>
+                                            <p><strong>FACT-3488</strong>
+                                            </p>
+                                            <p><strong>Platforms are now correctly identified for users of the Kernel-based Virtual Machine (KVM), the Xen Cloud Platform (XEN), and the Xen hardware virtual machine (XEM HVM).</strong> Previously, <span class="mc-variable Puppet.Facter variable">Facter</span> incorrectly assigned Amazon Web Services (AWS) to the <code>cloud.provider</code> fact when these platforms were used and there was valid Amazon Elastic Compute Cloud (Amazon EC2) metadata.</p>
+                                            <p><span class="mc-variable Puppet.Facter variable">Facter</span> is now updated to use the <code>virt-what</code> component to populate the <code>cloud.provider</code> fact in these circumstances. If <code>virt-what</code> cannot be used and Amazon EC2 data exists, Facter identifies AWS as the cloud provider.</p>
+                                            <p><strong>FACT-3491</strong>
+                                            </p>
+                                            <p><strong>An issue that prevented <span class="mc-variable Puppet.Facter variable">Facter</span> from detecting <code>libvirt-lxc</code> containers is resolved.</strong> In a previous release, an update was introduced that prevented <span class="mc-variable Puppet.Facter variable">Facter</span> from detecting Linux Containers (LXC) managed by the <code>libvirt</code> management tool. The change is reverted to ensure that <span class="mc-variable Puppet.Facter variable">Facter</span> can detect <code>libvirt-lxc</code> containers.</p>
+                                            <p><strong>FACT-3484</strong>
+                                            </p>
+                                            <h2 data-mc-autonum="" id="Facter4100" data-magellan-target="Facter4100"><span class="autonumber"><span></span></span><a name="4.10.0"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.10.0</h2>
+                                            <p class="shortdesc">Released in October 2024 and shipped with <span class="mc-variable Puppet.Puppet variable">Puppet</span> 8.10.0.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <p><b>Fixed an issue when resolving the host domain name.</b> Previously, when a host without an assigned domain used <code>search .</code> as the search domain in <code>resolv.conf</code>, <span class="mc-variable Puppet.Puppet variable">Puppet</span> reported an incorrect value for <code>networking.fqdn</code> and <code>networking.domain</code>. This issue was addressed by having <span class="mc-variable Puppet.Facter variable">Facter</span> ignore search entries that start with a dot (<code>.</code>) in <code>resolv.conf</code>, to help ensure that the host FQDN is correctly resolved. Community member <a href="https://github.com/Geod24">Geod24</a> submitted this issue and submitted a fix. <b>FACT-3459</b> &#160;</p>
+                                            <h2 data-mc-autonum="" id="Facter490" data-magellan-target="Facter490"><span class="autonumber"><span></span></span><a name="4.9.0"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.9.0</h2>
+                                            <p class="shortdesc">Released in September 2024 and shipped with <span class="mc-variable Puppet.Puppet variable">Puppet</span>
+        8.9.0.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Enhancements</h3>
+                                            <ul>
+                                                <li><b>Updated <span class="mc-variable Puppet.Facter variable">Facter</span>  schema and the process for
+                        adding new facts.</b> The <span class="mc-variable Puppet.Facter variable">Facter</span>  schema
+                        (<code>facter.yaml</code>) was updated to include all
+                    facts added since the schema was last updated. The CONTRIBUTING document now
+                    includes instructions which community members should follow when adding new
+                    facts, to help ensure that the <span class="mc-variable Puppet.Facter variable">Facter</span>  schema is
+                    correctly updated. In addition, there is now an acceptance test which verifies
+                    that all facts conform to the schema on each platform.
+                        <b>FACT-3474</b></li>
+                                                <li><b>Added partition type UUID to <span class="mc-variable Puppet.Facter variable">Facter</span>  output for
+                        GPT-based systems.</b> For GPT-based systems, <span class="mc-variable Puppet.Facter variable">Facter</span>  output for partitions now includes the
+                    partition type UUID. Community member <a href="https://github.com/jcpunk">jcpunk</a> contributed to this update.
+                        <b>FACT-3140</b></li>
+                                            </ul>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <p><b>Restored support for the LXC container runtime.</b> Fixed a regression in <span class="mc-variable Puppet.Facter variable">Facter</span>  4.8.0 that prevented it from identifying the
+                LXC container runtime. Community member <a href="https://github.com/torstenfohrer">torstenfohrer</a> submitted this issue, and community member <a href="https://github.com/lollipopman">lollipopman</a> contributed to the fix. <b>FACT-3477</b></p>
+                                            <h2 data-mc-autonum="" id="Facter480" data-magellan-target="Facter480"><span class="autonumber"><span></span></span><a name="4.8.0"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.8.0</h2>
+                                            <p class="shortdesc">Released July 2024 and shipped with <span class="mc-variable Puppet.Puppet variable">Puppet</span>
+        8.8.1.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Enhancements</h3>
+                                            <ul>
+                                                <li><b>Support for <span class="mc-variable Puppet.Microsoft variable">Microsoft</span> Azure  <span class="mc-variable Puppet.Linux variable">Linux</span>.</b> Operating system facts were added
+                    for users of the <span class="mc-variable Puppet.Microsoft variable">Microsoft</span> Azure <span class="mc-variable Puppet.Linux variable">Linux</span> distribution. <b>FACT-3471</b></li>
+                                                <li><b>Update for the Arch <span class="mc-variable Puppet.Linux variable">Linux</span> distribution.</b>
+                    Operating system facts are now supported on Arch <span class="mc-variable Puppet.Linux variable">Linux</span>. Community member <a href="https://github.com/bastelfreak">bastelfreak</a> contributed this update. <b>FACT-3114</b></li>
+                                                <li><b>Support for the CRI-O container runtime.</b> CRI-O is an implementation of
+                    the Kubernetes Container Runtime Interface that supports Open Container
+                    Initiative-compatible runtimes. Community member <a href="https://github.com/lollipopman">lollipopman</a> contributed this update. <b>FACT-3202</b></li>
+                                                <li><b>New fact for x86_64 CPU microarchitecture levels.</b> A fact was added to
+                    reflect the levels of x86_64 CPU microarchitectures. <b>FACT-3453</b></li>
+                                            </ul>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <p><b>AIX mountpoints now include server names.</b> Previously, <span class="mc-variable Puppet.Facter variable">Facter</span>  excluded the server name for mountpoints on
+                IBM AIX. In this release, the mountpoint server names are included in the
+                    <code>servername:/path/to/mountpoint</code>  format as reported for other
+                operating systems. <b>FACT-3463</b></p>
+                                            <h2 data-mc-autonum="" id="Facter471" data-magellan-target="Facter471"><span class="autonumber"><span></span></span><a name="4.7.1"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.7.1</h2>
+                                            <p class="shortdesc">Released June 2024 and shipped with Puppet 8.7.0. </p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Enhancements</h3>
+                                            <ul>
+                                                <li><b>Facter now accepts new versions of the <code>ffi</code>
+                        Ruby gem.</b> An update was implemented to ensure that <span class="mc-variable Puppet.Facter variable">Facter</span>  will remain compatible with new releases
+                    of <code>ffi</code>.</li>
+                                            </ul>
+                                            <h2 data-mc-autonum="" id="Facter470" data-magellan-target="Facter470"><span class="autonumber"><span></span></span><a name="4.7.0"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.7.0</h2>
+                                            <p class="shortdesc">Released April 2024 and shipped with Puppet 8.6.0.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Enhancements</h3>
+                                            <ul>
+                                                <li><b>Support for OpenBSD.</b> Added support for OpenBSD. This addition contributed
+                    by community member <a href="http://github.com/buzzdeee">buzzdeee</a>. <strong>FACT-3163</strong></li>
+                                            </ul>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <ul>
+                                                <li><b>Re-add Ruby 2.5 support.</b> Added support for Ruby 2.5.</li>
+                                                <li><b>Use of cloud provider facts can result in nil dereferences.</b> Patched the
+                    two cloud providers' access to metadata to avoid nil dereferences.</li>
+                                                <li><b>Evaluate confine block in case-insensitive way.</b> Previously, when a user
+                    provided a confine block, <span class="mc-variable Puppet.Facter variable">Facter</span>  would
+                    downcase the value when evaluating it. This change retains the existing behavior
+                    of evaluating a confine block with a downcased fact value, while adding
+                    evaluation with the raw fact value to ensure expected behavior.</li>
+                                            </ul>
+                                            <h2 data-mc-autonum="" id="Facter461" data-magellan-target="Facter461"><span class="autonumber"><span></span></span><a name="4.6.1"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.6.1</h2>
+                                            <p class="shortdesc">Released March 2024 and shipped with Puppet 8.5.1.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <ul>
+                                                <li><b>Regression in <code>os.windows</code> facts.</b> In <span class="mc-variable Puppet.Facter variable">Facter</span>  4.6.0, the <code>value</code> parameter was misnamed, causing incorrect values to be
+                    returned. This has been fixed. <strong>FACT-3455</strong></li>
+                                            </ul>
+                                            <h2 data-mc-autonum="" id="Facter460" data-magellan-target="Facter460"><span class="autonumber"><span></span></span><a name="4.6.0"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.6.0</h2>
+                                            <p class="shortdesc">Released February 2024 and shipped with Puppet 8.5.0.</p>
+                                            <p>No release notes.</p>
+                                            <h2 data-mc-autonum="" id="Facter452" data-magellan-target="Facter452"><span class="autonumber"><span></span></span><a name="4.5.2"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.5.2</h2>
+                                            <p class="shortdesc">Released January 2023 and shipped with Puppet 8.4.0.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Enhancements</h3>
+                                            <ul>
+                                                <li><b>Add ssh {384,521} ecdsa facts.</b> Fixed a regression in <span class="mc-variable Puppet.Facter variable">Facter</span>  4 that prevented it from reporting on
+                    384 and 521-bit ecdsa ssh keys.</li>
+                                            </ul>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <ul>
+                                                <li><b>Reported memory usage is wrong on FreeBSD.</b> Corrected memory usage facts
+                    on FreeBSD. Community contribution from user <a href="https://github.com/smortex">smortex</a>.</li>
+                                                <li><b>Size calculations for AIX block device and partitions.</b> <span class="mc-variable Puppet.Facter variable">Facter</span>  on AIX incorrectly reported the total
+                    size of disks and overcounted the partition size when logical volumes were
+                    mirrored to multiple physical volumes. This has been fixed. Community
+                    contribution from user <a href="https://github.com/loopway">loopway</a>.</li>
+                                                <li><b>uname resolver does not handle empty results.</b> Fixed an issue where <span class="mc-variable Puppet.Facter variable">Facter</span>  would error when uname did not return
+                    valid output.</li>
+                                                <li><b><span class="mc-variable Puppet.Facter variable">Facter</span>  on Solaris 10 does not close
+                        socket descriptors, causing puppet run failures.</b> Fixed an issue where
+                        <span class="mc-variable Puppet.Facter variable">Facter</span>  would error when many network
+                    interfaces were present on a Solaris machine.</li>
+                                                <li><b>Not enough os.distro.release information for Amazon Linux.</b> The <code>os.distro.release.full</code> and <code>os.release.full</code> facts now return all version components such as
+                    <code>2023.1.20230912</code>.</li>
+                                                <li><b>Cloud fact does not resolve on Amazon Linux 2023.</b> <span class="mc-variable Puppet.Facter variable">Facter</span>  now correctly resolves the <code>cloud</code> fact to <code>aws</code>
+                    and <code>virtual</code> fact to <code>kvm</code> when running on Nitro hypervisors.</li>
+                                            </ul>
+                                            <h2 data-mc-autonum="" id="Facter451" data-magellan-target="Facter451"><span class="autonumber"><span></span></span><a name="4.5.1"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.5.1</h2>
+                                            <p class="shortdesc">Released November 2023 and shipped with Puppet 8.3.1.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <ul>
+                                                <li><b>Non-hash external fact data in YAML or JSON files causes fatal exceptions in
+                            <span class="mc-variable Puppet.Facter variable">Facter</span>  4.</b> Fixed an issue where
+                    an external fact of an invalid data type caused a fatal exception in <span class="mc-variable Puppet.Facter variable">Facter</span>. <a href="https://perforce.atlassian.net/browse/FACT-3433">FACT-3433</a></li>
+                                                <li><b>New fact error after upgrading v2021.7.5.</b> Fixed an issue where DMI facts
+                    caused an error in Solaris non-global zones. <a href="https://perforce.atlassian.net/browse/FACT-3435">FACT-3435</a></li>
+                                            </ul>
+                                            <h2 data-mc-autonum="" id="Facter443" data-magellan-target="Facter443"><span class="autonumber"><span></span></span><span class="mc-variable Puppet.Facter variable">Facter</span>  4.4.3</h2>
+                                            <p class="shortdesc">Released October 2023 and shipped individually.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <ul>
+                                                <li><b>Required gem not included as runtime dependency</b> A runtime dependency
+                    (sys-filesystem) was mistakenly removed in <span class="mc-variable Puppet.Facter variable">Facter</span>  4.4.2, which caused some filesystem-related facts to cause an error
+                    when running <span class="mc-variable Puppet.Facter variable">Facter</span>  as a gem. This
+                    dependency has been re-added to <span class="mc-variable Puppet.Facter variable">Facter</span>.
+                        <a href="https://perforce.atlassian.net/browse/FACT-3423">FACT-3423</a></li>
+                                            </ul>
+                                            <h2 data-mc-autonum="" id="Facter442" data-magellan-target="Facter442"><span class="autonumber"><span></span></span><a name="4.4.2"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.4.2</h2>
+                                            <p class="shortdesc">Released August 2023 and shipped with <span class="mc-variable Puppet.Puppet variable">Puppet</span> <span class="ph">8.2.0</span>.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <ul>
+                                                <li><b><span class="mc-variable Puppet.Facter variable">Facter</span>  4 reports os.name as <code>SLES_SAP</code> on
+                        Suse Linux for SAP instead of just <code>SUSE</code>.</b> This along with FACT-3422
+                    fixed how <span class="mc-variable Puppet.Facter variable">Facter</span>  reads the <code>/etc/os-release</code> file. <code>os.name
+                    </code>and <code>os.distro</code> facts work on SLES SAP
+                    operating system now. <a href="https://perforce.atlassian.net/browse/FACT-3162">FACT-3162</a></li>
+                                                <li><b><span class="mc-variable Puppet.Facter variable">Facter</span>  fails on <code>mountpoints</code> fact on Solaris 10 with non-global zones which
+                        have NFS mounts.</b> Fixed an issue with the Solaris mountpoint resolver.
+                        <a href="https://perforce.atlassian.net/browse/FACT-3187">FACT-3187</a></li>
+                                                <li><b>Error on on Solaris non-global zone after upgrading to PE2021.7.2.</b> <span class="mc-variable Puppet.Facter variable">Facter</span>  guards against nil when determining
+                    the primary interface for the networking fact. <a href="https://perforce.atlassian.net/browse/FACT-3188">FACT-3188</a></li>
+                                                <li><b>Don't rescue NoMethodError.</b> When rescuing LoadError and NameErrors, <span class="mc-variable Puppet.Facter variable">Facter</span>  logs a descriptive message at an
+                    error level so debugging <span class="mc-variable Puppet.Facter variable">Facter</span>  will be
+                    easier and error messages will not be hidden in the debug level. <a href="https://perforce.atlassian.net/browse/FACT-3207">FACT-3207</a></li>
+                                            </ul>
+                                            <h2 data-mc-autonum="" id="Facter441" data-magellan-target="Facter441"><span class="autonumber"><span></span></span><a name="4.4.1"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.4.1</h2>
+                                            <p class="shortdesc">Released June 2023 and shipped with <span class="mc-variable Puppet.Puppet variable">Puppet</span> <span class="ph">8.1.0</span>.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <ul>
+                                                <li><b><span class="mc-variable Puppet.Facter variable">Facter</span>  on Solaris 10 leak file
+                        descriptors, causing <span class="mc-variable Puppet.Puppet variable">Puppet</span> run failures.</b><span class="mc-variable Puppet.Facter variable">Facter</span>  no longer leaks file descriptors when
+                    attempting to resolve network interfaces. <a href="https://tickets.puppetlabs.com/browse/FACT-3196">FACT-3196</a></li>
+                                                <li><b>Facts with regular expression matching characters in the name of the fact
+                        cause <span class="mc-variable Puppet.Facter variable">Facter</span>  4 to crash.</b> Previously,
+                    regex metacharacters were not escaped when parsing names. The fix for <a href="https://tickets.puppetlabs.com/browse/FACT-3178">FACT-3178</a> also fixed this issue. <a href="https://tickets.puppetlabs.com/browse/FACT-3199">FACT-3199</a></li>
+                                                <li><b><span class="mc-variable Puppet.Facter variable">Facter</span>  trying to resolve augeas version
+                        on <span class="mc-variable Puppet.Windows variable">Windows</span>.</b><span class="mc-variable Puppet.Facter variable">Facter</span>  no longer tries to resolve the augeas
+                    fact on <span class="mc-variable Puppet.Windows variable">Windows</span> since augeas packages and
+                    gems are not shipped for any <span class="mc-variable Puppet.Windows variable">Windows</span>
+                    platforms for <span class="mc-variable Puppet.Puppet variable">Puppet</span> agent packages. <a href="https://tickets.puppetlabs.com/browse/FACT-3197">FACT-3197</a></li>
+                                                <li><b><code>facter -p --no-external-facts</code> is
+                        unusable.</b><span class="mc-variable Puppet.Facter variable">Facter</span>  no longer raises when run with the
+                        <code>-p</code> and <code>--no-external-facts</code> option. Previously, this occurred because <span class="mc-variable Puppet.Facter variable">Facter</span>  thought the <code>--external-dir</code> option (which cannot be used with <code>--no-external-facts</code>) was also passed in.</li>
+                                                <li><b><span class="mc-variable Puppet.Facter variable">Facter</span>  mixes up Oracle <span class="mc-variable Puppet.Linux variable">Linux</span> and <span class="mc-variable Puppet.RedHat variable">Red Hat</span>.</b><code>os.distro.description</code> and <code>os.distro.id</code> facts were previously misreporting Oracle <span class="mc-variable Puppet.Linux variable">Linux</span> as <span class="mc-variable Puppet.RedHat variable">Red Hat</span> <span class="mc-variable Puppet.Linux variable">Linux</span>, fixed now. <a href="https://tickets.puppetlabs.com/browse/FACT-3180">FACT-3180</a></li>
+                                                <li><b><span class="mc-variable Puppet.Facter variable">Facter</span><code>ldom.domainrole.impl</code> fails on <span class="ph">Solaris</span> 11, SPARC.</b> Now, when <span class="mc-variable Puppet.Facter variable">Facter</span>  searches for a fact that matches the
+                    user query, regex metacharacters, like dots (.), are escaped. Previously,
+                    metacharacters were not escaped which resulted in a regex that compared fact
+                    names to the user query to resolve and return the wrong fact. <a href="https://tickets.puppetlabs.com/browse/FACT-3178">FACT-3178</a></li>
+                                                <li><b>Networking facts on AIX incomplete if network device is in down state.</b> On
+                    AIX, if the network was in down state, <span class="mc-variable Puppet.Facter variable">Facter</span>  errored out. Now <span class="mc-variable Puppet.Facter variable">Facter</span> 
+                    correctly resolves the network information. <a href="https://tickets.puppetlabs.com/browse/FACT-3167">FACT-3167</a></li>
+                                                <li><b><span class="mc-variable Puppet.Facter variable">Facter</span>  fails on the <code>/etc/os-release</code> that contains the <code>#</code>.</b><code>/etc/os-release</code> files can have comments (<code>#</code>) without raising an error. Comments are allowed in
+                    these files according to: <a href="https://www.man7.org/linux/man-pages/man5/os-release.5.html">https://www.man7.org/linux/man-pages/man5/os-release.5.html</a>. <a href="https://tickets.puppetlabs.com/browse/FACT-3151">FACT-3151</a></li>
+                                                <li><b><code>gce.project.attributes.sshKeys</code> is a string
+                        instead of an array.</b><span class="mc-variable Puppet.Facter variable">Facter</span>  4 now correctly returns the value of
+                    the <code>gce.project.attributes.sshKeys</code> fact as an
+                    array of strings as it did in <span class="mc-variable Puppet.Facter variable">Facter</span>  3.
+                        <a href="https://tickets.puppetlabs.com/browse/FACT-3136">FACT-3136</a></li>
+                                                <li><b>Processor ISA fact on <span class="mc-variable Puppet.Linux variable">Linux</span> reports wrong
+                        data if the string contains a period.</b><span class="mc-variable Puppet.Facter variable">Facter</span>  no longer modifies <code>uname -p</code> output when reporting the <code>processors.isa</code> fact on <span class="mc-variable Puppet.Linux variable">Linux</span> platforms. <a href="https://tickets.puppetlabs.com/browse/FACT-3089">FACT-3089</a></li>
+                                                <li><b><span class="mc-variable Puppet.Facter variable">Facter</span>  4 fails to guard against
+                        recursion.</b><span class="mc-variable Puppet.Facter variable">Facter</span>  3 guarded against recursive calls to
+                        <code>facter</code> inside external facts; this has now
+                    been added to <span class="mc-variable Puppet.Facter variable">Facter</span>  4. If an external fact
+                    calls out to <code>facter</code> without specifying the
+                        <code>no-external-facts</code>, <span class="mc-variable Puppet.Facter variable">Facter</span>  warns the user and skips falling into
+                    calling <code>facter</code> recursively. <a href="https://tickets.puppetlabs.com/browse/FACT-2772">FACT-2772</a></li>
+                                            </ul>
+                                            <h2 data-mc-autonum="" id="Facter440" data-magellan-target="Facter440"><span class="autonumber"><span></span></span><a name="4.4.0"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.4.0</h2>
+                                            <p class="shortdesc">Released April 2023 and shipped with <span class="mc-variable Puppet.Puppet variable">Puppet</span> <span class="ph">8.0.0</span>.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Enhancements</h3>
+                                            <ul>
+                                                <li><b>Switch to <code>require_relative</code>.</b> <span class="mc-variable Puppet.Facter variable">Facter</span>  now uses <code>require_relative</code> instead of <code>require</code>. <a href="https://tickets.puppetlabs.com/browse/FACT-3184"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3184</u></a></li>
+                                            </ul>
+                                            <h2 data-mc-autonum="" id="Facter431" data-magellan-target="Facter431"><span class="autonumber"><span></span></span><a name="4.3.1"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.3.1</h2>
+                                            <p class="shortdesc">Released April 2023 and shipped with <span class="mc-variable Puppet.Puppet variable">Puppet</span> <span class="ph">7.24.0</span>.</p>
+                                            <p>No release notes.</p>
+                                            <h2 data-mc-autonum="" id="Facter430" data-magellan-target="Facter430"><span class="autonumber"><span></span></span><a name="4.3.0"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.3.0</h2>
+                                            <p class="shortdesc">Released February 2023 and shipped with <span class="mc-variable Puppet.Puppet variable">Puppet</span> <span class="ph">7.23.0</span>.</p>
+                                            <p>We would like to thank the following Puppet community members for their contributions to
+            this release: <a href="https://github.com/smortex">smortex</a>.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <ul>
+                                                <li><b><code>facter.resolve</code> returns a subclass of Hash,
+                        not Hash.</b> The <code>facter.resolve</code> API in <span class="mc-variable Puppet.Facter variable">Facter</span>  4 now returns a Hash instead of a
+                    subclass of Hash, as it did in <span class="mc-variable Puppet.Facter variable">Facter</span>  3.
+                        <a href="https://tickets.puppetlabs.com/browse/FACT-3179">FACT-3179</a></li>
+                                                <li><b><span class="mc-variable Puppet.Facter variable">Facter</span>  resolves facts multiple times when
+                        providers are confined based on facts, especially on <span class="mc-variable Puppet.Windows variable">Windows</span>.</b> <span class="mc-variable Puppet.Facter variable">Facter</span>  4 previously did not use any cache
+                    information when looking up a fact or value <span class="mc-variable Puppet.Facter variable">Facter</span>  method. This now uses cache information when using the fact or value
+                    methods. <a href="https://tickets.puppetlabs.com/browse/FACT-3170">FACT-3170</a></li>
+                                                <li><b><span class="mc-variable Puppet.Facter variable">Facter</span>  incorrectly filters IPv6
+                        link-local unicast addresses.</b> <span class="mc-variable Puppet.Facter variable">Facter</span>  now excludes IPv6 link-local unicast
+                    addresses (fe80::/10) correctly. Fix contributed by <a href="https://github.com/smortex">smortex</a>. <a href="https://tickets.puppetlabs.com/browse/FACT-3171">FACT-3171</a></li>
+                                            </ul>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Deprecations and removals</h3>
+                                            <ul>
+                                                <li><b>Drop Ruby 2.3-2.4 support.</b> Dropped support for Ruby 2.3 and 2.4, which
+                    went end-of-life in 2019 and 2020 respectively. <a href="https://tickets.puppetlabs.com/browse/FACT-3147">FACT-3147</a></li>
+                                            </ul>
+                                            <h2 data-mc-autonum="" id="Facter4214" data-magellan-target="Facter4214"><span class="autonumber"><span></span></span><a name="4.2.14"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.2.14</h2>
+                                            <p class="shortdesc">Released December 2022 and shipped with <span class="mc-variable Puppet.Puppet variable">Puppet</span> <span class="ph">7.21.0</span>.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <ul>
+                                                <li>
+                                                    <p><b><code>ArgumentError</code> with <code>install.rb</code>.</b> Facter's <code>install.rb</code> script is now compatible with Ruby
+                        3.x. Community contribution from <a href="https://github.com/jcharaoui">jcharaoui</a> . <a href="https://tickets.puppetlabs.com/browse/FACT-3159">FACT-3159</a></p>
+                                                </li>
+                                            </ul>
+                                            <h2 data-mc-autonum="" id="Facter4213" data-magellan-target="Facter4213"><span class="autonumber"><span></span></span><a name="4.2.13"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.2.13</h2>
+                                            <p class="shortdesc">Released October 2022 and shipped with <span class="mc-variable Puppet.Puppet variable">Puppet</span> <span class="ph">7.20.0</span>.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <ul>
+                                                <li><b>Networking facts generating conversion error: <code>ERROR
+                            Facter::InternalFactManager - U+FFFF to CP850</code> in conversion
+                        from UTF-16LE to UTF-8 to CP850.</b> Fixed a bug that prevented <span class="mc-variable Puppet.Facter variable">Facter</span>  from resolving its domain fact on <span class="mc-variable Puppet.Windows variable">Windows</span> due to invalid strings in unrelated
+                    registry values. <a href="https://tickets.puppetlabs.com/browse/FACT-3145"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3145</u></a></li>
+                                                <li><b><code>ec2_metadata</code> is missing on FreeBSD.</b>
+                    Restored <code>ec2_metadata</code> fact to <span class="mc-variable Puppet.Facter variable">Facter</span>  4 on FreeBSD. Contirbuted by <span class="mc-variable Puppet.Puppet variable">Puppet</span> community member <a href="https://github.com/raybellis"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">raybellis</u></a>. <a href="https://tickets.puppetlabs.com/browse/FACT-3137"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3137</u></a></li>
+                                                <li><b><code>ipaddress_*</code> and <code>ipaddress6_*</code> facts missing on FreeBSD.</b> Restored the
+                        <code>ipaddress</code> legacy facts on FreeBSD.
+                    Contributed by <span class="mc-variable Puppet.Puppet variable">Puppet</span> community member <a href="https://github.com/smortex"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">smortex</u></a>. <a href="https://tickets.puppetlabs.com/browse/FACT-3130"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3130</u></a></li>
+                                                <li><b><code>custom-dir</code> is silently skipped if it is not
+                        absolute path.</b> Fixed a regression in <span class="mc-variable Puppet.Facter variable">Facter</span>  4 that prevented the user from specifying a custom directory using a
+                    relative path on the command line. Contributed by <span class="mc-variable Puppet.Puppet variable">Puppet</span> community member <a href="https://github.com/smortex"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">smortex</u></a>. <a href="https://tickets.puppetlabs.com/browse/FACT-3078"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3078</u></a></li>
+                                            </ul>
+                                            <h2 data-mc-autonum="" id="Facter4212" data-magellan-target="Facter4212"><span class="autonumber"><span></span></span><a name="4.2.12"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.2.12</h2>
+                                            <p class="shortdesc">Released September 2022 and shipped with <span class="mc-variable Puppet.Puppet variable">Puppet</span> <span class="ph">7.19.0</span>.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Enhancements</h3>
+                                            <ul>
+                                                <li><b>Support for ERB changes introduced in <span class="mc-variable Puppet.Ruby variable">Ruby</span>
+                        3.1.</b> <span class="mc-variable Puppet.Facter variable">Facter</span>  now supports ERB changes introduced
+                    in <span class="mc-variable Puppet.Ruby variable">Ruby</span> 3.1. <a href="https://tickets.puppetlabs.com/browse/FACT-3102"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3102</u></a></li>
+                                            </ul>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <ul>
+                                                <li><b>YAML anchors no longer function properly in <span class="mc-variable Puppet.Facter variable">Facter</span>  4.</b>  Enabled YAML anchors in
+                        <span class="mc-variable Puppet.Facter variable">Facter</span>  4, a feature that was available
+                    previously in <span class="mc-variable Puppet.Facter variable">Facter</span>  3. Additionally,
+                    testing was added to ensure <span class="mc-variable Puppet.Facter variable">Facter</span>  continues
+                    to behave as expected when handling YAML anchors. <a href="https://tickets.puppetlabs.com/browse/FACT-3135"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3135</u></a></li>
+                                                <li><b><span class="mc-variable Puppet.Facter variable">Facter</span>  4 does not support built-in <span class="mc-variable Puppet.Windows variable">Windows</span> commands.</b> <span class="mc-variable Puppet.Facter variable">Facter</span>  3.x special-cased <code>echo</code> for <span class="mc-variable Puppet.Windows variable">Windows</span>
+                    to allow it to run using the built-in for a <span class="mc-variable Puppet.Windows variable">Windows</span> shell; <span class="mc-variable Puppet.Facter variable">Facter</span>  4 upgrade
+                    neglected to include this special case. This fix adds that special case back in.
+                        <a href="https://tickets.puppetlabs.com/browse/FACT-3133"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3133</u></a></li>
+                                            </ul>
+                                            <h2 data-mc-autonum="" id="Facter4211" data-magellan-target="Facter4211"><span class="autonumber"><span></span></span><a name="4.2.11"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.2.11</h2>
+                                            <p class="shortdesc">Released August 2022 and shipped with <span class="mc-variable Puppet.Puppet variable">Puppet</span> <span class="ph">7.18.0</span>.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Enhancements</h3>
+                                            <ul>
+                                                <li><b>Extend <code>cloud.provider</code> fact to Google Compute
+                        Engine</b> The <code>cloud.provider</code> fact now
+                    returns <code>gce</code> when running on Google Compute
+                    Engine. Contributed by <span class="mc-variable Puppet.Puppet variable">Puppet</span> community member
+                        <a href="https://github.com/natemccurdy">natemccurdy</a>. <a href="https://tickets.puppetlabs.com/browse/FACT-1557">FACT-1557</a></li>
+                                            </ul>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <ul>
+                                                <li><b><span class="mc-variable Puppet.Facter variable">Facter</span>  does not parse UTF-8 encoded facts</b>
+                    Fixed an issue where, in the C locale, <span class="mc-variable Puppet.Facter variable">Facter</span> 
+                    failed to parse YAML-based external facts when the contents were UTF-8 encoded.
+                        <a href="https://tickets.puppetlabs.com/browse/FACT-3113">FACT-3113</a></li>
+                                                <li><b><code>Failed to get networking information: "\xE5" to UTF-8
+                            in conversion from ASCII-8BIT to UTF-8 to UTF-16LE</code></b> Fixed an
+                    issue where <span class="mc-variable Puppet.Facter variable">Facter</span>  failed to collect networking
+                    information on some <span class="mc-variable Puppet.Windows variable">Windows</span> hosts due to encoding
+                    issues. <a href="https://tickets.puppetlabs.com/browse/FACT-3109">FACT-3109</a></li>
+                                            </ul>
+                                            <h2 data-mc-autonum="" id="Facter42101" data-magellan-target="Facter42101"><span class="autonumber"><span></span></span><a name="4.2.10"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.2.10</h2>
+                                            <p class="shortdesc">Released May 2022 and shipped with <span class="mc-variable Puppet.Puppet variable">Puppet</span> <span class="ph">7.17.0</span>.</p>
+                                            <p>We would like to thank the following Puppet community members for their contributions to
+            this release: <a href="https://github.com/kajinamit">kajinamit</a>, <a href="https://github.com/nbarrientos">nbarrientos</a>.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <ul>
+                                                <li><b><span class="mc-variable Puppet.Facter variable">Facter</span>  fails when using cached facts in a
+                        read-only filesystem.</b> <span class="mc-variable Puppet.Facter variable">Facter</span>  no longer errors when using cached facts
+                    from a read-only filesystem. <a href="https://tickets.puppetlabs.com/browse/FACT-3116">FACT-3116</a></li>
+                                                <li><b>virt-what-1.22-1 changes <code>virtual=kvm</code> to
+                            <code>virtual=redhat</code>.</b> Resolved issue
+                    parsing output from virt-what on a KVM system. <a href="https://tickets.puppetlabs.com/browse/FACT-3115">FACT-3115</a></li>
+                                                <li><b><span class="mc-variable Puppet.Windows variable">Windows</span> 11 shows up as <span class="mc-variable Puppet.Windows variable">Windows</span> 10 21H2.</b> Corrected <code>os.release</code> facts for <span class="mc-variable Puppet.Windows variable">Windows</span> 11. <a href="https://tickets.puppetlabs.com/browse/FACT-3090">FACT-3090</a></li>
+                                            </ul>
+                                            <h2 data-mc-autonum="" id="Facter429" data-magellan-target="Facter429"><span class="autonumber"><span></span></span><span class="mc-variable Puppet.Facter variable">Facter</span>  4.2.9</h2>
+                                            <p class="shortdesc">This version was never released.</p>
+                                            <h2 data-mc-autonum="" id="Facter428" data-magellan-target="Facter428"><span class="autonumber"><span></span></span><a name="4.2.8"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.2.8</h2>
+                                            <p class="shortdesc">Released March 2022 and shipped with <span class="mc-variable Puppet.Puppet variable">Puppet</span> <span class="ph">7.15.0</span>.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <ul>
+                                                <li><b><code>fact disks</code> cannot get serial of disks.</b>
+                    Updated <span class="mc-variable Puppet.Facter variable">Facter</span>  to use the full path for lsblk, so
+                        <code>fact disks </code>can now show serial of disks.
+                        <a href="https://tickets.puppetlabs.com/browse/FACT-3100"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3100</u></a></li>
+                                            </ul>
+                                            <h2 data-mc-autonum="" id="Facter427" data-magellan-target="Facter427"><span class="autonumber"><span></span></span><a name="4.2.7"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.2.7</h2>
+                                            <p class="shortdesc">Released January 2022 and shipped with <span class="mc-variable Puppet.Puppet variable">Puppet</span> <span class="ph">7.14.0</span>.</p>
+                                            <p>No release notes.</p>
+                                            <h2 data-mc-autonum="" id="Facter426" data-magellan-target="Facter426"><span class="autonumber"><span></span></span><a name="4.2.6"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.2.6</h2>
+                                            <p class="shortdesc">Released December 2021 and shipped with <span class="mc-variable Puppet.Puppet variable">Puppet</span> <span class="ph">7.12.0</span>.</p>
+                                            <p>We would like to thank the following <span class="mc-variable Puppet.Puppet variable">Puppet</span> community
+            members for their contributions to this release: <a href="https://github.com/johanfleury"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">johanfleury</u></a> and <a href="https://tickets.puppetlabs.com/browse/PUP-11249"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">smortex</u></a>.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span><b>New features</b>
+                                            </h3>
+                                            <ul>
+                                                <li><b>Add serial number and WWID to disk fact.</b> Added disks serial number and
+                    WWID to the disks fact. <a href="https://tickets.puppetlabs.com/browse/FACT-3083">FACT-3083</a></li>
+                                            </ul>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <ul>
+                                                <li><b><code>DEBUG Facter::Resolvers::Aix::Mountpoints - Could not
+                            resolve mountpoints</code> when running <code>facter
+                            mountpoints --debug</code> on AIX.</b> Fixes <span class="mc-variable Puppet.Facter variable">Facter</span>  AIX mountpoint resolver to add
+                    correct data to the mountpoint fact when using NFS mountpoints. <a href="https://tickets.puppetlabs.com/browse/FACT-3094">FACT-3094</a></li>
+                                                <li><b><code>os.name</code> value changed for OS
+                        VirtuozzoLinux.</b> Restored Facter3's value of <code>os.name</code> for VirtuozzoLinux. <a href="https://tickets.puppetlabs.com/browse/FACT-3087">FACT-3087</a></li>
+                                                <li><b><span class="mc-variable Puppet.Facter variable">Facter</span>  fails if there are invalid
+                        characters in dmidecode.</b> Replaced invalid UTF characters in <code>dmi.rb</code>. <a href="https://tickets.puppetlabs.com/browse/FACT-3081">FACT-3081</a></li>
+                                                <li><b>Caching not working for some custom facts.</b> When using <code>Facter.value(:fact_name)</code> inside a custom fact,
+                    caching did not work properly, as it cached the value from the inner fact
+                    instead of the actual fact. Now it correctly caches the required fact, by
+                    skipping writing the <code>cachefile</code> when it is not
+                    required. <a href="https://tickets.puppetlabs.com/browse/FACT-3079">FACT-3079</a></li>
+                                                <li><b>Inconsistent values coming from <code>facter-ng</code>
+                        output.</b> Fixed <span class="mc-variable Puppet.Facter variable">Facter</span>  4 output for
+                    yaml external facts when the fact value is false. <a href="https://tickets.puppetlabs.com/browse/FACT-3077">FACT-3077</a></li>
+                                                <li><b><code>--log-level none</code> throws exception.</b> Before
+                    this release, <span class="mc-variable Puppet.Facter variable">Facter</span>  4 did not accept
+                        <code>none</code> as a log level even though it was
+                    supported as per <code>--help </code>output. This fix aligns
+                    the behavior with <span class="mc-variable Puppet.Facter variable">Facter</span>  3 by accepting
+                        <code>none</code> as a log level. <a href="https://tickets.puppetlabs.com/browse/FACT-3074">FACT-3074</a></li>
+                                                <li><b><span class="mc-variable Puppet.Facter variable">Facter</span>  timezone utf8 problem.</b> This
+                    release adds a new <code>timezone</code> resolver specific to
+                        <span class="mc-variable Puppet.Windows variable">Windows</span> which checks the system
+                    codepage and uses it for encoding the timezone fact to avoid unwanted characters
+                    on non-English OS. <a href="https://tickets.puppetlabs.com/browse/FACT-3068">FACT-3068</a></li>
+                                            </ul>
+                                            <h2 data-mc-autonum="" id="Facter425" data-magellan-target="Facter425"><span class="autonumber"><span></span></span><a name="4.2.5"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.2.5</h2>
+                                            <p class="shortdesc">Released October 2021 and shipped with <span class="mc-variable Puppet.Puppet variable">Puppet</span> <span class="ph">7.12.0</span>.</p>
+                                            <p>We would like to thank the following <span class="mc-variable Puppet.Puppet variable">Puppet</span> community
+            members for their contributions to this release: <a href="https://github.com/johanfleury"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">johanfleury</u></a> and <a href="https://tickets.puppetlabs.com/browse/PUP-11249"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">smortex</u></a>.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span><b>New features</b>
+                                            </h3>
+                                            <ul>
+                                                <li><b><code>DisplayVersion</code> fact for <span class="mc-variable Puppet.Windows variable">Windows</span></b>. This release adds a new fact
+                    called <code>os.windows.display_version</code>. This fact
+                    reads the version from the <code>DisplayVersion</code>
+                    registry key. <a href="https://tickets.puppetlabs.com/browse/FACT-3058"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3058</u></a></li>
+                                                <li><b>Option to show HTTP debug logs</b>. This release adds the <code>--http_debug</code> option to the <span class="mc-variable Puppet.Facter variable">Facter</span>  CLI. This option displays the HTTP debug
+                    logs. <a href="https://tickets.puppetlabs.com/browse/FACT-3047"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3047</u></a></li>
+                                            </ul>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <ul>
+                                                <li><b>Mismatched processor frequencies found on AIX.</b> Previously, <span class="mc-variable Puppet.Facter variable">Facter</span>  added all the processors found in the ODM
+                    query, without checking their status. Now if the status is not available, <span class="mc-variable Puppet.Facter variable">Facter</span>  skips the processor. <a href="https://tickets.puppetlabs.com/browse/FACT-2955"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-2955</u></a></li>
+                                                <li><b><span class="mc-variable Puppet.Facter variable">Facter</span>  API does not resolve custom facts that
+                        match legacy facts.</b> Previously, custom facts with names that partially
+                    matched core legacy facts were resolved as expected in the <span class="mc-variable Puppet.Facter variable">Facter</span>  CLI, but not when using the API. In these
+                    cases, the <span class="apiname">Facter::FactManager</span> did not resolve custom facts
+                    if core or external facts had results. This release adds a new method to check
+                    if the user query matches the name of resolved facts, and then decides whether
+                    to resolve the custom facts. <a href="https://tickets.puppetlabs.com/browse/FACT-3067"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3067</u></a></li>
+                                                <li><b>Inconsistencies with the <code>Facter::Core::Execution.execute</code> timeout</b>. This release
+                    fixes inconsistencies with the <code>
+                        Facter::Core::Execution.execute</code> arguments between <span class="mc-variable Puppet.Facter variable">Facter</span>  3 and <span class="mc-variable Puppet.Facter variable">Facter</span>  4. The <code>.execute</code> method now accepts a <code>timeout</code> option, and warns when unsupported options
+                    are passed in. Contributed by <span class="mc-variable Puppet.Puppet variable">Puppet</span> community
+                    members <a href="https://github.com/johanfleury"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">johanfleury</u></a> and <a href="https://tickets.puppetlabs.com/browse/PUP-11249"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">smortex</u></a>. <a href="https://tickets.puppetlabs.com/browse/FACT-3073"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3073</u></a></li>
+                                                <li><b><span class="mc-variable Puppet.Windows variable">Windows</span> 2022 detected as <span class="mc-variable Puppet.Windows variable">Windows</span> 2019.</b> The <code>os.release.full</code> and <code>os.release.major</code> facts now correctly detect <span class="mc-variable Puppet.Windows variable">Windows</span> 2022 and output <code>2022</code>, instead of <code>2019</code>. <a href="https://tickets.puppetlabs.com/browse/FACT-3075"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3075</u></a></li>
+                                            </ul>
+                                            <h2 data-mc-autonum="" id="Facter424" data-magellan-target="Facter424"><span class="autonumber"><span></span></span><a name="4.2.4"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.2.4</h2>
+                                            <p class="shortdesc">Released September 2021 and shipped with <span class="mc-variable Puppet.Puppet variable">Puppet</span> <span class="ph">7.11.0</span>.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <ul>
+                                                <li><b>AIX reporting <code>could not resolve mountpoints</code> error.</b> This release fixes a
+                    faulty regex on AIX that skipped lines with a node substring and resulted in the
+                    "could not resolve mountpoints" error. <a href="https://tickets.puppetlabs.com/browse/FACT-3060"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3060</u></a></li>
+                                            </ul>
+                                            <ul>
+                                                <li><b>AIX reporting <code>odd number of arguments for hash</code>.</b> This release fixes a
+                    faulty regex on AIX that reported the “odd number of arguments” error when
+                    resolving mountpoint facts. <a href="https://tickets.puppetlabs.com/browse/FACT-3059"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3059</u></a></li>
+                                                <li><b><span class="mc-variable Puppet.Facter variable">Facter</span> <span class="mc-variable Puppet.Ruby variable">Ruby</span> API binding fails to resolve facts from
+                        environment variables.</b> This release fixes an issue where environment
+                    facts were not downcased before being added to the fact collection. Note that
+                    names are always downcased internally and are case-insensitive. <a href="https://tickets.puppetlabs.com/browse/FACT-3057"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3057</u></a></li>
+                                                <li>
+                                                    <p><b><span class="mc-variable Puppet.Facter variable">Facter</span>  unable to get processor
+                            speed on <span class="mc-variable Puppet.macOS variable">macOS</span> 11 arm64</b>. This release
+                        fixes an issue with <code>sysctl</code> that resulted in
+                            <span class="mc-variable Puppet.Facter variable">Facter</span>  reporting invalid values for the
+                        processors fact. <a href="https://tickets.puppetlabs.com/browse/FACT-3063"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3063</u></a></p>
+                                                </li>
+                                            </ul>
+                                            <h2 data-mc-autonum="" id="Facter423" data-magellan-target="Facter423"><span class="autonumber"><span></span></span><a name="4.2.3"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.2.3</h2>
+                                            <p class="shortdesc">Released August 2021 and shipped with <span class="mc-variable Puppet.Puppet variable">Puppet</span> <span class="ph">7.10.0</span>.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Enhancements</h3>
+                                            <ul>
+                                                <li>
+                                                    <p><b>Reduced logs emitted.</b> This release reduces the number of
+                        redundant logs emitted by <span class="mc-variable Puppet.Facter variable">Facter</span>. <a href="https://tickets.puppetlabs.com/browse/FACT-3001"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3001</u></a></p>
+                                                </li>
+                                            </ul>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <ul>
+                                                <li>
+                                                    <p><b>The <code>pacman</code> package provider
+                            fails in <span class="mc-variable Puppet.Facter variable">Facter</span>  &gt;= 4.1.1.</b> This
+                        release fixes the <code>operatingsystem</code> fact on
+                        Archlinux and Manjarolinux. <a href="https://tickets.puppetlabs.com/browse/FACT-3043"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3043</u></a></p>
+                                                </li>
+                                            </ul>
+                                            <h2 data-mc-autonum="" id="Facter422" data-magellan-target="Facter422"><span class="autonumber"><span></span></span><a name="4.2.2"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.2.2</h2>
+                                            <p class="shortdesc">Released July 2021 and shipped with <span class="mc-variable Puppet.Puppet variable">Puppet</span> <span class="ph">8.11.0</span>.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <ul>
+                                                <li><b>Incorrect license for <code>lib/facter/custom_facts/core/legacy_facter.rb?</code>.</b> The top
+                    level LICENSE file has been changed from MIT to Apache 2.0. <a href="https://tickets.puppetlabs.com/browse/FACT-3053"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3053</u></a></li>
+                                            </ul>
+                                            <h2 data-mc-autonum="" id="Facter421" data-magellan-target="Facter421"><span class="autonumber"><span></span></span><a name="4.2.1"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.2.1</h2>
+                                            <p class="shortdesc">Released June 2021 and shipped with <span class="mc-variable Puppet.Puppet variable">Puppet</span> <span class="ph">7.8.0</span>.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Enhancements</h3>
+                                            <ul>
+                                                <li><b>Add flags to the help menu.</b> This release adds the following short flags
+                    to the help menu: <code>-v [--version]</code>, <code>-p
+                        [--puppet]</code> and <code>-h [--help]</code>. <a href="https://tickets.puppetlabs.com/browse/FACT-3044"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3044</u></a></li>
+                                                <li><b><span class="mc-variable Puppet.Facter variable">Facter</span>  retrieves <code>Ec2</code>
+                        metadata using <code>IMDSv2</code>.</b> This release improves the way
+                        <span class="mc-variable Puppet.Facter variable">Facter</span>  retrieves
+                        <code>ec2_metadata</code> by using <code>IMDSv2</code> instead of
+                        <code>IMDSv1</code>. In this release, <span class="mc-variable Puppet.Facter variable">Facter</span>  automatically uses
+                        <code>IMDSv2</code> to retrieve an <span class="ph">AWS</span>
+                    token to add to the <code>X-aws-ec2-metadata-token</code> header. <a href="https://tickets.puppetlabs.com/browse/FACT-3042"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3042</u></a></li>
+                                            </ul>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <ul>
+                                                <li><b><span class="mc-variable Puppet.Facter variable">Facter</span>  4 CLI did not accept concatenated
+                        short flags.</b><span class="mc-variable Puppet.Facter variable">Facter</span>  3 allowed short flags to be combined,
+                    such as <code>-jp</code> or <code>-jd</code>. In <span class="mc-variable Puppet.Facter variable">Facter</span>  4, you must declare short flags
+                    separately, such as <code>-j -p</code> or <code>-j -d</code>. <a href="https://tickets.puppetlabs.com/browse/FACT-3046"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3046</u></a></li>
+                                                <li><b>Ec2 resolver failed because of nil tokens.</b> <span class="mc-variable Puppet.Facter variable">Facter</span>  returned failing Rspec tests if a
+                    token was nil before sending an HTTP request. The HTTP request gathers any
+                    required data to resolve the <code>Ec2</code> fact. To solve this issue, <span class="mc-variable Puppet.Facter variable">Facter</span> now no longer sends HTTP requests if
+                    a token is nil. <a href="https://tickets.puppetlabs.com/browse/FACT-3050"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3050</u></a></li>
+                                                <li><b>Incorrect use of <code>ffi_lib</code> on Windows.</b> This release fixes
+                    how <code>ntdll.dll</code> was loaded on <span class="mc-variable Puppet.Windows variable">Windows</span>. <a href="https://tickets.puppetlabs.com/browse/FACT-3048"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3048</u></a></li>
+                                            </ul>
+                                            <h2 data-mc-autonum="" id="Facter420" data-magellan-target="Facter420"><span class="autonumber"><span></span></span><a name="4.2.0"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.2.0</h2>
+                                            <p class="shortdesc">Released June 2021 and shipped with <span class="mc-variable Puppet.Puppet variable">Puppet</span> <span class="ph">7.7.0</span>.</p>
+                                            <p>We would like to thank the following <span class="mc-variable Puppet.Puppet variable">Puppet</span> community
+            members for their contributions to this release: <a href="https://github.com/ccaviness"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">ccaviness</u></a>, <a href="https://github.com/b4ldr"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">b4ldr</u></a>, <a href="https://github.com/ekohl"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">ekohl</u></a>, and <a href="https://github.com/lollipopman"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">lollipopman</u></a>.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>New features</h3>
+                                            <ul>
+                                                <li><b>New <code>os.macosx.version.patch</code> fact.</b> The
+                        <code>os.macosx.version.minor</code> fact has been split into an
+                    additional <code>os.macosx.version.patch</code> fact (on <span class="mc-variable Puppet.macOS variable">macOS</span> 11+). Contributed
+                    by <span class="mc-variable Puppet.Puppet variable">Puppet</span> community
+                    member <a href="https://github.com/ccaviness"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">ccaviness</u></a>. <a href="https://tickets.puppetlabs.com/browse/FACT-3031"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3031</u></a></li>
+                                                <li><b>New <code>flags</code> key.</b> This release adds a
+                        <code>flags</code> key to the
+                        <code>networking.interfaces.*.bindings6</code> fact, which parses the
+                    lower 8-bit encoded flags from <code>/proc/net/if_inet6</code>. Note that
+                    the higher bit flags (<code>managetempaddr</code>,
+                        <code>noprefixroute</code>, <code>mcautojoin</code>,
+                        <code>stableprivacy</code>) are not shown in the fact output.
+                    Contributed by <span class="mc-variable Puppet.Puppet variable">Puppet</span>
+                    community member <a href="https://github.com/b4ldr"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">b4ldr</u></a>. <a href="https://tickets.puppetlabs.com/browse/FACT-2907"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-2907</u></a></li>
+                                            </ul>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Enhancements</h3>
+                                            <ul>
+                                                <li><b><span class="mc-variable Puppet.Ruby variable">Ruby</span> 3 added to the
+                        test matrix.</b> This release adds support for <span class="mc-variable Puppet.Ruby variable">Ruby</span> 3 and updates the
+                    test matrix. Contributed by <span class="mc-variable Puppet.Puppet variable">Puppet</span> community member
+                        <a href="https://github.com/ekohl"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">ekohl</u></a>. <a href="https://tickets.puppetlabs.com/browse/FACT-3029"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3029</u></a></li>
+                                                <li><b><span class="mc-variable Puppet.Facter variable">Facter</span>  gem on <span class="mc-variable Puppet.Ruby variable">Ruby</span> 3.</b> You can
+                    now install the <span class="mc-variable Puppet.Facter variable">Facter</span> 
+                    gem on <span class="mc-variable Puppet.Ruby variable">Ruby</span> 3. <a href="https://tickets.puppetlabs.com/browse/FACT-3027"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3027</u></a></li>
+                                                <li><b>Improved fact matching and filtering.</b> This release improves the mechanism
+                    of fact filtering and matching by unifying the functionality. <a href="https://tickets.puppetlabs.com/browse/FACT-3006"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3006</u></a></li>
+                                            </ul>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <ul>
+                                                <li><b>Invalid <code>rubysitedir</code> value when Ruby is compiled without
+                            <code>sitedir</code>.</b> This release fixes an issue where <span class="mc-variable Puppet.Facter variable">Facter</span>  reported an
+                    invalid value for the <code>ruby.sitedir</code> fact — if <span class="mc-variable Puppet.Ruby variable">Ruby</span> was compiled
+                    without the <code>sitedir</code> option. <a href="https://tickets.puppetlabs.com/browse/FACT-3041"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3041</u></a></li>
+                                                <li><b>Undefined method <code>each_line</code> for
+                        <code>nil:NilClass</code>.</b> This release fixes a bug where multi-line
+                    commands executed through the <code>Facter::Util::Resolution</code> API were
+                    not expanded correctly. <a href="https://tickets.puppetlabs.com/browse/FACT-3040"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3040</u></a></li>
+                                                <li><b>Facter executes <code>which lsblk</code> and <code>which blkid</code>
+                        for each partition.</b> This release fixes an issue where <span class="mc-variable Puppet.Facter variable">Facter</span>  executed
+                        <code>which lsblk</code> and <code>which blkid</code> for each
+                    partition. Now these commands are executed once per <span class="mc-variable Puppet.Facter variable">Facter</span>  run, improving
+                    performance and log readability. <a href="https://tickets.puppetlabs.com/browse/FACT-3035"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3035</u></a></li>
+                                                <li><b><span class="mc-variable Puppet.Facter variable">Facter</span>  returns
+                            <code>TypeError</code> on non-existent indexes.</b> Previously, when
+                    accessing array values by indexes, <span class="mc-variable Puppet.Facter variable">Facter</span>  raised a
+                        <code>TypeError</code> if a non-existent index was searched. This is now
+                    fixed and <span class="mc-variable Puppet.Facter variable">Facter</span>  no
+                    longer errors. <a href="https://tickets.puppetlabs.com/browse/FACT-3030"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3030</u></a></li>
+                                                <li><b><span class="mc-variable Puppet.Facter variable">Facter</span>  4 calls
+                        deprecated <code>xen-toolstack</code> script when resolving the
+                            <code>xen</code> fact.</b> Previously, <span class="mc-variable Puppet.Facter variable">Facter</span>  called the
+                        <code>xen-toolstack</code> script when resolving the
+                        <code>xen</code> fact. This script is deprecated, and now <span class="mc-variable Puppet.Facter variable">Facter</span>  only calls it if
+                    multiple xen stacks are installed. Contributed by <span class="mc-variable Puppet.Puppet variable">Puppet</span> community member
+                        <a href="https://github.com/lollipopman"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">lollipopman</u></a>. <a href="https://tickets.puppetlabs.com/browse/FACT-3023"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3023</u></a></li>
+                                                <li><b>Mountpoint file error.</b> Previously, when a mountpoint file could not be
+                    read, or was missing, <span class="mc-variable Puppet.Facter variable">Facter</span>  threw an error,
+                    without specifying which mountpoint file had failed. The error is now silent,
+                    allowing <span class="mc-variable Puppet.Facter variable">Facter</span>  to
+                    continue resolving facts. You can still see the error when running <span class="mc-variable Puppet.Facter variable">Facter</span>  with debug
+                    logging enabled. <a href="https://tickets.puppetlabs.com/browse/FACT-2928"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-2928</u></a></li>
+                                            </ul>
+                                            <h2 data-mc-autonum="" id="Facter411" data-magellan-target="Facter411"><span class="autonumber"><span></span></span><a name="4.1.1"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.1.1</h2>
+                                            <p class="shortdesc">Released April 2021 and shipped with <span class="mc-variable Puppet.Puppet variable">Puppet</span> <span class="ph">7.6.1</span>.</p>
+                                            <p>We would like to thank the following <span class="mc-variable Puppet.Puppet variable">Puppet</span> community
+            members for their contributions to this release: <a href="https://github.com/ananace"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">ananace</u></a>.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Enhancements</h3>
+                                            <ul>
+                                                <li><b>The <code>processors</code> fact includes <code>sockets</code> and <code>threads</code> details.</b> This release adds the <code>cores per socket</code> and <code>threads
+                        per core</code> information to the <code>processors</code> fact. <a href="https://tickets.puppetlabs.com/browse/FACT-2992">FACT-2992</a></li>
+                                            </ul>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <ul>
+                                                <li><b><span class="mc-variable Puppet.Facter variable">Facter</span>  4 user query overwritten when <span class="mc-variable Puppet.Facter variable">Facter</span>  is called outside of <code>setcode</code> in a custom fact file.</b> This release
+                    fixes an issue where custom facts failed to resolve because nested <span class="mc-variable Puppet.Facter variable">Facter</span>  calls overwrote user queries. <a href="https://tickets.puppetlabs.com/browse/FACT-3025"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3025</u></a></li>
+                                                <li>
+                                                    <p><b><code>Facter.fact</code> returns an object
+                            when the queried fact does not exist.</b> When resolving facts that do
+                        not exist, <span class="mc-variable Puppet.Facter variable">Facter</span>  now returns nil, instead of
+                        an object of the <code>ResolvedFact</code> type with the
+                        value nil. <a href="https://tickets.puppetlabs.com/browse/FACT-3024"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3024</u></a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b>InfiniBand MAC addresses not resolved.</b> <span class="mc-variable Puppet.Facter variable">Facter</span>  can now handle InfiniBand when
+                        reporting MAC addresses. Contributed by <span class="mc-variable Puppet.Puppet variable">Puppet</span> community member <a href="https://github.com/ananace"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">ananace</u></a>. <a href="https://tickets.puppetlabs.com/browse/FACT-3021"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3021</u></a></p>
+                                                </li>
+                                            </ul>
+                                            <h2 data-mc-autonum="" id="Facter410" data-magellan-target="Facter410"><span class="autonumber"><span></span></span><span class="mc-variable Puppet.Facter variable">Facter</span>  4.1.0</h2>
+                                            <p class="shortdesc">Released April 2021.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <ul>
+                                                <li>
+                                                    <p><b>Auto promoting dotted facts to structured facts is
+                                incompatible</b>. This release reverts the way <span class="mc-variable Puppet.Facter variable">Facter</span>  4 treats dots in fact names to the
+                            same behavior as <span class="mc-variable Puppet.Facter variable">Facter</span>  3. This means
+                            that by default, any dot in a custom or external fact name is considered
+                            part of the fact name and not a delimiter for structured facts. This fix
+                            also adds the <code>force-dot-resolution</code>
+                            global setting — which you can set to re-enable the <span class="mc-variable Puppet.Facter variable">Facter</span>  4 behavior, converting dotted
+                            facts to structured facts. <a href="https://tickets.puppetlabs.com/browse/FACT-3004"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3004</u></a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b><span class="mc-variable Puppet.Facter variable">Facter</span>  cannot autoload the
+                            provider from <code>stdlib</code> inside <code>puppetserver</code> REPL shell.</b> Previously, <span class="mc-variable Puppet.Facter variable">Facter</span>  failed to execute the first external
+                        command when running under JRuby. This issue only appeared when running
+                            <code>puppetserver</code> from source — packaged
+                        versions were not affected. This is now fixed. <a href="https://tickets.puppetlabs.com/browse/FACT-2999"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-2999</u></a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b><span class="mc-variable Puppet.Facter variable">Facter</span>  breaks when querying
+                            custom facts. </b>Previously, <span class="mc-variable Puppet.Facter variable">Facter</span> 
+                        showed misleading values or errors when querying for non-existent facts via
+                        CLI and <code>Facter.value</code>. This is now fixed.
+                            <a href="https://tickets.puppetlabs.com/browse/FACT-2998"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-2998</u></a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b>Domain facts cannot be resolved on travis without the FFI
+                            gem.</b> This release fixes an issue that prevented FQDN facts resolving
+                        in situations where FFI was not installed. <a href="https://tickets.puppetlabs.com/browse/FACT-2997"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-2997</u></a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b>Performance regression networking facts in <span class="mc-variable Puppet.Facter variable">Facter</span>  4.x.</b> This release fixes an
+                        issue with primary interface detection where the default route discarded
+                        packages. <a href="https://tickets.puppetlabs.com/browse/FACT-2996"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-2996</u></a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b>The <code>selinux</code> fact is not properly
+                            detected by <span class="mc-variable Puppet.Facter variable">Facter</span>  4.</b><span class="mc-variable Puppet.Facter variable">Facter</span>  4 now takes the same approach as <span class="mc-variable Puppet.Facter variable">Facter</span>  3 — checking for both the mounted
+                            <code>selinux</code> filesystem and the configuration
+                        file. If either are absent, <span class="mc-variable Puppet.Facter variable">Facter</span>  does not
+                        fill in the <code>selinux</code> fact. <a href="https://tickets.puppetlabs.com/browse/FACT-2994"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-2994</u></a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b><span class="mc-variable Puppet.Facter variable">Facter</span>  4.0.52 does not return the
+                                <code>fqdn</code> fact.</b> The <span class="mc-variable Puppet.Linux variable">Linux</span> networking resolver now loads FFI if
+                        previous tries of getting the host information have failed. <a href="https://tickets.puppetlabs.com/browse/FACT-2989"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-2989</u></a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b><span class="mc-variable Puppet.Facter variable">Facter</span>  takes 20+ seconds on <span class="mc-variable Puppet.Windows variable">Windows</span> due to <span class="mc-variable Puppet.Azure variable">Azure</span> metadata query.</b> Previously, the
+                        cloud fact could take over 20 seconds to resolve on Windows because Ruby was
+                        not respecting the HTTP connection timeout. Now the fact is only resolved on
+                        HyperV machines and a new implementation in the <span class="mc-variable Puppet.Facter variable">Facter</span>  HTTP client avoids long timeouts.
+                            <a href="https://tickets.puppetlabs.com/browse/FACT-2988"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-2988</u></a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b><span class="mc-variable Puppet.Facter variable">Facter</span>  4 outputs <code>hypervisor</code> facts differently on Amazon
+                            7.</b> This release changes the value of <code>hypervisor</code> facts from a boolean to a string, matching the
+                        behavior of <span class="mc-variable Puppet.Facter variable">Facter</span>  3. <a href="https://tickets.puppetlabs.com/browse/FACT-3007"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3007</u></a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b><span class="mc-variable Puppet.Facter variable">Facter</span>  4 outputs <code>hypervisors.zone.id</code> facts differently on <span class="ph">Solaris</span>.</b> This release changes the
+                        value of the <code>hypervisors.zone.id</code> fact from a
+                        String to an Integer, matching the behavior of <span class="mc-variable Puppet.Facter variable">Facter</span>  3. <a href="https://tickets.puppetlabs.com/browse/FACT-2987"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-2987</u></a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b><span class="mc-variable Puppet.Facter variable">Facter</span>  4 outputs <code>mountpoints</code> facts differently on macOS.</b>
+                        This release fixes differences in the<code>
+                            mountpoints.options</code> facts on <span class="mc-variable Puppet.macOS variable">macOS</span>, matching the behavior of <span class="mc-variable Puppet.Facter variable">Facter</span>  3. <a href="https://tickets.puppetlabs.com/browse/FACT-2984"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-2984</u></a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b><span class="mc-variable Puppet.Facter variable">Facter</span>  4 outputs <code>mountpoints</code> facts differently on <span class="ph">Solaris</span>.</b> This release fixes
+                        differences in the <code>mountpoints</code> fact on <span class="ph">Solaris</span>, matching the behavior of <span class="mc-variable Puppet.Facter variable">Facter</span>  3. <a href="https://tickets.puppetlabs.com/browse/FACT-2982"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-2982</u></a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b><span class="mc-variable Puppet.Facter variable">Facter</span>  4 outputs ldom facts
+                            differently on <span class="ph">Solaris</span> SPARC.</b><span class="mc-variable Puppet.Facter variable">Facter</span>  4 reported boolean values as strings
+                        for <span class="ph">Solaris</span> LDOM facts. This is now fixed and
+                        the values are represented as boolean. <a href="https://tickets.puppetlabs.com/browse/FACT-2983"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-2983</u></a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b><span class="mc-variable Puppet.Facter variable">Facter</span>  4 outputs uptime facts
+                            differently on <span class="mc-variable Puppet.Windows variable">Windows</span>.</b> This release
+                        fixes differences in the <code>uptime</code> fact on <span class="mc-variable Puppet.Windows variable">Windows</span>, matching the behavior of <span class="mc-variable Puppet.Facter variable">Facter</span>  3. <a href="https://tickets.puppetlabs.com/browse/FACT-2966"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-2966</u></a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b><span class="mc-variable Puppet.Facter variable">Facter</span>  4 outputs the <code>processors.speed</code> fact differently on
+                            AIX.</b> This release fixes differences in the <code>processors.speed</code> fact on AIX, matching the behavior of <span class="mc-variable Puppet.Facter variable">Facter</span>  3. <a href="https://tickets.puppetlabs.com/browse/FACT-2965"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-2965</u></a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b><span class="mc-variable Puppet.Facter variable">Facter</span>  4 outputs MB facts
+                            differently to <span class="mc-variable Puppet.Facter variable">Facter</span>  3.</b><span class="mc-variable Puppet.Facter variable">Facter</span>  no longer rounds values for MB facts,
+                        for example <code>memorysize_mb</code>. <a href="https://tickets.puppetlabs.com/browse/FACT-2967"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-2967</u></a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b><span class="mc-variable Puppet.Facter variable">Facter</span>  4 outputs virtual facts
+                            differently on Amazon 6.</b> The virtual fact is now detected as <code>xen</code> instead of <code>xenhvm</code> on <span class="mc-variable Puppet.Amazon variable">Amazon</span> <span class="mc-variable Puppet.Linux variable">Linux</span> 6. <a href="https://tickets.puppetlabs.com/browse/FACT-2986"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-2986</u></a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b><span class="mc-variable Puppet.Facter variable">Facter</span>  4 outputs the <code>hypervisors</code> fact differently on Amazon
+                            7.</b> This release fixes differences in the <code>hypervisors</code> fact on <span class="mc-variable Puppet.Amazon variable">Amazon</span> 7,
+                        matching the behavior of <span class="mc-variable Puppet.Facter variable">Facter</span>  3. <a href="https://tickets.puppetlabs.com/browse/FACT-3007"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-3007</u></a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b>Loopback IPv6 IP is not returned correctly.</b> This release
+                        fixes the IPv6 address fact on <span class="ph">Solaris</span>. <a href="https://tickets.puppetlabs.com/browse/FACT-2981"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-2981</u></a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b><span class="mc-variable Puppet.Facter variable">Facter</span>  ensures core facts are
+                            resolved before loading custom facts.</b> This release updates the
+                            <code>Facter.value</code> API to resolve facts in a
+                        similar way to <span class="mc-variable Puppet.Facter variable">Facter</span>  3 — loading the <code>fact_name.rb</code> from the configured custom
+                        directory, and then loading all core facts, external facts, environmental
+                        facts, and custom facts. <a href="https://tickets.puppetlabs.com/browse/FACT-2956"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-2956</u></a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b>VLAN interfaces are not properly discovered.</b> VLAN interfaces
+                        with a dot in the name were not correctly displayed in the networking fact.
+                        This is now fixed and the default networking resolver recognizes interfaces
+                        with a dot in the name. <a href="https://tickets.puppetlabs.com/browse/FACT-2946"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-2946</u></a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b>Inconsistent handling of date types in custom facts.</b> This
+                        release adds <code>Date</code> and <code>Time</code> as supported values for custom facts. <a href="https://tickets.puppetlabs.com/browse/FACT-2930"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-2930</u></a></p>
+                                                </li>
+                                            </ul>
+                                            <h2 data-mc-autonum="" id="Facter4052" data-magellan-target="Facter4052"><span class="autonumber"><span></span></span><a name="4.0.52"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.0.52
+        </h2>
+                                            <p class="shortdesc">Released March 2021 and shipped with <span class="mc-variable Puppet.Puppet variable">Puppet</span> <span class="ph">7.5.0</span>.</p>
+                                            <p>We would like to thank the following <span class="mc-variable Puppet.Puppet variable">Puppet</span> community
+            members for their contributions to this release: <a href="https://github.com/smokris">smokris</a>.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>New features</h3>
+                                            <ul>
+                                                <li>
+                                                    <p><b>Azure metadata fact.</b> This release adds the <code>az_metadata</code> fact which provides information
+                            on <span class="mc-variable Puppet.Azure variable">Azure</span> virtual machine instances. For
+                            more information, see the <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/windows/instance-metadata-service">Microsoft Azure instance metadata
+                                documentation</a>. <a href="https://tickets.puppetlabs.com/browse/FACT-1383">FACT-1383</a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b>Azure identification fact.</b> This release adds the <code>cloud.provider</code> fact for <span class="mc-variable Puppet.Azure variable">Azure</span> identification on <span class="mc-variable Puppet.Linux variable">Linux</span> and <span class="mc-variable Puppet.Windows variable">Windows</span> platforms. <a href="https://tickets.puppetlabs.com/browse/FACT-1847">FACT-1847</a></p>
+                                                </li>
+                                            </ul>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Enhancements</h3>
+                                            <ul>
+                                                <li>
+                                                    <p><b>Dependency to <code>lsb</code> packages
+                                are missing</b> The <code>os.distro</code> facts
+                            are now resolved without the <code>lsb_release</code>
+                            on the following platforms: <span class="mc-variable Puppet.rhelShort variable">RHEL</span>, <span class="mc-variable Puppet.Amazon variable">Amazon</span>, SLES. The information is read
+                            from the system in the same way. Note that the <code>os.distro.specification</code> fact, which refers to <code>lsb</code> version, is available only if the
+                                <code>lsb_release</code> has been installed.
+                                <a href="https://tickets.puppetlabs.com/browse/FACT-2931">FACT-2931</a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b><span class="mc-variable Puppet.Linux variable">Linux</span> networking resolver
+                                split into four classes. </b>The <span class="mc-variable Puppet.Linux variable">Linux</span> networking resolver was too large and has now been split into four
+                            classes. The classes are: <code>toSocketParser</code>
+                            (gets data from the <span class="mc-variable Puppet.Ruby variable">Ruby</span> Socket library),
+                                <code>DHCP</code> (gets all DHCP related data),
+                                <code>RoutingTable</code> (gets interface data
+                            from the <code>ip route show</code> command, if
+                            something can not be retrieved with <code>SocketParser</code>) and the <span class="mc-variable Puppet.Linux variable">Linux</span>
+                            resolver (combines the data from the other classes). <a href="https://tickets.puppetlabs.com/browse/FACT-2915">FACT-2915</a></p>
+                                                </li>
+                                            </ul>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <ul>
+                                                <li>
+                                                    <p><b>Permission denied error when reading <span class="mc-variable Puppet.Facter variable">Facter</span>  cache during PE 2021
+                                upgrade.</b><span class="mc-variable Puppet.Facter variable">Facter</span>  4 no longer loads <code>facter.conf</code> from the default location when
+                            running on jRuby. <a href="https://tickets.puppetlabs.com/browse/FACT-2959">FACT-2959</a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b>Facter 4 reports <code>lsbmajdistrelease</code> on Ubuntu differently from <span class="mc-variable Puppet.Facter variable">Facter</span>  3</b>. Previously, the <code>lsbmajdistrelease</code> fact from <span class="mc-variable Puppet.Facter variable">Facter</span>  4 was not showing the correct
+                            value on <span class="mc-variable Puppet.Ubuntu variable">Ubuntu</span>. This is now fixed and
+                            aligns the fact's output with <span class="mc-variable Puppet.Facter variable">Facter</span>  3.
+                                <a href="https://tickets.puppetlabs.com/browse/FACT-2952">FACT-2952</a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b>Root of structured core facts cannot be overridden by a
+                                custom fact</b>. Previously, the root of structured core facts could
+                            not be overridden by a custom fact — because the top-level fact did not
+                            exist. This release updates the <code>QueryParser</code> logic to return the root fact — if present in
+                            the loaded facts list — and allows redefinition of core facts. <a href="https://tickets.puppetlabs.com/browse/FACT-2950">FACT-2950</a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b><span class="mc-variable Puppet.Facter variable">Facter</span>  tries to load an
+                                incompatible <code>libsocket.so</code> on
+                                SmartOS. </b>Previously, <span class="mc-variable Puppet.Facter variable">Facter</span>  tried
+                            to load an incompatible (32-bit) <code>libsocket.so</code> from a hardcoded path using <code>ffi</code> and failed to retrieve networking facts.
+                            Now, the library name is preferred and networking facts can be retrieved
+                            on SmartOS. Contributed by <span class="mc-variable Puppet.Puppet variable">Puppet</span>
+                            community member <a href="https://github.com/smokris">smokris</a>. <a href="https://tickets.puppetlabs.com/browse/FACT-2947"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-2947</u></a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b>Puppet Server creates another certname during upgrade.</b>
+                            Previously, when upgrading <span class="mc-variable Puppet.Puppet variable">Puppet</span> 6 to
+                                <span class="mc-variable Puppet.Puppet variable">Puppet</span> 7 on <span class="mc-variable Puppet.Linux variable">Linux</span>, <span class="mc-variable Puppet.Facter variable">Facter</span>  failed to retrieve the domain
+                            using <span class="ph">JRuby</span> because the <code>Socket.getaddrinfo</code> calls failed. Now, if any
+                            of the Socket method calls fail, <span class="mc-variable Puppet.Facter variable">Facter</span> 
+                            can retrieve the information using FFI methods. <a href="https://tickets.puppetlabs.com/browse/FACT-2944">FACT-2944</a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b>The <code>puppet facts show</code>
+                                command logs error when stdlib is installed.</b> This release fixes
+                            an issue where <code>Facter.value</code> did not
+                            return the fact value for a legacy fact. This happened when calling a
+                            legacy fact from a custom fact or calling other Facter API methods
+                            before calling <code>Facter.value</code>. <a href="https://tickets.puppetlabs.com/browse/FACT-2937">FACT-2937</a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b><span class="mc-variable Puppet.Facter variable">Facter</span>  4 <code>pe-bolt-server</code> raises access denied
+                                error if cache is enabled. </b>When <span class="mc-variable Puppet.Facter variable">Facter</span>  is unable to delete the cache
+                            files, it now logs a warning message instead of returning error. <a href="https://tickets.puppetlabs.com/browse/FACT-2961"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-2961</u></a></p>
+                                                </li>
+                                                <li><b><span class="mc-variable Puppet.Facter variable">Facter</span>  4 does not accept the same time
+                            units as <span class="mc-variable Puppet.Facter variable">Facter</span>  3.</b> This release makes
+                        the following <code>ttls</code> time units available in
+                            <span class="mc-variable Puppet.Facter variable">Facter</span>  4: <code>ns</code>, <code>nanos</code>, <code>nanoseconds</code>, <code>us</code>,
+                            <code>micros</code>, <code>microseconds</code>, <code>ms</code>, <code>milis</code>, <code>milliseconds</code>, <code>s</code>, <code>m</code>, <code>h</code>, <code>d</code>. Note that singular time units are also
+                        accepted, for example, <code>mili</code> and <code>nano</code>.<a href="https://tickets.puppetlabs.com/browse/FACT-2962"> FACT-2962</a></li>
+                                                <li><b>The</b> <b><code>Facter.conf</code> file does not accept singular
+                                <code>ttls</code> units.</b> Previously, <span class="mc-variable Puppet.Facter variable">Facter</span>  failed if the <code>ttls</code> unit in the <code>facter.conf</code>
+                        file was a plural ("days" and "hours"). <span class="mc-variable Puppet.Facter variable">Facter</span>  now accepts a singular noun ("day" and "hour").</li>
+                                            </ul>
+                                            <h2 data-mc-autonum="" id="Facter4051" data-magellan-target="Facter4051"><span class="autonumber"><span></span></span><a name="4.0.51"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.0.51</h2>
+                                            <p class="shortdesc">Released February 2021.</p>
+                                            <p>This release includes a resolved issue and minor maintenance changes. For the latest
+                features, see the release notes for <span class="mc-variable Puppet.Facter variable">Facter</span> 
+                4.0.50.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <ul>
+                                                <li><b>The <code>facter -p</code> command is now supported.</b>
+                    The <code>facter -p</code> command did not work in versions
+                        <span class="mc-variable Puppet.Facter variable">Facter</span>  4.0.50 and earlier. <a href="https://tickets.puppetlabs.com/browse/FACT-2818">FACT-2818</a></li>
+                                            </ul>
+                                            <h2 data-mc-autonum="" id="Facter4050" data-magellan-target="Facter4050"><span class="autonumber"><span></span></span><a name="4.0.50"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.0.50</h2>
+                                            <p class="shortdesc">Released February 2021 and shipped with <span class="mc-variable Puppet.Puppet variable">Puppet</span> <span class="ph">7.4.0</span>.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Enhancements</h3>
+                                            <ul>
+                                                <li>
+                                                    <p><b>Networking fact improvements for AIX.</b> The AIX networking
+                        resolver now uses FFI to detect networking interfaces and IPs. Previously,
+                        VLANs and secondary IPs were not displayed. <a href="https://tickets.puppetlabs.com/browse/FACT-2878">FACT-2878</a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b>Improved performance for blocking <code>legacy</code> facts.</b> This release improves the performance of
+                        blocking legacy facts by implementing a different mechanism. The new
+                        mechanism does not allow legacy groups to be overriden by a group with the
+                        same name in <code>fact-groups</code>. If you add a
+                        legacy group in <code>fact-groups</code>, it is ignored.
+                        The new implementation is faster for use cases involving multiple custom
+                        facts that depend on core facts. <a href="https://tickets.puppetlabs.com/browse/FACT-2917">FACT-2917</a></p>
+                                                </li>
+                                            </ul>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <ul>
+                                                <li>
+                                                    <p><b><code>Facter::Core::Execution</code> does not
+                            set status variables in <span class="mc-variable Puppet.Facter variable">Facter</span>  4.</b>
+                        This release reimplements <code>Open3.popen3</code> to
+                        use <code>Process.wait</code> instead of <code>Process.detach</code>. <a href="https://tickets.puppetlabs.com/browse/FACT-2934"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-2934</u></a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b><span class="mc-variable Puppet.Facter variable">Facter</span>  error message — <code>no implicit conversion of nil into String</code> —
+                            when determining processor speed on <span class="mc-variable Puppet.Linux variable">Linux</span></b>. <span class="mc-variable Puppet.Facter variable">Facter</span>  now handles processor
+                        speed values where <code>log10</code> is not set (3, 6,
+                        9, 12). <a href="https://tickets.puppetlabs.com/browse/FACT-2927">FACT-2927</a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b><span class="mc-variable Puppet.Facter variable">Facter</span>  fails "closed" if the
+                            facter.conf file is invalid.</b> Previously, <span class="mc-variable Puppet.Facter variable">Facter</span>  failed when an invalid config file was
+                        provided. <span class="mc-variable Puppet.Facter variable">Facter</span>  now logs a warning message
+                        stating that the parsing of the config file failed and continues retrieving
+                        facts with the default options. <a href="https://tickets.puppetlabs.com/browse/FACT-2924"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-2924</u></a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b>Domain on <span class="mc-variable Puppet.Windows variable">Windows</span> does not
+                            prioritise registry</b>. <span class="mc-variable Puppet.Facter variable">Facter</span>  now
+                        prioritises information from registry on <span class="mc-variable Puppet.Windows variable">Windows</span>, instead of network interface domain
+                        names. <a href="https://tickets.puppetlabs.com/browse/FACT-2923">FACT-2923</a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b>LinuxMint Tessa not recognized.</b> Previously, the <code>os.release</code> fact was retrieved from the <code>/etc/os-release</code> file, but <span class="mc-variable Puppet.Facter variable">Facter</span>  3 read other release files based on
+                        operating system (OS). Now <span class="mc-variable Puppet.Facter variable">Facter</span>  retrieves
+                            <code>os.release</code> from the specific release
+                        file for every OS. <a href="https://tickets.puppetlabs.com/browse/FACT-2921"><u xmlns="http://www.madcapsoftware.com/Schemas/MadCap.xsd">FACT-2921</u></a></p>
+                                                </li>
+                                            </ul>
+                                            <h2 data-mc-autonum="" id="Facter4049" data-magellan-target="Facter4049"><span class="autonumber"><span></span></span><a name="4.0.49"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.0.49</h2>
+                                            <p class="shortdesc">Released January 2021 and shipped with <span class="mc-variable Puppet.Puppet variable">Puppet</span> Platform
+            <span class="ph">7.3.0</span>.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <ul>
+                                                <li>
+                                                    <p><b>Aggregate facts are broken.</b> Previously, <span class="mc-variable Puppet.Facter variable">Facter</span>  broke when trying to add a debug
+                        message for the location where aggregate facts are resolved from. This only
+                        happened with aggregate facts that returned an array or hash without having
+                        an aggregate block call. <a href="https://tickets.puppetlabs.com/browse/FACT-2919">FACT-2919</a></p>
+                                                </li>
+                                            </ul>
+                                            <h2 data-mc-autonum="" id="Facter4048" data-magellan-target="Facter4048"><span class="autonumber"><span></span></span><span class="mc-variable Puppet.Facter variable">Facter</span>  4.0.48</h2>
+                                            <p class="shortdesc">Released January 2021.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Enhancements</h3>
+                                            <ul>
+                                                <li>
+                                                    <p><b>Rewritten tests for <span class="mc-variable Puppet.Linux variable">Linux</span>
+                                networking resolver.</b> This release refactors the <span class="mc-variable Puppet.Linux variable">Linux</span> networking resolver, including
+                            fixing the unit tests and adding new ones. <a href="https://tickets.puppetlabs.com/browse/FACT-2901">FACT-2901</a></p>
+                                                </li>
+                                            </ul>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <ul>
+                                                <li>
+                                                    <p><b><span class="mc-variable Puppet.Facter variable">Facter</span>  4.0.x does not return the
+                            domain correctly when set in the registry.</b> Previously, <span class="mc-variable Puppet.Facter variable">Facter</span>  did not retrieve the domain correctly
+                        on <span class="mc-variable Puppet.Linux variable">Linux</span> and resulted in a faulty FQDN facts.
+                            <span class="mc-variable Puppet.Facter variable">Facter</span>  also failed to retrieve domain
+                        facts when <span class="mc-variable Puppet.Windows variable">Windows</span> did not expose the host's
+                        primary DNS suffix. This is now fixed. <a href="https://tickets.puppetlabs.com/browse/FACT-2882">FACT-2882</a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b>Legacy group blocks processors core fact.</b> Blocking legacy
+                        facts no longer blocks processors core fact. <a href="https://tickets.puppetlabs.com/browse/FACT-2911">FACT-2911</a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b><span class="mc-variable Puppet.Facter variable">Facter</span>  Hocon output format.</b>
+                        The --hocon option now functions as intended. <a href="https://tickets.puppetlabs.com/browse/FACT-2909">FACT-2909</a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b>Legacy blockdevice vendor and size facts not resolving.</b> This
+                        release fixes <code>blockdevice_*_size</code> facts not
+                        resolving on AIX, and <code>blockdevice_*_vendor</code>
+                        facts not resolving on <span class="mc-variable Puppet.Linux variable">Linux</span> and <span class="ph">Solaris</span>. <a href="https://tickets.puppetlabs.com/browse/FACT-2903">FACT-2903</a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b><span class="mc-variable Puppet.Facter variable">Facter</span>  detects OS family without
+                            checking or translating the information.</b> Previously, <span class="mc-variable Puppet.Facter variable">Facter</span>  detected the OS family by reading
+                            <code>/etc/os-release</code> without checking or
+                        translating the information. This is now fixed and <span class="mc-variable Puppet.Facter variable">Facter</span>  translates the <code>id_like</code> field from <code>/etc/os-release</code> to <span class="mc-variable Puppet.Facter variable">Facter</span>  known
+                        families. <a href="https://tickets.puppetlabs.com/browse/FACT-2902">FACT-2902</a></p>
+                                                </li>
+                                            </ul>
+                                            <h2 data-mc-autonum="" id="Facter4047" data-magellan-target="Facter4047"><span class="autonumber"><span></span></span><a name="4.0.47"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.0.47</h2>
+                                            <p class="shortdesc">Released December 2020 and shipped with Puppet <span class="ph">7.1.0</span>.</p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>New features</h3>
+                                            <ul>
+                                                <li><b>Added <code>scope6</code> fact for per binding.</b>
+                        This release adds the <code>scope6</code> fact under
+                        every ipv6 address from the <code>interface.bindings6</code> fact. <a href="https://tickets.puppetlabs.com/browse/FACT-2843">FACT-2843</a></li>
+                                                <li><b>Support for <span class="ph">AWS</span> IMDSv2</b>. This release
+                        updates the EC2 fact to use IMDSv2 to authenticate. To use v2, set the
+                            <code>AWS_IMDSv2</code> environment variable to
+                            <code>true</code>. Note that the token is cached for
+                        a maximum of 100 seconds.</li>
+                                            </ul>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <ul>
+                                                <li><b><span class="mc-variable Puppet.Facter variable">Facter</span>  4 does not resolve hostname facts.</b>
+                    Previously, <span class="mc-variable Puppet.Facter variable">Facter</span>  failed when <code>Socket.getaddrinfo</code> was called, which prevented
+                    retrieval of FQDN information. This is now fixed. <a href="https://tickets.puppetlabs.com/browse/FACT-2894">FACT-2894</a></li>
+                                                <li>
+                                                    <p><b>Gem-based <span class="mc-variable Puppet.Facter variable">Facter</span>  4 does not log
+                            the facts in debug mode.</b> This release adds log messages for resolved
+                        fact values. <a href="https://tickets.puppetlabs.com/browse/FACT-2883">FACT-2883</a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b>Gem-based <span class="mc-variable Puppet.Facter variable">Facter</span>  4 does not
+                            return the complete FQDN.</b> Previously, domain was not retrieved
+                        correctly on <span class="mc-variable Puppet.Linux variable">Linux</span> based systems and resulted
+                        in a faulty FQDN fact. This release uses <span class="mc-variable Puppet.Ruby variable">Ruby</span>
+                        Socket methods to retrieve domain correctly. <a href="https://tickets.puppetlabs.com/browse/FACT-2882">FACT-2882</a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b><span class="mc-variable Puppet.Puppet variable">Puppet</span> 7 treats non existent
+                            facts differently to <span class="mc-variable Puppet.Puppet variable">Puppet</span> 6.</b> This
+                        release excludes custom facts with nil value from <code>to_user_output</code>, <code>values</code> and
+                            <code>to_hash</code> Ruby <span class="mc-variable Puppet.Facter variable">Facter</span>  API's. The custom facts with nil value
+                        are still returned by <code>value</code>, <code>fact</code> and <code>[]</code>
+                        API's. <a href="https://tickets.puppetlabs.com/browse/FACT-2881">FACT-2881</a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b>Facts failing on machines with VLANs.</b> With this release,
+                            <code>dots</code> in legacy fact names are ignored.
+                        They are not used as an indicator of a fact hierarchy because legacy facts
+                        cannot compose and have a flat (key - value) structure. <a href="https://tickets.puppetlabs.com/browse/FACT-2870">FACT-2870</a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b><span class="mc-variable Puppet.Facter variable">Facter</span>  4 changes <code>is_virtual</code> fact from boolean to string.</b>
+                        This release fixes a regression that caused the <code>is_virtual</code> to be a string instead of a boolean. <a href="https://tickets.puppetlabs.com/browse/FACT-2869">FACT-2869</a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b>External facts are loaded when using <code>puppet lookup</code> for a different node.</b> The <code>load_external</code> API method was missing in <span class="mc-variable Puppet.Facter variable">Facter</span>  4. This is now fixed. <a href="https://tickets.puppetlabs.com/browse/FACT-2859">FACT-2859</a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b><span class="mc-variable Puppet.Facter variable">Facter</span>  fails when the interface
+                            name is not UTF-8.</b> Previously, a pointer used to indicate networking
+                        information was being released by the GC too early and the memory was
+                        overridden, resulting in inconsistent data. The fix extends the scope of the
+                        pointer so that the memory it points to does not release prematurely. <a href="https://tickets.puppetlabs.com/browse/FACT-2856">FACT-2856</a></p>
+                                                </li>
+                                                <li>
+                                                    <p><b>Failure when a structured custom fact has the wrong layout.</b>
+                        This release adds a log message when custom fact names are incompatible and
+                        a fact hierarchy cannot be created. <a href="https://tickets.puppetlabs.com/browse/FACT-2851">FACT-2851</a></p>
+                                                </li>
+                                                <li><b>Cannot retrieve local facts error</b>. This release fixes an error thrown on
+                    systems with a low file descriptor limit. <a href="https://tickets.puppetlabs.com/browse/FACT-2898">FACT-2898</a></li>
+                                                <li><b>Dig method fails on <span class="mc-variable Puppet.Puppet variable">Puppet</span><code>$facts.</code></b> The <span class="mc-variable Puppet.Facter variable">Facter</span>  4 API method <code>to_hash</code> returned a different data type to <span class="mc-variable Puppet.Facter variable">Facter</span>  3. This release ensures the <code>to_hash</code> method returns a <span class="mc-variable Puppet.Ruby variable">Ruby</span> Hash instance. <a href="https://tickets.puppetlabs.com/browse/FACT-2897">FACT-2897</a></li>
+                                                <li><b><span class="mc-variable Puppet.Facter variable">Facter</span>  fails when trying to retrieve ssh
+                        facts</b>. Facter now skips reading ssh keys it does not recognize. <a href="https://tickets.puppetlabs.com/browse/FACT-2896">FACT-2896</a></li>
+                                                <li><b>Missing primary interface check on all platforms.</b> Similar to <span class="mc-variable Puppet.Facter variable">Facter</span>  3, this release adds a final check that
+                    detects the primary interface from the IP. Localhost IPs are excluded. <a href="https://tickets.puppetlabs.com/browse/FACT-2892">FACT-2892</a></li>
+                                                <li><b><span class="mc-variable Puppet.Facter variable">Facter</span>  4.0.46 breaks virtual flag.</b><span class="mc-variable Puppet.Facter variable">Facter</span>  now checks whether the <code>/proc/lve/list</code> file is a regular file, instead of
+                    checking if it is executable. <a href="https://tickets.puppetlabs.com/browse/FACT-2891">FACT-2891</a></li>
+                                                <li><b><span class="mc-variable Puppet.Facter variable">Facter</span>  4.0.46 does not load external fact
+                        files in lexicographical order.</b> This is now fixed. <a href="https://tickets.puppetlabs.com/browse/FACT-2874">FACT-2874</a></li>
+                                                <li><b>Secondary interfaces are not reported.</b><code>Networking.interfaces</code> now display secondary
+                    interfaces (with or without the label) and the <code>VLANs.MAC</code> address is correctly displayed for bonded interfaces. If
+                    DHCP is not found, use the <code>dhcpcd -U
+                        &lt;interface_name&gt;</code> command to search. <a href="https://tickets.puppetlabs.com/browse/FACT-2872">FACT-2872</a></li>
+                                            </ul>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Deprecations and removals</h3>
+                                            <p><b>Update rake task for generating facts and tests.</b> The scripts used to
+                generate facts were outdated and had never been used. This release removes them.
+                    <a href="https://tickets.puppetlabs.com/browse/FACT-2298">FACT-2298</a></p>
+                                            <h2 data-mc-autonum="" id="Facter4046" data-magellan-target="Facter4046"><span class="autonumber"><span></span></span><a name="4.0.46"></a><span class="mc-variable Puppet.Facter variable">Facter</span>  4.0.46</h2>
+                                            <p class="shortdesc">Released November 2020 and shipped with <span class="mc-variable Puppet.Puppet variable">Puppet</span> <span class="ph">7.0.0</span>. </p>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>New features</h3>
+                                            <ul>
+                                                <li><b>Operating system hierarchy.</b> <span class="mc-variable Puppet.Facter variable">Facter</span>  4 introduces a hierarchy for operating
+                    systems. The hierarchy allows you to load facts from the child and all parents.
+                    If the same fact is present in a child and a parent, the one from the child
+                    takes precedence. <a href="https://tickets.puppetlabs.com/browse/FACT-2555">FACT-2555</a></li>
+                                                <li><b>Rake task for mapping fact name and fact class.</b> To improve the visibility
+                    of which facts are loaded for an operating system, <span class="mc-variable Puppet.Facter variable">Facter</span>  4 has a rake task that prints all facts
+                    and the class that resolved that fact. <a href="https://tickets.puppetlabs.com/browse/FACT-2557">FACT-2557</a></li>
+                                                <li><b>Blocklist.</b> <span class="mc-variable Puppet.Facter variable">Facter</span>  4 allows you to block facts at a granular
+                    level — you can block any fact from the fact hierarchy, for both groups of facts
+                    and individual facts. <a href="https://tickets.puppetlabs.com/browse/FACT-1976">FACT-1976</a></li>
+                                                <li><b>Block legacy facts.</b> Legacy facts are a subtype of core facts and you can
+                    now block them, like any core fact, using the <code>blocklist</code> from <code>facter.conf</code>. <a href="https://tickets.puppetlabs.com/browse/FACT-2259">FACT-2259</a></li>
+                                                <li><b>Block custom facts.</b> <span class="mc-variable Puppet.Facter variable">Facter</span>  4 allows you to block custom facts. You
+                    can add the fact to the <code>blocklist</code> from <code>facter.conf</code>. <a href="https://tickets.puppetlabs.com/browse/FACT-2718">FACT-2718</a></li>
+                                                <li><b>Block external facts.</b> <span class="mc-variable Puppet.Facter variable">Facter</span>  4 allows you to block external facts.
+                    Blocking external facts is different from blocking core and custom facts — you
+                    need to specify the name of the file from which external facts are loaded to
+                        <code>blocklist</code> in <code>facter.conf</code>. <a href="https://tickets.puppetlabs.com/browse/FACT-2717">FACT-2717</a></li>
+                                                <li><b>The puppet facts show command.</b> The <code>facter
+                        -p</code> and <code>facter --puppet</code> commands
+                    have been replaced with <span class="apiname">puppet facts show</span>. <a href="https://tickets.puppetlabs.com/browse/FACT-2719">FACT-2719</a></li>
+                                                <li><b>Group for legacy facts.</b> The legacy group contains all the legacy facts.
+                    You can find it in <code>lib/facter/config.rb</code> and can
+                    block it in <code>facter.conf</code>. <a href="https://tickets.puppetlabs.com/browse/FACT-2296">FACT-2296</a></li>
+                                                <li><b>The <code>fact-groups</code> group.</b> You can define
+                    your own custom groups in <code>facter.conf</code> using the
+                    new <code>fact-groups</code> group. The <code>blocklist</code> and <code>ttls</code>
+                    groups from <code>facter.conf</code> accept predefined
+                    groups, custom groups or fact names. You must use the file name when using
+                    external facts. <a href="https://tickets.puppetlabs.com/browse/FACT-2331">FACT-2331</a></li>
+                                                <li><b>Define fact groups for blocking or caching.</b> You can define new fact
+                    groups in <code>facter.conf</code>, and use the group to
+                    block or cache facts. <a href="https://tickets.puppetlabs.com/browse/FACT-2515">FACT-2515</a></li>
+                                                <li><b>External fact caching.</b> To cache external facts, use the filename of the
+                    external fact when setting the <code>ttls</code> in <code>facter.conf</code>. <a href="https://tickets.puppetlabs.com/browse/FACT-2619">FACT-2619</a></li>
+                                            </ul>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Enhancements</h3>
+                                            <ul>
+                                                <li><b>CLI compatible with <span class="mc-variable Puppet.Facter variable">Facter</span>  3.</b> <span class="mc-variable Puppet.Facter variable">Facter</span>  4 reimplemented the <span class="mc-variable Puppet.Facter variable">Facter</span>  3 command line interface using <code>thor</code> gem. <a href="https://tickets.puppetlabs.com/browse/FACT-1955">FACT-1955</a></li>
+                                                <li><b>Loaded facts based on operating system hierarchy.</b> To improve
+                        performance, <span class="mc-variable Puppet.Facter variable">Facter</span>  4 only loads the files
+                        and facts that are needed for the operating system it is running on. <a href="https://tickets.puppetlabs.com/browse/FACT-2093">FACT-2093</a></li>
+                                                <li><b>Log class name in log messages.</b> Improved logging in <span class="mc-variable Puppet.Facter variable">Facter</span>  4 prints the class from which the log
+                        was generated. <a href="https://tickets.puppetlabs.com/browse/FACT-2036">FACT-2036</a></li>
+                                                <li><b>Restored <code>--timing</code> option to native
+                            facter.</b> The restored <code>--timing</code> and
+                            <code>-t</code> arguments allow you to see how much
+                        time it took each fact to resolve. <a href="https://tickets.puppetlabs.com/browse/FACT-1380">FACT-1380</a></li>
+                                                <li><b>(Experimental). Reverted parallel resolution of facts.</b> To improve
+                        performance, facts are resolved in parallel on <span class="ph">JRuby</span>. <a href="https://tickets.puppetlabs.com/browse/FACT-2819">FACT-2819</a></li>
+                                                <li><b>Timeout on resolution.</b> You can now specify the <code>timeout</code> attribute in custom fact options. <a href="https://tickets.puppetlabs.com/browse/FACT-2643">FACT-2643</a></li>
+                                                <li><b>Caching</b> <b>core facts .</b> To cache core facts, add the fact group to <code>facter.conf</code><code>ttls</code>. Fact values are stored and retrieved
+                        on future runs. After the <code>ttls</code> expires, the
+                        fact is refreshed. <a href="https://tickets.puppetlabs.com/browse/FACT-2486">FACT-2486</a></li>
+                                            </ul>
+                                            <h3 data-mc-autonum=""><span class="autonumber"><span></span></span>Resolved issues</h3>
+                                            <ul>
+                                                <li><b>Fix <span class="mc-variable Puppet.Ruby variable">Ruby</span> 2.7 warning on <span class="mc-variable Puppet.Facter variable">Facter</span>  4.</b> <span class="mc-variable Puppet.Facter variable">Facter</span>  4 now supports <span class="mc-variable Puppet.Ruby variable">Ruby</span> 2.7. <a href="https://tickets.puppetlabs.com/browse/FACT-2649">FACT-2649</a></li>
+                                                <li><b><span class="mc-variable Puppet.Facter variable">Facter</span>  does not support timeout for shell
+                        calls.</b> External commands have a timeout, and if they do not complete in
+                    the given time, they are forced stop. The default timeout is 300 seconds. You
+                    can now specify a timeout using the <code>limit</code>
+                    attribute in <code>Facter::Core::Execution.execute</code>.
+                        <a href="https://tickets.puppetlabs.com/browse/FACT-2793">FACT-2793</a></li>
+                                                <li><b>Fact names are treated as <code>regex</code> and can lead
+                        to caching of unwanted facts.</b> The <code>regex</code>
+                    used to detect facts has been improved to distinguish between fact groups and
+                    legacy facts. <a href="https://tickets.puppetlabs.com/browse/FACT-2787">FACT-2787</a></li>
+                                                <li><b><span class="mc-variable Puppet.Facter variable">Facter</span>  uptime shows host uptime inside docker
+                        container.</b> Previously, the kernel only reported the host uptime inside a
+                        <span class="mc-variable Puppet.Docker variable">Docker</span> container. You can now see the
+                    container uptime. <a href="https://tickets.puppetlabs.com/browse/FACT-2737">FACT-2737</a></li>
+                                                <li><b>A fact present in two groups does not get cached if the second groups has a
+                            <code>ttls</code>.</b> If a fact is present in two
+                    groups, and both of them have a <code>ttls</code> defined in
+                        <code>facter.conf</code>, the lowest <code>ttls</code> is takes precedence. <a href="https://tickets.puppetlabs.com/browse/FACT-2786">FACT-2786</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <script type="text/javascript" src="../../Resources/google-code-prettify/prettify.js">
+                                    </script>
+                                    <!-- The following script enables pretty print  -->
+                                    <script type="text/javascript" defer="defer" src="../../Resources/Scripts/pretty_print.js">
+                                    </script>
+                                    <!-- The following script adds a resize bar to the navigation pane -->
+                                    <script type="text/javascript" src="../../Resources/Scripts/nav-resize.js">
+                                    </script>
+                                    <!-- End resize bar script -->
+                                    <!-- The following script changes the remove highlight button to also remove the "?Highlight=" bit  -->
+                                    <script type="text/javascript" defer="defer" src="../../Resources/Scripts/remove_highlight.js">
+                                    </script>
+                                    <!-- The following script implements click-to-copy for headings -->
+                                    <script type="text/javascript" defer="defer" src="../../Resources/Scripts/heading-copy.js">
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a data-close="true"></a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
