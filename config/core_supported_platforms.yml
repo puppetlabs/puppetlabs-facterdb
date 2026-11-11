@@ -1,0 +1,59 @@
+# Puppet Core 9 supported operating systems, expressed as fact filename tokens.
+# Source: https://help.puppet.com/core/9/Content/PuppetCore/supported_operating_systems.htm
+# (agent 9.1.3, fetched 2026-11-11). Update this list on every Puppet Core release.
+#
+# Naming rule: os = os.name downcased, release = os.release.major, arch = os.hardware.
+# macOS follows upstream facterdb: darwin-<kernel major>-<arch> (macOS 14 = 23, 15 = 24, 26 = 25).
+#
+# rake platforms:check and the platforms config spec fail when a triple listed here has
+# neither an entry nor a skip reason in config/platforms.yml. `name` is informational only.
+core_supported:
+  - { os: debian, release: '11', arch: x86_64, name: Debian 11 }
+  - { os: debian, release: '11', arch: aarch64, name: Debian 11 }
+  - { os: debian, release: '12', arch: x86_64, name: Debian 12 }
+  - { os: debian, release: '12', arch: aarch64, name: Debian 12 }
+  - { os: debian, release: '12', arch: armv7l, name: Debian 12 }
+  - { os: debian, release: '13', arch: x86_64, name: Debian 13 }
+  - { os: debian, release: '13', arch: aarch64, name: Debian 13 }
+  - { os: fedora, release: '41', arch: x86_64, name: Fedora 41 }
+  - { os: darwin, release: '23', arch: x86_64, name: macOS 14 }
+  - { os: darwin, release: '23', arch: arm64, name: macOS 14 }
+  - { os: darwin, release: '24', arch: x86_64, name: macOS 15 }
+  - { os: darwin, release: '24', arch: arm64, name: macOS 15 }
+  - { os: darwin, release: '25', arch: x86_64, name: macOS 26 }
+  - { os: darwin, release: '25', arch: arm64, name: macOS 26 }
+  - { os: windows, release: '11', arch: x86_64, name: Windows 11 Enterprise }
+  - { os: windows, release: '2016', arch: x86_64, name: Windows Server 2016 }
+  - { os: windows, release: '2019', arch: x86_64, name: Windows Server 2019 }
+  - { os: windows, release: '2022', arch: x86_64, name: Windows Server 2022 }
+  - { os: windows, release: '2025', arch: x86_64, name: Windows Server 2025 }
+  - { os: redhat, release: '8', arch: x86_64, name: RHEL 8 }
+  - { os: redhat, release: '8', arch: aarch64, name: RHEL 8 }
+  - { os: redhat, release: '8', arch: ppc64le, name: RHEL 8 }
+  - { os: redhat, release: '9', arch: x86_64, name: RHEL 9 }
+  - { os: redhat, release: '9', arch: aarch64, name: RHEL 9 }
+  - { os: redhat, release: '9', arch: ppc64le, name: RHEL 9 }
+  - { os: redhat, release: '10', arch: x86_64, name: RHEL 10 }
+  - { os: redhat, release: '10', arch: aarch64, name: RHEL 10 }
+  - { os: redhat, release: '10', arch: ppc64le, name: RHEL 10 }
+  - { os: amazon, release: '2023', arch: x86_64, name: Amazon Linux 2023 }
+  - { os: amazon, release: '2023', arch: aarch64, name: Amazon Linux 2023 }
+  - { os: sles, release: '12', arch: x86_64, name: SLES 12 }
+  - { os: sles, release: '15', arch: x86_64, name: SLES 15 }
+  - { os: almalinux, release: '8', arch: x86_64, name: AlmaLinux 8 }
+  - { os: almalinux, release: '9', arch: x86_64, name: AlmaLinux 9 }
+  - { os: almalinux, release: '9', arch: aarch64, name: AlmaLinux 9 }
+  - { os: almalinux, release: '10', arch: x86_64, name: AlmaLinux 10 }
+  - { os: rocky, release: '8', arch: x86_64, name: Rocky Linux 8 }
+  - { os: rocky, release: '9', arch: x86_64, name: Rocky Linux 9 }
+  - { os: rocky, release: '9', arch: aarch64, name: Rocky Linux 9 }
+  - { os: rocky, release: '10', arch: x86_64, name: Rocky Linux 10 }
+  - { os: oraclelinux, release: '8', arch: x86_64, name: Oracle Linux 8 }
+  - { os: oraclelinux, release: '8', arch: aarch64, name: Oracle Linux 8 }
+  - { os: oraclelinux, release: '8', arch: ppc64le, name: Oracle Linux 8 }
+  - { os: ubuntu, release: '22.04', arch: x86_64, name: Ubuntu 22.04 }
+  - { os: ubuntu, release: '22.04', arch: aarch64, name: Ubuntu 22.04 }
+  - { os: ubuntu, release: '24.04', arch: x86_64, name: Ubuntu 24.04 }
+  - { os: ubuntu, release: '24.04', arch: aarch64, name: Ubuntu 24.04 }
+  - { os: ubuntu, release: '26.04', arch: x86_64, name: Ubuntu 26.04 }
+  - { os: ubuntu, release: '26.04', arch: aarch64, name: Ubuntu 26.04 }

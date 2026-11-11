@@ -1,0 +1,93 @@
+# Gather matrix: which operating systems are gathered and how. Hand-curated from the Puppet Core 9
+# supported OS list (config/core_supported_platforms.yml), puppetlabs/litmusimage and puppet_litmus
+# exe/matrix.json. Revisit on every Puppet Core release; rake platforms:check enforces coverage.
+#
+# Keys:
+#   id        <os>-<release>-<arch>; also the fact filename stem and the artifact suffix
+#   os, release, arch   fact filename tokens (quote release so YAML keeps it a string)
+#   family    linux | macos | windows; selects the gather script
+#   backend   container (docker run on the runner) | runner (the hosted runner itself)
+#   runner    pinned hosted runner label (no latest labels); for containers, the host runner
+#   image     container image (container backend only; no latest tags)
+#   repo_id   Puppet Core release package suffix (apt codename, el-N, fedora-N, amazon-N), linux only
+#   skip      non-empty reason: the entry is kept for coverage but never gathered
+#
+# Linux uses puppetlabs/litmusimage images where a tag exists for the architecture and an official
+# base image otherwise. aarch64 legs use native arm runners. ppc64le and ARMv7L are deferred
+# (PLAT-01); Windows Server 2016/2019 and macOS 14 need self-hosted VMs (PLAT-02).
+platforms:
+  # Debian and Ubuntu (Puppet Core 9)
+  - { id: debian-11-x86_64, os: debian, release: '11', arch: x86_64, family: linux, backend: container, runner: ubuntu-24.04, image: litmusimage/debian:11, repo_id: bullseye }
+  - { id: debian-11-aarch64, os: debian, release: '11', arch: aarch64, family: linux, backend: container, runner: ubuntu-24.04-arm, image: litmusimage/debian:11, repo_id: bullseye }
+  - { id: debian-12-x86_64, os: debian, release: '12', arch: x86_64, family: linux, backend: container, runner: ubuntu-24.04, image: litmusimage/debian:12, repo_id: bookworm }
+  - { id: debian-12-aarch64, os: debian, release: '12', arch: aarch64, family: linux, backend: container, runner: ubuntu-24.04-arm, image: litmusimage/debian:12, repo_id: bookworm }
+  - { id: debian-13-x86_64, os: debian, release: '13', arch: x86_64, family: linux, backend: container, runner: ubuntu-24.04, image: litmusimage/debian:13, repo_id: trixie }
+  - { id: debian-13-aarch64, os: debian, release: '13', arch: aarch64, family: linux, backend: container, runner: ubuntu-24.04-arm, image: litmusimage/debian:13, repo_id: trixie }
+  - { id: debian-12-armv7l, os: debian, release: '12', arch: armv7l, family: linux, skip: 'No native hosted runner; emulation deferred (PLAT-01)' }
+  - { id: ubuntu-22.04-x86_64, os: ubuntu, release: '22.04', arch: x86_64, family: linux, backend: container, runner: ubuntu-24.04, image: litmusimage/ubuntu:22.04, repo_id: jammy }
+  - { id: ubuntu-22.04-aarch64, os: ubuntu, release: '22.04', arch: aarch64, family: linux, backend: container, runner: ubuntu-24.04-arm, image: litmusimage/ubuntu:22.04, repo_id: jammy }
+  - { id: ubuntu-24.04-x86_64, os: ubuntu, release: '24.04', arch: x86_64, family: linux, backend: container, runner: ubuntu-24.04, image: litmusimage/ubuntu:24.04, repo_id: noble }
+  - { id: ubuntu-24.04-aarch64, os: ubuntu, release: '24.04', arch: aarch64, family: linux, backend: container, runner: ubuntu-24.04-arm, image: litmusimage/ubuntu:24.04, repo_id: noble }
+  - { id: ubuntu-26.04-x86_64, os: ubuntu, release: '26.04', arch: x86_64, family: linux, backend: container, runner: ubuntu-24.04, image: litmusimage/ubuntu:26.04, repo_id: resolute }
+  - { id: ubuntu-26.04-aarch64, os: ubuntu, release: '26.04', arch: aarch64, family: linux, backend: container, runner: ubuntu-24.04-arm, image: litmusimage/ubuntu:26.04, repo_id: resolute }
+
+  # Red Hat family (Puppet Core 9)
+  - { id: redhat-8-x86_64, os: redhat, release: '8', arch: x86_64, family: linux, backend: container, runner: ubuntu-24.04, image: registry.access.redhat.com/ubi8/ubi:8.10, repo_id: el-8 }
+  - { id: redhat-8-aarch64, os: redhat, release: '8', arch: aarch64, family: linux, backend: container, runner: ubuntu-24.04-arm, image: registry.access.redhat.com/ubi8/ubi:8.10, repo_id: el-8 }
+  - { id: redhat-8-ppc64le, os: redhat, release: '8', arch: ppc64le, family: linux, skip: 'No native hosted runner; emulation deferred (PLAT-01)' }
+  - { id: redhat-9-x86_64, os: redhat, release: '9', arch: x86_64, family: linux, backend: container, runner: ubuntu-24.04, image: registry.access.redhat.com/ubi9/ubi:9.6, repo_id: el-9 }
+  - { id: redhat-9-aarch64, os: redhat, release: '9', arch: aarch64, family: linux, backend: container, runner: ubuntu-24.04-arm, image: registry.access.redhat.com/ubi9/ubi:9.6, repo_id: el-9 }
+  - { id: redhat-9-ppc64le, os: redhat, release: '9', arch: ppc64le, family: linux, skip: 'No native hosted runner; emulation deferred (PLAT-01)' }
+  - { id: redhat-10-x86_64, os: redhat, release: '10', arch: x86_64, family: linux, backend: container, runner: ubuntu-24.04, image: registry.access.redhat.com/ubi10/ubi:10.0, repo_id: el-10 }
+  - { id: redhat-10-aarch64, os: redhat, release: '10', arch: aarch64, family: linux, backend: container, runner: ubuntu-24.04-arm, image: registry.access.redhat.com/ubi10/ubi:10.0, repo_id: el-10 }
+  - { id: redhat-10-ppc64le, os: redhat, release: '10', arch: ppc64le, family: linux, skip: 'No native hosted runner; emulation deferred (PLAT-01)' }
+  - { id: almalinux-8-x86_64, os: almalinux, release: '8', arch: x86_64, family: linux, backend: container, runner: ubuntu-24.04, image: litmusimage/almalinux:8, repo_id: el-8 }
+  - { id: almalinux-9-x86_64, os: almalinux, release: '9', arch: x86_64, family: linux, backend: container, runner: ubuntu-24.04, image: litmusimage/almalinux:9, repo_id: el-9 }
+  - { id: almalinux-9-aarch64, os: almalinux, release: '9', arch: aarch64, family: linux, backend: container, runner: ubuntu-24.04-arm, image: litmusimage/almalinux:9, repo_id: el-9 }
+  - { id: almalinux-10-x86_64, os: almalinux, release: '10', arch: x86_64, family: linux, backend: container, runner: ubuntu-24.04, image: almalinux:10, repo_id: el-10 }
+  - { id: rocky-8-x86_64, os: rocky, release: '8', arch: x86_64, family: linux, backend: container, runner: ubuntu-24.04, image: litmusimage/rockylinux:8, repo_id: el-8 }
+  - { id: rocky-9-x86_64, os: rocky, release: '9', arch: x86_64, family: linux, backend: container, runner: ubuntu-24.04, image: litmusimage/rockylinux:9, repo_id: el-9 }
+  - { id: rocky-9-aarch64, os: rocky, release: '9', arch: aarch64, family: linux, backend: container, runner: ubuntu-24.04-arm, image: litmusimage/rockylinux:9, repo_id: el-9 }
+  - { id: rocky-10-x86_64, os: rocky, release: '10', arch: x86_64, family: linux, backend: container, runner: ubuntu-24.04, image: rockylinux/rockylinux:10, repo_id: el-10 }
+  - { id: oraclelinux-8-x86_64, os: oraclelinux, release: '8', arch: x86_64, family: linux, backend: container, runner: ubuntu-24.04, image: litmusimage/oraclelinux:8, repo_id: el-8 }
+  - { id: oraclelinux-8-aarch64, os: oraclelinux, release: '8', arch: aarch64, family: linux, backend: container, runner: ubuntu-24.04-arm, image: litmusimage/oraclelinux:8, repo_id: el-8 }
+  - { id: oraclelinux-8-ppc64le, os: oraclelinux, release: '8', arch: ppc64le, family: linux, skip: 'No native hosted runner; emulation deferred (PLAT-01)' }
+  - { id: fedora-41-x86_64, os: fedora, release: '41', arch: x86_64, family: linux, backend: container, runner: ubuntu-24.04, image: fedora:41, repo_id: fedora-41 }
+  - { id: amazon-2023-x86_64, os: amazon, release: '2023', arch: x86_64, family: linux, backend: container, runner: ubuntu-24.04, image: litmusimage/amazonlinux:2023, repo_id: amazon-2023 }
+  - { id: amazon-2023-aarch64, os: amazon, release: '2023', arch: aarch64, family: linux, backend: container, runner: ubuntu-24.04-arm, image: litmusimage/amazonlinux:2023, repo_id: amazon-2023 }
+
+  # SUSE (Puppet Core 9)
+  - { id: sles-12-x86_64, os: sles, release: '12', arch: x86_64, family: linux, skip: 'zypper Puppet Core credential handling unverified' }
+  - { id: sles-15-x86_64, os: sles, release: '15', arch: x86_64, family: linux, skip: 'zypper Puppet Core credential handling unverified' }
+
+  # macOS (hosted runners; Intel runners are scheduled for retirement by GitHub)
+  - { id: darwin-23-x86_64, os: darwin, release: '23', arch: x86_64, family: macos, skip: 'No hosted macOS 14 runner (PLAT-02)' }
+  - { id: darwin-23-arm64, os: darwin, release: '23', arch: arm64, family: macos, skip: 'No hosted macOS 14 runner (PLAT-02)' }
+  - { id: darwin-24-arm64, os: darwin, release: '24', arch: arm64, family: macos, backend: runner, runner: macos-15 }
+  - { id: darwin-24-x86_64, os: darwin, release: '24', arch: x86_64, family: macos, backend: runner, runner: macos-15-intel }
+  - { id: darwin-25-arm64, os: darwin, release: '25', arch: arm64, family: macos, backend: runner, runner: macos-26 }
+  - { id: darwin-25-x86_64, os: darwin, release: '25', arch: x86_64, family: macos, backend: runner, runner: macos-26-intel }
+
+  # Windows (hosted runners)
+  - { id: windows-2016-x86_64, os: windows, release: '2016', arch: x86_64, family: windows, skip: 'No hosted runner (PLAT-02)' }
+  - { id: windows-2019-x86_64, os: windows, release: '2019', arch: x86_64, family: windows, skip: 'No hosted runner (PLAT-02)' }
+  - { id: windows-2022-x86_64, os: windows, release: '2022', arch: x86_64, family: windows, backend: runner, runner: windows-2022 }
+  - { id: windows-2025-x86_64, os: windows, release: '2025', arch: x86_64, family: windows, backend: runner, runner: windows-2025 }
+  - { id: windows-11-x86_64, os: windows, release: '11', arch: x86_64, family: windows, skip: 'Hosted Windows 11 runners are arm64 only; Core 9 ships x86_64 only' }
+
+  # litmusimage OSes outside Puppet Core 9 (release package exists for Puppet Core 8)
+  - { id: ubuntu-18.04-x86_64, os: ubuntu, release: '18.04', arch: x86_64, family: linux, backend: container, runner: ubuntu-24.04, image: litmusimage/ubuntu:18.04, repo_id: bionic }
+  - { id: ubuntu-20.04-x86_64, os: ubuntu, release: '20.04', arch: x86_64, family: linux, backend: container, runner: ubuntu-24.04, image: litmusimage/ubuntu:20.04, repo_id: focal }
+  - { id: debian-10-x86_64, os: debian, release: '10', arch: x86_64, family: linux, backend: container, runner: ubuntu-24.04, image: litmusimage/debian:10, repo_id: buster }
+  - { id: centos-7-x86_64, os: centos, release: '7', arch: x86_64, family: linux, backend: container, runner: ubuntu-24.04, image: litmusimage/centos:7, repo_id: el-7 }
+  - { id: centos-8-x86_64, os: centos, release: '8', arch: x86_64, family: linux, backend: container, runner: ubuntu-24.04, image: litmusimage/centos:stream8, repo_id: el-8 }
+  - { id: centos-9-x86_64, os: centos, release: '9', arch: x86_64, family: linux, backend: container, runner: ubuntu-24.04, image: litmusimage/centos:stream9, repo_id: el-9 }
+  - { id: oraclelinux-7-x86_64, os: oraclelinux, release: '7', arch: x86_64, family: linux, backend: container, runner: ubuntu-24.04, image: litmusimage/oraclelinux:7, repo_id: el-7 }
+  - { id: oraclelinux-9-x86_64, os: oraclelinux, release: '9', arch: x86_64, family: linux, backend: container, runner: ubuntu-24.04, image: litmusimage/oraclelinux:9, repo_id: el-9 }
+  - { id: scientific-7-x86_64, os: scientific, release: '7', arch: x86_64, family: linux, backend: container, runner: ubuntu-24.04, image: litmusimage/scientificlinux:7, repo_id: el-7 }
+  - { id: amazon-2-x86_64, os: amazon, release: '2', arch: x86_64, family: linux, backend: container, runner: ubuntu-24.04, image: litmusimage/amazonlinux:2, repo_id: amazon-2 }
+  - { id: fedora-36-x86_64, os: fedora, release: '36', arch: x86_64, family: linux, backend: container, runner: ubuntu-24.04, image: litmusimage/fedora:36, repo_id: fedora-36 }
+
+  # litmusimage OSes with no Puppet Core 8/9 release package
+  - { id: centos-6-x86_64, os: centos, release: '6', arch: x86_64, family: linux, skip: 'No Puppet Core 8/9 release package' }
+  - { id: oraclelinux-6-x86_64, os: oraclelinux, release: '6', arch: x86_64, family: linux, skip: 'No Puppet Core 8/9 release package' }
