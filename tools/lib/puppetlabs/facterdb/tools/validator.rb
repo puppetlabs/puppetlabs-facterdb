@@ -74,7 +74,22 @@ class Puppetlabs::FacterDB::Tools::Validator
   end
 
   def leak_errors(data)
-    @scrubber.leaks(data).map { |leak| "scrub leak at #{leak}: expected placeholder from config/scrub.yml" }
+    scrub = @scrubber.leaks(data).map { |leak| "scrub leak at #{leak}: expected placeholder from config/scrub.yml" }
+    scrub + pattern_errors(data, [])
+  end
+
+  # Reports the dotted path of every String value matching a leak pattern, never the value.
+  def pattern_errors(node, trail)
+    case node
+    when Hash then node.flat_map { |key, value| pattern_errors(value, trail + [key]) }
+    when Array then node.each_with_index.flat_map { |value, index| pattern_errors(value, trail + [index]) }
+    when String then matching_patterns(node).map { |name| "leak pattern '#{name}' at #{trail.join('.')}" }
+    else []
+    end
+  end
+
+  def matching_patterns(value)
+    @config.leak_patterns.select { |_name, regex| regex.match?(value) }.map(&:first)
   end
 
   def format_errors(path, data)

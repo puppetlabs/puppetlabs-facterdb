@@ -114,6 +114,33 @@ RSpec.describe Puppetlabs::FacterDB::Tools::Validator do
       end
     end
 
+    context 'with cloud metadata' do
+      it 'reports a non-empty az_metadata and normalise empties it' do # rubocop:disable RSpec/MultipleExpectations
+        data = base.merge('az_metadata' => { 'compute' => { 'name' => 'vm' } })
+        put('4.11/debian-12-x86_64.facts', Puppetlabs::FacterDB::Tools::Normaliser.format(data))
+        expect(messages).to include(%r{scrub leak at az_metadata})
+        expect(normaliser.render(data)).to include('"az_metadata": {}')
+      end
+    end
+
+    context 'with leak patterns' do
+      def put_leaky(extra)
+        put('4.11/debian-12-x86_64.facts', Puppetlabs::FacterDB::Tools::Normaliser.format(base.merge(extra)))
+      end
+
+      it 'reports the runner home by pattern name and path without the value' do # rubocop:disable RSpec/MultipleExpectations
+        put_leaky('path' => '/home/runner/work/bin')
+        expect(messages).to include("leak pattern 'github-runner-home' at path")
+        expect(messages.join).not_to include('/home/runner')
+      end
+
+      it 'reports nested cloud DNS values by dotted path only' do # rubocop:disable RSpec/MultipleExpectations
+        put_leaky('networking' => { 'search' => ['vm1.internal.cloudapp.net'] })
+        expect(messages).to include("leak pattern 'azure-internal-dns' at networking.search.0")
+        expect(messages.join).not_to include('vm1')
+      end
+    end
+
     context 'with problems in several files' do
       before(:each) do
         put('4.11/debian-12-x86_64.facts', '{nope')
@@ -144,6 +171,26 @@ RSpec.describe Puppetlabs::FacterDB::Tools::Validator do
       it "rejects #{name}" do
         expect(described_class.filename_valid?(name, config.rolling_distros)).to be(false)
       end
+    end
+  end
+
+  describe 'Config leak_patterns' do
+    def build(scrub)
+      Puppetlabs::FacterDB::Tools::Config.new('config/scrub.yml', scrub, 'config/facts.yml', 'rolling_distros' => [])
+    end
+
+    it 'is empty when leak_patterns is absent' do
+      expect(build('scrub' => {}).leak_patterns).to eq([])
+    end
+
+    it 'compiles patterns honouring ignore_case' do
+      cfg = build('scrub' => {}, 'leak_patterns' => [{ 'name' => 'x', 'regex' => 'abc', 'ignore_case' => true }])
+      expect(cfg.leak_patterns).to eq([['x', %r{abc}i]])
+    end
+
+    it 'raises ArgumentError naming the file and pattern for an invalid regex' do
+      expect { build('scrub' => {}, 'leak_patterns' => [{ 'name' => 'bad', 'regex' => '(' }]) }
+        .to raise_error(ArgumentError, %r{config/scrub\.yml.*'bad'})
     end
   end
 end

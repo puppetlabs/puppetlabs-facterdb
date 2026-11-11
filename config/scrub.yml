@@ -59,3 +59,28 @@ scrub:
 
   # NFS device leaking a username
   mountpoints./vagrant.device: "10.0.0.1:/vagrant"
+
+  # Cloud and runner metadata (absent from the seeded data; exposed by hosted runners and cloud VMs)
+  az_metadata: {}
+  ec2_metadata: {}
+  ec2_userdata: ""
+  gce: {}
+
+# Regexes matched against every String fact value by `rake facts:validate`; matches are reported by
+# path only, never by value. Each entry: name, regex and optional ignore_case.
+leak_patterns:
+  - name: github-runner-home
+    regex: '/home/runner/'
+  - name: github-runner-macos-home
+    regex: '/Users/runner/'
+  - name: github-runner-windows
+    regex: 'runneradmin'
+    ignore_case: true
+  - name: azure-host
+    regex: '\bfv-az\d+'
+  - name: azure-internal-dns
+    regex: 'internal\.cloudapp\.net'
+  - name: actions-runner
+    regex: 'actions-runner'
+  - name: hosted-toolcache
+    regex: 'hostedtoolcache'
