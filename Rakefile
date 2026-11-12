@@ -12,5 +12,6 @@ rescue LoadError
 end
 
 import 'tools/tasks/facts.rake'
+import 'tools/tasks/versions.rake'
 
 task default: [:spec]
