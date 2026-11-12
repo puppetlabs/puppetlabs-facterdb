@@ -19,11 +19,12 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BUNDLE_WITHOUT: gather
-      BUNDLE_RUBYGEMS___PUPPETCORE__PUPPET__COM: forge-key:${{ secrets.PUPPET_FORGE_TOKEN || secrets.PUPPET_FORGE_TOKEN_PUBLIC }}
     steps:
       - uses: actions/checkout@v4
       - name: Install Ruby 4.0
         uses: ruby/setup-ruby@v1
+        env:
+          BUNDLE_RUBYGEMS___PUPPETCORE__PUPPET__COM: forge-key:${{ secrets.PUPPET_FORGE_TOKEN || secrets.PUPPET_FORGE_TOKEN_PUBLIC }}
         with:
           ruby-version: '4.0'
           bundler-cache: true
@@ -34,7 +35,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BUNDLE_WITHOUT: rubocop:gather
-      BUNDLE_RUBYGEMS___PUPPETCORE__PUPPET__COM: forge-key:${{ secrets.PUPPET_FORGE_TOKEN || secrets.PUPPET_FORGE_TOKEN_PUBLIC }}
     strategy:
       fail-fast: false
       matrix:
@@ -43,6 +43,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install Ruby ${{ matrix.ruby }}
         uses: ruby/setup-ruby@v1
+        env:
+          BUNDLE_RUBYGEMS___PUPPETCORE__PUPPET__COM: forge-key:${{ secrets.PUPPET_FORGE_TOKEN || secrets.PUPPET_FORGE_TOKEN_PUBLIC }}
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
@@ -55,7 +57,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BUNDLE_WITHOUT: rubocop:gather
-      BUNDLE_RUBYGEMS___PUPPETCORE__PUPPET__COM: forge-key:${{ secrets.PUPPET_FORGE_TOKEN || secrets.PUPPET_FORGE_TOKEN_PUBLIC }}
     strategy:
       fail-fast: false
       matrix:
@@ -64,6 +65,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install Ruby ${{ matrix.ruby }}
         uses: ruby/setup-ruby@v1
+        env:
+          BUNDLE_RUBYGEMS___PUPPETCORE__PUPPET__COM: forge-key:${{ secrets.PUPPET_FORGE_TOKEN || secrets.PUPPET_FORGE_TOKEN_PUBLIC }}
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
