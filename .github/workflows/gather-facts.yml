@@ -35,7 +35,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Configure forge authentication
+      - name: Check forge token is available
         env:
           FORGE_TOKEN: ${{ secrets.PUPPET_FORGE_TOKEN || secrets.PUPPET_FORGE_TOKEN_PUBLIC }}
         run: |
@@ -43,11 +43,11 @@ jobs:
             echo "Puppet Core token is not available" >&2
             exit 1
           fi
-          echo "PUPPET_FORGE_TOKEN=$FORGE_TOKEN" >> "$GITHUB_ENV"
-          echo "BUNDLE_RUBYGEMS___PUPPETCORE__PUPPET__COM=forge-key:$FORGE_TOKEN" >> "$GITHUB_ENV"
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@afeafc3d1ab54a631816aba4c914a0081c12ff2f # v1.310.0
+        env:
+          BUNDLE_RUBYGEMS___PUPPETCORE__PUPPET__COM: forge-key:${{ secrets.PUPPET_FORGE_TOKEN || secrets.PUPPET_FORGE_TOKEN_PUBLIC }}
         with:
           ruby-version: '3.2'
           bundler-cache: true
@@ -64,6 +64,7 @@ jobs:
         run: bundle exec matrix_from_metadata_v3 --metadata config/metadata.json --puppet-include "$AGENT_MAJOR"
         env:
           AGENT_MAJOR: ${{ steps.next.outputs.agent_major }}
+          PUPPET_FORGE_TOKEN: ${{ secrets.PUPPET_FORGE_TOKEN || secrets.PUPPET_FORGE_TOKEN_PUBLIC }}
 
   gather:
     name: Gather (${{ matrix.platforms.label }})
@@ -83,7 +84,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Configure forge authentication
+      - name: Check forge token is available
         env:
           FORGE_TOKEN: ${{ secrets.PUPPET_FORGE_TOKEN || secrets.PUPPET_FORGE_TOKEN_PUBLIC }}
         run: |
@@ -91,11 +92,11 @@ jobs:
             echo "Puppet Core token is not available" >&2
             exit 1
           fi
-          echo "PUPPET_FORGE_TOKEN=$FORGE_TOKEN" >> "$GITHUB_ENV"
-          echo "BUNDLE_RUBYGEMS___PUPPETCORE__PUPPET__COM=forge-key:$FORGE_TOKEN" >> "$GITHUB_ENV"
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@afeafc3d1ab54a631816aba4c914a0081c12ff2f # v1.310.0
+        env:
+          BUNDLE_RUBYGEMS___PUPPETCORE__PUPPET__COM: forge-key:${{ secrets.PUPPET_FORGE_TOKEN || secrets.PUPPET_FORGE_TOKEN_PUBLIC }}
         with:
           ruby-version: '3.2'
           bundler-cache: true
@@ -110,6 +111,7 @@ jobs:
           AGENT_VERSION: ${{ needs.setup.outputs.agent }}
           FACTER_VERSION: ${{ needs.setup.outputs.version }}
           OUTPUT_DIR: ${{ runner.temp }}/gathered
+          PUPPET_FORGE_TOKEN: ${{ secrets.PUPPET_FORGE_TOKEN || secrets.PUPPET_FORGE_TOKEN_PUBLIC }}
 
       - name: Upload facts
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
@@ -145,6 +147,8 @@ jobs:
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@afeafc3d1ab54a631816aba4c914a0081c12ff2f # v1.310.0
+        env:
+          BUNDLE_RUBYGEMS___PUPPETCORE__PUPPET__COM: forge-key:${{ secrets.PUPPET_FORGE_TOKEN || secrets.PUPPET_FORGE_TOKEN_PUBLIC }}
         with:
           ruby-version: '3.2'
           bundler-cache: true
