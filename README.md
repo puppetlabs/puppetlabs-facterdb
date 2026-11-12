@@ -87,7 +87,7 @@ The scrub policy lives in `config/scrub.yml` and the filename rules in `config/f
 Two manually dispatched workflows keep the store current:
 
 1. `update-facter-versions` refreshes `config/facter_versions.yml` (Facter version to agent version) from the Puppet Core gem index and release notes, and opens a PR.
-2. `gather-facts` gathers one Facter version per run: the oldest not yet gathered, or an `X.Y.Z` passed as the `version` input. It provisions every OS in `config/metadata.json` with litmus, installs the mapped agent, runs `facter -j`, scrubs and normalises the output and opens one PR.
+2. `gather-facts` gathers one Facter version per run: the oldest not yet gathered, or an `X.Y.Z` passed as the `version` input. It provisions every OS in `config/metadata.json` that the provisioning service offers as a VM with litmus, installs the mapped agent, runs `facter -j`, scrubs and normalises the output and opens one PR.
 
 A version is "not yet gathered" when no stored file in that major.minor reports a `facterversion` >= it, so older patches are never re-gathered. Existing fact files are never deleted.
 
@@ -96,11 +96,11 @@ A version is "not yet gathered" when no stored file in that major.minor reports 
 - Scrubbing uses `config/scrub.yml`; review its effect on every facts PR.
 - PRs are opened with `GITHUB_TOKEN` and merged by hand. They do not trigger CI; close and reopen to run checks. The repo setting "Allow GitHub Actions to create and approve pull requests" must stay enabled.
 - Failed legs are listed in the PR body and turn the run red; the remaining legs still land.
-- The Puppet Core token comes from the org secret. Only the setup and gather jobs see it, and nothing runs on pull requests.
+- The Puppet Core token comes from the org secret. It is set only on the steps that need it (the Bundler install steps, the matrix generator and the gather leg), and the gather workflows never run on pull requests.
 
-Fidelity caveat: docker legs share the runner kernel and have no init, so `virtual`, `service_provider`, `kernel*` and similar facts differ from VM-gathered facts.
+Facts are gathered on provisioning service VMs only. Docker is not used because containers share the runner kernel and have no init, so `virtual`, `service_provider`, `kernel*` and similar facts would be wrong for the OS.
 
-Known gaps: macOS, ppc64le and ARMv7L are not gathered, and Fedora 41, AlmaLinux 10, Rocky 10 and Windows 11 have no litmus provisioner yet.
+Known gaps: macOS, ppc64le and ARMv7L are not gathered. Fedora 41, AlmaLinux 10, Rocky 10 and Windows 11 have no litmus provisioner. AmazonLinux 2023, OracleLinux 8 and Ubuntu 26.04 are only available as docker and are not gathered.
 
 ## Licence and attribution
 
