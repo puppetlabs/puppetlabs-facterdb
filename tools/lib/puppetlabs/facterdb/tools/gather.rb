@@ -25,6 +25,11 @@ module Puppetlabs::FacterDB::Tools::Gather
     "#{version[1]}.#{version[2]}/#{basename}"
   end
 
+  def render_scrubbed(facts, config = Puppetlabs::FacterDB::Tools::Config.load)
+    tools = Puppetlabs::FacterDB::Tools
+    tools::Normaliser.new(tools::Scrubber.new(config.scrub_policy)).render(facts)
+  end
+
   def fact_string(facts, keys)
     value = facts.dig(*keys) if facts.is_a?(Hash)
     raise ArgumentError, "missing #{keys.join('.')}" unless value.is_a?(String) && !value.empty?

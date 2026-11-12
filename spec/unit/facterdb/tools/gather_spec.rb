@@ -60,6 +60,37 @@ RSpec.describe Puppetlabs::FacterDB::Tools::Gather, :aggregate_failures do
     end
   end
 
+  describe '.render_scrubbed' do
+    let(:raw) do
+      facts.merge(
+        'networking' => { 'hostname' => 'secret-host', 'fqdn' => 'secret-host.corp.example' },
+        'ec2_userdata' => 'password=hunter2',
+        'gce' => { 'instance' => { 'id' => 42 } },
+        'zeta' => 1,
+        'alpha' => 2,
+      )
+    end
+
+    it 'replaces leaf values on scrub paths and drops raw values' do
+      output = described_class.render_scrubbed(raw)
+      parsed = JSON.parse(output)
+      expect(parsed.values_at('ec2_userdata', 'gce')).to eq(['', {}])
+      expect(parsed['networking']).to eq('hostname' => 'foo', 'fqdn' => 'foo.example.com')
+      expect(output).not_to match(%r{secret-host|hunter2})
+    end
+
+    it 'returns the normalised form' do
+      output = described_class.render_scrubbed(raw)
+      expect(output).to end_with("}\n")
+      expect(output.index('"alpha"')).to be < output.index('"zeta"')
+    end
+
+    it 'is idempotent' do
+      once = described_class.render_scrubbed(raw)
+      expect(described_class.render_scrubbed(JSON.parse(once))).to eq(once)
+    end
+  end
+
   describe '.place' do
     it 'writes a new file derived from content, not the source name' do
       put(src, 'facts-Debian-12/whatever.facts', facts)

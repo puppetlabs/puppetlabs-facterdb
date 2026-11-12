@@ -139,7 +139,7 @@ module GatherTasks
     facts = gather_facts(runner, facter)
     path = Tools::Gather.relative_path_for(facts)
     FileUtils.mkdir_p(File.dirname(File.join(output_dir, path)))
-    File.write(File.join(output_dir, path), JSON.pretty_generate(facts))
+    File.write(File.join(output_dir, path), Tools::Gather.render_scrubbed(facts))
     puts path
   rescue ArgumentError => e
     abort e.message
