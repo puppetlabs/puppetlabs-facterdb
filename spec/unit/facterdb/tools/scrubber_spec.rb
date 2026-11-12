@@ -83,6 +83,134 @@ RSpec.describe Puppetlabs::FacterDB::Tools::Scrubber do
     end
   end
 
+  describe 'wildcard exclusion' do
+    let(:scrubber) { described_class.new('networking.interfaces.*!lo.ip' => '10.0.2.15') }
+    let(:data) do
+      { 'networking' => { 'interfaces' => { 'lo' => { 'ip' => '127.0.0.1' }, 'eth0' => { 'ip' => '10.1.1.1' },
+                                            'ens4' => { 'ip' => '10.2.2.2' }, 'lo0' => { 'ip' => '127.0.0.1' } } } }
+    end
+
+    it 'skips the excluded key and matches every other' do
+      ips = scrubber.scrub(data)['networking']['interfaces'].transform_values { |iface| iface['ip'] }
+      expect(ips).to eq('lo' => '127.0.0.1', 'eth0' => '10.0.2.15', 'ens4' => '10.0.2.15', 'lo0' => '10.0.2.15')
+    end
+
+    it 'does not report the excluded key as a leak' do
+      expect(scrubber.leaks(data)).to contain_exactly('networking.interfaces.eth0.ip', 'networking.interfaces.ens4.ip',
+                                                      'networking.interfaces.lo0.ip')
+    end
+
+    it 'excludes several keys when comma separated' do
+      both = described_class.new('i.*!lo,lo0.ip' => 'x')
+      expect(both.scrub('i' => { 'lo' => { 'ip' => 'a' }, 'lo0' => { 'ip' => 'b' }, 'eth0' => { 'ip' => 'c' } })['i'])
+        .to eq('lo' => { 'ip' => 'a' }, 'lo0' => { 'ip' => 'b' }, 'eth0' => { 'ip' => 'x' })
+    end
+  end
+
+  describe 'pattern rules' do
+    profile = 'C:\Users\jdoe\AppData;C:\Users\jdoe;C:\Users\foo\bin'
+    let(:policy) do
+      {
+        'user' => { 'match' => '(?i)\A(?!foo\\\\)[^\\\\]+\\\\.*\z', 'value' => 'FOO\foo' },
+        'path' => { 'match' => '(?<=C:\\\\Users\\\\)(?!foo(?:[\\\\;]|\z))[^\\\\;]+', 'value' => 'foo' },
+        'tag' => { 'match' => '\A[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}\z', 'value' => 'None' },
+      }
+    end
+    let(:scrubber) { described_class.new(policy) }
+
+    it 'replaces the whole value when a match covers it' do
+      data = { 'user' => 'LITMUS-1\litmusabc', 'tag' => '1df5c096-6978-ae9a-48af-f17599e1884c' }
+      expect(scrubber.scrub(data)).to eq('user' => 'FOO\foo', 'tag' => 'None')
+    end
+
+    it 'leaves non-matching values alone' do
+      same = { 'user' => 'root', 'tag' => 'None' }
+      expect(scrubber.scrub(same)).to eq(same)
+    end
+
+    it 'leaves an existing FOO host alone' do
+      expect(scrubber.scrub('user' => 'FOO\vagrant')).to eq('user' => 'FOO\vagrant')
+    end
+
+    it 'substitutes only the user segment' do
+      expect(scrubber.scrub('path' => profile)['path']).to eq('C:\Users\foo\AppData;C:\Users\foo;C:\Users\foo\bin')
+    end
+
+    it 'is idempotent' do
+      data = { 'user' => 'X\y', 'path' => profile, 'tag' => '1DF5C096-6978-AE9A-48AF-F17599E1884C' }
+      once = scrubber.scrub(data)
+      expect(scrubber.scrub(once)).to eq(once)
+    end
+
+    it 'never converts non-strings or nil' do
+      data = { 'user' => nil, 'path' => ['C:\Users\jdoe'], 'tag' => { 'a' => 1 } }
+      expect(scrubber.scrub(data)).to eq(data)
+    end
+
+    it 'treats missing paths as no-ops' do
+      expect(scrubber.scrub({})).to eq({})
+    end
+  end
+
+  describe 'since rules' do
+    let(:scrubber) do
+      described_class.new('ip' => { 'since' => '4.12', 'value' => '10.0.2.15' },
+                          'user' => { 'since' => '4.12', 'match' => '\Aroot\z', 'value' => 'foo' },
+                          'host' => 'always')
+    end
+
+    def facts(version)
+      { 'facterversion' => version, 'ip' => '10.1.1.1', 'user' => 'root', 'host' => 'x' }.compact
+    end
+
+    it 'applies at the since version and later' do
+      expect(['4.12.0', '4.12.1', '4.13.0', '5.0.0'].map { |v| scrubber.scrub(facts(v))['ip'] }.uniq).to eq(['10.0.2.15'])
+    end
+
+    it 'applies match rules at the since version' do
+      expect(scrubber.scrub(facts('4.12.0'))['user']).to eq('foo')
+    end
+
+    it 'does not apply to older versions but still applies rules without since' do
+      expect(scrubber.scrub(facts('4.11.0'))).to eq('facterversion' => '4.11.0', 'ip' => '10.1.1.1', 'user' => 'root', 'host' => 'always')
+    end
+
+    it 'does not apply when facterversion is absent, nil or unparseable' do
+      expect([nil, 'not-a-version', 7].map { |v| scrubber.scrub(facts(v))['ip'] }).to eq(['10.1.1.1'] * 3)
+    end
+
+    it 'reports since leaks only for files in scope' do
+      expect([scrubber.leaks(facts('4.12.0')), scrubber.leaks(facts('4.11.0')), scrubber.leaks(facts('x'))])
+        .to eq([['ip', 'user', 'host'], ['host'], ['host']])
+    end
+
+    it 'is idempotent' do
+      once = scrubber.scrub(facts('4.12.0'))
+      expect(scrubber.scrub(once)).to eq(once)
+    end
+  end
+
+  describe 'shipped policy' do
+    let(:facts) do
+      { 'facterversion' => '4.12.0', 'identity' => { 'user' => 'LITMUS-1\litmusx' },
+        'dmi' => { 'board' => { 'asset_tag' => '1DF5C096-6978-AE9A-48AF-F17599E1884C' } },
+        'networking' => { 'mac' => '42:01:0a:d9:00:02', 'interfaces' => { 'lo' => { 'ip' => '127.0.0.1' }, 'ens4' => { 'ip' => '172.17.0.2' } } } }
+    end
+
+    it 'scrubs 4.12 network, user and asset tag but leaves lo' do
+      scrubbed = scrubber.scrub(facts)
+      expect([scrubbed['identity'], scrubbed['dmi'], scrubbed['networking']]).to eq(
+        [{ 'user' => 'FOO\foo' }, { 'board' => { 'asset_tag' => 'None' } },
+         { 'mac' => '08:00:27:8d:c0:4d', 'interfaces' => { 'lo' => { 'ip' => '127.0.0.1' }, 'ens4' => { 'ip' => '10.0.2.15' } } }],
+      )
+    end
+
+    it 'leaves 4.11 facts alone' do
+      old = facts.merge('facterversion' => '4.11.0')
+      expect(scrubber.scrub(old)).to eq(old)
+    end
+  end
+
   describe '#leaks' do
     it 'names the path of a real key' do
       expect(scrubber.leaks(data)).to include('ssh.rsa.key')
