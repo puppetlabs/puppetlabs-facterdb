@@ -76,9 +76,31 @@ Fact store tooling:
 bundle exec rake facts:validate                                # validate every fact file (CI runs this)
 bundle exec rake facts:normalise                               # scrub and normalise fact files in place
 CHECK=1 bundle exec rake facts:normalise                       # report files that would change, exit non-zero
+bundle exec rake gather:next_version                           # print the Facter version the next gather would pick
+bundle exec rake versions:update                               # refresh config/facter_versions.yml (needs PUPPET_FORGE_TOKEN)
 ```
 
 The scrub policy lives in `config/scrub.yml` and the filename rules in `config/facts.yml`. The tooling under `tools/` is not shipped in the gem.
+
+## Gathering facts
+
+Two manually dispatched workflows keep the store current:
+
+1. `update-facter-versions` refreshes `config/facter_versions.yml` (Facter version to agent version) from the Puppet Core gem index and release notes, and opens a PR.
+2. `gather-facts` gathers one Facter version per run: the oldest not yet gathered, or an `X.Y.Z` passed as the `version` input. It provisions every OS in `config/metadata.json` with litmus, installs the mapped agent, runs `facter -j`, scrubs and normalises the output and opens one PR.
+
+A version is "not yet gathered" when no stored file in that major.minor reports a `facterversion` >= it, so older patches are never re-gathered. Existing fact files are never deleted.
+
+- The OS list is `config/metadata.json`. To add an OS, edit it; names must match puppet_litmus `matrix.json`.
+- Litmus module pins live in `config/litmus_modules.yml`.
+- Scrubbing uses `config/scrub.yml`; review its effect on every facts PR.
+- PRs are opened with `GITHUB_TOKEN` and merged by hand. They do not trigger CI; close and reopen to run checks. The repo setting "Allow GitHub Actions to create and approve pull requests" must stay enabled.
+- Failed legs are listed in the PR body and turn the run red; the remaining legs still land.
+- The Puppet Core token comes from the org secret. Only the setup and gather jobs see it, and nothing runs on pull requests.
+
+Fidelity caveat: docker legs share the runner kernel and have no init, so `virtual`, `service_provider`, `kernel*` and similar facts differ from VM-gathered facts.
+
+Known gaps: macOS, ppc64le and ARMv7L are not gathered, and Fedora 41, AlmaLinux 10, Rocky 10 and Windows 11 have no litmus provisioner yet.
 
 ## Licence and attribution
 
