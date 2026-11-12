@@ -57,5 +57,11 @@ scrub:
   ldom.domaincontrol: foo
   hypervisors.docker.id: "0000000000000000000000000000000000000000000000000000000000000000"
 
+  # Cloud instance metadata (provision_service VMs)
+  gce: {}
+  ec2_metadata: {}
+  ec2_userdata: ""
+  az_metadata: {}
+
   # NFS device leaking a username
   mountpoints./vagrant.device: "10.0.0.1:/vagrant"

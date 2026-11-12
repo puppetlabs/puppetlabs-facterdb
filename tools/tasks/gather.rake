@@ -68,6 +68,100 @@ module GatherTasks
   rescue ArgumentError => e
     abort e.message
   end
+
+  def fetch!(name)
+    value = ENV.fetch(name, '')
+    abort "#{name} is not set" if value.empty?
+    value
+  end
+
+  def facter_command(label)
+    label.start_with?('Windows') ? "& 'C:\\Program Files\\Puppet Labs\\Puppet\\bin\\facter.bat'" : '/opt/puppetlabs/bin/facter'
+  end
+
+  def litmus_runner
+    require 'puppet_litmus'
+    runner = Object.new
+    runner.extend(PuppetLitmus::InventoryManipulation)
+    runner.extend(PuppetLitmus)
+    runner
+  end
+
+  def select_target(runner)
+    targets = runner.find_targets(runner.inventory_hash_from_inventory_file, nil)
+    abort "expected exactly one litmus target, found #{targets.size}" unless targets.size == 1
+    ENV['TARGET_HOST'] = targets.first
+  end
+
+  def check_leg_inputs(facter_version, agent, collection)
+    abort 'puppet_litmus is not installed (bundle with the gather group)' unless Rake::Task.task_defined?('litmus:provision')
+    abort 'invalid FACTER_VERSION (expected X.Y.Z)' unless facter_version.match?(Tools::FacterVersions::VERSION)
+    abort 'invalid AGENT_VERSION (expected X.Y.Z)' unless agent.match?(Tools::FacterVersions::VERSION)
+
+    expected = Tools::FacterVersions.collection_for(agent)
+    abort "COLLECTION #{collection} does not match the agent's Puppet Core collection #{expected}" unless collection == expected
+  end
+
+  def assert_facter_version(runner, facter, expected)
+    actual = runner.run_shell("#{facter} --version").stdout.to_s.strip
+    return if actual == expected
+
+    detail = actual.match?(Tools::FacterVersions::VERSION) ? "got #{actual}" : 'unexpected output'
+    abort "facter --version mismatch: expected #{expected}, #{detail}"
+  end
+
+  def gather_facts(runner, facter)
+    JSON.parse(runner.run_shell("#{facter} -j").stdout.to_s)
+  rescue JSON::ParserError
+    abort 'facter -j returned invalid JSON (details withheld)'
+  end
+
+  def leg
+    facter_version = fetch!('FACTER_VERSION')
+    agent = fetch!('AGENT_VERSION')
+    collection = fetch!('COLLECTION')
+    label = fetch!('LABEL')
+    provider = fetch!('PROVIDER')
+    image = fetch!('IMAGE')
+    output_dir = fetch!('OUTPUT_DIR')
+    fetch!('PUPPET_FORGE_TOKEN')
+    check_leg_inputs(facter_version, agent, collection)
+
+    Rake::Task['litmus:provision'].invoke(provider, image)
+    ENV['PUPPET_VERSION'] = agent
+    Rake::Task['litmus:install_agent'].invoke(collection)
+
+    runner = litmus_runner
+    select_target(runner)
+    facter = facter_command(label)
+    assert_facter_version(runner, facter, facter_version)
+
+    facts = gather_facts(runner, facter)
+    path = Tools::Gather.relative_path_for(facts)
+    FileUtils.mkdir_p(File.dirname(File.join(output_dir, path)))
+    File.write(File.join(output_dir, path), JSON.pretty_generate(facts))
+    puts path
+  rescue ArgumentError => e
+    abort e.message
+  end
+
+  def collect
+    version = fetch!('FACTER_VERSION')
+    agent = fetch!('AGENT_VERSION')
+    body_path = fetch!('BODY_PATH')
+    gathered = fetch!('GATHERED_DIR')
+    labels = JSON.parse(fetch!('MATRIX')).fetch('platforms').map { |platform| platform.fetch('label') }
+    succeeded = Dir.glob('facts-*', base: gathered).map { |dir| dir.delete_prefix('facts-') }
+
+    result = Tools::Gather.place(gathered, facts_dir, version)
+    abort "invalid gathered files: #{result.invalid.join(', ')}" unless result.invalid.empty?
+
+    body, failed = Tools::Gather.summary(labels: labels, succeeded: succeeded, version: version, agent: agent, placed: result.placed, skipped: result.skipped)
+    File.write(body_path, body)
+    write_outputs('placed' => result.placed.size, 'failed' => !failed.empty?)
+  rescue JSON::ParserError, KeyError
+    abort 'MATRIX is not valid setup output JSON'
+  end
 end
 
 unless Rake::Task.task_defined?(:spec_prep)
@@ -86,5 +180,15 @@ namespace :gather do
   desc 'Pick the Facter version to gather and write it to GITHUB_OUTPUT'
   task :next_version do
     GatherTasks.next_version
+  end
+
+  desc 'Provision one platform with litmus, install the agent, assert facter --version and save facter -j'
+  task :leg do
+    GatherTasks.leg
+  end
+
+  desc 'Place gathered facts into facts/ and write the PR body'
+  task :collect do
+    GatherTasks.collect
   end
 end
