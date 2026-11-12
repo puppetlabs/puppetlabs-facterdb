@@ -33,8 +33,8 @@ module GatherTasks
     modules = YAML.safe_load_file(MODULES_FILE).fetch('modules')
     modules.each do |name, entry|
       repo = entry.is_a?(Hash) ? entry['repo'].to_s : ''
-      ref = entry.is_a?(Hash) ? entry['ref'].to_s : ''
-      raise ArgumentError, "#{MODULES_FILE}: #{name} needs an https://github.com/ repo and a ref" unless repo.start_with?('https://github.com/') && !ref.empty?
+      raise ArgumentError, "#{MODULES_FILE}: #{name} needs an https://github.com/ repo" unless repo.start_with?('https://github.com/')
+      raise ArgumentError, "#{MODULES_FILE}: #{name} has an empty ref" if entry.key?('ref') && entry['ref'].to_s.empty?
     end
     modules
   end
@@ -44,7 +44,8 @@ module GatherTasks
       dest = File.join(FIXTURES, name)
       next if File.exist?(dest)
 
-      system('git', 'clone', '--quiet', '--depth', '1', '--branch', entry['ref'], entry['repo'], dest, exception: true)
+      branch = entry['ref'] ? ['--branch', entry['ref']] : []
+      system('git', 'clone', '--quiet', '--depth', '1', *branch, entry['repo'], dest, exception: true)
     end
   end
 

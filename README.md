@@ -92,7 +92,7 @@ Two manually dispatched workflows keep the store current:
 A version is "not yet gathered" when no stored file in that major.minor reports a `facterversion` >= it, so older patches are never re-gathered. Existing fact files are never deleted.
 
 - The OS list is `config/metadata.json`. To add an OS, edit it; names must match puppet_litmus `matrix.json`.
-- Litmus module pins live in `config/litmus_modules.yml`.
+- The litmus fixture modules (default branch unless a `ref` is set) are listed in `config/litmus_modules.yml`.
 - Scrubbing uses `config/scrub.yml`; review its effect on every facts PR.
 - PRs are opened with `GITHUB_TOKEN` and merged by hand. They do not trigger CI; close and reopen to run checks. The repo setting "Allow GitHub Actions to create and approve pull requests" must stay enabled.
 - Failed legs are listed in the PR body and turn the run red; the remaining legs still land.
