@@ -1,0 +1,12 @@
+# Bolt modules puppet_litmus needs in spec/fixtures/modules to provision and
+# install the agent. Refs are pinned tags; bump deliberately.
+modules:
+  provision:
+    repo: https://github.com/puppetlabs/provision.git
+    ref: v3.2.1
+  puppet_agent:
+    repo: https://github.com/puppetlabs/puppetlabs-puppet_agent.git
+    ref: v4.29.0
+  facts:
+    repo: https://github.com/puppetlabs/puppetlabs-facts.git
+    ref: v1.8.1

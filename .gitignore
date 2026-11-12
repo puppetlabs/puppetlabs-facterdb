@@ -7,3 +7,5 @@ vendor/
 .vendor/
 coverage/
 .planning/
+/spec/fixtures/modules/
+/spec/fixtures/litmus_inventory.yaml
