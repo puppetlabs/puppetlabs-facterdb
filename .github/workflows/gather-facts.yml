@@ -62,10 +62,16 @@ jobs:
       - name: Build platform matrix
         id: matrix
         if: steps.next.outputs.version != ''
-        run: bundle exec matrix_from_metadata_v3 --metadata config/metadata.json --puppet-include "$AGENT_MAJOR" --provision-include provision_service
+        run: bundle exec matrix_from_metadata_v3 --metadata config/metadata.json --puppet-include "$AGENT_MAJOR" --puppetlabs --provision-include provision_service
         env:
           AGENT_MAJOR: ${{ steps.next.outputs.agent_major }}
           PUPPET_FORGE_TOKEN: ${{ secrets.PUPPET_FORGE_TOKEN || secrets.PUPPET_FORGE_TOKEN_PUBLIC }}
+
+      - name: Check platform matrix
+        if: steps.next.outputs.version != ''
+        run: ruby -rjson -e 'm = JSON.parse(ENV.fetch("MATRIX")); abort "Generated platform matrix is empty" if m.fetch("platforms").empty? || m.fetch("collection").empty?'
+        env:
+          MATRIX: ${{ steps.matrix.outputs.matrix }}
 
   gather:
     name: Gather (${{ matrix.platforms.label }})
