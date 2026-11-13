@@ -4,6 +4,7 @@ require 'fileutils'
 
 module Puppetlabs::FacterDB::Tools::Gather
   Result = Struct.new(:placed, :skipped, :invalid)
+  CommandError = Class.new(StandardError)
 
   IDENTITY = [['os', 'name'], ['os', 'release', 'major'], ['os', 'hardware']].freeze
   ARCH = { 'amd64' => 'x86_64', 'x64' => 'x86_64', 'arm64' => 'aarch64' }.freeze
@@ -12,6 +13,15 @@ module Puppetlabs::FacterDB::Tools::Gather
 
   def validator
     Puppetlabs::FacterDB::Tools::Validator
+  end
+
+  # Litmus run_shell raises with the full output on failure, so always opt out and report the exit code only.
+  def run_command(runner, command)
+    result = runner.run_shell(command, expect_failures: true)
+    code = result.exit_code
+    raise CommandError, "#{command} failed with exit code #{code.inspect} (details withheld)" unless code.is_a?(Integer) && code.zero?
+
+    result.stdout.to_s
   end
 
   def relative_path_for(facts)

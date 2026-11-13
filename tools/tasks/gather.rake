@@ -104,17 +104,21 @@ module GatherTasks
   end
 
   def assert_facter_version(runner, facter, expected)
-    actual = runner.run_shell("#{facter} --version").stdout.to_s.strip
+    actual = Tools::Gather.run_command(runner, "#{facter} --version").strip
     return if actual == expected
 
     detail = actual.match?(Tools::FacterVersions::VERSION) ? "got #{actual}" : 'unexpected output'
     abort "facter --version mismatch: expected #{expected}, #{detail}"
+  rescue Tools::Gather::CommandError => e
+    abort e.message
   end
 
   def gather_facts(runner, facter)
-    JSON.parse(runner.run_shell("#{facter} -j").stdout.to_s)
+    JSON.parse(Tools::Gather.run_command(runner, "#{facter} -j"))
   rescue JSON::ParserError
     abort 'facter -j returned invalid JSON (details withheld)'
+  rescue Tools::Gather::CommandError => e
+    abort e.message
   end
 
   def leg

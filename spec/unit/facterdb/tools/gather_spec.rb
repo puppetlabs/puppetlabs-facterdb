@@ -60,6 +60,43 @@ RSpec.describe Puppetlabs::FacterDB::Tools::Gather, :aggregate_failures do
     end
   end
 
+  describe '.run_command' do
+    let(:runner_class) do
+      Struct.new(:result, :calls) do
+        def run_shell(*args, **opts)
+          calls << [args, opts]
+          result
+        end
+      end
+    end
+    let(:runner) { runner_class.new(Struct.new(:stdout, :stderr, :exit_code).new('out-marker', 'err-marker', exit_code), []) }
+    let(:exit_code) { 0 }
+
+    it 'returns stdout and opts out of litmus raising on failure' do
+      expect(described_class.run_command(runner, 'facter -j')).to eq('out-marker')
+      expect(runner.calls).to eq([[['facter -j'], { expect_failures: true }]])
+    end
+
+    context 'when the command exits nonzero' do
+      let(:exit_code) { 3 }
+
+      it 'raises a value-free error naming the command and exit code' do
+        expect { described_class.run_command(runner, 'facter -j') }.to raise_error(described_class::CommandError) { |e|
+          expect(e.message).to eq('facter -j failed with exit code 3 (details withheld)')
+          expect(e.message).not_to match(%r{out-marker|err-marker})
+        }
+      end
+    end
+
+    context 'when the exit code is missing' do
+      let(:exit_code) { nil }
+
+      it 'treats it as a failure' do
+        expect { described_class.run_command(runner, 'facter -j') }.to raise_error(described_class::CommandError, %r{nil})
+      end
+    end
+  end
+
   describe '.render_scrubbed' do
     let(:raw) do
       facts.merge(
