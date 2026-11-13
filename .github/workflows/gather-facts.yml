@@ -118,6 +118,7 @@ jobs:
           AGENT_VERSION: ${{ needs.setup.outputs.agent }}
           FACTER_VERSION: ${{ needs.setup.outputs.version }}
           OUTPUT_DIR: ${{ runner.temp }}/gathered
+          RESULT_DIR: ${{ runner.temp }}/result
           PUPPET_FORGE_TOKEN: ${{ secrets.PUPPET_FORGE_TOKEN || secrets.PUPPET_FORGE_TOKEN_PUBLIC }}
 
       - name: Upload facts
@@ -125,6 +126,15 @@ jobs:
         with:
           name: facts-${{ matrix.platforms.label }}
           path: ${{ runner.temp }}/gathered
+          if-no-files-found: ignore
+          retention-days: 1
+
+      - name: Upload leg result
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: result-${{ matrix.platforms.label }}
+          path: ${{ runner.temp }}/result
           if-no-files-found: error
           retention-days: 1
 
@@ -167,11 +177,19 @@ jobs:
           pattern: facts-*
           path: ${{ runner.temp }}/gathered
 
+      - name: Download leg results
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        continue-on-error: true
+        with:
+          pattern: result-*
+          path: ${{ runner.temp }}/results
+
       - name: Place facts
         id: collect
         run: bundle exec rake gather:collect
         env:
           GATHERED_DIR: ${{ runner.temp }}/gathered
+          RESULTS_DIR: ${{ runner.temp }}/results
           MATRIX: ${{ needs.setup.outputs.matrix }}
           FACTER_VERSION: ${{ needs.setup.outputs.version }}
           AGENT_VERSION: ${{ needs.setup.outputs.agent }}

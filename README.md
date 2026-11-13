@@ -95,7 +95,9 @@ A version is "not yet gathered" when no stored file in that major.minor reports 
 - The litmus fixture modules (default branch unless a `ref` is set) are listed in `config/litmus_modules.yml`.
 - Scrubbing uses `config/scrub.yml`; review its effect on every facts PR.
 - PRs are opened with `GITHUB_TOKEN` and merged by hand. They do not trigger CI; close and reopen to run checks. The repo setting "Allow GitHub Actions to create and approve pull requests" must stay enabled.
-- Failed legs are listed in the PR body and turn the run red; the remaining legs still land.
+- Failed legs are listed in the PR body with a short reason (provision service error or other) and turn the run red; the remaining legs still land.
+- A leg whose OS has no package for the mapped agent version is skipped, not failed: it exits green, does not turn the run red and is listed under "Skipped (no agent package for this OS)" in the PR body.
+- Failure details from provisioning and agent install are withheld from the public run log (only a category is printed) because litmus output includes the VM address.
 - The Puppet Core token comes from the org secret. It is set only on the steps that need it (the Bundler install steps, the matrix generator and the gather leg), and the gather workflows never run on pull requests.
 
 Facts are gathered on provisioning service VMs only. Docker is not used because containers share the runner kernel and have no init, so `virtual`, `service_provider`, `kernel*` and similar facts would be wrong for the OS.

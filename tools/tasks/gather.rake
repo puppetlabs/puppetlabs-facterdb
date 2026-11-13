@@ -121,21 +121,35 @@ module GatherTasks
     abort e.message
   end
 
-  def leg
-    facter_version = fetch!('FACTER_VERSION')
-    agent = fetch!('AGENT_VERSION')
-    collection = fetch!('COLLECTION')
-    label = fetch!('LABEL')
-    provider = fetch!('PROVIDER')
-    image = fetch!('IMAGE')
-    output_dir = fetch!('OUTPUT_DIR')
-    fetch!('PUPPET_FORGE_TOKEN')
-    check_leg_inputs(facter_version, agent, collection)
+  def result_dir(output_dir)
+    ENV.fetch('RESULT_DIR') { File.join(File.dirname(output_dir), 'result') }
+  end
 
-    Rake::Task['litmus:provision'].invoke(provider, image)
-    ENV['PUPPET_VERSION'] = agent
-    Rake::Task['litmus:install_agent'].invoke(collection)
+  # Litmus raises with the full output (including the VM address), so only the category is ever printed.
+  def litmus_step(label, results, step)
+    yield
+  rescue StandardError => e
+    category = Tools::Gather.classify_failure(e.message)
+    category = :other if step == :provision && category == :agent_unavailable
+    unavailable = category == :agent_unavailable
+    Tools::Gather.write_result(results, label, unavailable ? 'skipped' : 'failed', category)
+    return abort("leg #{label}: #{step.to_s.tr('_', ' ')} failed (#{category.to_s.tr('_', ' ')}, details withheld)") unless unavailable
 
+    puts "leg #{label}: agent unavailable for this OS (details withheld)"
+    exit 0
+  end
+
+  def record_failure(label, results)
+    yield
+  rescue ArgumentError => e
+    Tools::Gather.write_result(results, label, 'failed', :other)
+    abort e.message
+  rescue SystemExit
+    Tools::Gather.write_result(results, label, 'failed', :other)
+    raise
+  end
+
+  def gather_leg(label, facter_version, output_dir)
     runner = litmus_runner
     select_target(runner)
     facter = facter_command(label)
@@ -146,8 +160,26 @@ module GatherTasks
     FileUtils.mkdir_p(File.dirname(File.join(output_dir, path)))
     File.write(File.join(output_dir, path), Tools::Gather.render_scrubbed(facts))
     puts path
-  rescue ArgumentError => e
-    abort e.message
+  end
+
+  def leg
+    facter_version = fetch!('FACTER_VERSION')
+    agent = fetch!('AGENT_VERSION')
+    collection = fetch!('COLLECTION')
+    label = fetch!('LABEL')
+    provider = fetch!('PROVIDER')
+    image = fetch!('IMAGE')
+    output_dir = fetch!('OUTPUT_DIR')
+    fetch!('PUPPET_FORGE_TOKEN')
+    check_leg_inputs(facter_version, agent, collection)
+    results = result_dir(output_dir)
+
+    litmus_step(label, results, :provision) { Rake::Task['litmus:provision'].invoke(provider, image) }
+    ENV['PUPPET_VERSION'] = agent
+    litmus_step(label, results, :install_agent) { Rake::Task['litmus:install_agent'].invoke(collection) }
+
+    record_failure(label, results) { gather_leg(label, facter_version, output_dir) }
+    Tools::Gather.write_result(results, label, 'success')
   end
 
   def collect
@@ -156,12 +188,12 @@ module GatherTasks
     body_path = fetch!('BODY_PATH')
     gathered = fetch!('GATHERED_DIR')
     labels = JSON.parse(fetch!('MATRIX')).fetch('platforms').map { |platform| platform.fetch('label') }
-    succeeded = Dir.glob('facts-*', base: gathered).map { |dir| dir.delete_prefix('facts-') }
+    results = Tools::Gather.read_results(fetch!('RESULTS_DIR'), labels)
 
     result = Tools::Gather.place(gathered, facts_dir, version)
     abort "invalid gathered files: #{result.invalid.join(', ')}" unless result.invalid.empty?
 
-    body, failed = Tools::Gather.summary(labels: labels, succeeded: succeeded, version: version, agent: agent, placed: result.placed, skipped: result.skipped)
+    body, failed = Tools::Gather.summary(labels: labels, results: results, version: version, agent: agent, placed: result.placed, skipped: result.skipped)
     File.write(body_path, body)
     write_outputs('placed' => result.placed.size, 'failed' => !failed.empty?)
   rescue JSON::ParserError, KeyError
