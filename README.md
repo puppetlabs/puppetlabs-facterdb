@@ -76,9 +76,33 @@ Fact store tooling:
 bundle exec rake facts:validate                                # validate every fact file (CI runs this)
 bundle exec rake facts:normalise                               # scrub and normalise fact files in place
 CHECK=1 bundle exec rake facts:normalise                       # report files that would change, exit non-zero
+bundle exec rake gather:next_version                           # print the Facter version the next gather would pick
+bundle exec rake versions:update                               # refresh config/facter_versions.yml (needs PUPPET_FORGE_TOKEN)
 ```
 
 The scrub policy lives in `config/scrub.yml` and the filename rules in `config/facts.yml`. The tooling under `tools/` is not shipped in the gem.
+
+## Gathering facts
+
+Two manually dispatched workflows keep the store current:
+
+1. `update-facter-versions` refreshes `config/facter_versions.yml` (Facter version to agent version) from the Puppet Core gem index and release notes, and opens a PR.
+2. `gather-facts` gathers one Facter version per run: the oldest not yet gathered, or an `X.Y.Z` passed as the `version` input. It provisions every OS in `config/metadata.json` that the provisioning service offers as a VM with litmus, installs the mapped agent, runs `facter -j`, scrubs and normalises the output and opens one PR.
+
+A version is "not yet gathered" when no stored file in that major.minor reports a `facterversion` >= it, so older patches are never re-gathered. Existing fact files are never deleted.
+
+- The OS list is `config/metadata.json`. To add an OS, edit it; names must match puppet_litmus `matrix.json`.
+- The litmus fixture modules (default branch unless a `ref` is set) are listed in `config/litmus_modules.yml`.
+- Scrubbing uses `config/scrub.yml`; review its effect on every facts PR.
+- PRs are opened with `GITHUB_TOKEN` and merged by hand. They do not trigger CI; close and reopen to run checks. The repo setting "Allow GitHub Actions to create and approve pull requests" must stay enabled.
+- Failed legs are listed in the PR body with a short reason (provision service error or other) and turn the run red; the remaining legs still land.
+- A leg whose OS has no package for the mapped agent version is skipped, not failed: it exits green, does not turn the run red and is listed under "Skipped (no agent package for this OS)" in the PR body.
+- Failure details from provisioning and agent install are withheld from the public run log (only a category is printed) because litmus output includes the VM address.
+- The Puppet Core token comes from the org secret. It is set only on the steps that need it (the Bundler install steps, the matrix generator and the gather leg), and the gather workflows never run on pull requests.
+
+Facts are gathered on provisioning service VMs only. Docker is not used because containers share the runner kernel and have no init, so `virtual`, `service_provider`, `kernel*` and similar facts would be wrong for the OS.
+
+Known gaps: macOS, ppc64le and ARMv7L are not gathered. Fedora 41, AlmaLinux 10, Rocky 10 and Windows 11 have no litmus provisioner. AmazonLinux 2023, OracleLinux 8 and Ubuntu 26.04 are only available as docker and are not gathered.
 
 ## Licence and attribution
 

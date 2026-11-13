@@ -1,0 +1,10 @@
+# Bolt modules puppet_litmus needs in spec/fixtures/modules to provision and
+# install the agent. Unpinned (default branch), as in puppetlabs module
+# .fixtures.yml files; add `ref:` to pin an entry.
+modules:
+  provision:
+    repo: https://github.com/puppetlabs/provision.git
+  puppet_agent:
+    repo: https://github.com/puppetlabs/puppetlabs-puppet_agent.git
+  facts:
+    repo: https://github.com/puppetlabs/puppetlabs-facts.git

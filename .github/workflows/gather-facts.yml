@@ -1,14 +1,221 @@
 name: Gather facts
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Optional Facter version X.Y.Z (default: oldest missing)'
+        required: false
+        type: string
 
 permissions:
   contents: read
 
+concurrency:
+  group: gather-facts
+  cancel-in-progress: false
+
+env:
+  SERVICE_URL: https://facade-release-6f3kfepqcq-ew.a.run.app/v1/provision
+
 jobs:
-  gather:
+  setup:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      version: ${{ steps.next.outputs.version }}
+      agent: ${{ steps.next.outputs.agent }}
+      collection: ${{ steps.next.outputs.collection }}
+      matrix: ${{ steps.matrix.outputs.matrix }}
+    env:
+      BUNDLE_WITHOUT: rubocop
     steps:
-      - name: Placeholder
-        run: echo "Placeholder, replaced in a follow-up PR"
+      - name: Checkout
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          persist-credentials: false
+
+      - name: Check forge token is available
+        env:
+          FORGE_TOKEN: ${{ secrets.PUPPET_FORGE_TOKEN || secrets.PUPPET_FORGE_TOKEN_PUBLIC }}
+        run: |
+          if [ -z "$FORGE_TOKEN" ]; then
+            echo "Puppet Core token is not available" >&2
+            exit 1
+          fi
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@afeafc3d1ab54a631816aba4c914a0081c12ff2f # v1.310.0
+        env:
+          BUNDLE_RUBYGEMS___PUPPETCORE__PUPPET__COM: forge-key:${{ secrets.PUPPET_FORGE_TOKEN || secrets.PUPPET_FORGE_TOKEN_PUBLIC }}
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Pick Facter version
+        id: next
+        run: bundle exec rake gather:next_version
+        env:
+          INPUT_VERSION: ${{ inputs.version }}
+
+      - name: Build platform matrix
+        id: matrix
+        if: steps.next.outputs.version != ''
+        run: bundle exec matrix_from_metadata_v3 --metadata config/metadata.json --puppet-include "$AGENT_MAJOR" --puppetlabs --provision-include provision_service
+        env:
+          AGENT_MAJOR: ${{ steps.next.outputs.agent_major }}
+          PUPPET_FORGE_TOKEN: ${{ secrets.PUPPET_FORGE_TOKEN || secrets.PUPPET_FORGE_TOKEN_PUBLIC }}
+
+      - name: Check platform matrix
+        if: steps.next.outputs.version != ''
+        run: ruby -rjson -e 'm = JSON.parse(ENV.fetch("MATRIX")); abort "Generated platform matrix is empty" if m.fetch("platforms").empty? || m.fetch("collection").empty?'
+        env:
+          MATRIX: ${{ steps.matrix.outputs.matrix }}
+
+  gather:
+    name: Gather (${{ matrix.platforms.label }})
+    needs: setup
+    if: needs.setup.outputs.version != ''
+    runs-on: ${{ matrix.platforms.runner }}
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix: ${{ fromJson(needs.setup.outputs.matrix) }}
+    env:
+      BUNDLE_WITHOUT: rubocop
+    steps:
+      - name: Checkout
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          persist-credentials: false
+
+      - name: Check forge token is available
+        env:
+          FORGE_TOKEN: ${{ secrets.PUPPET_FORGE_TOKEN || secrets.PUPPET_FORGE_TOKEN_PUBLIC }}
+        run: |
+          if [ -z "$FORGE_TOKEN" ]; then
+            echo "Puppet Core token is not available" >&2
+            exit 1
+          fi
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@afeafc3d1ab54a631816aba4c914a0081c12ff2f # v1.310.0
+        env:
+          BUNDLE_RUBYGEMS___PUPPETCORE__PUPPET__COM: forge-key:${{ secrets.PUPPET_FORGE_TOKEN || secrets.PUPPET_FORGE_TOKEN_PUBLIC }}
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Gather facts
+        run: bundle exec rake gather:leg
+        env:
+          PROVIDER: ${{ matrix.platforms.provider }}
+          IMAGE: ${{ matrix.platforms.image }}
+          LABEL: ${{ matrix.platforms.label }}
+          COLLECTION: ${{ matrix.collection }}
+          AGENT_VERSION: ${{ needs.setup.outputs.agent }}
+          FACTER_VERSION: ${{ needs.setup.outputs.version }}
+          OUTPUT_DIR: ${{ runner.temp }}/gathered
+          RESULT_DIR: ${{ runner.temp }}/result
+          PUPPET_FORGE_TOKEN: ${{ secrets.PUPPET_FORGE_TOKEN || secrets.PUPPET_FORGE_TOKEN_PUBLIC }}
+
+      - name: Upload facts
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: facts-${{ matrix.platforms.label }}
+          path: ${{ runner.temp }}/gathered
+          if-no-files-found: ignore
+          retention-days: 1
+
+      - name: Upload leg result
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: result-${{ matrix.platforms.label }}
+          path: ${{ runner.temp }}/result
+          if-no-files-found: error
+          retention-days: 1
+
+      - name: Tear down
+        if: always()
+        continue-on-error: true
+        run: |
+          if [[ -f spec/fixtures/litmus_inventory.yaml ]]; then
+            bundle exec rake 'litmus:tear_down'
+          fi
+
+  collect:
+    needs: [setup, gather]
+    if: always() && needs.setup.result == 'success' && needs.setup.outputs.version != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      pull-requests: write
+    env:
+      BUNDLE_WITHOUT: rubocop:gather
+    steps:
+      - name: Checkout
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          persist-credentials: false
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@afeafc3d1ab54a631816aba4c914a0081c12ff2f # v1.310.0
+        env:
+          BUNDLE_RUBYGEMS___PUPPETCORE__PUPPET__COM: forge-key:${{ secrets.PUPPET_FORGE_TOKEN || secrets.PUPPET_FORGE_TOKEN_PUBLIC }}
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Download facts
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        continue-on-error: true
+        with:
+          pattern: facts-*
+          path: ${{ runner.temp }}/gathered
+
+      - name: Download leg results
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        continue-on-error: true
+        with:
+          pattern: result-*
+          path: ${{ runner.temp }}/results
+
+      - name: Place facts
+        id: collect
+        run: bundle exec rake gather:collect
+        env:
+          GATHERED_DIR: ${{ runner.temp }}/gathered
+          RESULTS_DIR: ${{ runner.temp }}/results
+          MATRIX: ${{ needs.setup.outputs.matrix }}
+          FACTER_VERSION: ${{ needs.setup.outputs.version }}
+          AGENT_VERSION: ${{ needs.setup.outputs.agent }}
+          BODY_PATH: ${{ runner.temp }}/pr_body.md
+
+      - name: Normalise facts
+        run: bundle exec rake facts:normalise
+
+      - name: Validate facts
+        run: bundle exec rake facts:validate
+
+      - name: Open pull request
+        if: steps.collect.outputs.placed != '0'
+        uses: peter-evans/create-pull-request@3ffccacd46053766916f087ce41d627c0b8cf2d1 # v8.1.3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          add-paths: facts
+          branch: gather-facts/${{ needs.setup.outputs.version }}
+          delete-branch: true
+          base: ${{ github.ref_name }}
+          commit-message: (maint) Add Facter ${{ needs.setup.outputs.version }} facts
+          title: (maint) Add Facter ${{ needs.setup.outputs.version }} facts
+          body-path: ${{ runner.temp }}/pr_body.md
+
+      - name: Fail when legs failed
+        if: steps.collect.outputs.failed == 'true' || needs.gather.result != 'success'
+        run: |
+          echo "One or more gather legs failed; see the PR body and job logs" >&2
+          exit 1

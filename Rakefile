@@ -1,7 +1,7 @@
 require 'rspec/core/rake_task'
 
 RSpec::Core::RakeTask.new(:spec) do |t|
-  t.exclude_pattern = 'spec/integration/dual_install/**/*_spec.rb'
+  t.exclude_pattern = 'spec/{integration/dual_install,fixtures}/**/*_spec.rb'
 end
 
 begin
@@ -13,5 +13,6 @@ end
 
 import 'tools/tasks/facts.rake'
 import 'tools/tasks/versions.rake'
+import 'tools/tasks/gather.rake'
 
 task default: [:spec]

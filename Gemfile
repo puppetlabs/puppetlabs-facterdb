@@ -13,3 +13,11 @@ group :rubocop do
   gem 'rubocop-performance', '~> 1.24.0', require: false
   gem 'rubocop-rspec', '~> 3.5.0', require: false
 end
+
+group :gather do
+  gem 'puppet_litmus', '~> 2.8', require: false
+
+  source 'https://rubygems-puppetcore.puppet.com' do
+    gem 'bolt', '>= 5.0', '< 6.0', require: false
+  end
+end

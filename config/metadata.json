@@ -1,0 +1,23 @@
+{
+  "name": "puppetlabs-facterdb",
+  "version": "0.0.0",
+  "author": "puppetlabs",
+  "summary": "OS list for gathering Facter facts with puppet_litmus (not a Puppet module)",
+  "license": "Apache-2.0",
+  "source": "https://github.com/puppetlabs/puppetlabs-facterdb",
+  "operatingsystem_support": [
+    { "operatingsystem": "AlmaLinux", "operatingsystemrelease": ["8", "9", "10"] },
+    { "operatingsystem": "AmazonLinux", "operatingsystemrelease": ["2023"] },
+    { "operatingsystem": "Debian", "operatingsystemrelease": ["11", "12", "13"] },
+    { "operatingsystem": "Fedora", "operatingsystemrelease": ["41"] },
+    { "operatingsystem": "OracleLinux", "operatingsystemrelease": ["8"] },
+    { "operatingsystem": "RedHat", "operatingsystemrelease": ["8", "9", "10"] },
+    { "operatingsystem": "Rocky", "operatingsystemrelease": ["8", "9", "10"] },
+    { "operatingsystem": "SLES", "operatingsystemrelease": ["12", "15"] },
+    { "operatingsystem": "Ubuntu", "operatingsystemrelease": ["22.04", "24.04", "26.04"] },
+    { "operatingsystem": "Windows", "operatingsystemrelease": ["2016", "2019", "2022", "2025", "11"] }
+  ],
+  "requirements": [
+    { "name": "puppet", "version_requirement": ">= 8.0.0 < 10.0.0" }
+  ]
+}

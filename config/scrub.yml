@@ -5,6 +5,15 @@
 #   - Missing paths are no-ops, so OS-specific paths are safe to list.
 #   - Keys containing `.` cannot be addressed; never target below such keys.
 #   - Placeholder YAML types must match the fact type.
+#   - `*!lo` matches every key except `lo` (comma separate several: `*!lo,docker0`).
+#   - A Hash with `value` plus `match` and/or `since` is a rule instead of a whole-value placeholder:
+#       since: Facter version (quoted, e.g. "4.12"); the rule applies only to files whose own
+#              `facterversion` is at least that. Files with a missing or unparseable `facterversion`
+#              are never touched by `since` rules. Without `since` a rule applies to every file.
+#       match: regex; every matching substring of a string value is replaced by `value`.
+#              Without `match`, the whole value is replaced by `value`.
+#     Regexes are Ruby (use single quotes) and must not match their own `value`, so a second scrub
+#     changes nothing. Non-string values are never touched by `match`.
 scrub:
 
   # Identity
@@ -57,5 +66,45 @@ scrub:
   ldom.domaincontrol: foo
   hypervisors.docker.id: "0000000000000000000000000000000000000000000000000000000000000000"
 
+  # Cloud instance metadata (provision_service VMs)
+  gce: {}
+  ec2_metadata: {}
+  ec2_userdata: ""
+  az_metadata: {}
+
   # NFS device leaking a username
   mountpoints./vagrant.device: "10.0.0.1:/vagrant"
+
+  # Network, account and asset identity of provisioned VMs (Facter 4.12 onward)
+  networking.ip: { since: "4.12", value: "10.0.2.15" }
+  networking.interfaces.*!lo.ip: { since: "4.12", value: "10.0.2.15" }
+  networking.interfaces.*!lo.bindings.address: { since: "4.12", value: "10.0.2.15" }
+  networking.network: { since: "4.12", value: "10.0.2.0" }
+  networking.interfaces.*!lo.network: { since: "4.12", value: "10.0.2.0" }
+  networking.interfaces.*!lo.bindings.network: { since: "4.12", value: "10.0.2.0" }
+  networking.mac: { since: "4.12", value: "08:00:27:8d:c0:4d" }
+  networking.interfaces.*!lo.mac: { since: "4.12", value: "08:00:27:8d:c0:4d" }
+  networking.ip6: { since: "4.12", value: "fe80::a00:27ff:fe8d:c04d" }
+  networking.interfaces.*!lo.ip6: { since: "4.12", value: "fe80::a00:27ff:fe8d:c04d" }
+  networking.interfaces.*!lo.bindings6.address: { since: "4.12", value: "fe80::a00:27ff:fe8d:c04d" }
+  networking.dhcp: { since: "4.12", value: "10.0.2.2" }
+  networking.interfaces.*!lo.dhcp: { since: "4.12", value: "10.0.2.2" }
+  networking.network6: { since: "4.12", value: "fe80::" }
+  networking.interfaces.*!lo.network6: { since: "4.12", value: "fe80::" }
+  networking.interfaces.*!lo.bindings6.network: { since: "4.12", value: "fe80::" }
+
+  # Windows account (host FOO, user foo) and the user segment of profile paths
+  identity.user:
+    since: "4.12"
+    match: '(?i)\A(?!foo\\)[^\\]+\\.*\z'
+    value: 'FOO\foo'
+  path:
+    since: "4.12"
+    match: '(?<=C:\\Users\\)(?!foo(?:[\\;]|\z))[^\\;]+'
+    value: "foo"
+
+  # DMI asset tags that are UUIDs
+  dmi.board.asset_tag:
+    since: "4.12"
+    match: '(?i)\A[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}\z'
+    value: "None"
