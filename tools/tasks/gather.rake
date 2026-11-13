@@ -188,7 +188,7 @@ module GatherTasks
     body_path = fetch!('BODY_PATH')
     gathered = fetch!('GATHERED_DIR')
     labels = JSON.parse(fetch!('MATRIX')).fetch('platforms').map { |platform| platform.fetch('label') }
-    results = Tools::Gather.read_results(fetch!('RESULTS_DIR'), labels)
+    results = Tools::Gather.require_facts(Tools::Gather.read_results(fetch!('RESULTS_DIR'), labels), gathered)
 
     result = Tools::Gather.place(gathered, facts_dir, version)
     abort "invalid gathered files: #{result.invalid.join(', ')}" unless result.invalid.empty?

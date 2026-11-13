@@ -228,6 +228,37 @@ RSpec.describe Puppetlabs::FacterDB::Tools::Gather, :aggregate_failures do
     end
   end
 
+  describe '.require_facts' do
+    let(:results) do
+      {
+        'A' => { 'status' => 'success', 'reason' => nil },
+        'B' => { 'status' => 'success', 'reason' => nil },
+        'C' => { 'status' => 'skipped', 'reason' => 'agent_unavailable' },
+        'D' => { 'status' => 'failed', 'reason' => 'provision_failed' },
+      }
+    end
+
+    it 'fails a successful leg whose facts artifact is missing or empty and leaves the others alone' do
+      put(src, 'facts-A/4.12/debian-12-x86_64.facts', facts)
+      FileUtils.mkdir_p(File.join(src, 'facts-B'))
+      checked = described_class.require_facts(results, src)
+      expect(checked.slice('A', 'C', 'D')).to eq(results.slice('A', 'C', 'D'))
+      expect(checked['B']).to eq('status' => 'failed', 'reason' => 'facts_missing')
+    end
+
+    it 'does not fail a run with no success legs even when nothing was downloaded' do
+      only_skips = results.slice('C', 'D')
+      expect(described_class.require_facts(only_skips, File.join(src, 'absent'))).to eq(only_skips)
+    end
+
+    it 'reports the missing facts reason in the summary and keeps the run red' do
+      checked = described_class.require_facts(results.slice('A'), src)
+      body, failed = described_class.summary(labels: ['A'], results: checked, version: '4.12.0', agent: '8.12.0', placed: [], skipped: [])
+      expect(failed).to eq(['A'])
+      expect(body).to include('- A: facts artifact missing', 'stays red')
+    end
+  end
+
   describe '.summary' do
     let(:labels) { ['Debian-12', 'Debian-13', 'Windows-2022', 'Ubuntu-24.04'] }
     let(:results) do

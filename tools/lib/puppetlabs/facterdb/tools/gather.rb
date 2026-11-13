@@ -16,6 +16,7 @@ module Puppetlabs::FacterDB::Tools::Gather # rubocop:disable Metrics/ModuleLengt
     'provision_failed' => 'provision service error',
     'other' => 'other failure',
     'no_result' => 'no result recorded',
+    'facts_missing' => 'facts artifact missing',
   }.freeze
   AGENT_UNAVAILABLE = [
     %r{No match for argument: puppet-agent-\d},
@@ -62,6 +63,15 @@ module Puppetlabs::FacterDB::Tools::Gather # rubocop:disable Metrics/ModuleLengt
   # Maps each label to its recorded result; a missing or unreadable file counts as failed.
   def read_results(root, labels)
     labels.to_h { |label| [label, read_result(File.join(root, "result-#{label}", RESULT_FILE))] }
+  end
+
+  # A leg that reports success must also have delivered facts; a lost artifact would otherwise look like a clean run.
+  def require_facts(results, gathered)
+    results.to_h do |label, result|
+      delivered = Dir.glob('**/*.facts', base: File.join(gathered, "facts-#{label}")).any?
+      missing = result['status'] == 'success' && !delivered
+      [label, missing ? { 'status' => 'failed', 'reason' => 'facts_missing' } : result]
+    end
   end
 
   def read_result(path)
