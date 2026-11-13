@@ -177,23 +177,91 @@ RSpec.describe Puppetlabs::FacterDB::Tools::Gather, :aggregate_failures do
     end
   end
 
+  describe '.classify_failure' do
+    {
+      'No match for argument: puppet-agent-8.12.0' => :agent_unavailable,
+      'Package puppet-agent is not available, but is referred to by another package' => :agent_unavailable,
+      'Unable to retrieve a valid package for puppet-agent' => :agent_unavailable,
+      'curl: ERROR 404: Not Found' => :agent_unavailable,
+      'provisioning of debian-13 failed.' => :provision_failed,
+      'provision service returned an error (HTTP 500)' => :provision_failed,
+      'ssh: connect to host 10.1.2.3 port 22: Connection refused' => :other,
+      '' => :other,
+    }.each do |message, category|
+      it "classifies #{message.inspect} as #{category}" do
+        expect(described_class.classify_failure(message)).to eq(category)
+      end
+    end
+
+    it 'returns only a symbol and treats nil as other' do
+      expect(described_class.classify_failure('No match for argument: puppet-agent-8.12.0 at 10.9.8.7')).to be_a(Symbol)
+      expect(described_class.classify_failure(nil)).to eq(:other)
+    end
+  end
+
+  describe '.write_result and .read_results' do
+    def write_leg(label, status, reason = nil)
+      described_class.write_result(File.join(src, "result-#{label}"), label, status, reason)
+    end
+
+    let(:results) { described_class.read_results(src, ['A', 'B', 'C', 'D', 'E']) }
+
+    before(:each) do
+      write_leg('A', 'success')
+      write_leg('B', 'skipped', :agent_unavailable)
+      put(src, 'result-D/result.json', '{not json')
+      put(src, 'result-E/result.json', '{"status":"bogus"}')
+    end
+
+    it 'round-trips each status and treats a missing or invalid result as failed' do
+      expect(results.transform_values { |r| r['status'] }.values).to eq(['success', 'skipped', 'failed', 'failed', 'failed'])
+      expect(results.values_at('B', 'C').map { |r| r['reason'] }).to eq(['agent_unavailable', 'no_result'])
+    end
+
+    it 'records the label, status and reason as JSON' do
+      write_leg('A', 'failed', :provision_failed)
+      expect(JSON.parse(File.read(File.join(src, 'result-A', 'result.json')))).to eq('label' => 'A', 'status' => 'failed', 'reason' => 'provision_failed')
+    end
+
+    it 'rejects an unknown status' do
+      expect { write_leg('A', 'weird') }.to raise_error(ArgumentError)
+    end
+  end
+
   describe '.summary' do
-    def summary(succeeded)
+    let(:labels) { ['Debian-12', 'Debian-13', 'Windows-2022', 'Ubuntu-24.04'] }
+    let(:results) do
+      {
+        'Debian-12' => { 'status' => 'success', 'reason' => nil },
+        'Debian-13' => { 'status' => 'skipped', 'reason' => 'agent_unavailable' },
+        'Windows-2022' => { 'status' => 'failed', 'reason' => 'provision_failed' },
+      }
+    end
+
+    def summary(results)
       described_class.summary(
-        labels: ['Debian-12', 'Windows-2022'], succeeded: succeeded, version: '4.12.0', agent: '8.12.0',
+        labels: labels, results: results, version: '4.12.0', agent: '8.12.0',
         placed: ['4.12/debian-12-x86_64.facts'], skipped: ['4.12/ubuntu-22.04-x86_64.facts']
       )
     end
 
-    it 'lists failed legs and says the run stays red' do
-      body, failed = summary(['Debian-12'])
-      expect(failed).to eq(['Windows-2022'])
-      expect(body).to include('4.12.0', '8.12.0', 'Debian-12', 'Windows-2022', '4.12/ubuntu-22.04-x86_64.facts', 'stays red')
+    it 'lists succeeded, skipped and failed legs with reasons and says the run stays red' do
+      body, failed = summary(results)
+      expect(failed).to eq(['Windows-2022', 'Ubuntu-24.04'])
+      expect(body).to include('- Debian-12', '## Skipped (no agent package for this OS)', '- Debian-13: no agent package for this OS')
+      expect(body).to include('- Windows-2022: provision service error', '- Ubuntu-24.04: no result recorded', 'stays red')
+      expect(body).to include('4.12/debian-12-x86_64.facts', '4.12/ubuntu-22.04-x86_64.facts')
     end
 
-    it 'reports no failures when every leg succeeded' do
-      _, failed = summary(['Debian-12', 'Windows-2022'])
+    it 'states the versions and links the release notes' do
+      body, = summary(results)
+      expect(body).to include('Facter 4.12.0', 'agent 8.12.0', Puppetlabs::FacterDB::Tools::ReleaseNotes::URL)
+    end
+
+    it 'does not fail the run when legs are only skipped or succeeded' do
+      body, failed = summary(results.merge('Windows-2022' => { 'status' => 'skipped', 'reason' => 'agent_unavailable' }, 'Ubuntu-24.04' => { 'status' => 'success' }))
       expect(failed).to eq([])
+      expect(body).not_to include('stays red')
     end
   end
 end

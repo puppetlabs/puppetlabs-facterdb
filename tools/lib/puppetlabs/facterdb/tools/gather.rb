@@ -2,12 +2,31 @@
 
 require 'fileutils'
 
-module Puppetlabs::FacterDB::Tools::Gather
+module Puppetlabs::FacterDB::Tools::Gather # rubocop:disable Metrics/ModuleLength
   Result = Struct.new(:placed, :skipped, :invalid)
   CommandError = Class.new(StandardError)
 
   IDENTITY = [['os', 'name'], ['os', 'release', 'major'], ['os', 'hardware']].freeze
   ARCH = { 'amd64' => 'x86_64', 'x64' => 'x86_64', 'arm64' => 'aarch64' }.freeze
+
+  RESULT_FILE = 'result.json'
+  STATUSES = ['success', 'skipped', 'failed'].freeze
+  REASON_TEXT = {
+    'agent_unavailable' => 'no agent package for this OS',
+    'provision_failed' => 'provision service error',
+    'other' => 'other failure',
+    'no_result' => 'no result recorded',
+  }.freeze
+  AGENT_UNAVAILABLE = [
+    %r{No match for argument: puppet-agent-\d},
+    %r{Package puppet-agent is not available},
+    %r{Unable to retrieve a valid package},
+    %r{ERROR 404},
+  ].freeze
+  PROVISION_FAILED = [
+    %r{provision service returned an error},
+    %r{provisioning of .* failed},
+  ].freeze
 
   module_function
 
@@ -22,6 +41,37 @@ module Puppetlabs::FacterDB::Tools::Gather
     raise CommandError, "#{command} failed with exit code #{code.inspect} (details withheld)" unless code.is_a?(Integer) && code.zero?
 
     result.stdout.to_s
+  end
+
+  # Classifies a litmus failure message by category only; the message itself must never be returned or logged.
+  def classify_failure(message)
+    text = message.to_s
+    return :provision_failed if PROVISION_FAILED.any? { |pattern| text.match?(pattern) }
+    return :agent_unavailable if AGENT_UNAVAILABLE.any? { |pattern| text.match?(pattern) }
+
+    :other
+  end
+
+  def write_result(dir, label, status, reason = nil)
+    raise ArgumentError, 'invalid result status' unless STATUSES.include?(status)
+
+    FileUtils.mkdir_p(dir)
+    File.write(File.join(dir, RESULT_FILE), JSON.generate('label' => label, 'status' => status, 'reason' => reason&.to_s))
+  end
+
+  # Maps each label to its recorded result; a missing or unreadable file counts as failed.
+  def read_results(root, labels)
+    labels.to_h { |label| [label, read_result(File.join(root, "result-#{label}", RESULT_FILE))] }
+  end
+
+  def read_result(path)
+    data = JSON.parse(File.read(path))
+    status = data['status'] if data.is_a?(Hash)
+    return { 'status' => status, 'reason' => data['reason'] } if STATUSES.include?(status)
+
+    { 'status' => 'failed', 'reason' => 'no_result' }
+  rescue SystemCallError, JSON::ParserError
+    { 'status' => 'failed', 'reason' => 'no_result' }
   end
 
   def relative_path_for(facts)
@@ -91,18 +141,24 @@ module Puppetlabs::FacterDB::Tools::Gather
     Gem::Version.new(stored['facterversion']) > Gem::Version.new(version)
   end
 
-  def summary(labels:, succeeded:, version:, agent:, placed:, skipped:) # rubocop:disable Metrics/ParameterLists
-    failed = labels - succeeded
+  def summary(labels:, results:, version:, agent:, placed:, skipped:) # rubocop:disable Metrics/ParameterLists, Metrics/AbcSize
+    by_status = ->(status) { labels.select { |label| results.dig(label, 'status') == status } }
+    succeeded = by_status.call('success')
+    unavailable = by_status.call('skipped')
+    failed = labels - succeeded - unavailable
     body = <<~MD
-      Facter #{version} facts gathered with Puppet Core agent #{agent}.
+      Facter #{version} facts gathered with Puppet Core agent #{agent}. The agent is derived from the [Facter release notes](#{Puppetlabs::FacterDB::Tools::ReleaseNotes::URL}).
 
       Existing facts are never deleted. The maintainer reviews this PR for leaks and merges by hand. PRs opened with GITHUB_TOKEN do not trigger CI, so run the checks locally or push to re-trigger.
 
       ## Succeeded legs
       #{list(succeeded)}
 
+      ## Skipped (no agent package for this OS)
+      #{list(unavailable.map { |label| "#{label}: #{reason_text(results.dig(label, 'reason') || 'agent_unavailable')}" })}
+
       ## Failed legs
-      #{list(failed)}
+      #{list(failed.map { |label| "#{label}: #{reason_text(results.dig(label, 'reason') || 'no_result')}" })}
 
       ## Placed files
       #{list(placed)}
@@ -112,6 +168,10 @@ module Puppetlabs::FacterDB::Tools::Gather
     MD
     body += "\nLegs failed, so the workflow run stays red until they are re-run.\n" unless failed.empty?
     [body, failed]
+  end
+
+  def reason_text(reason)
+    REASON_TEXT.fetch(reason.to_s, REASON_TEXT['other'])
   end
 
   def list(items)
