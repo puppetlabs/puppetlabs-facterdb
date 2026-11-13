@@ -209,6 +209,36 @@ RSpec.describe Puppetlabs::FacterDB::Tools::Scrubber do
       old = facts.merge('facterversion' => '4.11.0')
       expect(scrubber.scrub(old)).to eq(old)
     end
+
+    context 'with dhcp, network6 and bindings6 network values' do
+      def net_facts(version)
+        iface = { 'dhcp' => '10.32.22.10', 'network6' => '2aa1:1470:5ab6::', 'bindings6' => [{ 'network' => '2aa1:1470:5ab6::' }] }
+        lo = { 'dhcp' => nil, 'network6' => '::1', 'bindings6' => [{ 'network' => '::1' }] }
+        { 'facterversion' => version,
+          'networking' => iface.merge('interfaces' => { 'eth0' => iface, 'lo' => lo, 'eth1' => { 'mtu' => 1500 } }) }
+      end
+
+      it 'replaces the top level values on 4.12' do
+        expect(scrubber.scrub(net_facts('4.12.0'))['networking'].slice('dhcp', 'network6')).to eq('dhcp' => '10.0.2.2', 'network6' => 'fe80::')
+      end
+
+      it 'replaces interface values on 4.12 but leaves lo and absent keys alone' do
+        expect(scrubber.scrub(net_facts('4.12.0'))['networking']['interfaces']).to eq(
+          'eth0' => { 'dhcp' => '10.0.2.2', 'network6' => 'fe80::', 'bindings6' => [{ 'network' => 'fe80::' }] },
+          'lo' => { 'dhcp' => nil, 'network6' => '::1', 'bindings6' => [{ 'network' => '::1' }] },
+          'eth1' => { 'mtu' => 1500 },
+        )
+      end
+
+      it 'is idempotent' do
+        once = scrubber.scrub(net_facts('4.12.0'))
+        expect(scrubber.scrub(once)).to eq(once)
+      end
+
+      it 'leaves 4.11 facts unchanged' do
+        expect(scrubber.scrub(net_facts('4.11.0'))).to eq(net_facts('4.11.0'))
+      end
+    end
   end
 
   describe '#leaks' do

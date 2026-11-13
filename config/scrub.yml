@@ -87,6 +87,11 @@ scrub:
   networking.ip6: { since: "4.12", value: "fe80::a00:27ff:fe8d:c04d" }
   networking.interfaces.*!lo.ip6: { since: "4.12", value: "fe80::a00:27ff:fe8d:c04d" }
   networking.interfaces.*!lo.bindings6.address: { since: "4.12", value: "fe80::a00:27ff:fe8d:c04d" }
+  networking.dhcp: { since: "4.12", value: "10.0.2.2" }
+  networking.interfaces.*!lo.dhcp: { since: "4.12", value: "10.0.2.2" }
+  networking.network6: { since: "4.12", value: "fe80::" }
+  networking.interfaces.*!lo.network6: { since: "4.12", value: "fe80::" }
+  networking.interfaces.*!lo.bindings6.network: { since: "4.12", value: "fe80::" }
 
   # Windows account (host FOO, user foo) and the user segment of profile paths
   identity.user:
