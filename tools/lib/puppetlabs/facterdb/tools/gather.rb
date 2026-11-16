@@ -11,6 +11,7 @@ module Puppetlabs::FacterDB::Tools::Gather # rubocop:disable Metrics/ModuleLengt
 
   RESULT_FILE = 'result.json'
   STATUSES = ['success', 'skipped', 'failed'].freeze
+  NO_RESULT = { 'status' => 'failed', 'reason' => 'no_result' }.freeze
   REASON_TEXT = {
     'agent_unavailable' => 'no agent package for this OS',
     'provision_failed' => 'provision service error',
@@ -60,28 +61,48 @@ module Puppetlabs::FacterDB::Tools::Gather # rubocop:disable Metrics/ModuleLengt
     File.write(File.join(dir, RESULT_FILE), JSON.generate('label' => label, 'status' => status, 'reason' => reason&.to_s))
   end
 
-  # Maps each label to its recorded result; a missing or unreadable file counts as failed.
+  # Maps each label to its recorded result; a missing or unreadable file counts as failed. Files are matched by the
+  # label stored inside them, because download-artifact extracts a single matching artifact without its
+  # result-<label> directory.
   def read_results(root, labels)
-    labels.to_h { |label| [label, read_result(File.join(root, "result-#{label}", RESULT_FILE))] }
+    found = Dir.glob("**/#{RESULT_FILE}", base: root).to_h { |rel| result_entry(root, rel) }
+    labels.to_h { |label| [label, found.fetch(label, NO_RESULT)] }
+  end
+
+  def result_entry(root, rel)
+    data = JSON.parse(File.read(File.join(root, rel)))
+    label = data['label'] if data.is_a?(Hash)
+    [label.is_a?(String) ? label : label_from_dir(rel), normalised_result(data)]
+  rescue SystemCallError, JSON::ParserError
+    [label_from_dir(rel), NO_RESULT]
+  end
+
+  def label_from_dir(rel)
+    File.basename(File.dirname(rel)).delete_prefix('result-')
+  end
+
+  def normalised_result(data)
+    status = data['status'] if data.is_a?(Hash)
+    STATUSES.include?(status) ? { 'status' => status, 'reason' => data['reason'] } : NO_RESULT
   end
 
   # A leg that reports success must also have delivered facts; a lost artifact would otherwise look like a clean run.
+  # A lone facts artifact is extracted flat, so with exactly one successful leg and no facts-<label> directory the
+  # files directly under the download directory belong to that leg.
   def require_facts(results, gathered)
+    flat = flat_facts?(results, gathered)
     results.to_h do |label, result|
-      delivered = Dir.glob('**/*.facts', base: File.join(gathered, "facts-#{label}")).any?
-      missing = result['status'] == 'success' && !delivered
+      missing = result['status'] == 'success' && !(flat || facts?(File.join(gathered, "facts-#{label}")))
       [label, missing ? { 'status' => 'failed', 'reason' => 'facts_missing' } : result]
     end
   end
 
-  def read_result(path)
-    data = JSON.parse(File.read(path))
-    status = data['status'] if data.is_a?(Hash)
-    return { 'status' => status, 'reason' => data['reason'] } if STATUSES.include?(status)
+  def flat_facts?(results, gathered)
+    results.count { |_, result| result['status'] == 'success' } == 1 && Dir.glob('facts-*', base: gathered).empty? && facts?(gathered)
+  end
 
-    { 'status' => 'failed', 'reason' => 'no_result' }
-  rescue SystemCallError, JSON::ParserError
-    { 'status' => 'failed', 'reason' => 'no_result' }
+  def facts?(dir)
+    Dir.glob('**/*.facts', base: dir).any?
   end
 
   def relative_path_for(facts)
