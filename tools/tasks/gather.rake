@@ -147,6 +147,9 @@ module GatherTasks
   rescue SystemExit
     Tools::Gather.write_result(results, label, 'failed', :other)
     raise
+  rescue StandardError => e
+    Tools::Gather.write_result(results, label, 'failed', Tools::Gather.classify_failure(e.message))
+    abort "leg #{label}: gather failed (#{e.class}, details withheld)"
   end
 
   def gather_leg(label, facter_version, output_dir)
