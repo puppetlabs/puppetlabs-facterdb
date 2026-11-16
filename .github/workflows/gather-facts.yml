@@ -1,6 +1,12 @@
 name: Gather facts
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - config/facter_versions.yml
+      - config/metadata.json
+      - 'facts/**'
   workflow_dispatch:
     inputs:
       version:
