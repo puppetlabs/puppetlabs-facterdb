@@ -226,6 +226,13 @@ RSpec.describe Puppetlabs::FacterDB::Tools::Gather, :aggregate_failures do
     it 'rejects an unknown status' do
       expect { write_leg('A', 'weird') }.to raise_error(ArgumentError)
     end
+
+    it 'matches a result extracted flat (a single artifact) by the label stored in it' do
+      described_class.write_result(dest, 'Only-Leg', 'success')
+      checked = described_class.read_results(dest, ['Only-Leg', 'Other'])
+      expect(checked['Only-Leg']).to eq('status' => 'success', 'reason' => nil)
+      expect(checked['Other']).to eq(described_class::NO_RESULT)
+    end
   end
 
   describe '.require_facts' do
@@ -244,6 +251,22 @@ RSpec.describe Puppetlabs::FacterDB::Tools::Gather, :aggregate_failures do
       checked = described_class.require_facts(results, src)
       expect(checked.slice('A', 'C', 'D')).to eq(results.slice('A', 'C', 'D'))
       expect(checked['B']).to eq('status' => 'failed', 'reason' => 'facts_missing')
+    end
+
+    it 'accepts a lone successful leg whose facts artifact was extracted flat' do
+      put(src, '4.12/debian-12-x86_64.facts', facts)
+      checked = described_class.require_facts(results.slice('A', 'C', 'D'), src)
+      expect(checked).to eq(results.slice('A', 'C', 'D'))
+    end
+
+    it 'fails a lone successful leg when the flat download holds no facts' do
+      expect(described_class.require_facts(results.slice('A'), src)['A']['reason']).to eq('facts_missing')
+    end
+
+    it 'does not guess when several legs succeeded and there is no per-leg facts directory' do
+      put(src, '4.12/debian-12-x86_64.facts', facts)
+      checked = described_class.require_facts(results.slice('A', 'B'), src)
+      expect(checked.values.map { |r| r['reason'] }).to eq(['facts_missing', 'facts_missing'])
     end
 
     it 'does not fail a run with no success legs even when nothing was downloaded' do
