@@ -15,7 +15,7 @@ group :rubocop do
 end
 
 group :gather do
-  gem 'puppet_litmus', '~> 2.8', require: false
+  gem 'puppet_litmus', git: 'https://github.com/puppetlabs/puppet_litmus.git', branch: 'CAT-2971', require: false
 
   source 'https://rubygems-puppetcore.puppet.com' do
     gem 'bolt', '>= 5.0', '< 6.0', require: false
