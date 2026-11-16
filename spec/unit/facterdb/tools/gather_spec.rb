@@ -29,6 +29,10 @@ RSpec.describe Puppetlabs::FacterDB::Tools::Gather, :aggregate_failures do
   end
 
   describe '.relative_path_for' do
+    it 'raises ArgumentError, not TypeError, when a fact is a string where a hash is expected' do
+      expect { described_class.relative_path_for('facterversion' => '4.12.0', 'os' => 'Debian') }.to raise_error(ArgumentError, %r{os\.name})
+    end
+
     it 'names a Debian file' do
       expect(described_class.relative_path_for(facts)).to eq('4.12/debian-12-x86_64.facts')
     end
@@ -129,6 +133,11 @@ RSpec.describe Puppetlabs::FacterDB::Tools::Gather, :aggregate_failures do
   end
 
   describe '.place' do
+    it 'reports a structurally malformed facts file as invalid instead of crashing' do
+      put(src, 'facts-Bad/bad.facts', 'facterversion' => '4.12.0', 'os' => 'Debian')
+      expect(described_class.place(src, dest, '4.12.0').invalid).to eq(['facts-Bad/bad.facts'])
+    end
+
     it 'writes a new file derived from content, not the source name' do
       put(src, 'facts-Debian-12/whatever.facts', facts)
       result = described_class.place(src, dest, '4.12.0')
@@ -181,8 +190,8 @@ RSpec.describe Puppetlabs::FacterDB::Tools::Gather, :aggregate_failures do
     {
       'No match for argument: puppet-agent-8.12.0' => :agent_unavailable,
       'Package puppet-agent is not available, but is referred to by another package' => :agent_unavailable,
-      'Unable to retrieve a valid package for puppet-agent' => :agent_unavailable,
-      'curl: ERROR 404: Not Found' => :agent_unavailable,
+      'Unable to retrieve a valid package for puppet-agent' => :other,
+      'curl: ERROR 404: Not Found' => :other,
       'provisioning of debian-13 failed.' => :provision_failed,
       'provision service returned an error (HTTP 500)' => :provision_failed,
       'ssh: connect to host 10.1.2.3 port 22: Connection refused' => :other,

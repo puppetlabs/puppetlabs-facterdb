@@ -22,8 +22,6 @@ module Puppetlabs::FacterDB::Tools::Gather # rubocop:disable Metrics/ModuleLengt
   AGENT_UNAVAILABLE = [
     %r{No match for argument: puppet-agent-\d},
     %r{Package puppet-agent is not available},
-    %r{Unable to retrieve a valid package},
-    %r{ERROR 404},
   ].freeze
   PROVISION_FAILED = [
     %r{provision service returned an error},
@@ -122,10 +120,16 @@ module Puppetlabs::FacterDB::Tools::Gather # rubocop:disable Metrics/ModuleLengt
   end
 
   def fact_string(facts, keys)
-    value = facts.dig(*keys) if facts.is_a?(Hash)
+    value = dig_fact(facts, keys)
     raise ArgumentError, "missing #{keys.join('.')}" unless value.is_a?(String) && !value.empty?
 
     value
+  end
+
+  def dig_fact(facts, keys)
+    facts.dig(*keys) if facts.is_a?(Hash)
+  rescue TypeError
+    nil
   end
 
   def place(src_root, facts_root, version)
