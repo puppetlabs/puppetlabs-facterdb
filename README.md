@@ -84,12 +84,15 @@ The scrub policy lives in `config/scrub.yml` and the filename rules in `config/f
 
 ## Gathering facts
 
-Two manually dispatched workflows keep the store current:
+Two workflows keep the store current:
 
-1. `update-facter-versions` refreshes `config/facter_versions.yml` (Facter version to agent version) from the Puppet Core gem index and release notes, and opens a PR.
-2. `gather-facts` gathers one Facter version per run: the oldest not yet gathered, or an `X.Y.Z` passed as the `version` input. It provisions every OS in `config/metadata.json` that the provisioning service offers as a VM with litmus, installs the mapped agent, runs `facter -j`, scrubs and normalises the output and opens one PR.
+1. `update-facter-versions` runs weekly on Mondays at 03:00 UTC and on manual dispatch. It refreshes `config/facter_versions.yml` (Facter version to agent version) from the Puppet Core gem index and release notes, and opens a PR.
+2. `gather-facts` runs on manual dispatch and on pushes to `main` that touch `config/facter_versions.yml`, `config/metadata.json` or `facts/**`, so merging each facts PR starts the next missing version until nothing is missing. It never runs on `pull_request`. It gathers one Facter version per run: the oldest not yet gathered, or an `X.Y.Z` passed as the `version` input. It provisions every OS in `config/metadata.json` that the provisioning service offers as a VM with litmus, installs the mapped agent, runs `facter -j`, scrubs and normalises the output and opens one PR.
 
 A version is "not yet gathered" when no stored file in that major.minor reports a `facterversion` >= it, so older patches are never re-gathered. Existing fact files are never deleted.
+
+- A version whose legs all fail stays missing and blocks the queue until it is fixed or dispatched past with an explicit `version`. Legs skipped because no agent package exists for that OS do not block.
+- Scheduled workflows in public repositories are disabled after 60 days without repository activity and may need re-enabling.
 
 - The OS list is `config/metadata.json`. To add an OS, edit it; names must match puppet_litmus `matrix.json`.
 - The litmus fixture modules (default branch unless a `ref` is set) are listed in `config/litmus_modules.yml`.
