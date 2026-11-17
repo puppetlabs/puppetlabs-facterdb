@@ -67,7 +67,7 @@ jobs:
       - name: Build platform matrix
         id: matrix
         if: steps.next.outputs.version != ''
-        run: bundle exec matrix_from_metadata_v3 --metadata config/metadata.json --puppet-include "$AGENT_MAJOR" --puppetlabs --provision-include provision_service
+        run: bundle exec matrix_from_metadata_v3 --metadata config/metadata.json --puppet-include "$AGENT_MAJOR" --puppetlabs --provision-include provision_service --platform-include '^(Debian-(11|12)|Ubuntu-22\.04|AlmaLinux-9|SLES-15)$'
         env:
           AGENT_MAJOR: ${{ steps.next.outputs.agent_major }}
           PUPPET_FORGE_TOKEN: ${{ secrets.PUPPET_FORGE_TOKEN || secrets.PUPPET_FORGE_TOKEN_PUBLIC }}
