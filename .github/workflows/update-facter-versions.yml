@@ -46,6 +46,8 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           add-paths: config/facter_versions.yml
+          author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
           commit-message: (maint) Update Facter version map
           branch: update-facter-versions
           delete-branch: true
