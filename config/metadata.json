@@ -8,7 +8,7 @@
   "operatingsystem_support": [
     { "operatingsystem": "AlmaLinux", "operatingsystemrelease": ["8", "9", "10"] },
     { "operatingsystem": "AmazonLinux", "operatingsystemrelease": ["2023"] },
-    { "operatingsystem": "Debian", "operatingsystemrelease": ["11", "12", "13"] },
+    { "operatingsystem": "Debian", "operatingsystemrelease": ["13"] },
     { "operatingsystem": "Fedora", "operatingsystemrelease": ["41"] },
     { "operatingsystem": "OracleLinux", "operatingsystemrelease": ["8"] },
     { "operatingsystem": "RedHat", "operatingsystemrelease": ["8", "9", "10"] },
