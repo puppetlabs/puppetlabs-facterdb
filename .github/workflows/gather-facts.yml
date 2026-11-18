@@ -213,6 +213,8 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           add-paths: facts
+          author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
           branch: gather-facts/${{ needs.setup.outputs.version }}
           delete-branch: true
           base: ${{ github.ref_name }}
