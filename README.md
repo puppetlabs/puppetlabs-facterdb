@@ -57,9 +57,45 @@ facts/<facter major.minor>/<os>-<release>-<arch>.facts
 - The bundled data covers Facter 4.0-4.11, seeded from facterdb-private (source commit in [facts/seed-manifest.json](facts/seed-manifest.json)). Facter 4.12+ arrives from Puppet Core gathers.
 - Filenames must not contain spaces. A `-core` release suffix is allowed, and rolling distros listed in `config/facts.yml` use `<os>-<arch>`.
 
+## Versioning
+
+The gem follows [semantic versioning](https://semver.org) on its API. Its version is independent of the Facter versions stored in it.
+
+- Major: breaking changes to the lookup API, the CLI, the environment variables or the fact layout.
+- Minor: new facts, new Facter versions or new OSes.
+- Patch: bug fixes and corrections to existing facts.
+
 ## Using alongside facterdb
 
 `puppetlabs-facterdb` shares no require path, constant, executable, environment variable or cache key with `facterdb`, so both can be installed together. Existing consumers such as `rspec-puppet-facts` keep using `facterdb` until they are switched over; see [docs/decisions/0001-consumer-loading.md](docs/decisions/0001-consumer-loading.md).
+
+### Migrating from facterdb
+
+| Item | `facterdb` | `puppetlabs-facterdb` |
+|------|------------|-----------------------|
+| Gem | `facterdb` | `puppetlabs-facterdb` |
+| Require | `require 'facterdb'` | `require 'puppetlabs/facterdb'` |
+| Namespace | `FacterDB` | `Puppetlabs::FacterDB` |
+| CLI | `facterdb` | `puppetlabs-facterdb` |
+| Extra fact directories | `FACTERDB_SEARCH_PATHS` | `PUPPETLABS_FACTERDB_SEARCH_EXTERNAL_DIR` |
+| Skip bundled facts | `FACTERDB_SKIP_DEFAULTDB` | `PUPPETLABS_FACTERDB_SKIP_DEFAULTDB` |
+| Inject source facts | `FACTERDB_INJECT_SOURCE` | `PUPPETLABS_FACTERDB_INJECT_SOURCE` |
+
+```ruby
+# Gemfile
+gem 'facterdb'               # before
+gem 'puppetlabs-facterdb'    # after
+
+# require
+require 'facterdb'               # before
+require 'puppetlabs/facterdb'    # after
+
+# lookup
+FacterDB.get_facts(filter)               # before
+Puppetlabs::FacterDB.get_facts(filter)   # after
+```
+
+Facts are keyed by the real Facter version under `facts/<major.minor>/`.
 
 ## Development
 
