@@ -67,7 +67,7 @@ jobs:
       - name: Build platform matrix
         id: matrix
         if: steps.next.outputs.version != ''
-        run: bundle exec matrix_from_metadata_v3 --metadata config/metadata.json --puppet-include "$AGENT_MAJOR" --puppetlabs --provision-include provision_service --platform-include '^(Debian-(11|12)|Ubuntu-22\.04|AlmaLinux-9|SLES-15)$'
+        run: bundle exec matrix_from_metadata_v3 --metadata config/metadata.json --puppet-include "$AGENT_MAJOR" --puppetlabs --provision-include provision_service --platform-include '^Debian-(11|12)$'
         env:
           AGENT_MAJOR: ${{ steps.next.outputs.agent_major }}
           PUPPET_FORGE_TOKEN: ${{ secrets.PUPPET_FORGE_TOKEN || secrets.PUPPET_FORGE_TOKEN_PUBLIC }}
@@ -113,30 +113,20 @@ jobs:
           ruby-version: '3.2'
           bundler-cache: true
 
-      - name: Debug Puppet Core apt repo
-        if: startsWith(matrix.platforms.label, 'Debian-12') && !endsWith(matrix.platforms.label, '-arm')
-        env:
-          FORGE_TOKEN: ${{ secrets.PUPPET_FORGE_TOKEN || secrets.PUPPET_FORGE_TOKEN_PUBLIC }}
+      - name: Install Twingate
+        if: contains(fromJSON('["Debian-11","Debian-12","Debian-12-arm"]'), matrix.platforms.label)
+        uses: twingate/github-action@f1e69fc5af67b737d8597b759e5c607f567e77f2 # v1
+        with:
+          service-key: ${{ secrets.TWINGATE_PUBLIC_REPO_KEY }}
+
+      - name: Fix DNS for the nightly repo
+        if: contains(fromJSON('["Debian-11","Debian-12","Debian-12-arm"]'), matrix.platforms.label)
         run: |
-          base=https://apt-puppetcore.puppet.com/public
-          workdir=$(mktemp -d)
-          for codename in bullseye bookworm trixie; do
-            code=$(curl -s -o "$workdir/$codename.deb" -w '%{http_code}' -u "forge-key:${FORGE_TOKEN}" "$base/puppet9-release-$codename.deb" || true)
-            echo "puppet9-release-$codename.deb: HTTP $code"
-            if [ "$code" = "200" ]; then
-              dpkg-deb -x "$workdir/$codename.deb" "$workdir/$codename"
-              echo "--- sources for $codename"
-              cat "$workdir/$codename"/etc/apt/sources.list.d/* 2>/dev/null || true
-            fi
-          done
-          for suite in bullseye bookworm trixie; do
-            for path in "dists/$suite/Release" "dists/$suite/puppet9/binary-amd64/Packages" "dists/$suite/puppet9/binary-amd64/Packages.gz"; do
-              code=$(curl -s -o /dev/null -w '%{http_code}' -u "forge-key:${FORGE_TOKEN}" "$base/$path" || true)
-              echo "$path: HTTP $code"
-            done
-          done
-          echo "--- puppet-agent 9.x entries (bookworm)"
-          curl -s -u "forge-key:${FORGE_TOKEN}" "$base/dists/bookworm/puppet9/binary-amd64/Packages" | awk '/^Package: puppet-agent$/{f=1} f&&/^Version:/{print; f=0}' | head -20 || true
+          sudo resolvectl dns eth0 ""
+          sudo resolvectl dns sdwan0 100.95.0.251 100.95.0.252
+          sudo resolvectl domain sdwan0 delivery.puppetlabs.net
+          sudo resolvectl flush-caches
+          nslookup artifactory.delivery.puppetlabs.net > /dev/null
 
       - name: Gather facts
         run: bundle exec rake gather:leg
@@ -144,7 +134,7 @@ jobs:
           PROVIDER: ${{ matrix.platforms.provider }}
           IMAGE: ${{ matrix.platforms.image }}
           LABEL: ${{ matrix.platforms.label }}
-          COLLECTION: ${{ matrix.collection }}
+          COLLECTION: ${{ contains(fromJSON('["Debian-11","Debian-12","Debian-12-arm"]'), matrix.platforms.label) && format('{0}-nightly', matrix.collection) || matrix.collection }}
           AGENT_VERSION: ${{ needs.setup.outputs.agent }}
           FACTER_VERSION: ${{ needs.setup.outputs.version }}
           OUTPUT_DIR: ${{ runner.temp }}/gathered

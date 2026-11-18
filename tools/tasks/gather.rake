@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 $LOAD_PATH.unshift(File.expand_path('../lib', __dir__))
+require 'open3'
 require 'puppetlabs/facterdb/tools'
 
 begin
@@ -100,7 +101,7 @@ module GatherTasks
     abort 'invalid AGENT_VERSION (expected X.Y.Z)' unless agent.match?(Tools::FacterVersions::VERSION)
 
     expected = Tools::FacterVersions.collection_for(agent)
-    abort "COLLECTION #{collection} does not match the agent's Puppet Core collection #{expected}" unless collection == expected
+    abort "COLLECTION #{collection} does not match the agent's Puppet Core collection #{expected}" unless [expected, "#{expected}-nightly"].include?(collection)
   end
 
   def assert_facter_version(runner, facter, expected)
@@ -137,6 +138,15 @@ module GatherTasks
 
     puts "leg #{label}: agent unavailable for this OS (details withheld)"
     exit 0
+  end
+
+  def fix_target_dns(label, results)
+    script = "sed '/^nameserver 168.63.129.16$/d; /^search/d' /etc/resolv.conf > /tmp/resolv.conf && cat /tmp/resolv.conf > /etc/resolv.conf"
+    _output, status = Open3.capture2e('bundle', 'exec', 'bolt', 'command', 'run', script, '--targets', 'all', '--inventoryfile', 'spec/fixtures/litmus_inventory.yaml')
+    return if status.success?
+
+    Tools::Gather.write_result(results, label, 'failed', :other)
+    abort "leg #{label}: target dns fix failed (details withheld)"
   end
 
   def record_failure(label, results)
@@ -177,8 +187,10 @@ module GatherTasks
     check_leg_inputs(facter_version, agent, collection)
     results = result_dir(output_dir)
 
+    nightly = collection.end_with?('-nightly')
     litmus_step(label, results, :provision) { Rake::Task['litmus:provision'].invoke(provider, image) }
-    ENV['PUPPET_VERSION'] = agent
+    fix_target_dns(label, results) if nightly
+    ENV['PUPPET_VERSION'] = agent unless nightly
     litmus_step(label, results, :install_agent) { Rake::Task['litmus:install_agent'].invoke(collection) }
 
     record_failure(label, results) { gather_leg(label, facter_version, output_dir) }
